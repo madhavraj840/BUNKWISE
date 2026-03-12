@@ -755,6 +755,25 @@ button { cursor: pointer; }
     color: var(--accent); margin-bottom: .3rem;
 }
 .creator-card p { font-size: .87rem; color: var(--text-sec); line-height: 1.7; }
+.creator-github-link {
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin-top: .9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: .78rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--border-l);
+    border-radius: var(--r-sm);
+    padding: .35rem .85rem;
+    transition: background .2s, border-color .2s, transform .15s;
+    user-select: text;
+    -webkit-user-select: text;
+}
+.creator-github-link:hover {
+    background: rgba(77,138,240,.1);
+    border-color: var(--accent);
+    transform: translateX(3px);
+}
 
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
