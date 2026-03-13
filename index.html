@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BunkWise — Attendance & SGPA Calculator</title>
+    <meta name="description" content="BunkWise is a free attendance calculator and SGPA analyser for college students. Instantly know how many classes you can bunk or must attend.">
 
-    <!-- ── Detect system colour scheme BEFORE CSS renders (prevents flash) ── -->
     <script>
         (function () {
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -19,35 +19,26 @@
 </head>
 <body>
 
-<!-- ══ THEME TOGGLE (home page only, top-right corner) ════ -->
 <button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
 
-<!-- ══ HAMBURGER ══════════════════════════════════════════ -->
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
 </button>
 
-<!-- ══ SIDE MENU ══════════════════════════════════════════ -->
 <div class="menu-backdrop" id="menu-backdrop"></div>
 <nav class="side-menu" id="side-menu">
     <div class="side-menu-label">// navigation</div>
-    <a data-page="home"     class="active"><span class="ico">⌂</span> Home</a>
-    <a data-page="cgpa">            <span class="ico">◎</span> SGPA Calculator</a>
+    <a href="index.html"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
     <div class="menu-div"></div>
-    <a data-page="about">           <span class="ico">◈</span> About Us</a>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
     <div class="menu-div"></div>
-    <a data-page="terms">           <span class="ico">◇</span> Terms &amp; Conditions</a>
-    <a data-page="privacy">         <span class="ico">◉</span> Privacy Policy</a>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
     <div class="menu-div"></div>
-    <a data-page="creators">        <span class="ico">✦</span> Creator Description</a>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
 </nav>
 
-<!-- ══ FAB PEN ════════════════════════════════════════════ -->
-<button class="fab-pen" id="fab-pen" aria-label="Set desired attendance percentage">✎</button>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 1 — HOME
-════════════════════════════════════════════════════════ -->
 <div id="page-home" class="page">
     <div class="home-inner">
         <div class="home-badge">attendance tracker</div>
@@ -59,332 +50,6 @@
     </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════
-     PAGE 2 — PASTE ATTENDANCE
-════════════════════════════════════════════════════════ -->
-<div id="page-paste" class="page hidden">
-    <h1 class="page-title">Attendance Calculator</h1>
-    <p class="page-sub">Copy your attendance from the ERP portal, then click the button below.</p>
-
-    <div class="paste-wrap">
-        <div class="paste-zone" id="paste-zone">
-            <div class="paste-icon">📋</div>
-            <div class="paste-hint" id="paste-hint">Your attendance data is ready to be pasted from clipboard</div>
-            <button class="btn-paste" id="btn-paste">
-                Paste Attendance <span class="btn-arrow">→</span>
-            </button>
-        </div>
-
-        <div class="upload-zone" id="upload-zone">
-            <div class="upload-icon">📂</div>
-            <div class="upload-hint" id="upload-hint">Upload your attendance CSV or Excel file to compute attendance</div>
-            <input type="file" id="file-input" accept=".csv,.xlsx,.xls" style="display:none">
-            <button class="btn-upload" id="btn-upload">
-                Upload CSV / Excel <span class="btn-arrow">→</span>
-            </button>
-        </div>
-
-        <div class="error-banner" id="error-banner">
-            <span>⚠</span>&nbsp; Invalid Attendance Report!
-        </div>
-
-        <div class="instructions-box">
-            <h3>// how to copy your attendance</h3>
-            <ol>
-                <li>Open your college <strong>ERP portal</strong> and log in</li>
-                <li>Navigate to the <strong>Attendance</strong> section</li>
-                <li>Select all content on the attendance table — <span class="key">Ctrl + A</span></li>
-                <li>Copy the selection — <span class="key">Ctrl + C</span></li>
-                <li>Return here and click <strong>Paste Attendance</strong> above</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 3 — ATTENDANCE RESULTS
-════════════════════════════════════════════════════════ -->
-<div id="page-results" class="page hidden">
-
-    <div class="gauge-section" id="gauge-section">
-        <div class="gauge-left">
-            <div class="g-label green" id="action-label">Can Bunk</div>
-            <div class="g-value green" id="action-value">0</div>
-            <div class="g-unit">hours of class</div>
-        </div>
-        <div class="gauge-center">
-            <div class="gauge-svg-wrap">
-                <svg id="main-gauge-svg" xmlns="http://www.w3.org/2000/svg"
-                     width="270" height="165" viewBox="0 0 270 165"></svg>
-            </div>
-            <div class="gauge-readout">
-                <div class="gauge-pct-text green" id="gauge-pct">0.00%</div>
-                <div class="gauge-curr-label">Current Aggregate</div>
-            </div>
-        </div>
-        <div class="gauge-right">
-            <div class="desired-label">Desired</div>
-            <div class="desired-pct" id="desired-val">75%</div>
-            <div class="desired-hint">tap ✎ to adjust</div>
-        </div>
-    </div>
-
-    <div class="subjects-header">
-        <div class="subjects-header-text">Subject Breakdown</div>
-        <div class="subjects-header-line"></div>
-    </div>
-    <div class="subjects-list" id="subjects-list"></div>
-
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 4 — ABOUT US
-════════════════════════════════════════════════════════ -->
-<div id="page-about" class="page hidden" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
-    <div class="static-page">
-        <h1 class="static-page-title">About Us</h1>
-        <p class="static-intro">BunkWise is a fast, no-login attendance calculator built for college students who are tired of manually computing whether they can skip that Friday lecture.</p>
-        <div class="static-section">
-            <h2>What we do</h2>
-            <p>Copy your attendance table from your college ERP portal, paste it into BunkWise, and get a full breakdown instantly — aggregate percentage, subject-wise percentages, and exactly how many classes you can bunk or must attend to hit your desired target.</p>
-        </div>
-        <div class="static-section">
-            <h2>How it works</h2>
-            <p>All processing happens directly in your browser. No data is sent anywhere. No account needed. Close the tab and everything is gone.</p>
-        </div>
-        <div class="static-section">
-            <h2>Why we built it</h2>
-            <p>So you can BUNK classes without any guilt!</p>
-        </div>
-    </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 5 — TERMS & CONDITIONS
-════════════════════════════════════════════════════════ -->
-<div id="page-terms" class="page hidden" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
-    <div class="static-page">
-        <h1 class="static-page-title">Terms &amp; Conditions</h1>
-        <p class="static-intro">By using BunkWise you agree to the terms below.</p>
-        <div class="static-section">
-            <h2>1. Use of service</h2>
-            <p>BunkWise is a free educational tool. All calculations run locally in your browser. No data is ever transmitted to any server.</p>
-        </div>
-        <div class="static-section">
-            <h2>2. Accuracy</h2>
-            <p>Calculations are based entirely on the data you paste. Always cross-check critical decisions with your institution's official attendance records.</p>
-        </div>
-        <div class="static-section">
-            <h2>3. No liability</h2>
-            <p>The creators of BunkWise bear no responsibility for academic decisions made based on this tool's output. Use it as a guide, not a guarantee.</p>
-        </div>
-        <div class="static-section">
-            <h2>4. Changes</h2>
-            <p>These terms may be updated at any time. Continued use constitutes acceptance of any updated terms.</p>
-        </div>
-    </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 6 — PRIVACY POLICY
-════════════════════════════════════════════════════════ -->
-<div id="page-privacy" class="page hidden" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
-    <div class="static-page">
-        <h1 class="static-page-title">Privacy Policy</h1>
-        <p class="static-intro">Your privacy is taken seriously. Here is exactly what happens with your data when you use BunkWise.</p>
-        <div class="static-section">
-            <h2>Zero data collection</h2>
-            <p>BunkWise collects absolutely nothing. There are no databases, no analytics, no user tracking of any kind.</p>
-        </div>
-        <div class="static-section">
-            <h2>Local processing only</h2>
-            <p>The attendance text you paste never leaves your device. All parsing and calculations run inside your own browser tab.</p>
-        </div>
-        <div class="static-section">
-            <h2>Cookies &amp; trackers</h2>
-            <p>BunkWise uses no cookies, no local storage, and no third-party tracking scripts.</p>
-        </div>
-        <div class="static-section">
-            <h2>Third parties</h2>
-            <p>We do not share any data with third parties. The only external resource loaded is Google Fonts for typography.</p>
-        </div>
-    </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 7 — CREATOR DESCRIPTION
-════════════════════════════════════════════════════════ -->
-<div id="page-creators" class="page hidden" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
-    <div class="static-page">
-        <h1 class="static-page-title">Creator Description</h1>
-        <p class="static-intro">BunkWise was designed and built to solve a real problem — no more manual percentage calculations before deciding whether to attend a lecture.</p>
-        <div class="creator-card">
-            <h3>Madhav Raj</h3>
-            <p>Creator of BunkWise. Designed and developed the attendance calculator from the ground up — including the core calculation engine, the subject-wise and aggregate percentage logic, the speedometer gauge UI, and the live desired-percentage update system. Built to save every college student the five minutes of painful mental math before bunking a class.</p>
-            <a href="https://github.com/madhavraj840/" target="_blank" rel="noopener noreferrer" class="creator-github-link">
-                <span>⌥</span> github.com/madhavraj840
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 8 — SGPA CALCULATOR
-════════════════════════════════════════════════════════ -->
-<div id="page-cgpa" class="page hidden">
-
-    <!-- ── State A: Upload ───────────────────────────────── -->
-    <div id="sgpa-upload-state" class="sgpa-state">
-        <h1 class="page-title">SGPA Calculator</h1>
-        <p class="page-sub">Upload your RTU result PDF — your SGPA is computed instantly, right in your browser.</p>
-
-        <div class="paste-wrap" style="max-width:620px">
-            <div class="sgpa-upload-zone" id="sgpa-upload-zone">
-                <div class="sgpa-upload-icon">📄</div>
-                <div class="sgpa-upload-hint" id="sgpa-hint">Select your RTU result PDF to analyse</div>
-                <input type="file" id="sgpa-file-input" accept=".pdf" style="display:none">
-                <button class="btn-paste" id="btn-sgpa-upload">
-                    Upload Result PDF <span class="btn-arrow">→</span>
-                </button>
-            </div>
-
-            <div class="error-banner" id="sgpa-error-banner">
-                <span>⚠</span>&nbsp; <span id="sgpa-error-text">Could not parse the PDF. Please upload a valid RTU result PDF.</span>
-            </div>
-
-            <div class="instructions-box">
-                <h3>// how to get your result pdf</h3>
-                <ol>
-                    <li>Open <strong>rtu.ac.in</strong> and navigate to the Results section</li>
-                    <li>Search your result using your <strong>Roll Number</strong></li>
-                    <li>Press <span class="key">Ctrl + P</span> and choose <strong>Save as PDF</strong></li>
-                    <li>Return here and upload the saved PDF file</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── State B: Loading ──────────────────────────────── -->
-    <div id="sgpa-loading-state" class="sgpa-state hidden">
-        <div class="sgpa-loader-wrap">
-            <div class="sgpa-spinner"></div>
-            <div class="sgpa-loading-title">Extracting Data</div>
-            <div class="sgpa-loading-sub" id="sgpa-loading-sub">Reading PDF…</div>
-        </div>
-    </div>
-
-    <!-- ── State C: Results ──────────────────────────────── -->
-    <div id="sgpa-results-state" class="sgpa-state hidden">
-
-        <!-- Student info card -->
-        <div class="sgpa-info-card">
-            <div class="sgpa-info-grid">
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Student Name</span>
-                    <span class="sgpa-info-val" id="sgpa-name">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Father's Name</span>
-                    <span class="sgpa-info-val" id="sgpa-father">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Roll Number</span>
-                    <span class="sgpa-info-val" id="sgpa-roll">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Remarks</span>
-                    <span class="sgpa-remarks" id="sgpa-remarks">PASS</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section header -->
-        <div class="subjects-header" style="margin-top:1.75rem">
-            <div class="subjects-header-text">Subject-wise Breakdown</div>
-            <div class="subjects-header-line"></div>
-        </div>
-
-        <!-- Scrollable table wrapper -->
-        <div class="sgpa-table-wrap">
-            <table class="sgpa-table" id="sgpa-table">
-                <thead>
-                    <tr>
-                        <th class="col-sno">SNO</th>
-                        <th class="col-subject">Subject Name</th>
-                        <th class="col-num">Internal</th>
-                        <th class="col-num">External</th>
-                        <th class="col-num">Total</th>
-                        <th class="col-grade">Grade</th>
-                        <th class="col-num">Credits</th>
-                        <th class="col-num">Credit Points</th>
-                    </tr>
-                </thead>
-                <tbody id="sgpa-tbody"></tbody>
-                <tfoot>
-                    <tr class="sgpa-tfoot-row">
-                        <td colspan="2" class="sgpa-tfoot-sgpa">
-                            SGPA &nbsp;<span class="sgpa-number" id="sgpa-value">—</span>
-                        </td>
-                        <td colspan="2" class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Total Marks</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-marks">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Max Marks</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-max-marks">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Grade Pts</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-gp">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Credits</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-credits">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Credit Pts</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-cp">—</div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <!-- Action buttons -->
-        <div class="sgpa-actions">
-            <button class="btn-primary" id="btn-download-report">
-                ⬇ Download Report PDF
-            </button>
-            <button class="btn-check-another" id="btn-check-another">
-                ↺ Check Another
-            </button>
-        </div>
-
-    </div><!-- /sgpa-results-state -->
-
-</div><!-- /page-cgpa -->
-
-<!-- ════════════════════════════════════════════════════════
-     DESIRED % POPUP
-════════════════════════════════════════════════════════ -->
-<div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true">
-    <div class="popup-box">
-        <div class="popup-title">Set Desired Percentage</div>
-        <div class="popup-desc">Adjust your target attendance goal</div>
-        <div class="popup-controls">
-            <button class="popup-btn" id="btn-decrease" aria-label="Decrease">−</button>
-            <div class="popup-pct-display" id="popup-pct">75%</div>
-            <button class="popup-btn" id="btn-increase" aria-label="Increase">+</button>
-        </div>
-        <div class="popup-close" id="popup-close">click outside or here to close</div>
-    </div>
-</div>
-
-<!-- CDN Scripts — order matters -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
