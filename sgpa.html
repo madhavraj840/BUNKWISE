@@ -12,15 +12,18 @@
             document.documentElement.dataset.theme = preferred;
         })();
     </script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HHJFB4Q89"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0HHJFB4Q89');
-</script>
+    <script>
+        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+            var s1 = document.createElement('script');
+            s1.async = true;
+            s1.src = "https://www.googletagmanager.com/gtag/js?id=G-0HHJFB4Q89";
+            document.head.appendChild(s1);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0HHJFB4Q89');
+        }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,6 +40,7 @@
     <div class="side-menu-label">// navigation</div>
     <a href="index.html"><span class="ico">⌂</span> Home</a>
     <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <a href="cw.html"><span class="ico">⊞</span> CW Calculator</a>
     <div class="menu-div"></div>
     <a href="about.html"><span class="ico">◈</span> About Us</a>
     <div class="menu-div"></div>

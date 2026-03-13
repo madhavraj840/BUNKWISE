@@ -1143,3 +1143,93 @@ button { cursor: pointer; }
     .sgpa-info-grid { grid-template-columns: 1fr; }
     .sgpa-info-card { padding: 1.25rem; }
 }
+
+/* ══════════════════════════════════════════════════════
+   CW CALCULATOR PAGE
+══════════════════════════════════════════════════════ */
+
+/* ── Results page shell ─────────────────────────────── */
+#page-cw-results {
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 5rem 1.5rem 5rem;
+    max-width: 980px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ── Two-panel container ────────────────────────────── */
+.cw-panel-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.75rem;
+    padding: 2rem 2.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: 0 8px 48px rgba(0,0,0,.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Each half ──────────────────────────────────────── */
+.cw-panel-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ── Label above gauge ──────────────────────────────── */
+.cw-panel-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: .75rem;
+}
+
+/* ── Future percentage number ───────────────────────── */
+.cw-future-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: -.02em;
+    line-height: 1;
+    transition: color .3s;
+}
+.cw-future-pct.green { color: var(--green); }
+.cw-future-pct.red   { color: var(--red); }
+
+/* ── Sub-label below future gauge ───────────────────── */
+.cw-future-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: .6rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: .3rem;
+}
+
+/* ── Hint inside popup ──────────────────────────────── */
+.cw-classes-hint {
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    letter-spacing: .06em;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 680px) {
+    .cw-panel-section {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1.25rem;
+        gap: 2rem;
+    }
+}
+@media (max-width: 440px) {
+    #page-cw-results { padding-left: 1rem; padding-right: 1rem; }
+}

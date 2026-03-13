@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BunkWise — Class Wise Calculator</title>
+    <meta name="description" content="Class Wise Calculator — see your current attendance and instantly calculate your future attendance based on classes you plan to take or skip.">
+
+    <script>
+        (function () {
+            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = preferred;
+        })();
+    </script>
+
+    <script>
+        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+            var s1 = document.createElement('script');
+            s1.async = true;
+            s1.src = "https://www.googletagmanager.com/gtag/js?id=G-0HHJFB4Q89";
+            document.head.appendChild(s1);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0HHJFB4Q89');
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ── CW page — label size overrides ──────────────── */
+
+        /* "Current Attendance" / "Future Attendance" headings */
+        #page-cw-results .cw-panel-label {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+        }
+
+        /* "Current Aggregate" sub-label */
+        #page-cw-results .gauge-curr-label {
+            font-family: 'DM Mono', monospace;
+            font-size: .82rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--text-sec);
+            margin-top: .55rem;
+        }
+
+        /* "No change" / "After +3 classes" sub-label */
+        #page-cw-results .cw-future-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: .82rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--text-sec);
+            margin-top: .55rem;
+        }
+
+        /* Extra vertical padding inside panel now gauges are gone */
+        #page-cw-results .cw-panel-section {
+            padding: 2.75rem 2.5rem;
+            gap: 2rem;
+        }
+
+        /* Remove the top margin gauge-readout had (was there for SVG spacing) */
+        #page-cw-results .gauge-readout {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+</button>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<nav class="side-menu" id="side-menu">
+    <div class="side-menu-label">// navigation</div>
+    <a href="index.html"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <a href="cw.html"><span class="ico">⊞</span> CW Calculator</a>
+    <div class="menu-div"></div>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <div class="menu-div"></div>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <div class="menu-div"></div>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+</nav>
+
+<!-- FAB pen — shown when results are visible -->
+<button class="fab-pen" id="cw-fab-pen" aria-label="Set classes to take or leave">✎</button>
+
+<!-- ════════════════════════════════════════════════
+     DIV 1 — PASTE / UPLOAD
+════════════════════════════════════════════════ -->
+<div id="page-cw-paste" class="page" style="justify-content:flex-start;align-items:center;padding-top:6.5rem">
+    <h1 class="page-title">Class Wise Calculator</h1>
+    <p class="page-sub">Copy your attendance from the ERP portal, then click the button below.</p>
+
+    <div class="paste-wrap">
+        <div class="paste-zone" id="cw-paste-zone">
+            <div class="paste-icon">📋</div>
+            <div class="paste-hint" id="cw-paste-hint">Your attendance data is ready to be pasted from clipboard</div>
+            <button class="btn-paste" id="btn-cw-paste">
+                Paste Attendance <span class="btn-arrow">→</span>
+            </button>
+        </div>
+
+        <div class="upload-zone" id="cw-upload-zone">
+            <div class="upload-icon">📂</div>
+            <div class="upload-hint" id="cw-upload-hint">Upload your attendance CSV or Excel file to compute attendance</div>
+            <input type="file" id="cw-file-input" accept=".csv,.xlsx,.xls" style="display:none">
+            <button class="btn-upload" id="btn-cw-upload">
+                Upload CSV / Excel <span class="btn-arrow">→</span>
+            </button>
+        </div>
+
+        <div class="error-banner" id="cw-error-banner">
+            <span>⚠</span>&nbsp; Invalid Attendance Report!
+        </div>
+
+        <div class="instructions-box">
+            <h3>// how to copy your attendance</h3>
+            <ol>
+                <li>Open your college <strong>ERP portal</strong> and log in</li>
+                <li>Navigate to the <strong>Attendance</strong> section</li>
+                <li>Select all content on the attendance table — <span class="key">Ctrl + A</span></li>
+                <li>Copy the selection — <span class="key">Ctrl + C</span></li>
+                <li>Return here and click <strong>Paste Attendance</strong> above</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     DIV 2 — RESULTS
+════════════════════════════════════════════════ -->
+<div id="page-cw-results" class="page hidden">
+
+    <!-- Two-panel section: Current | Future -->
+    <div class="cw-panel-section" id="cw-panel-section">
+
+        <!-- Left half — Current Attendance -->
+        <div class="cw-panel-half">
+            <div class="cw-panel-label">Current Attendance</div>
+            <div class="gauge-readout">
+                <div class="gauge-pct-text green" id="cw-current-pct">0.00%</div>
+                <div class="gauge-curr-label">Current Aggregate</div>
+            </div>
+            <!-- SVG hidden — kept in DOM so app.js drawGauge() does not throw -->
+            <svg id="cw-current-gauge" xmlns="http://www.w3.org/2000/svg"
+                 width="0" height="0" style="display:none"></svg>
+        </div>
+
+        <!-- Right half — Future Attendance -->
+        <div class="cw-panel-half">
+            <div class="cw-panel-label">Future Attendance</div>
+            <div class="gauge-readout">
+                <div class="cw-future-pct green" id="cw-future-pct">0.00%</div>
+                <div class="cw-future-sub" id="cw-future-sub">No change</div>
+            </div>
+            <!-- SVG hidden — kept in DOM so app.js drawGauge() does not throw -->
+            <svg id="cw-future-gauge" xmlns="http://www.w3.org/2000/svg"
+                 width="0" height="0" style="display:none"></svg>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════
+     POPUP — Set Classes to Take or Leave
+════════════════════════════════════════════════ -->
+<div class="popup-overlay" id="cw-popup-overlay" role="dialog" aria-modal="true">
+    <div class="popup-box">
+        <div class="popup-title">Set Classes to Take or Leave</div>
+        <div class="popup-desc">Adjust your target class goal</div>
+        <div class="cw-classes-hint">1 class = 1 hour</div>
+        <div class="popup-controls">
+            <button class="popup-btn" id="cw-btn-decrease" aria-label="Decrease">−</button>
+            <div class="popup-pct-display" id="cw-classes-display">0</div>
+            <button class="popup-btn" id="cw-btn-increase" aria-label="Increase">+</button>
+        </div>
+        <div class="popup-close" id="cw-popup-close">click outside or here to close</div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

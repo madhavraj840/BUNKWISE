@@ -967,6 +967,289 @@
     }
 
     /* ══════════════════════════════════════════════════════
+       CW (CLASS WISE) PAGE
+       All code below only activates when cw.html
+       is loaded (detected by presence of #btn-cw-paste).
+    ══════════════════════════════════════════════════════ */
+
+    /* ── State ───────────────────────────────────────────── */
+    var CW_STATE = {
+        subjects:     [],   // same structure as ATT_STATE.subjects
+        classesInput: 0,    // integer — positive = attend more, negative = skip
+    };
+
+    /* ── Internal section switch (paste ↔ results) ───────── */
+    function showCWSection(id) {
+        var paste   = document.getElementById('page-cw-paste');
+        var results = document.getElementById('page-cw-results');
+        var fab     = document.getElementById('cw-fab-pen');
+        if (!paste || !results) return;
+
+        if (id === 'results') {
+            paste.classList.add('hidden');
+            paste.classList.remove('in');
+            results.classList.remove('hidden');
+            void results.offsetWidth;
+            results.classList.add('in');
+            if (fab) fab.classList.add('visible');
+        } else {
+            results.classList.add('hidden');
+            results.classList.remove('in');
+            paste.classList.remove('hidden');
+            void paste.offsetWidth;
+            paste.classList.add('in');
+            if (fab) fab.classList.remove('visible');
+        }
+        window.scrollTo({ top: 0 });
+    }
+
+    /* ── Future attendance formula ───────────────────────── */
+    function calcFuturePct(totalP, totalO, totalM, totalA, classesInput) {
+        var N = Math.abs(classesInput);
+        var num, den;
+        if (classesInput >= 0) {
+            // Attending N more classes — both numerator and denominator grow by N
+            num = totalP + N + totalO + totalM;
+            den = totalP + totalO + totalA + N;
+        } else {
+            // Skipping N classes — only denominator grows by N (absences increase)
+            num = totalP + totalO + totalM;
+            den = totalP + totalO + totalA + N;
+        }
+        if (den === 0) return 100;
+        return (num / den) * 100;
+    }
+
+    /* ── Update popup display value and colour ───────────── */
+    function updateCWDisplay() {
+        var el = document.getElementById('cw-classes-display');
+        if (!el) return;
+        var n = CW_STATE.classesInput;
+        if (n === 0) {
+            el.textContent  = '0';
+            el.style.color  = '';           // revert to CSS default (var(--accent))
+        } else if (n > 0) {
+            el.textContent  = '+' + n;
+            el.style.color  = 'var(--green)';
+        } else {
+            el.textContent  = String(n);    // already has minus sign
+            el.style.color  = 'var(--red)';
+        }
+    }
+
+    /* ── Bump animation on cw-classes-display ────────────── */
+    function bumpCW() {
+        var e = document.getElementById('cw-classes-display');
+        if (!e) return;
+        e.classList.remove('bump');
+        void e.offsetWidth;
+        e.classList.add('bump');
+    }
+
+    /* ── Render both gauges and sub-label ────────────────── */
+    function renderCWMain() {
+        var totalP = CW_STATE.subjects.reduce(function (s, x) { return s + x.present; }, 0);
+        var totalO = CW_STATE.subjects.reduce(function (s, x) { return s + x.od;      }, 0);
+        var totalM = CW_STATE.subjects.reduce(function (s, x) { return s + x.makeup;  }, 0);
+        var totalA = CW_STATE.subjects.reduce(function (s, x) { return s + x.absent;  }, 0);
+
+        var currentPct = calcPct(totalP, totalO, totalM, totalA);
+        var futurePct  = calcFuturePct(totalP, totalO, totalM, totalA, CW_STATE.classesInput);
+
+        // ── Current gauge (left panel) ──
+        var isCurGreen = currentPct >= 75;
+        drawGauge(document.getElementById('cw-current-gauge'), currentPct, isCurGreen, false);
+        var curEl = document.getElementById('cw-current-pct');
+        curEl.textContent = currentPct.toFixed(2) + '%';
+        curEl.className   = 'gauge-pct-text ' + (isCurGreen ? 'green' : 'red');
+
+        // ── Future gauge (right panel) ──
+        var isFutGreen = futurePct >= 75;
+        drawGauge(document.getElementById('cw-future-gauge'), futurePct, isFutGreen, false);
+        var futEl = document.getElementById('cw-future-pct');
+        futEl.textContent = futurePct.toFixed(2) + '%';
+        futEl.className   = 'cw-future-pct ' + (isFutGreen ? 'green' : 'red');
+
+        // ── Sub-label below future gauge ──
+        var subEl = document.getElementById('cw-future-sub');
+        var n = CW_STATE.classesInput;
+        if (n === 0) {
+            subEl.textContent = 'No change';
+        } else if (n > 0) {
+            subEl.textContent = 'After +' + n + ' classes';
+        } else {
+            subEl.textContent = 'After \u2212' + Math.abs(n) + ' classes';
+        }
+    }
+
+    /* ── Render subject cards ────────────────────────────── */
+    function renderCWCards() {
+        var list = document.getElementById('cw-subjects-list');
+        list.innerHTML = '';
+        // calcSubject uses 75 as fixed threshold — ATT_STATE.desiredPct is also 75
+        // on cw.html (initAttendancePage never runs there, so it is never changed)
+        CW_STATE.subjects.forEach(function (s, i) {
+            list.appendChild(makeCard(s, calcSubject(s, 75), i));
+        });
+    }
+
+    /* ── Paste from clipboard (CW) ───────────────────────── */
+    function handleCWPaste() {
+        var zone        = document.getElementById('cw-paste-zone');
+        var hint        = document.getElementById('cw-paste-hint');
+        var errorBanner = document.getElementById('cw-error-banner');
+
+        zone.classList.remove('success', 'error-state');
+        errorBanner.classList.remove('visible');
+
+        if (!navigator.clipboard || !navigator.clipboard.readText) {
+            hint.textContent = '⚠ Clipboard access not available. Please use HTTPS or allow clipboard permission.';
+            zone.classList.add('error-state');
+            return;
+        }
+
+        navigator.clipboard.readText()
+            .then(function (text) {
+                if (!validateInput(text)) {
+                    zone.classList.add('error-state');
+                    hint.textContent = '⚠ Invalid Attendance Report — check your copied content and try again.';
+                    errorBanner.classList.add('visible');
+                    return;
+                }
+
+                var parsed = parseAttendance(text);
+                if (!parsed.length) {
+                    zone.classList.add('error-state');
+                    hint.textContent = '⚠ No subject rows found. Make sure you copied the full attendance table.';
+                    errorBanner.classList.add('visible');
+                    return;
+                }
+
+                zone.classList.add('success');
+                hint.textContent = '✓ Attendance loaded — ' + parsed.length + ' subject' + (parsed.length > 1 ? 's' : '') + ' found. Calculating…';
+
+                CW_STATE.subjects     = parsed;
+                CW_STATE.classesInput = 0;
+
+                setTimeout(function () {
+                    showCWSection('results');
+                    renderCWMain();
+                    renderCWCards();
+                    zone.classList.remove('success');
+                    hint.textContent = 'Your attendance data is ready to be pasted from clipboard';
+                }, 700);
+            })
+            .catch(function () {
+                zone.classList.add('error-state');
+                hint.textContent = '⚠ Clipboard access was denied. Please allow clipboard permission and try again.';
+            });
+    }
+
+    /* ── File upload CSV / XLSX (CW) ────────────────────── */
+    function handleCWFileUpload(file) {
+        var zone = document.getElementById('cw-upload-zone');
+        var hint = document.getElementById('cw-upload-hint');
+
+        zone.classList.remove('success', 'error-state');
+
+        if (!file) return;
+
+        var ext = file.name.split('.').pop().toLowerCase();
+        if (['csv', 'xlsx', 'xls'].indexOf(ext) === -1) {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ Unsupported file type. Please upload a .csv or .xlsx file.';
+            return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            try {
+                var data     = new Uint8Array(e.target.result);
+                var workbook = XLSX.read(data, { type: 'array' });
+                var sheet    = workbook.Sheets[workbook.SheetNames[0]];
+                var rows     = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+                var parsed   = parseRowsFromSheet(rows);
+
+                if (!parsed.length) {
+                    zone.classList.add('error-state');
+                    hint.textContent = '⚠ No subject rows found. Check that your file has the correct column layout.';
+                    return;
+                }
+
+                zone.classList.add('success');
+                hint.textContent = '✓ File loaded — ' + parsed.length + ' subject' + (parsed.length > 1 ? 's' : '') + ' found. Calculating…';
+
+                CW_STATE.subjects     = parsed;
+                CW_STATE.classesInput = 0;
+
+                setTimeout(function () {
+                    showCWSection('results');
+                    renderCWMain();
+                    renderCWCards();
+                    zone.classList.remove('success');
+                    hint.textContent = 'Upload your attendance CSV or Excel file to compute attendance';
+                }, 700);
+
+            } catch (err) {
+                zone.classList.add('error-state');
+                hint.textContent = '⚠ Could not read file. Make sure it is a valid CSV or Excel file.';
+            }
+        };
+
+        reader.onerror = function () {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ File read failed. Please try again.';
+        };
+
+        reader.readAsArrayBuffer(file);
+    }
+
+    /* ── Wire CW page ────────────────────────────────────── */
+    function initCWPage() {
+        var btnPaste = document.getElementById('btn-cw-paste');
+        if (!btnPaste) return;   // not on cw.html — exit
+
+        btnPaste.addEventListener('click', handleCWPaste);
+
+        document.getElementById('btn-cw-upload').addEventListener('click', function () {
+            document.getElementById('cw-file-input').click();
+        });
+        document.getElementById('cw-file-input').addEventListener('change', function (e) {
+            var file = e.target.files[0];
+            if (file) handleCWFileUpload(file);
+            e.target.value = '';
+        });
+
+        document.getElementById('cw-fab-pen').addEventListener('click', function () {
+            updateCWDisplay();
+            document.getElementById('cw-popup-overlay').classList.add('open');
+        });
+
+        document.getElementById('cw-popup-overlay').addEventListener('click', function (e) {
+            if (e.target === document.getElementById('cw-popup-overlay'))
+                document.getElementById('cw-popup-overlay').classList.remove('open');
+        });
+        document.getElementById('cw-popup-close').addEventListener('click', function () {
+            document.getElementById('cw-popup-overlay').classList.remove('open');
+        });
+
+        document.getElementById('cw-btn-decrease').addEventListener('click', function () {
+            CW_STATE.classesInput--;
+            updateCWDisplay();
+            bumpCW();
+            renderCWMain();
+        });
+
+        document.getElementById('cw-btn-increase').addEventListener('click', function () {
+            CW_STATE.classesInput++;
+            updateCWDisplay();
+            bumpCW();
+            renderCWMain();
+        });
+    }
+
+    /* ══════════════════════════════════════════════════════
        DOM READY — wire everything
     ══════════════════════════════════════════════════════ */
     document.addEventListener('DOMContentLoaded', function () {
@@ -1012,6 +1295,9 @@
 
         // ── SGPA page ──
         initSGPAPage();
+
+        // ── CW page ──
+        initCWPage();
     });
 
 }());
