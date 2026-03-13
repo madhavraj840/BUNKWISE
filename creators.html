@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BunkWise — Creator Description</title>
+    <meta name="description" content="Meet the creator of BunkWise — Madhav Raj, who built the attendance calculator and SGPA analyser for college students.">
+
+    <script>
+        (function () {
+            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = preferred;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+</button>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<nav class="side-menu" id="side-menu">
+    <div class="side-menu-label">// navigation</div>
+    <a href="index.html"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <div class="menu-div"></div>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <div class="menu-div"></div>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <div class="menu-div"></div>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+</nav>
+
+<div id="page-creators" class="page" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
+    <div class="static-page">
+        <h1 class="static-page-title">Creator Description</h1>
+        <p class="static-intro">BunkWise was designed and built to solve a real problem — no more manual percentage calculations before deciding whether to attend a lecture.</p>
+        <div class="creator-card">
+            <h3>Madhav Raj</h3>
+            <p>Creator of BunkWise. Designed and developed the attendance calculator from the ground up — including the core calculation engine, the subject-wise and aggregate percentage logic, the speedometer gauge UI, and the live desired-percentage update system. Built to save every college student the five minutes of painful mental math before bunking a class.</p>
+            <a href="https://github.com/madhavraj840/" target="_blank" rel="noopener noreferrer" class="creator-github-link">
+                <span>⌥</span> github.com/madhavraj840
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

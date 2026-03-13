@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BunkWise — Terms &amp; Conditions</title>
+    <meta name="description" content="Terms and Conditions for using BunkWise, the free attendance calculator for college students.">
+
+    <script>
+        (function () {
+            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = preferred;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+</button>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<nav class="side-menu" id="side-menu">
+    <div class="side-menu-label">// navigation</div>
+    <a href="index.html"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <div class="menu-div"></div>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <div class="menu-div"></div>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <div class="menu-div"></div>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+</nav>
+
+<div id="page-terms" class="page" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
+    <div class="static-page">
+        <h1 class="static-page-title">Terms &amp; Conditions</h1>
+        <p class="static-intro">By using BunkWise you agree to the terms below.</p>
+        <div class="static-section">
+            <h2>1. Use of service</h2>
+            <p>BunkWise is a free educational tool. All calculations run locally in your browser. No data is ever transmitted to any server.</p>
+        </div>
+        <div class="static-section">
+            <h2>2. Accuracy</h2>
+            <p>Calculations are based entirely on the data you paste. Always cross-check critical decisions with your institution's official attendance records.</p>
+        </div>
+        <div class="static-section">
+            <h2>3. No liability</h2>
+            <p>The creators of BunkWise bear no responsibility for academic decisions made based on this tool's output. Use it as a guide, not a guarantee.</p>
+        </div>
+        <div class="static-section">
+            <h2>4. Changes</h2>
+            <p>These terms may be updated at any time. Continued use constitutes acceptance of any updated terms.</p>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BunkWise — About Us</title>
+    <meta name="description" content="Learn about BunkWise — the free, no-login attendance calculator built for college students.">
+
+    <script>
+        (function () {
+            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = preferred;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+</button>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<nav class="side-menu" id="side-menu">
+    <div class="side-menu-label">// navigation</div>
+    <a href="index.html"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <div class="menu-div"></div>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <div class="menu-div"></div>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <div class="menu-div"></div>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+</nav>
+
+<div id="page-about" class="page" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
+    <div class="static-page">
+        <h1 class="static-page-title">About Us</h1>
+        <p class="static-intro">BunkWise is a fast, no-login attendance calculator built for college students who are tired of manually computing whether they can skip that Friday lecture.</p>
+        <div class="static-section">
+            <h2>What we do</h2>
+            <p>Copy your attendance table from your college ERP portal, paste it into BunkWise, and get a full breakdown instantly — aggregate percentage, subject-wise percentages, and exactly how many classes you can bunk or must attend to hit your desired target.</p>
+        </div>
+        <div class="static-section">
+            <h2>How it works</h2>
+            <p>All processing happens directly in your browser. No data is sent anywhere. No account needed. Close the tab and everything is gone.</p>
+        </div>
+        <div class="static-section">
+            <h2>Why we built it</h2>
+            <p>So you can BUNK classes without any guilt!</p>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

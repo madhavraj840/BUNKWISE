@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BunkWise — Attendance Calculator</title>
+    <meta name="description" content="Paste or upload your ERP attendance report and instantly get subject-wise percentages, bunk counts, and your aggregate attendance.">
+
+    <script>
+        (function () {
+            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = preferred;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+</button>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<nav class="side-menu" id="side-menu">
+    <div class="side-menu-label">// navigation</div>
+    <a href="index.html"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <div class="menu-div"></div>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <div class="menu-div"></div>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <div class="menu-div"></div>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+</nav>
+
+<!-- FAB pen — shown when results are visible -->
+<button class="fab-pen" id="fab-pen" aria-label="Set desired attendance percentage">✎</button>
+
+<!-- ── PASTE / UPLOAD ─────────────────────────────────── -->
+<div id="page-paste" class="page" style="justify-content:flex-start;align-items:center;padding-top:6.5rem">
+    <h1 class="page-title">Attendance Calculator</h1>
+    <p class="page-sub">Copy your attendance from the ERP portal, then click the button below.</p>
+
+    <div class="paste-wrap">
+        <div class="paste-zone" id="paste-zone">
+            <div class="paste-icon">📋</div>
+            <div class="paste-hint" id="paste-hint">Your attendance data is ready to be pasted from clipboard</div>
+            <button class="btn-paste" id="btn-paste">
+                Paste Attendance <span class="btn-arrow">→</span>
+            </button>
+        </div>
+
+        <div class="upload-zone" id="upload-zone">
+            <div class="upload-icon">📂</div>
+            <div class="upload-hint" id="upload-hint">Upload your attendance CSV or Excel file to compute attendance</div>
+            <input type="file" id="file-input" accept=".csv,.xlsx,.xls" style="display:none">
+            <button class="btn-upload" id="btn-upload">
+                Upload CSV / Excel <span class="btn-arrow">→</span>
+            </button>
+        </div>
+
+        <div class="error-banner" id="error-banner">
+            <span>⚠</span>&nbsp; Invalid Attendance Report!
+        </div>
+
+        <div class="instructions-box">
+            <h3>// how to copy your attendance</h3>
+            <ol>
+                <li>Open your college <strong>ERP portal</strong> and log in</li>
+                <li>Navigate to the <strong>Attendance</strong> section</li>
+                <li>Select all content on the attendance table — <span class="key">Ctrl + A</span></li>
+                <li>Copy the selection — <span class="key">Ctrl + C</span></li>
+                <li>Return here and click <strong>Paste Attendance</strong> above</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ── RESULTS ────────────────────────────────────────── -->
+<div id="page-results" class="page hidden">
+
+    <div class="gauge-section" id="gauge-section">
+        <div class="gauge-left">
+            <div class="g-label green" id="action-label">Can Bunk</div>
+            <div class="g-value green" id="action-value">0</div>
+            <div class="g-unit">hours of class</div>
+        </div>
+        <div class="gauge-center">
+            <div class="gauge-svg-wrap">
+                <svg id="main-gauge-svg" xmlns="http://www.w3.org/2000/svg"
+                     width="270" height="165" viewBox="0 0 270 165"></svg>
+            </div>
+            <div class="gauge-readout">
+                <div class="gauge-pct-text green" id="gauge-pct">0.00%</div>
+                <div class="gauge-curr-label">Current Aggregate</div>
+            </div>
+        </div>
+        <div class="gauge-right">
+            <div class="desired-label">Desired</div>
+            <div class="desired-pct" id="desired-val">75%</div>
+            <div class="desired-hint">tap ✎ to adjust</div>
+        </div>
+    </div>
+
+    <div class="subjects-header">
+        <div class="subjects-header-text">Subject Breakdown</div>
+        <div class="subjects-header-line"></div>
+    </div>
+    <div class="subjects-list" id="subjects-list"></div>
+
+</div>
+
+<!-- ── DESIRED % POPUP ────────────────────────────────── -->
+<div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true">
+    <div class="popup-box">
+        <div class="popup-title">Set Desired Percentage</div>
+        <div class="popup-desc">Adjust your target attendance goal</div>
+        <div class="popup-controls">
+            <button class="popup-btn" id="btn-decrease" aria-label="Decrease">−</button>
+            <div class="popup-pct-display" id="popup-pct">75%</div>
+            <button class="popup-btn" id="btn-increase" aria-label="Increase">+</button>
+        </div>
+        <div class="popup-close" id="popup-close">click outside or here to close</div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
