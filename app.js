@@ -1311,11 +1311,8 @@
     /* ── State ───────────────────────────────────────────── */
     var AUTO_STATE = { data: null };
 
-    /* ── Gemini API key and model ────────────────────────── */
-    var GEMINI_API_KEY   = 'AIzaSyC_lZsLjtl1I1-zyV53VY1bx6G8dQbH-B8';
-    var GEMINI_MODEL     = 'gemini-2.0-flash-lite';
-    var GEMINI_ENDPOINT  = 'https://generativelanguage.googleapis.com/v1beta/models/' +
-                           GEMINI_MODEL + ':generateContent?key=' + GEMINI_API_KEY;
+    /* ── Cloudflare Worker proxy (API key stored in Cloudflare — not in code) ── */
+    var GEMINI_ENDPOINT  = 'https://gemini-proxy.madhavu2027.workers.dev';
 
     /* ── Credit map (user-provided revised scheme) ───────── */
     var AUTO_CREDIT_MAP = {
