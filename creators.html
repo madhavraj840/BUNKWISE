@@ -8,8 +8,9 @@
 
     <script>
         (function () {
+            const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = preferred;
+            document.documentElement.dataset.theme = saved || preferred;
         })();
     </script>
     <script>

@@ -52,6 +52,7 @@
 
         function applyTheme() {
             document.documentElement.dataset.theme = targetTheme;
+            localStorage.setItem('bw-theme', targetTheme);
             updateThemeIcon(targetTheme);
         }
 
@@ -531,15 +532,312 @@
     };
 
     var SEM_TO_CREDITS = [
-        { 'Engineering Mathematics-I': 4, 'Engineering Chemistry': 4, 'Human Values': 2, 'Programming for Problem Solving': 2, 'Basic Civil Engineering': 2, 'Engineering Chemistry Lab': 1, 'Human Values Activities': 1, 'Computer Programming Lab': 1.5, 'Basic Civil Engineering Lab': 1, 'Computer Aided Engineering Graphics': 1.5, 'DECA': 0.5 },
-        { 'Engineering Mathematics-II': 4, 'Engineering Physics': 4, 'Communication Skills': 2, 'Basic Mechanical Engineering': 2, 'Basic Electrical Engineering': 2, 'Engineering Physics Lab': 1, 'Language Lab': 1, 'Manufacturing Practices Workshop': 1.5, 'Basic Electrical Engineering Lab': 1, 'Computer Aided Machine Drawing': 1.5, 'DECA': 0.5 },
-        { 'Advanced Engineering Mathematics': 3, 'Managerial Economics & Financial Accounting': 2, 'Technical Communication': 2, 'Digital Electronics': 3, 'Data Structures and Algorithms': 3, 'Object Oriented Programming': 3, 'Software Engineering': 3, 'Data Structures and Algorithms Lab': 1.5, 'Object Oriented Programming Lab': 1.5, 'Software Engineering Lab': 1.5, 'Digital Electronics Lab': 1.5 },
-        { 'Discrete Mathematics Structure': 3, 'Technical Communication': 2, 'Managerial Economics & Financial Accounting': 2, 'Microprocessor & Interfaces': 3, 'Database Management System': 3, 'Theory of Computation': 3, 'Data Communication and Computer Networks': 3, 'Microprocessor & Interfaces Lab': 1, 'Database Management System Lab': 1.5, 'Network Programming Lab': 1.5, 'Linux Shell Programming Lab': 1, 'Java Lab': 1, 'Social Outreach, Discipline & Extracurricular Activities': 0.5 },
-        { 'Information Theory & Coding': 2, 'Compiler Design': 3, 'Operating System': 3, 'Computer Graphics & Multimedia': 3, 'Analysis of Algorithms': 3, 'Human Computer Interaction': 2, 'Computer Graphics & Multimedia Lab': 1, 'Compiler Design Lab': 1, 'Analysis of Algorithms Lab': 1, 'Advance Java Lab': 1, 'Industrial Training': 2.5, 'Social Outreach, Discipline & Extracurricular Activities': 0.5 },
-        { 'Digital Image Processing': 2, 'Machine Learning': 3, 'Information Security System': 2, 'Computer Architecture and Organization': 3, 'Artificial Intelligence': 2, 'Cloud Computing': 3, 'Distributed Systems': 2, 'Digital Image Processing Lab': 1.5, 'Machine Learning Lab': 1.5, 'Python Lab': 1.5, 'Mobile App Development Lab': 1.5, 'Social Outreach, Discipline & Extracurricular Activities': 0.5 },
-        { 'Internet of Things': 3, 'Open Elective - I': 3, 'Internet of Things Lab': 2, 'Cyber Security Lab': 2, 'Industrial Training': 2.5, 'Seminar': 2, 'Social Outreach, Discipline & Extracurricular Activities': 0.5 },
-        { 'Big Data Analytics': 3, 'Open Elective - II': 3, 'Big Data Analytics Lab': 1, 'Software Testing and Validation Lab': 1, 'Project': 7, 'Social Outreach, Discipline & Extracurricular Activities': 0.5 },
-    ];
+{
+'Engineering Mathematics-I': 4,
+'Engineering Physics': 4,
+'Engineering Chemistry': 4,
+'Communication Skills': 2,
+'Human Values': 2,
+'Programming for Problem Solving': 2,
+'Basic Mechanical Engineering': 2,
+'Basic Electrical Engineering': 2,
+'Basic Civil Engineering': 2,
+'Engineering Physics Lab': 1,
+'Engineering Chemistry Lab': 1,
+'Language Lab': 1,
+'Human Values Activities': 1,
+'Computer Programming Lab': 1.5,
+'Manufacturing Practices Workshop': 1.5,
+'Basic Electrical Engineering Lab': 1,
+'Basic Civil Engineering Lab': 1,
+'Computer Aided Engineering Graphics': 1.5,
+'Computer Aided Machine Drawing': 1.5,
+'Engineering Mathematics-II': 4,
+
+'Advance Engineering Mathematics -I': 3,
+'Advanced Engineering Mathematics-I': 3,
+'Advanced Engineering Mathematics': 3,
+'Advance Mathematics': 3,
+'Advance Engineering Mathematics -II': 2,
+'Advanced Engineering Mathematics-II': 3,
+
+'Technical Communication': 2,
+'Managerial Economics & Financial Accounting': 2,
+'Managerial Economics and Financial Accounting': 2,
+
+'Engineering Mechanics': 2,
+'Surveying': 3,
+'Fluid Mechanics': 2,
+'Building Materials and Construction': 3,
+'Engineering Geology': 2,
+'Surveying Lab': 1.5,
+'Fluid Mechanics Lab': 1,
+'Computer Aided Civil Engineering Drawing': 1.5,
+'Civil Engineering Maretials Lab': 1,
+'Geolgy Lab': 1,
+
+'Basic Electronics for Civil Engineering Applications': 2,
+'Strength of Materials': 3,
+'Hydraulics Engineering': 3,
+'Building Planning': 2,
+'Concrete Technology': 3,
+'Material Testing Lab': 1,
+'Hydraulics Engineering Lab': 1,
+'Building Drawing': 1.5,
+'Advanced Surveying Lab': 1,
+'Concrete Lab': 1.5,
+
+'Construction Technology & Equipments': 2,
+'Structural Analysis-I': 2,
+'Design of Concrete Structures': 3,
+'Geotechnical Engineering': 3,
+'Water Resource Engineering': 2,
+'Air & Noise Pollution and Control': 2,
+'Disaster Management': 2,
+'Town Planning': 2,
+'Repair and Rehabilitation of Structures': 2,
+'Ground Improvement Techniques': 2,
+'Energy Science & Engineering': 2,
+'Concrete Structures Design': 1.5,
+'Geotechnical Engineering Lab': 1.5,
+'Water Resource Engineering Design': 1,
+
+'Wind & Seismic Analysis': 2,
+'Structural Analysis-II': 3,
+'Environmental Engineering': 3,
+'Design of Steel Structures': 3,
+'Estimating & Costing': 2,
+'Pre-stressed Concrete': 2,
+'Solid and Hazardous Waste Management': 2,
+'Traffic Engineering and Management': 2,
+'Bridge Engineering': 2,
+'Rock Engineering': 2,
+'Geographic Information System & Remote Sensing': 2,
+'Environmental Engineering Design and Lab': 1.5,
+'Steel Structure Design': 1.5,
+'Quantity Surveying and Valuation': 1,
+'Water and Earth Retaining Structures Design': 1,
+'Foundation Design': 1,
+
+'Transportation Engineering': 3,
+'Open Elective-I': 3,
+'Open Elective - I': 3,
+'OpenElective–I': 3,
+
+'Road Material Testing Lab': 1,
+'Professional Practices & Field Engineering Lab': 1,
+'Soft Skills Lab': 1,
+'Environmental Monitoring and Design Lab': 1,
+'Practical Training': 2.5,
+'Seminar': 2,
+'SODECA': 0.5,
+
+'Project Planning and Construction Management': 3,
+'Open Elective-II': 3,
+'Open Elective - II': 3,
+'Open Elective–II': 3,
+
+'Project Planning & Construction Management Lab': 1,
+'Pavement Design': 1,
+'Project': 7,
+
+'Power generation Process': 2,
+'Electrical Circuit Analysis': 3,
+'Analog Electronics': 3,
+'Electrical Machine - I': 3,
+'Electromagnetic Field': 2,
+'Analog Electronics Lab': 1,
+'Electrical Machine-I Lab': 2,
+'Electrical circuit design Lab': 2,
+
+'Biology': 2,
+'Electronic Measurement & Instrumentation': 2,
+'Electrical Machine - II': 3,
+'Power Electronics': 3,
+'Signals & Systems': 3,
+'Digital Electronics': 2,
+'Electrical Machine - II Lab': 2,
+'Power Electronics Lab': 2,
+'Digital Electronics Lab': 1,
+'Measurement Lab': 1,
+
+'Electrical Materials': 2,
+'Power System - I': 3,
+'Control System': 3,
+'Microprocessor': 3,
+'Electrical Machine Design': 3,
+'Restructured Power System': 2,
+'Electromagnetic Wave': 2,
+'Digital Control System': 2,
+'Power System - I Lab': 1,
+'Control System Lab': 1,
+'Microprocessor Lab': 1,
+'System Programming Lab': 1,
+
+'Computer Architecture': 2,
+'Power System - II': 3,
+'Power System Protection': 3,
+'Electrical Energy Conversion and Auditing': 3,
+'Electric Drives': 3,
+'Power System Planning': 3,
+'Digital Signal Processing': 3,
+'Electrical and Hybrid Vehicles': 3,
+'Power System - II Lab': 2,
+'Electric Drives Lab': 2,
+'Power System Protection Lab': 1,
+'Modelling and simulation lab': 1,
+
+'Wind and Solar Energy Systems': 3,
+'Power Quality and FACTS': 3,
+'Control System Design': 3,
+'Embedded Systems Lab': 2,
+'Advance control system lab': 2,
+
+'HVDC Transmission System': 3,
+'Line Commutated and active rectifiers': 3,
+'Advanced Electric Drives': 3,
+'Energy Systems Lab': 2,
+
+'Digital System Design': 3,
+'Signal & Systems': 3,
+'Network Theory': 4,
+'Electronics Devices': 4,
+'Electronics Devices Lab': 1,
+'Digital System Design Lab': 1,
+'Signal Processing Lab': 1,
+'Computer Programming Lab-I': 1,
+
+'Analog Circuits': 3,
+'Microcontrollers': 3,
+'Analog and Digital Communication': 3,
+'Analog and Digital Communication Lab': 1.5,
+'Analog Circuits Lab': 1.5,
+'Microcontrollers Lab': 1.5,
+'Electronics Measurement & Instrumentation Lab': 1.5,
+
+'Electromagnetics Waves': 3,
+'Control system': 3,
+'Microwave Theory & Techniques': 3,
+'Bio-Medical Electronics': 2,
+'Embedded Systems': 2,
+'Probability Theory & Stochastic Process': 2,
+'Satellite Communication': 2,
+'RF Simulation Lab': 1.5,
+'Digital Signal Processing Lab': 1.5,
+'Microwave Lab': 1,
+
+'Computer Network': 3,
+'Fiber Optics Communications': 3,
+'Antennas and Propagation': 3,
+'Information theory and coding': 3,
+'Introduction to MEMS': 3,
+'Nano Electronics': 3,
+'Neural Network And Fuzzy Logic Control': 3,
+'High Speed Electronics': 3,
+'Computer Network Lab': 2,
+'Antenna and wave propagation Lab': 1,
+'Electronics Design Lab': 2,
+
+'VLSI Design': 3,
+'Mixed Signal Design': 3,
+'CMOS design': 3,
+'VLSI Design Lab': 2,
+'Advance communication lab (MATLAB Simulation)': 1,
+'Optical Communication Lab': 1,
+
+'Artificial Intelligence And Expert Systems': 3,
+'Digital Image and Video Processing': 3,
+'Adaptive Signal Processing': 3,
+'Internet of Things (IOT) Lab': 1,
+'Skill Development Lab': 1,
+
+'Discrete Mathematics Structure': 3,
+'Principle of Communication': 3,
+'Database Management System': 3,
+'Theory of Computation': 3,
+'Theory Of Computation': 3,
+'Data Communication and Computer Networks': 3,
+
+'Linux Shell Programming Lab': 1,
+'Database Management System Lab': 1.5,
+'Network Programming Lab': 1.5,
+'Java Lab': 1,
+'Web Technology Lab': 1,
+
+'Microprocessor And Interfaces': 2,
+'Microprocessor & Interfaces': 3,
+'Microprocessor & Interfaces Lab': 1,
+
+'Compiler Design': 3,
+'Operating System': 3,
+'Computer Graphics & Multimedia': 3,
+'Analysis of Algorithms': 3,
+'Wireless Communication': 2,
+'Software Testing and Project Management': 2,
+'Bioinformatics': 2,
+'Computer Graphics & Multimedia Lab': 1,
+'Compiler Design Lab': 1,
+'Analysis of Algorithms Lab': 1,
+'Advanced Java Lab': 1,
+'Advance Java Lab': 1,
+
+'Digital Image Processing': 2,
+'Machine Learning': 3,
+'Information Security System': 2,
+'Computer Architecture and Organization': 3,
+'Artificial Intelligence': 2,
+'Distributed System': 3,
+'Distributed System': 2,
+'Information Theory & Coding': 2,
+'Cloud Computing': 2,
+'Cloud Computing': 3,
+'Ecommerce & ERP': 2,
+'Ecommerce and ERP': 2,
+
+'Digital Image Processing Lab': 1.5,
+'Machine Learning Lab': 1.5,
+'Python Lab': 1.5,
+'Mobile Application Development Lab': 1.5,
+
+'Big Data Analytics': 3,
+'Big Data Analytics Lab': 2,
+'Big Data Analytics Lab': 1,
+'Cyber Security Lab': 2,
+
+'Internet of Things': 3,
+'Internet of Things Lab': 2,
+'Internet of Things Lab': 1,
+'Software Testing and Validation Lab': 1,
+
+'Data Mining-Concepts and Techniques': 2,
+'Fundamentals of Blockchain': 2,
+'Fundamentals of Block chain': 2,
+'Mathematical Modelling for Data Science': 2,
+'Programming for Data Science': 2,
+'Data visualization- R Programming/ Power BI': 3,
+'Probability and Statistics for Data Science': 2,
+'R Programming Lab': 1,
+
+'Principles of Artificial Intelligence': 2,
+'Artificial Neural Network': 2,
+'Nature Inspired Computing (NLP)': 2,
+'Natural Language Processing (NLP)': 2,
+'Predictive Modeling and Analytics': 3,
+
+'Data Visualization and Exploration With R': 3,
+'Data Visualization And Exploration With R Lab': 2,
+'Social Media Analytics Lab': 2,
+'IndustrialTraining': 2.5,
+'Deep Learning and Its Applications': 3,
+'Deep Learning and Its Application Lab': 1,
+'Robot Programming Lab': 1,
+
+'Industrial Training': 1,
+'Industrial Training': 2.5,
+'Social Outreach, Discipline & Extra Curricular Activities': 0.5,
+'Social Outreach Discipline & Extra Curricular Activities': 0.5
+}
+];
 
     // Flatten all semesters into one lowercase lookup map (first occurrence wins)
     var CREDIT_MAP = (function () {
@@ -964,6 +1262,680 @@
             clearSGPAError();
             showSGPAState('upload');
         });
+
+        // ── Autonomous upload button ──
+        var btnAutoUpload = document.getElementById('btn-auto-upload');
+        if (btnAutoUpload) {
+            btnAutoUpload.addEventListener('click', function () {
+                document.getElementById('auto-file-input').click();
+            });
+            document.getElementById('auto-file-input').addEventListener('change', function (e) {
+                var file = e.target.files[0];
+                if (file) handleAutoFile(file);
+                e.target.value = '';
+            });
+        }
+
+        // ── Autonomous check another ──
+        var btnAutoAnother = document.getElementById('btn-auto-check-another');
+        if (btnAutoAnother) {
+            btnAutoAnother.addEventListener('click', function () {
+                AUTO_STATE.data = null;
+                var autoRes = document.getElementById('auto-results-state');
+                if (autoRes) autoRes.classList.add('hidden');
+                var zone = document.getElementById('auto-upload-zone');
+                var hint = document.getElementById('auto-hint');
+                if (zone) zone.classList.remove('success', 'error-state');
+                if (hint) hint.textContent = 'Select your AUTONOMOUS (SKIT) result PDF to analyse';
+                clearAutoError();
+                showSGPAState('upload');
+            });
+        }
+
+        // ── Autonomous download ──
+        var btnAutoDownload = document.getElementById('btn-auto-download');
+        if (btnAutoDownload) {
+            btnAutoDownload.addEventListener('click', function () {
+                if (AUTO_STATE.data) generateAutoReportPDF();
+            });
+        }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       AUTONOMOUS SGPA PAGE
+       All code below only activates when sgpa.html is loaded
+       (detected by presence of #btn-auto-upload).
+       RTU pipeline above is NOT touched.
+    ══════════════════════════════════════════════════════ */
+
+    /* ── State ───────────────────────────────────────────── */
+    var AUTO_STATE = { data: null };
+
+    /* ── Gemini API key and model ────────────────────────── */
+    var GEMINI_API_KEY   = 'AIzaSyC_lZsLjtl1I1-zyV53VY1bx6G8dQbH-B8';
+    var GEMINI_MODEL     = 'gemini-2.0-flash-lite';
+    var GEMINI_ENDPOINT  = 'https://generativelanguage.googleapis.com/v1beta/models/' +
+                           GEMINI_MODEL + ':generateContent?key=' + GEMINI_API_KEY;
+
+    /* ── Credit map (user-provided revised scheme) ───────── */
+    var AUTO_CREDIT_MAP = {
+        'engineering mathematics-i': 4,
+        'engineering mathematics-ii': 4,
+        'advanced engineering mathematics-i': 4,
+        'advanced engineering mathematics-ii': 3,
+        'advanced engineering mathematics-iii': 3,
+        'statistics and probability theory': 3,
+        'higher engineering mathematics': 3,
+        'linear algebra and numerical analysis': 4,
+        'probablity and stochastic process': 2,
+        'engineering physics': 4,
+        'engineering chemistry': 4,
+        'engineering physics lab': 1,
+        'engineering chemistry lab': 1,
+        'communication skills': 2,
+        'universal human values': 2,
+        'language lab': 1,
+        'universal human values lab': 1,
+        'computational thinking and programming': 2,
+        'c programming lab': 1,
+        'problem solving using object oriented paradigm': 2,
+        'object oriented programming lab': 1,
+        'data structures and algorithms': 4,
+        'data structure and algorithm': 2,
+        'data structure and algorithm lab': 1,
+        'data structures and algorithms lab': 1.5,
+        'operating system': 3,
+        'software engineering and project management': 3,
+        'software engineering lab': 1.5,
+        'theory of computation': 3,
+        'database management system': 3,
+        'database systems lab': 1.5,
+        'computer networks': 3,
+        'computer network': 3,
+        'network programming lab': 1.5,
+        'full stack development': 2,
+        'full stack development lab': 1.5,
+        'web development lab': 1.5,
+        'foundation of data science': 3,
+        'python for data science lab': 1.5,
+        'foundation of artificial intelligence': 3,
+        'artificial intelligence': 2,
+        'electronic system for iot': 3,
+        'electronic system for iot lab': 1.5,
+        'data analytics for iot': 2,
+        'data analytics': 3,
+        'data analytics and visualization lab': 1.5,
+        'programming in java lab': 1.5,
+        'logic programming lab': 1.5,
+        'r-programming for data science': 1.5,
+        'python programming lab': 1,
+        'discrete mathematics and linear algebra': 3,
+        'computer architecture and microprocessor': 2,
+        'computer architecture & microprocessor': 2,
+        'microprocessor lab': 1.5,
+        'microprocessor and microcontroller': 3,
+        'microprocessor and microcontroller lab': 1,
+        'managerial economics and financial accounting': 1,
+        'technical communication': 1,
+        'computer aided engineering graphics': 1.5,
+        'computer aided machine drawing': 1.5,
+        'strength of materials': 3,
+        'surveying': 3,
+        'building materials and construction': 3,
+        'engineering geology': 3,
+        'structural analysis-i': 3,
+        'fluid mechanics and hydraulic engineering': 4,
+        'concrete technology': 3,
+        'environmental engineering': 3,
+        'surveying lab': 1.5,
+        'professional development lab': 1,
+        'geology lab': 1,
+        'building planning and drafting lab-i': 1.5,
+        'building planning and drafting lab-ii': 1.5,
+        'building material testing lab': 1,
+        'fluid mechanics and hydraulic engineering lab': 1,
+        'concrete lab': 1.5,
+        'environmental engineering lab': 1,
+        'structural engineering lab': 1,
+        'electrical measurement & instrumentation': 3,
+        'generation of electrical power': 2,
+        'circuit analysis-i': 3,
+        'circuit analysis-ii': 3,
+        'analog electronics': 2,
+        'electrical machine-i': 3,
+        'electrical machine-ii': 3,
+        'power electronics': 3,
+        'signal and systems': 3,
+        'analog electronics lab': 1.5,
+        'electrical machine lab-i': 1.5,
+        'electrical machine lab-ii': 1.5,
+        'computer programming lab (c++)': 1.5,
+        'electrical circuit design lab': 1.5,
+        'matlab programming lab': 1.5,
+        'electrical measurement lab': 1.5,
+        'electronic devices and circuits': 3,
+        'digital system design': 3,
+        'circuit theory': 4,
+        'electronics devices lab': 1.5,
+        'digital system design lab': 1.5,
+        'circuit simulation and pcb design lab': 2,
+        'analog and digital communication': 3,
+        'analog and digital communication lab': 1.5,
+        'electronics measurement and instrumentaion': 2,
+        'electronics measurement and instrumentaion lab': 1,
+        'engineering mechanics': 3,
+        'engineering thermodynamics': 3,
+        'mechanics of solids': 4,
+        'materials science and engineering': 3,
+        'fluid mechanics and fluid machines': 4,
+        'manufacturing processes': 3,
+        'theory of machines': 4,
+        'basic mechanical engineering lab': 1.5,
+        'computer aided design lab': 1.5,
+        'materials testing lab': 1.5,
+        'programming using matlab': 1.5,
+        'fluid mechanics and hydraulic machines lab': 1.5,
+        'production engineering lab': 2,
+        'theory of machines lab': 1.5,
+        'digital electronics lab': 1.5,
+        'digital electronics': 2,
+        'basic civil engineering': 2,
+        'basic mechanical engineering': 2,
+        'basic electrical & electronics engineering': 2,
+        'basic electrical & electronics engineering lab': 1,
+        'basic civil engineering lab': 1,
+        'manufacturing practice workshop': 1,
+        'innovation & entrepreneurship': 1,
+        'industrial training': 1,
+        'industry training': 1,
+        'social outreach, discipline & extra curricular activities': 0.5,
+        'social outreach, discipline and extra curricular activities': 0.5,
+        'social outreach, discipline and extra-curricular activities (sodeca)': 0.5,
+        'sodeca': 0.5,
+        'audit course': 0,
+        'technical training': 0,
+        'soft skills training': 0,
+        'soft skill training': 0,
+        'skill development courses': 0,
+        'yoga': 0
+    };
+
+    /* ── Normalize subject name for credit lookup ────────── */
+    function normalizeAutoSubject(name) {
+        if (!name) return '';
+        return name
+            .replace(/\n/g, ' ')          // fix PDF line-wrap splits
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, ' ')         // collapse multiple spaces
+            .replace(/ & /g, ' and ')     // ampersand variants
+            .replace(/\s*\/\s*/g, '/');   // slash spacing variants
+    }
+
+    /* ── Credit lookup ───────────────────────────────────── */
+    function lookupAutoCredits(subjectName) {
+        var key = normalizeAutoSubject(subjectName);
+        return (key in AUTO_CREDIT_MAP) ? AUTO_CREDIT_MAP[key] : null;
+    }
+
+    /* ── Grade label from grade point ───────────────────── */
+    function getAutoGradeLabel(gradePoint) {
+        if (gradePoint === 10) return 'O';
+        if (gradePoint === 9)  return 'A+';
+        if (gradePoint === 8)  return 'A';
+        if (gradePoint === 7)  return 'B+';
+        if (gradePoint === 6)  return 'B';
+        if (gradePoint === 5)  return 'C';
+        if (gradePoint === 4)  return 'D';
+        if (gradePoint === 0)  return 'F';
+        return '—';
+    }
+
+    /* ── Error helpers ───────────────────────────────────── */
+    function showAutoError(msg) {
+        var banner = document.getElementById('auto-error-banner');
+        var text   = document.getElementById('auto-error-text');
+        if (text)   text.textContent = msg;
+        if (banner) banner.classList.add('visible');
+    }
+
+    function clearAutoError() {
+        var banner = document.getElementById('auto-error-banner');
+        if (banner) banner.classList.remove('visible');
+    }
+
+    /* ── Show autonomous results state ──────────────────── */
+    function showAutoResults() {
+        ['upload', 'loading', 'results'].forEach(function (s) {
+            var el = document.getElementById('sgpa-' + s + '-state');
+            if (el) el.classList.add('hidden');
+        });
+        var autoEl = document.getElementById('auto-results-state');
+        if (autoEl) autoEl.classList.remove('hidden');
+        window.scrollTo({ top: 0 });
+    }
+
+    /* ── Rate limit check (2 per day via localStorage) ───── */
+    function checkAutoRateLimit() {
+        var today = new Date().toISOString().slice(0, 10);
+        var raw   = localStorage.getItem('bw-auto-usage');
+        var usage = { date: '', count: 0 };
+        try { if (raw) usage = JSON.parse(raw); } catch (e) { usage = { date: '', count: 0 }; }
+        if (usage.date !== today) usage = { date: today, count: 0 };
+        return usage;
+    }
+
+    function incrementAutoRateLimit() {
+        var today = new Date().toISOString().slice(0, 10);
+        var raw   = localStorage.getItem('bw-auto-usage');
+        var usage = { date: today, count: 0 };
+        try { if (raw) usage = JSON.parse(raw); } catch (e) { usage = { date: today, count: 0 }; }
+        if (usage.date !== today) usage = { date: today, count: 0 };
+        usage.count = usage.count + 1;
+        localStorage.setItem('bw-auto-usage', JSON.stringify(usage));
+    }
+
+    /* ── Gemini API call ─────────────────────────────────── */
+    async function callGeminiAPI(rawText) {
+        var prompt =
+            'You are a data extraction tool. Extract student result data from the following raw text from a SKIT (Swami Keshvanand Institute of Technology) result PDF.\n\n' +
+            'Return ONLY a valid JSON object. No explanation, no markdown, no code blocks. Just the raw JSON.\n\n' +
+            'The JSON must have this exact structure:\n' +
+            '{\n' +
+            '  "studentName": "string",\n' +
+            '  "fatherName": "string",\n' +
+            '  "rollNo": "string",\n' +
+            '  "subjects": [\n' +
+            '    {\n' +
+            '      "name": "string",\n' +
+            '      "courseCode": "string",\n' +
+            '      "ise": number or null,\n' +
+            '      "see": number or null,\n' +
+            '      "total": number or null,\n' +
+            '      "remarks": "PASS" or "FAIL"\n' +
+            '    }\n' +
+            '  ]\n' +
+            '}\n\n' +
+            'Rules:\n' +
+            '- studentName: extract from "Name :" field\n' +
+            '- fatherName: extract from "Father\'s Name :" field\n' +
+            '- rollNo: extract from "Roll No. :" field\n' +
+            '- For each subject row between the table header and "Instruction :" line:\n' +
+            '  - name: the course title in UPPERCASE as it appears\n' +
+            '  - courseCode: the course code (alphanumeric code after the course title)\n' +
+            '  - ise: the internal marks number, or null if "----", "--", or missing\n' +
+            '  - see: the external marks number, or null if "----", "--", or missing\n' +
+            '  - total: the total marks number, or null if missing\n' +
+            '  - remarks: "PASS" or "FAIL" as it appears in the row\n' +
+            '- If a subject has only one numeric value and no clear ISE/SEE split, set ise and see to null and put the number in total\n' +
+            '- Include ALL subjects including SOFT SKILL TRAINING and YOGA\n' +
+            '- Do not include the header row as a subject\n\n' +
+            'Raw PDF text:\n' + rawText;
+
+        var response = await fetch(GEMINI_ENDPOINT, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: {
+                    temperature:      0,
+                    responseMimeType: 'application/json'
+                }
+            })
+        });
+
+        if (!response.ok) {
+            var errBody = '';
+            try { errBody = await response.text(); } catch(e) {}
+            throw new Error('Gemini API error ' + response.status + ': ' + errBody);
+        }
+
+        var json = await response.json();
+        var text = json.candidates &&
+                   json.candidates[0] &&
+                   json.candidates[0].content &&
+                   json.candidates[0].content.parts &&
+                   json.candidates[0].content.parts[0] &&
+                   json.candidates[0].content.parts[0].text;
+
+        if (!text) throw new Error('Gemini returned empty response');
+
+        // Strip any markdown fences that may appear despite responseMimeType
+        text = text.replace(/^```json\s*/i, '').replace(/```\s*$/,'').trim();
+
+        var parsed = JSON.parse(text);
+        return parsed;
+    }
+
+    /* ── Compute autonomous SGPA ─────────────────────────── */
+    function computeAutoSGPA(geminiData) {
+        var sumCreditPoints = 0, sumCredits = 0, sumMarks = 0;
+        var overallFail = false;
+
+        var enriched = geminiData.subjects.map(function (s) {
+            // Normalize name for display — replace \n with space
+            var cleanName = s.name ? s.name.replace(/\n/g, ' ').trim() : '—';
+
+            // Total marks — use provided total, or sum ise+see if total is null
+            var total = null;
+            if (s.total !== null && s.total !== undefined) {
+                total = s.total;
+            } else if (s.ise !== null && s.ise !== undefined &&
+                       s.see !== null && s.see !== undefined) {
+                total = s.ise + s.see;
+            } else if (s.ise !== null && s.ise !== undefined) {
+                total = s.ise;
+            } else if (s.see !== null && s.see !== undefined) {
+                total = s.see;
+            }
+
+            sumMarks += (total !== null ? total : 0);
+
+            // Grade point
+            var gradePoint, grade;
+            if (s.remarks === 'FAIL') {
+                gradePoint = 0;
+                grade      = 'F';
+                overallFail = true;
+            } else if (total === null) {
+                gradePoint = null;
+                grade      = '—';
+            } else {
+                gradePoint = Math.ceil(total / 10);
+                // Cap at 10
+                if (gradePoint > 10) gradePoint = 10;
+                grade = getAutoGradeLabel(gradePoint);
+            }
+
+            // Credits
+            var credits = lookupAutoCredits(cleanName);
+
+            // Credit points — only if credits > 0 and gradePoint not null
+            var creditPoints = null;
+            if (gradePoint !== null && credits !== null && credits > 0) {
+                creditPoints     = parseFloat((gradePoint * credits).toFixed(2));
+                sumCreditPoints += creditPoints;
+                sumCredits      += credits;
+            }
+
+            return {
+                name:         cleanName,
+                courseCode:   s.courseCode || '—',
+                ise:          (s.ise  !== null && s.ise  !== undefined) ? s.ise  : null,
+                see:          (s.see  !== null && s.see  !== undefined) ? s.see  : null,
+                total:        total,
+                remarks:      s.remarks || 'PASS',
+                gradePoint:   gradePoint,
+                grade:        grade,
+                credits:      credits,
+                creditPoints: creditPoints
+            };
+        });
+
+        var sgpa = sumCredits > 0
+            ? parseFloat((sumCreditPoints / sumCredits).toFixed(2))
+            : null;
+
+        return {
+            studentName:        geminiData.studentName || '—',
+            fatherName:         geminiData.fatherName  || '—',
+            rollNo:             geminiData.rollNo      || '—',
+            remarks:            overallFail ? 'FAIL' : 'PASS',
+            subjects:           enriched,
+            sgpa:               sgpa,
+            totalMarks:         sumMarks,
+            maxMarks:           geminiData.subjects.length * 100,
+            totalGP:            parseFloat(sumCreditPoints.toFixed(2)),
+            totalCredits:       parseFloat(sumCredits.toFixed(1)),
+            totalCreditPoints:  parseFloat(sumCreditPoints.toFixed(2))
+        };
+    }
+
+    /* ── Render autonomous results ───────────────────────── */
+    function renderAutoResults(data) {
+        document.getElementById('auto-name').textContent   = data.studentName;
+        document.getElementById('auto-father').textContent = data.fatherName;
+        document.getElementById('auto-roll').textContent   = data.rollNo;
+
+        var remEl = document.getElementById('auto-remarks');
+        remEl.textContent = data.remarks;
+        remEl.className   = 'sgpa-remarks ' + (data.remarks === 'PASS' ? 'pass' : 'fail');
+
+        var tbody = document.getElementById('auto-tbody');
+        tbody.innerHTML = '';
+
+        data.subjects.forEach(function (s, i) {
+            var tr = document.createElement('tr');
+            if (s.remarks === 'FAIL') tr.classList.add('row-fail');
+
+            var gradeClass  = (s.grade === 'F') ? 'grade-fail' : 'grade-pass';
+            var creditsCell = (s.credits !== null)
+                ? s.credits
+                : '<span class="credits-unknown">—</span>';
+            var cpCell      = (s.creditPoints !== null)
+                ? s.creditPoints.toFixed(2)
+                : '<span class="credits-unknown">—</span>';
+
+            tr.innerHTML =
+                '<td>' + (i + 1) + '</td>' +
+                '<td class="col-subject">' + s.name + '</td>' +
+                '<td>' + (s.ise   !== null ? s.ise   : '—') + '</td>' +
+                '<td>' + (s.see   !== null ? s.see   : '—') + '</td>' +
+                '<td>' + (s.total !== null ? s.total : '—') + '</td>' +
+                '<td><span class="grade-cell ' + gradeClass + '">' + s.grade + '</span></td>' +
+                '<td>' + creditsCell + '</td>' +
+                '<td>' + cpCell + '</td>';
+
+            tbody.appendChild(tr);
+        });
+
+        document.getElementById('auto-value').textContent         = data.sgpa !== null ? data.sgpa.toFixed(2) : '—';
+        document.getElementById('auto-total-marks').textContent   = data.totalMarks;
+        document.getElementById('auto-max-marks').textContent     = data.maxMarks;
+        document.getElementById('auto-total-gp').textContent      = data.totalGP.toFixed(2);
+        document.getElementById('auto-total-credits').textContent = data.totalCredits;
+        document.getElementById('auto-total-cp').textContent      = data.totalCreditPoints.toFixed(2);
+    }
+
+    /* ── Generate autonomous PDF report ─────────────────── */
+    function generateAutoReportPDF() {
+        var data = AUTO_STATE.data;
+        if (!data) return;
+
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            alert('PDF generation library not loaded. Please check your connection and try again.');
+            return;
+        }
+
+        var jsPDF = window.jspdf.jsPDF;
+        var doc   = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+        var pageW = doc.internal.pageSize.getWidth();
+
+        // Header band
+        doc.setFillColor(9, 13, 20);
+        doc.rect(0, 0, pageW, 30, 'F');
+        doc.setTextColor(232, 237, 248);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(13);
+        doc.text('SWAMI KESHVANAND INSTITUTE OF TECHNOLOGY — JAIPUR', pageW / 2, 13, { align: 'center' });
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(125, 139, 170);
+        doc.text('Autonomous SGPA Result Analysis  •  Generated by BunkWise', pageW / 2, 22, { align: 'center' });
+
+        // Student info band
+        doc.setFillColor(15, 21, 32);
+        doc.rect(0, 30, pageW, 22, 'F');
+
+        var fields = [
+            { label: 'STUDENT NAME',  value: data.studentName, x: 14  },
+            { label: "FATHER'S NAME", value: data.fatherName,  x: 90  },
+            { label: 'ROLL NUMBER',   value: data.rollNo,      x: 176 },
+            { label: 'REMARKS',       value: data.remarks,     x: 235, coloured: true }
+        ];
+        fields.forEach(function (f) {
+            doc.setFontSize(6.5);
+            doc.setTextColor(61, 77, 106);
+            doc.setFont('helvetica', 'normal');
+            doc.text(f.label, f.x, 37);
+            if (f.coloured) {
+                var isPass = data.remarks === 'PASS';
+                doc.setTextColor(isPass ? 30 : 240, isPass ? 180 : 68, isPass ? 100 : 85);
+            } else {
+                doc.setTextColor(220, 228, 245);
+            }
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(9.5);
+            doc.text(String(f.value), f.x, 46);
+        });
+
+        var tableBody = data.subjects.map(function (s, i) {
+            return [
+                i + 1,
+                s.name,
+                s.ise   !== null ? s.ise   : '—',
+                s.see   !== null ? s.see   : '—',
+                s.total !== null ? s.total : '—',
+                s.grade,
+                s.credits      !== null ? s.credits                    : '—',
+                s.creditPoints !== null ? s.creditPoints.toFixed(2)    : '—'
+            ];
+        });
+
+        doc.autoTable({
+            startY: 56,
+            head: [['#', 'Subject Name', 'Internal', 'External', 'Total', 'Grade', 'Credits', 'Credit Pts']],
+            body: tableBody,
+            foot: [[
+                { content: 'SGPA  ' + (data.sgpa !== null ? data.sgpa.toFixed(2) : '—'), colSpan: 2, styles: { fontStyle: 'bold', fontSize: 11, textColor: [77, 138, 240], halign: 'left' } },
+                { content: 'Total Marks: ' + data.totalMarks + ' / ' + data.maxMarks, colSpan: 2, styles: { fontStyle: 'bold', halign: 'center' } },
+                { content: 'GP: ' + data.totalGP.toFixed(2), styles: { fontStyle: 'bold', halign: 'center' } },
+                { content: '', styles: {} },
+                { content: 'Cr: ' + data.totalCredits, styles: { fontStyle: 'bold', halign: 'center' } },
+                { content: 'CP: ' + data.totalCreditPoints.toFixed(2), styles: { fontStyle: 'bold', halign: 'center' } }
+            ]],
+            styles:             { font: 'helvetica', fontSize: 8.5, cellPadding: { top: 3.5, right: 4, bottom: 3.5, left: 4 }, textColor: [30, 35, 50], fillColor: [255, 255, 255], lineColor: [200, 210, 225], lineWidth: 0.2 },
+            headStyles:         { fillColor: [240, 243, 250], textColor: [80, 95, 120], fontSize: 7, fontStyle: 'bold', halign: 'center', lineColor: [200, 210, 225] },
+            footStyles:         { fillColor: [240, 243, 250], textColor: [80, 95, 120], fontSize: 8, lineColor: [200, 210, 225] },
+            alternateRowStyles: { fillColor: [248, 250, 253] },
+            columnStyles: {
+                0: { halign: 'center', cellWidth: 10 },
+                1: { cellWidth: 'auto', halign: 'left' },
+                2: { halign: 'center', cellWidth: 22 },
+                3: { halign: 'center', cellWidth: 22 },
+                4: { halign: 'center', cellWidth: 18 },
+                5: { halign: 'center', cellWidth: 18 },
+                6: { halign: 'center', cellWidth: 18 },
+                7: { halign: 'center', cellWidth: 24 }
+            },
+            didParseCell: function (hookData) {
+                if (hookData.section === 'body' && hookData.column.index === 5) {
+                    if (hookData.cell.raw === 'F') {
+                        hookData.cell.styles.textColor  = [200, 40, 55];
+                        hookData.cell.styles.fontStyle  = 'bold';
+                        hookData.cell.styles.fillColor  = [255, 235, 235];
+                    } else {
+                        hookData.cell.styles.textColor  = [30, 100, 200];
+                        hookData.cell.styles.fontStyle  = 'bold';
+                    }
+                }
+                if (hookData.section === 'body' && hookData.row.raw && hookData.row.raw[5] === 'F' && hookData.column.index !== 5) {
+                    hookData.cell.styles.textColor = [160, 60, 70];
+                }
+            },
+            margin: { left: 12, right: 12 }
+        });
+
+        var finalY = (doc.lastAutoTable || {}).finalY || 200;
+        doc.setFontSize(6.5);
+        doc.setTextColor(140, 150, 170);
+        doc.setFont('helvetica', 'italic');
+        doc.text('* Subjects with credits shown as — are excluded from SGPA calculation. This report is for reference only. Always verify with official mark-sheet.', 12, finalY + 6);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Generated by BunkWise — Autonomous SGPA Report', pageW - 12, finalY + 6, { align: 'right' });
+
+        doc.save('SGPA_AUTO_' + (data.rollNo !== '—' ? data.rollNo : 'report') + '.pdf');
+    }
+
+    /* ── Handle autonomous file upload ──────────────────── */
+    async function handleAutoFile(file) {
+        var zone = document.getElementById('auto-upload-zone');
+        var hint = document.getElementById('auto-hint');
+
+        clearAutoError();
+        zone.classList.remove('success', 'error-state');
+
+        // ── Rate limit check ──
+        var usage = checkAutoRateLimit();
+        if (usage.count >= 2) {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ Daily limit reached.';
+            showAutoError('Daily limit reached. You can check 2 results per day. Try again tomorrow.');
+            return;
+        }
+
+        // ── Validate PDF extension ──
+        if (!file.name.toLowerCase().endsWith('.pdf')) {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ Please upload a PDF file.';
+            showAutoError('Only PDF files are supported. Please upload a valid SKIT autonomous result PDF.');
+            return;
+        }
+
+        // ── Check PDF.js loaded ──
+        if (!window.pdfjsLib) {
+            showAutoError('PDF library not available. Please check your internet connection and refresh.');
+            return;
+        }
+
+        showSGPAState('loading');
+        setSGPALoadingMsg('Reading PDF file…');
+
+        try {
+            var arrayBuffer = await new Promise(function (resolve, reject) {
+                var reader = new FileReader();
+                reader.onload  = function (e) { resolve(e.target.result); };
+                reader.onerror = function () { reject(new Error('FileReader failed')); };
+                reader.readAsArrayBuffer(file);
+            });
+
+            setSGPALoadingMsg('Extracting text from PDF…');
+            var fullText = await extractPDFText(arrayBuffer);
+
+            setSGPALoadingMsg('Analysing result with AI…');
+            var geminiData = await callGeminiAPI(fullText);
+
+            if (!geminiData || !geminiData.subjects || !geminiData.subjects.length) {
+                showSGPAState('upload');
+                showAutoError('No subjects found in this PDF. Please upload a valid SKIT autonomous result PDF.');
+                return;
+            }
+
+            setSGPALoadingMsg('Computing SGPA…');
+            var result = computeAutoSGPA(geminiData);
+
+            AUTO_STATE.data = result;
+
+            setSGPALoadingMsg('Rendering results…');
+            renderAutoResults(result);
+            showAutoResults();
+
+            // Increment rate limit counter only on success
+            incrementAutoRateLimit();
+
+        } catch (err) {
+            console.error('[AUTO] Error:', err);
+            showSGPAState('upload');
+            if (err && err.message && err.message.indexOf('Gemini API error') !== -1) {
+                showAutoError('AI analysis failed. Please check your connection and try again.');
+            } else if (err && err.message && err.message.indexOf('JSON') !== -1) {
+                showAutoError('Could not read result. The PDF may not be a valid SKIT result. Try again.');
+            } else if (err && err.message && err.message.indexOf('fetch') !== -1) {
+                showAutoError('No internet connection detected. Please check your network and try again.');
+            } else {
+                showAutoError('Could not process this PDF. Please ensure it is a valid SKIT autonomous result PDF.');
+            }
+        }
     }
 
     /* ══════════════════════════════════════════════════════

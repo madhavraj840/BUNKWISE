@@ -8,8 +8,9 @@
 
     <script>
         (function () {
+            const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = preferred;
+            document.documentElement.dataset.theme = saved || preferred;
         })();
     </script>
     <script>
@@ -55,7 +56,7 @@
     <!-- ── State A: Upload ───────────────────────────────── -->
     <div id="sgpa-upload-state" class="sgpa-state">
         <h1 class="page-title">SGPA Calculator</h1>
-        <p class="page-sub">Upload your RTU result PDF — your SGPA is computed instantly, right in your browser.</p>
+        <p class="page-sub">Upload your result PDF — your SGPA is computed instantly, right in your browser.</p>
 
         <div class="paste-wrap" style="max-width:620px">
             <div class="sgpa-upload-zone" id="sgpa-upload-zone">
@@ -69,6 +70,21 @@
 
             <div class="error-banner" id="sgpa-error-banner">
                 <span>⚠</span>&nbsp; <span id="sgpa-error-text">Could not parse the PDF. Please upload a valid RTU result PDF.</span>
+            </div>
+
+            <div class="sgpa-divider"><span>— or —</span></div>
+
+            <div class="sgpa-upload-zone" id="auto-upload-zone">
+                <div class="sgpa-upload-icon">📄</div>
+                <div class="sgpa-upload-hint" id="auto-hint">Select your AUTONOMOUS (SKIT) result PDF to analyse</div>
+                <input type="file" id="auto-file-input" accept=".pdf" style="display:none">
+                <button class="btn-paste" id="btn-auto-upload">
+                    Upload Autonomous Result PDF <span class="btn-arrow">→</span>
+                </button>
+            </div>
+
+            <div class="error-banner" id="auto-error-banner">
+                <span>⚠</span>&nbsp; <span id="auto-error-text">Could not parse the PDF. Please upload a valid SKIT autonomous result PDF.</span>
             </div>
 
             <div class="instructions-box">
@@ -176,6 +192,91 @@
         </div>
 
     </div><!-- /sgpa-results-state -->
+
+    <!-- ── State D: Autonomous Results ──────────────────── -->
+    <div id="auto-results-state" class="sgpa-state hidden">
+
+        <div class="sgpa-info-card">
+            <div class="sgpa-info-grid">
+                <div class="sgpa-info-item">
+                    <span class="sgpa-info-lbl">Student Name</span>
+                    <span class="sgpa-info-val" id="auto-name">—</span>
+                </div>
+                <div class="sgpa-info-item">
+                    <span class="sgpa-info-lbl">Father's Name</span>
+                    <span class="sgpa-info-val" id="auto-father">—</span>
+                </div>
+                <div class="sgpa-info-item">
+                    <span class="sgpa-info-lbl">Roll Number</span>
+                    <span class="sgpa-info-val" id="auto-roll">—</span>
+                </div>
+                <div class="sgpa-info-item">
+                    <span class="sgpa-info-lbl">Remarks</span>
+                    <span class="sgpa-remarks" id="auto-remarks">PASS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="subjects-header" style="margin-top:1.75rem">
+            <div class="subjects-header-text">Subject-wise Breakdown</div>
+            <div class="subjects-header-line"></div>
+        </div>
+
+        <div class="sgpa-table-wrap">
+            <table class="sgpa-table" id="auto-table">
+                <thead>
+                    <tr>
+                        <th class="col-sno">SNO</th>
+                        <th class="col-subject">Subject Name</th>
+                        <th class="col-num">Internal</th>
+                        <th class="col-num">External</th>
+                        <th class="col-num">Total</th>
+                        <th class="col-grade">Grade</th>
+                        <th class="col-num">Credits</th>
+                        <th class="col-num">Credit Points</th>
+                    </tr>
+                </thead>
+                <tbody id="auto-tbody"></tbody>
+                <tfoot>
+                    <tr class="sgpa-tfoot-row">
+                        <td colspan="2" class="sgpa-tfoot-sgpa">
+                            SGPA &nbsp;<span class="sgpa-number" id="auto-value">—</span>
+                        </td>
+                        <td colspan="2" class="sgpa-tfoot-stat">
+                            <div class="sgpa-tfoot-lbl">Total Marks</div>
+                            <div class="sgpa-tfoot-num" id="auto-total-marks">—</div>
+                        </td>
+                        <td class="sgpa-tfoot-stat">
+                            <div class="sgpa-tfoot-lbl">Max Marks</div>
+                            <div class="sgpa-tfoot-num" id="auto-max-marks">—</div>
+                        </td>
+                        <td class="sgpa-tfoot-stat">
+                            <div class="sgpa-tfoot-lbl">Grade Pts</div>
+                            <div class="sgpa-tfoot-num" id="auto-total-gp">—</div>
+                        </td>
+                        <td class="sgpa-tfoot-stat">
+                            <div class="sgpa-tfoot-lbl">Credits</div>
+                            <div class="sgpa-tfoot-num" id="auto-total-credits">—</div>
+                        </td>
+                        <td class="sgpa-tfoot-stat">
+                            <div class="sgpa-tfoot-lbl">Credit Pts</div>
+                            <div class="sgpa-tfoot-num" id="auto-total-cp">—</div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="sgpa-actions">
+            <button class="btn-primary" id="btn-auto-download">
+                ⬇ Download Report PDF
+            </button>
+            <button class="btn-check-another" id="btn-auto-check-another">
+                ↺ Check Another
+            </button>
+        </div>
+
+    </div><!-- /auto-results-state -->
 
 </div><!-- /page-cgpa -->
 
