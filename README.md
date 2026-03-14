@@ -34,7 +34,7 @@ Calculate attendance, predict bunks, and compute SGPA — all inside your browse
 - Select your branch from the dropdown (First Year / CSE / ECE / EE / IT / ME / CE and specialisations)
 - Branch-specific credit maps ensure accurate SGPA for every branch
 - Downloadable PDF report
-- Rate limited to 10 analyses per device per day
+- Rate limited to 2 analyses per device per day
 
 ---
 
