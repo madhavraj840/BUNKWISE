@@ -1354,7 +1354,7 @@
             'object oriented programming lab': 1,
             'technical training': 0,
             'soft skills training': 0,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── Civil Engineering — 2nd Year ───────────────── */
@@ -1385,7 +1385,7 @@
             'building planning and drafting lab-ii': 1.5,
             'environmental engineering lab': 1,
             'structural engineering lab': 1,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── Computer Science & Engineering — 2nd Year ───── */
@@ -1393,11 +1393,11 @@
             'managerial economics and financial accounting': 1,
             'technical communication': 1,
             'statistics and probability theory': 3,
-            'data structures and algorithms': 4,
+            'data structure and algorithms': 4,
             'operating system': 3,
             'software engineering and project management': 3,
             'digital electronics': 3,
-            'data structures and algorithms lab': 1.5,
+            'data structure and algorithms lab': 1.5,
             'programming in java lab': 1.5,
             'software engineering lab': 1.5,
             'digital electronics lab': 1.5,
@@ -1415,7 +1415,7 @@
             'network programming lab': 1.5,
             'microprocessor lab': 1.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── CSE (Artificial Intelligence) — 2nd Year ────── */
@@ -1444,7 +1444,7 @@
             'full stack development lab': 1.5,
             'microprocessor lab': 1.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── CSE (Data Science) — 2nd Year ─────────────── */
@@ -1475,7 +1475,7 @@
             'full stack development lab': 1.5,
             'microprocessor lab': 1.5,
             'r-programming for data science': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── CSE (IOT) — 2nd Year ───────────────────────── */
@@ -1505,7 +1505,7 @@
             'network programming lab': 1.5,
             'microprocessor lab': 1.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── Electronics & Communication Engineering — 2nd Year */
@@ -1538,7 +1538,7 @@
             'analog and digital communication lab': 1.5,
             'microprocessor and microcontroller lab': 1,
             'electronics measurement and instrumentaion lab': 1,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── Electrical Engineering — 2nd Year ─────────── */
@@ -1570,7 +1570,7 @@
             'matlab programming lab': 1.5,
             'digital electronics lab': 1.5,
             'electrical measurement lab': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── Information Technology — 2nd Year ─────────── */
@@ -1599,7 +1599,7 @@
             'network programming lab': 1.5,
             'web development lab': 1.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         },
 
         /* ── Mechanical Engineering — 2nd Year ─────────── */
@@ -1628,7 +1628,7 @@
             'fluid mechanics and hydraulic machines lab': 1.5,
             'production engineering lab': 2,
             'theory of machines lab': 1.5,
-            'yoga': 0
+            'yoga': 0.5
         }
 
     };
