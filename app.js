@@ -1312,7 +1312,7 @@
     var AUTO_STATE = { data: null };
 
     /* ── Cloudflare Worker proxy (API key stored in Cloudflare — not in code) ── */
-    var GEMINI_ENDPOINT  = 'https://gemini-proxy.madhavu2027.workers.dev';
+    var GEMINI_ENDPOINT  = 'https://gemni-proxy.madhavu2027.workers.dev';
 
     /* ── Credit map (user-provided revised scheme) ───────── */
     var AUTO_CREDIT_MAP = {
