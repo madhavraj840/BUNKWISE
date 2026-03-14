@@ -1,5 +1,34 @@
 (function () {
     'use strict';
+    // ── DevTools deterrent ────────────────────────────────
+(function () {
+    // Block right click
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
+
+    // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U
+    document.addEventListener('keydown', function (e) {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && e.key.toUpperCase() === 'U')
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Detect DevTools open via window size difference
+    var threshold = 160;
+    setInterval(function () {
+        var widthDiff  = window.outerWidth  - window.innerWidth;
+        var heightDiff = window.outerHeight - window.innerHeight;
+        if (widthDiff > threshold || heightDiff > threshold) {
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;font-size:1.2rem;background:#090d14;color:#f04455;">Developer tools are not allowed on this page.</div>';
+        }
+    }, 1000);
+}());
 
     /* ══════════════════════════════════════════════════════
        SHARED — runs on every page

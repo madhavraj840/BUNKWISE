@@ -850,9 +850,10 @@ button { cursor: pointer; }
 .sgpa-upload-zone:hover .sgpa-upload-icon { opacity: .8; }
 .sgpa-upload-zone.success .sgpa-upload-icon { opacity: 1; }
 .sgpa-upload-hint {
-    font-family: 'DM Mono', monospace;
-    font-size: .82rem;
-    color: var(--text-muted);
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-sec);
     text-align: center;
     line-height: 1.6;
 }
