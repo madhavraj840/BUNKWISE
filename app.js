@@ -1454,7 +1454,7 @@
         'soft skills training': 0,
         'soft skill training': 0,
         'skill development courses': 0,
-        'yoga': 0
+        'yoga': 0.5
     };
 
     /* ── Normalize subject name for credit lookup ────────── */
@@ -1864,10 +1864,10 @@
 
         // ── Rate limit check ──
         var usage = checkAutoRateLimit();
-        if (usage.count >= 2) {
+        if (usage.count >= 10) {
             zone.classList.add('error-state');
             hint.textContent = '⚠ Daily limit reached.';
-            showAutoError('Daily limit reached. You can check 2 results per day. Try again tomorrow.');
+            showAutoError('Daily limit reached. You can check 10 results per day. Try again tomorrow.');
             return;
         }
 
