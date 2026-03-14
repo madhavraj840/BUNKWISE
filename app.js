@@ -1818,7 +1818,7 @@
             } else {
                 gradePoint = Math.ceil(total / 10);
                 // Cap at 2
-                if (gradePoint > 2) gradePoint = 2;
+                if (gradePoint > 10) gradePoint = 10;
                 grade = getAutoGradeLabel(gradePoint);
             }
 
@@ -2048,10 +2048,10 @@
 
         // ── Rate limit check ──
         var usage = checkAutoRateLimit();
-        if (usage.count >= 10) {
+        if (usage.count >= 2) {
             zone.classList.add('error-state');
             hint.textContent = '⚠ Daily limit reached.';
-            showAutoError('Daily limit reached. You can check 10 results per day. Try again tomorrow.');
+            showAutoError('Daily limit reached. You can check 2 results per day. Try again tomorrow.');
             return;
         }
 
