@@ -1299,6 +1299,14 @@
                 if (AUTO_STATE.data) generateAutoReportPDF();
             });
         }
+
+        // ── Branch selector ──
+        var branchSelect = document.getElementById('auto-branch-select');
+        if (branchSelect) {
+            branchSelect.addEventListener('change', function () {
+                AUTO_STATE.branch = branchSelect.value || null;
+            });
+        }
     }
 
     /* ══════════════════════════════════════════════════════
@@ -1309,152 +1317,320 @@
     ══════════════════════════════════════════════════════ */
 
     /* ── State ───────────────────────────────────────────── */
-    var AUTO_STATE = { data: null };
+    var AUTO_STATE = { data: null, branch: null };
 
     /* ── Cloudflare Worker proxy (API key stored in Cloudflare — not in code) ── */
     var GEMINI_ENDPOINT  = 'https://gemni-proxy.madhavu2027.workers.dev';
 
-    /* ── Credit map (user-provided revised scheme) ───────── */
-    var AUTO_CREDIT_MAP = {
-        'engineering mathematics-i': 4,
-        'engineering mathematics-ii': 4,
-        'advanced engineering mathematics-i': 4,
-        'advanced engineering mathematics-ii': 3,
-        'advanced engineering mathematics-iii': 3,
-        'statistics and probability theory': 3,
-        'higher engineering mathematics': 3,
-        'linear algebra and numerical analysis': 4,
-        'probablity and stochastic process': 2,
-        'engineering physics': 4,
-        'engineering chemistry': 4,
-        'engineering physics lab': 1,
-        'engineering chemistry lab': 1,
-        'communication skills': 2,
-        'universal human values': 2,
-        'language lab': 1,
-        'universal human values lab': 1,
-        'computational thinking and programming': 2,
-        'c programming lab': 1,
-        'problem solving using object oriented paradigm': 2,
-        'object oriented programming lab': 1,
-        'data structures and algorithms': 4,
-        'data structure and algorithm': 2,
-        'data structure and algorithm lab': 1,
-        'data structures and algorithms lab': 1.5,
-        'operating system': 3,
-        'software engineering and project management': 3,
-        'software engineering lab': 1.5,
-        'theory of computation': 3,
-        'database management system': 3,
-        'database systems lab': 1.5,
-        'computer networks': 3,
-        'computer network': 3,
-        'network programming lab': 1.5,
-        'full stack development': 2,
-        'full stack development lab': 1.5,
-        'web development lab': 1.5,
-        'foundation of data science': 3,
-        'python for data science lab': 1.5,
-        'foundation of artificial intelligence': 3,
-        'artificial intelligence': 2,
-        'electronic system for iot': 3,
-        'electronic system for iot lab': 1.5,
-        'data analytics for iot': 2,
-        'data analytics': 3,
-        'data analytics and visualization lab': 1.5,
-        'programming in java lab': 1.5,
-        'logic programming lab': 1.5,
-        'r-programming for data science': 1.5,
-        'python programming lab': 1,
-        'discrete mathematics and linear algebra': 3,
-        'computer architecture and microprocessor': 2,
-        'computer architecture & microprocessor': 2,
-        'microprocessor lab': 1.5,
-        'microprocessor and microcontroller': 3,
-        'microprocessor and microcontroller lab': 1,
-        'managerial economics and financial accounting': 1,
-        'technical communication': 1,
-        'computer aided engineering graphics': 1.5,
-        'computer aided machine drawing': 1.5,
-        'strength of materials': 3,
-        'surveying': 3,
-        'building materials and construction': 3,
-        'engineering geology': 3,
-        'structural analysis-i': 3,
-        'fluid mechanics and hydraulic engineering': 4,
-        'concrete technology': 3,
-        'environmental engineering': 3,
-        'surveying lab': 1.5,
-        'professional development lab': 1,
-        'geology lab': 1,
-        'building planning and drafting lab-i': 1.5,
-        'building planning and drafting lab-ii': 1.5,
-        'building material testing lab': 1,
-        'fluid mechanics and hydraulic engineering lab': 1,
-        'concrete lab': 1.5,
-        'environmental engineering lab': 1,
-        'structural engineering lab': 1,
-        'electrical measurement & instrumentation': 3,
-        'generation of electrical power': 2,
-        'circuit analysis-i': 3,
-        'circuit analysis-ii': 3,
-        'analog electronics': 2,
-        'electrical machine-i': 3,
-        'electrical machine-ii': 3,
-        'power electronics': 3,
-        'signal and systems': 3,
-        'analog electronics lab': 1.5,
-        'electrical machine lab-i': 1.5,
-        'electrical machine lab-ii': 1.5,
-        'computer programming lab (c++)': 1.5,
-        'electrical circuit design lab': 1.5,
-        'matlab programming lab': 1.5,
-        'electrical measurement lab': 1.5,
-        'electronic devices and circuits': 3,
-        'digital system design': 3,
-        'circuit theory': 4,
-        'electronics devices lab': 1.5,
-        'digital system design lab': 1.5,
-        'circuit simulation and pcb design lab': 2,
-        'analog and digital communication': 3,
-        'analog and digital communication lab': 1.5,
-        'electronics measurement and instrumentaion': 2,
-        'electronics measurement and instrumentaion lab': 1,
-        'engineering mechanics': 3,
-        'engineering thermodynamics': 3,
-        'mechanics of solids': 4,
-        'materials science and engineering': 3,
-        'fluid mechanics and fluid machines': 4,
-        'manufacturing processes': 3,
-        'theory of machines': 4,
-        'basic mechanical engineering lab': 1.5,
-        'computer aided design lab': 1.5,
-        'materials testing lab': 1.5,
-        'programming using matlab': 1.5,
-        'fluid mechanics and hydraulic machines lab': 1.5,
-        'production engineering lab': 2,
-        'theory of machines lab': 1.5,
-        'digital electronics lab': 1.5,
-        'digital electronics': 2,
-        'basic civil engineering': 2,
-        'basic mechanical engineering': 2,
-        'basic electrical & electronics engineering': 2,
-        'basic electrical & electronics engineering lab': 1,
-        'basic civil engineering lab': 1,
-        'manufacturing practice workshop': 1,
-        'innovation & entrepreneurship': 1,
-        'industrial training': 1,
-        'industry training': 1,
-        'social outreach, discipline & extra curricular activities': 0.5,
-        'social outreach, discipline and extra curricular activities': 0.5,
-        'social outreach, discipline and extra-curricular activities (sodeca)': 0.5,
-        'sodeca': 0.5,
-        'audit course': 0,
-        'technical training': 0,
-        'soft skills training': 0,
-        'soft skill training': 0,
-        'skill development courses': 0,
-        'yoga': 0.5
+    /* ── Credit maps — one per branch (user-provided data) ── */
+    var AUTO_CREDIT_MAPS = {
+
+        /* ── First Year (Sem 1 + Sem 2 combined) ────────── */
+        'firstyear': {
+            'engineering mathematics-i': 4,
+            'engineering physics': 4,
+            'engineering chemistry': 4,
+            'communication skills': 2,
+            'universal human values': 2,
+            'computational thinking and programming': 2,
+            'basic electrical and electronics engineering': 2,
+            'basic civil engineering': 2,
+            'basic mechanical engineering': 2,
+            'engineering physics lab': 1,
+            'engineering chemistry lab': 1,
+            'language lab': 1,
+            'universal human values lab': 1,
+            'c programming lab': 1,
+            'basic electrical and electronics engineering lab': 1,
+            'basic civil engineering lab': 1,
+            'manufacturing practice workshop': 1,
+            'computer aided engineering graphics': 1.5,
+            'computer aided machine drawing': 1.5,
+            'social outreach, discipline and extra-curricular activities (sodeca)': 0.5,
+            'audit course': 0,
+            'engineering mathematics-ii': 4,
+            'innovation and entrepreneurship': 1,
+            'problem solving using object oriented paradigm': 2,
+            'object oriented programming lab': 1,
+            'technical training': 0,
+            'soft skills training': 0,
+            'yoga': 0
+        },
+
+        /* ── Civil Engineering — 2nd Year ───────────────── */
+        'ce': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'advanced engineering mathematics-i': 4,
+            'strength of materials': 4,
+            'surveying': 4,
+            'building materials and construction': 4,
+            'engineering geology': 2,
+            'surveying lab': 2,
+            'professional development lab': 2,
+            'geology lab': 1,
+            'building planning and drafting lab-i': 1.5,
+            'building material testing lab': 1,
+            'industrial training': 1,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'technical training': 0,
+            'soft skills training': 0,
+            'advanced engineering mathematics-ii': 3,
+            'structural analysis-i': 3,
+            'fluid mechanics and hydraulic engineering': 4,
+            'concrete technology': 3,
+            'environmental engineering': 3,
+            'fluid mechanics and hydraulic engineering lab': 1,
+            'concrete lab': 1.5,
+            'building planning and drafting lab-ii': 1.5,
+            'environmental engineering lab': 1,
+            'structural engineering lab': 1,
+            'yoga': 0
+        },
+
+        /* ── Computer Science & Engineering — 2nd Year ───── */
+        'cs': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'statistics and probability theory': 3,
+            'data structures and algorithms': 4,
+            'operating system': 3,
+            'software engineering and project management': 3,
+            'digital electronics': 3,
+            'data structures and algorithms lab': 1.5,
+            'programming in java lab': 1.5,
+            'software engineering lab': 1.5,
+            'digital electronics lab': 1.5,
+            'industrial training': 1,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'technical training': 0,
+            'soft skills training': 0,
+            'discrete mathematics and linear algebra': 3,
+            'database management system': 3,
+            'theory of computation': 3,
+            'computer networks': 3,
+            'artificial intelligence': 2,
+            'computer architecture and microprocessor': 2,
+            'database systems lab': 1.5,
+            'network programming lab': 1.5,
+            'microprocessor lab': 1.5,
+            'data analytics and visualization lab': 1.5,
+            'yoga': 0
+        },
+
+        /* ── CSE (Artificial Intelligence) — 2nd Year ────── */
+        'cs-ai': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'statistics and probability theory': 3,
+            'data structures and algorithms': 4,
+            'foundation of artificial intelligence': 3,
+            'software engineering and project management': 3,
+            'digital electronics': 3,
+            'data structures and algorithms lab': 1.5,
+            'programming in java lab': 1.5,
+            'logic programming lab': 1.5,
+            'digital electronics lab': 1.5,
+            'industrial training': 1,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'audit course': 0,
+            'discrete mathematics and linear algebra': 3,
+            'database management system': 3,
+            'full stack development': 2,
+            'computer networks': 3,
+            'operating system': 3,
+            'computer architecture and microprocessor': 2,
+            'database systems lab': 1.5,
+            'full stack development lab': 1.5,
+            'microprocessor lab': 1.5,
+            'data analytics and visualization lab': 1.5,
+            'yoga': 0
+        },
+
+        /* ── CSE (Data Science) — 2nd Year ─────────────── */
+        'cs-ds': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'statistics and probability theory': 3,
+            'data structures and algorithms': 4,
+            'foundation of data science': 3,
+            'software engineering and project management': 3,
+            'digital electronics': 3,
+            'data structures and algorithms lab': 1.5,
+            'programming in java lab': 1.5,
+            'python for data science lab': 1.5,
+            'digital electronics lab': 1.5,
+            'industrial training': 1,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'technical training': 0,
+            'soft skills training': 0,
+            'discrete mathematics and linear algebra': 3,
+            'database management system': 3,
+            'full stack development': 2,
+            'computer network': 3,
+            'computer networks': 3,
+            'operating system': 3,
+            'computer architecture and microprocessor': 2,
+            'database systems lab': 1.5,
+            'full stack development lab': 1.5,
+            'microprocessor lab': 1.5,
+            'r-programming for data science': 1.5,
+            'yoga': 0
+        },
+
+        /* ── CSE (IOT) — 2nd Year ───────────────────────── */
+        'cs-iot': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'statistics and probability theory': 3,
+            'data structures and algorithms': 4,
+            'electronic system for iot': 3,
+            'software engineering and project management': 3,
+            'digital electronics': 3,
+            'data structures and algorithms lab': 1.5,
+            'programming in java lab': 1.5,
+            'electronic system for iot lab': 1.5,
+            'digital electronics lab': 1.5,
+            'industrial training': 1,
+            'sodeca': 0.5,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'audit course': 0,
+            'discrete mathematics and linear algebra': 3,
+            'database management system': 3,
+            'data analytics for iot': 2,
+            'computer networks': 3,
+            'operating system': 3,
+            'computer architecture and microprocessor': 2,
+            'database systems lab': 1.5,
+            'network programming lab': 1.5,
+            'microprocessor lab': 1.5,
+            'data analytics and visualization lab': 1.5,
+            'yoga': 0
+        },
+
+        /* ── Electronics & Communication Engineering — 2nd Year */
+        'ece': {
+            'linear algebra and numerical analysis': 4,
+            'technical communication': 1,
+            'managerial economics and financial accounting': 1,
+            'electronic devices and circuits': 3,
+            'digital system design': 3,
+            'circuit theory': 4,
+            'data structure and algorithm': 2,
+            'electronics devices lab': 1.5,
+            'digital system design lab': 1.5,
+            'circuit simulation and pcb design lab': 2,
+            'data structure and algorithm lab': 1,
+            'industry training': 1,
+            'industrial training': 1,
+            'sodeca': 0.5,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'technical training': 0,
+            'skill development courses': 0,
+            'probablity and stochastic process': 2,
+            'analog electronics': 3,
+            'signal and systems': 3,
+            'analog and digital communication': 3,
+            'microprocessor and microcontroller': 3,
+            'electronics measurement and instrumentaion': 2,
+            'analog electronics lab': 1.5,
+            'python programming lab': 1,
+            'analog and digital communication lab': 1.5,
+            'microprocessor and microcontroller lab': 1,
+            'electronics measurement and instrumentaion lab': 1,
+            'yoga': 0
+        },
+
+        /* ── Electrical Engineering — 2nd Year ─────────── */
+        'ee': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'advanced engineering mathematics-i': 3,
+            'electrical measurement and instrumentation': 3,
+            'generation of electrical power': 2,
+            'circuit analysis-i': 3,
+            'analog electronics': 2,
+            'electrical machine-i': 3,
+            'analog electronics lab': 1.5,
+            'electrical machine lab-i': 1.5,
+            'computer programming lab (c++)': 1.5,
+            'electrical circuit design lab': 1.5,
+            'industrial training': 1,
+            'sodeca': 0.5,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'technical training': 0,
+            'soft skills training': 0,
+            'advanced engineering mathematics-iii': 3,
+            'circuit analysis-ii': 3,
+            'signal and systems': 2,
+            'electrical machine-ii': 3,
+            'power electronics': 3,
+            'digital electronics': 2,
+            'electrical machine lab-ii': 1.5,
+            'matlab programming lab': 1.5,
+            'digital electronics lab': 1.5,
+            'electrical measurement lab': 1.5,
+            'yoga': 0
+        },
+
+        /* ── Information Technology — 2nd Year ─────────── */
+        'it': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'statistics and probability theory': 3,
+            'data structures and algorithms': 4,
+            'operating system': 3,
+            'software engineering and project management': 3,
+            'digital electronics': 3,
+            'data structures and algorithms lab': 1.5,
+            'programming in java lab': 1.5,
+            'software engineering lab': 1.5,
+            'digital electronics lab': 1.5,
+            'industrial training': 1,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'audit course': 0,
+            'discrete mathematics and linear algebra': 3,
+            'database management system': 3,
+            'theory of computation': 3,
+            'computer networks': 3,
+            'artificial intelligence': 2,
+            'computer architecture and microprocessor': 2,
+            'database systems lab': 1.5,
+            'network programming lab': 1.5,
+            'web development lab': 1.5,
+            'data analytics and visualization lab': 1.5,
+            'yoga': 0
+        },
+
+        /* ── Mechanical Engineering — 2nd Year ─────────── */
+        'me': {
+            'managerial economics and financial accounting': 1,
+            'technical communication': 1,
+            'higher engineering mathematics': 3,
+            'engineering mechanics': 3,
+            'engineering thermodynamics': 3,
+            'mechanics of solids': 4,
+            'materials science and engineering': 3,
+            'basic mechanical engineering lab': 1.5,
+            'computer aided design lab': 1.5,
+            'materials testing lab': 1.5,
+            'programming using matlab': 1.5,
+            'industrial training': 1,
+            'social outreach, discipline and extra curricular activities': 0.5,
+            'technical training': 0,
+            'soft skills training': 0,
+            'data analytics': 3,
+            'digital electronics': 2,
+            'fluid mechanics and fluid machines': 4,
+            'manufacturing processes': 3,
+            'theory of machines': 4,
+            'digital electronics lab': 1,
+            'fluid mechanics and hydraulic machines lab': 1.5,
+            'production engineering lab': 2,
+            'theory of machines lab': 1.5,
+            'yoga': 0
+        }
+
     };
 
     /* ── Normalize subject name for credit lookup ────────── */
@@ -1469,10 +1645,12 @@
             .replace(/\s*\/\s*/g, '/');   // slash spacing variants
     }
 
-    /* ── Credit lookup ───────────────────────────────────── */
-    function lookupAutoCredits(subjectName) {
+    /* ── Credit lookup — branch specific ────────────────── */
+    function lookupAutoCredits(subjectName, branch) {
+        var map = AUTO_CREDIT_MAPS[branch];
+        if (!map) return null;
         var key = normalizeAutoSubject(subjectName);
-        return (key in AUTO_CREDIT_MAP) ? AUTO_CREDIT_MAP[key] : null;
+        return (key in map) ? map[key] : null;
     }
 
     /* ── Grade label from grade point ───────────────────── */
@@ -1558,7 +1736,7 @@
             '- fatherName: extract from "Father\'s Name :" field\n' +
             '- rollNo: extract from "Roll No. :" field\n' +
             '- For each subject row between the table header and "Instruction :" line:\n' +
-            '  - name: the course title in UPPERCASE as it appears\n' +
+            '  - name: the course title in UPPERCASE with all spelling mistakes corrected (e.g. "INDUSTIAL" becomes "INDUSTRIAL", "INSTRUMENTAION" becomes "INSTRUMENTATION", "PROBABLITY" becomes "PROBABILITY")\n' +
             '  - courseCode: the course code (alphanumeric code after the course title)\n' +
             '  - ise: the internal marks number, or null if "----", "--", or missing\n' +
             '  - see: the external marks number, or null if "----", "--", or missing\n' +
@@ -1639,13 +1817,13 @@
                 grade      = '—';
             } else {
                 gradePoint = Math.ceil(total / 10);
-                // Cap at 10
-                if (gradePoint > 10) gradePoint = 10;
+                // Cap at 2
+                if (gradePoint > 2) gradePoint = 2;
                 grade = getAutoGradeLabel(gradePoint);
             }
 
-            // Credits
-            var credits = lookupAutoCredits(cleanName);
+            // Credits — branch specific
+            var credits = lookupAutoCredits(cleanName, AUTO_STATE.branch);
 
             // Credit points — only if credits > 0 and gradePoint not null
             var creditPoints = null;
@@ -1861,6 +2039,12 @@
 
         clearAutoError();
         zone.classList.remove('success', 'error-state');
+
+        // ── Branch validation ──
+        if (!AUTO_STATE.branch) {
+            showAutoError('Please select your branch before uploading.');
+            return;
+        }
 
         // ── Rate limit check ──
         var usage = checkAutoRateLimit();

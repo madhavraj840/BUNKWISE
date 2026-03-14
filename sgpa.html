@@ -77,6 +77,22 @@
             <div class="sgpa-upload-zone" id="auto-upload-zone">
                 <div class="sgpa-upload-icon">📄</div>
                 <div class="sgpa-upload-hint" id="auto-hint">Select your AUTONOMOUS (SKIT) result PDF to analyse</div>
+                <div class="auto-branch-wrap">
+                    <label class="auto-branch-label" for="auto-branch-select">Select your branch</label>
+                    <select class="auto-branch-select" id="auto-branch-select">
+                        <option value="" disabled selected>-- Select your branch --</option>
+                        <option value="firstyear">First Year</option>
+                        <option value="cs">CSE — 2nd Year</option>
+                        <option value="cs-ai">CSE (AI) — 2nd Year</option>
+                        <option value="cs-ds">CSE (DS) — 2nd Year</option>
+                        <option value="cs-iot">CSE (IOT) — 2nd Year</option>
+                        <option value="ece">ECE — 2nd Year</option>
+                        <option value="ee">EE — 2nd Year</option>
+                        <option value="it">IT — 2nd Year</option>
+                        <option value="me">ME — 2nd Year</option>
+                        <option value="ce">CE — 2nd Year</option>
+                    </select>
+                </div>
                 <input type="file" id="auto-file-input" accept=".pdf" style="display:none">
                 <button class="btn-paste" id="btn-auto-upload">
                     Upload Autonomous Result PDF <span class="btn-arrow">→</span>

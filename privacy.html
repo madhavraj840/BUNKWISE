@@ -8,8 +8,9 @@
 
     <script>
         (function () {
+            const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = preferred;
+            document.documentElement.dataset.theme = saved || preferred;
         })();
     </script>
     <script>
@@ -73,12 +74,22 @@
         </div>
 
         <div class="static-section">
+            <h2>AI-powered result analysis (SGPA Calculator)</h2>
+            <p>When you use the Autonomous SGPA Calculator feature (for SKIT result PDFs), the raw text extracted from your uploaded PDF is sent to Google's Gemini AI API for analysis. This text contains your result data including your name, roll number, father's name, and subject marks as they appear in the PDF.</p>
+            <p style="margin-top:.75rem">This data is transmitted to Google's servers to perform the analysis and is governed by Google's AI API Terms of Service and Privacy Policy. BunkWise does not store or log this data. The API call is routed through a Cloudflare Worker proxy — the Gemini API key is stored securely in Cloudflare and is never exposed in the website's code.</p>
+            <p style="margin-top:.75rem">A rate limit of 2 analyses per device per day is enforced locally in your browser using localStorage to prevent excessive API usage. This counter is stored only on your device and is never transmitted anywhere.</p>
+            <p style="margin-top:.75rem">If you are not comfortable with your result data being processed by Google's AI, please use the RTU SGPA Calculator instead, which processes everything locally in your browser with no external API calls.</p>
+        </div>
+
+        <div class="static-section">
             <h2>Third-party services</h2>
             <p>BunkWise loads the following external resources. Each is governed by its own privacy policy.</p>
             <ul style="margin-top:.6rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem;font-size:.92rem;color:var(--text-sec);line-height:1.7">
                 <li><strong style="color:var(--text)">Google Analytics</strong> — visitor analytics. See above.</li>
+                <li><strong style="color:var(--text)">Google Gemini AI API</strong> — used for autonomous result PDF analysis. Result text is sent to Google's servers for processing. See the AI section above.</li>
                 <li><strong style="color:var(--text)">Google Fonts</strong> — typography. Google may log the font request; no personal data beyond a standard web request is shared.</li>
                 <li><strong style="color:var(--text)">Cloudflare CDN</strong> — delivers PDF.js, SheetJS, and jsPDF libraries. Cloudflare may log IP addresses per their standard CDN policy.</li>
+                <li><strong style="color:var(--text)">Cloudflare Workers</strong> — acts as a secure proxy for Gemini API calls. Cloudflare processes the request but does not store your result data.</li>
             </ul>
         </div>
 
