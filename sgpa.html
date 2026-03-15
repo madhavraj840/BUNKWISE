@@ -62,6 +62,21 @@
             <div class="sgpa-upload-zone" id="sgpa-upload-zone">
                 <div class="sgpa-upload-icon">📄</div>
                 <div class="sgpa-upload-hint" id="sgpa-hint">Select your RTU result PDF to analyse</div>
+                <div class="auto-branch-wrap">
+                    <label class="auto-branch-label" for="rtu-branch-select">Select your branch</label>
+                    <select class="auto-branch-select" id="rtu-branch-select">
+                        <option value="" disabled selected>-- Select your branch --</option>
+                        <option value="firstyear">First Year</option>
+                        <option value="ce">Civil Engineering</option>
+                        <option value="cse">Computer Science &amp; Engineering</option>
+                        <option value="cse-ai">CSE (Artificial Intelligence)</option>
+                        <option value="cse-ds">CSE (Data Science)</option>
+                        <option value="ece">Electronics &amp; Communication Engg.</option>
+                        <option value="ee">Electrical Engineering</option>
+                        <option value="it">Information Technology</option>
+                        <option value="me">Mechanical Engineering</option>
+                    </select>
+                </div>
                 <input type="file" id="sgpa-file-input" accept=".pdf" style="display:none">
                 <button class="btn-paste" id="btn-sgpa-upload">
                     Upload Result PDF <span class="btn-arrow">→</span>
