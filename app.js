@@ -497,6 +497,26 @@
     }
 
     /* ── Wire attendance page ────────────────────────────── */
+    /* ── Share handler ───────────────────────────────────── */
+    function handleShare(buttonEl) {
+        var shareData = {
+            title: 'BunkWise — Attendance & SGPA Calculator',
+            text:  'Check your attendance, predict bunks, and calculate SGPA instantly. No login needed.',
+            url:   'https://madhavraj840.github.io/BUNKWISE'
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch(function () {});
+        } else {
+            // Fallback — copy link to clipboard
+            navigator.clipboard.writeText(shareData.url).then(function () {
+                var orig = buttonEl.textContent;
+                buttonEl.textContent = '✓ Link copied!';
+                setTimeout(function () { buttonEl.textContent = orig; }, 2000);
+            }).catch(function () {});
+        }
+    }
+
     function initAttendancePage() {
         var btnPaste = document.getElementById('btn-paste');
         if (!btnPaste) return;   // not on attendance.html — exit
@@ -541,6 +561,12 @@
                 renderResults();
             }
         });
+
+        // ── Share button ──
+        var btnShareAtt = document.getElementById('btn-share-att');
+        if (btnShareAtt) {
+            btnShareAtt.addEventListener('click', function () { handleShare(btnShareAtt); });
+        }
     }
 
     /* ══════════════════════════════════════════════════════
@@ -2830,6 +2856,16 @@
                 AUTO_STATE.branch = branchSelect.value || null;
             });
         }
+
+        // ── Share buttons ──
+        var btnShareSgpa = document.getElementById('btn-share-sgpa');
+        if (btnShareSgpa) {
+            btnShareSgpa.addEventListener('click', function () { handleShare(btnShareSgpa); });
+        }
+        var btnShareAuto = document.getElementById('btn-share-auto');
+        if (btnShareAuto) {
+            btnShareAuto.addEventListener('click', function () { handleShare(btnShareAuto); });
+        }
     }
 
     /* ══════════════════════════════════════════════════════
@@ -4303,6 +4339,12 @@
             bumpCW();
             renderCWMain();
         });
+
+        // ── Share button ──
+        var btnShareCw = document.getElementById('btn-share-cw');
+        if (btnShareCw) {
+            btnShareCw.addEventListener('click', function () { handleShare(btnShareCw); });
+        }
     }
 
     /* ══════════════════════════════════════════════════════

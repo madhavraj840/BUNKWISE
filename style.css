@@ -1299,3 +1299,43 @@ button { cursor: pointer; }
     background: var(--bg-card);
     color: var(--text);
 }
+/* ── Share button ────────────────────────────────────── */
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .55rem 1.2rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--r-sm);
+    font-family: 'DM Mono', monospace;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    cursor: pointer;
+    transition: background .2s, color .2s, transform .15s;
+    white-space: nowrap;
+}
+.btn-share:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.btn-share:active { transform: translateY(0); }
+
+/* ── CW share row ────────────────────────────────────── */
+.cw-share-row {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0 .5rem;
+    width: 100%;
+}
+
+/* ── Responsive share in sgpa-actions ───────────────── */
+@media (max-width: 760px) {
+    .sgpa-actions .btn-share {
+        text-align: center;
+        justify-content: center;
+    }
+}
