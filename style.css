@@ -489,6 +489,30 @@ button { cursor: pointer; }
 }
 .error-banner.visible { display: flex; animation: fadeUp .2s ease; }
 
+/* ── AI usage counter strip (autonomous upload zone) ── */
+.ai-counter {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: .45rem .9rem;
+    text-align: center;
+    margin-top: .5rem;
+    transition: color .2s, border-color .2s, background .2s;
+}
+.ai-counter.warn {
+    color: #d97706;
+    background: rgba(217,119,6,.08);
+    border-color: rgba(217,119,6,.35);
+}
+.ai-counter.exhausted {
+    color: var(--red);
+    background: var(--red-dim);
+    border-color: rgba(240,68,85,.35);
+}
+
 .instructions-box {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -1298,44 +1322,4 @@ button { cursor: pointer; }
 .auto-branch-select option {
     background: var(--bg-card);
     color: var(--text);
-}
-/* ── Share button ────────────────────────────────────── */
-.btn-share {
-    display: inline-flex;
-    align-items: center;
-    gap: .45rem;
-    padding: .55rem 1.2rem;
-    background: transparent;
-    color: var(--accent);
-    border: 1.5px solid var(--accent);
-    border-radius: var(--r-sm);
-    font-family: 'DM Mono', monospace;
-    font-size: .78rem;
-    font-weight: 500;
-    letter-spacing: .06em;
-    cursor: pointer;
-    transition: background .2s, color .2s, transform .15s;
-    white-space: nowrap;
-}
-.btn-share:hover {
-    background: var(--accent);
-    color: #fff;
-    transform: translateY(-2px);
-}
-.btn-share:active { transform: translateY(0); }
-
-/* ── CW share row ────────────────────────────────────── */
-.cw-share-row {
-    display: flex;
-    justify-content: center;
-    padding: 1.5rem 0 .5rem;
-    width: 100%;
-}
-
-/* ── Responsive share in sgpa-actions ───────────────── */
-@media (max-width: 760px) {
-    .sgpa-actions .btn-share {
-        text-align: center;
-        justify-content: center;
-    }
 }

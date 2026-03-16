@@ -3407,6 +3407,7 @@
                 if (zone) zone.classList.remove('success', 'error-state');
                 if (hint) hint.textContent = 'Select your AUTONOMOUS (SKIT) result PDF to analyse';
                 clearAutoError();
+                updateAutoCounter();
                 showSGPAState('upload');
             });
         }
@@ -3426,6 +3427,9 @@
                 AUTO_STATE.branch = branchSelect.value || null;
             });
         }
+
+        // ── Show usage counter on load ──
+        updateAutoCounter();
 
         // ── Share buttons ──
         var btnShareSgpa = document.getElementById('btn-share-sgpa');
@@ -4445,6 +4449,26 @@
         localStorage.setItem('bw-auto-usage', JSON.stringify(usage));
     }
 
+    /* ── Update the "X of 3 remaining" counter in the upload zone ── */
+    function updateAutoCounter() {
+        var el = document.getElementById('auto-ai-counter');
+        if (!el) return;
+        var LIMIT   = 3;
+        var usage   = checkAutoRateLimit();
+        var used    = usage.count;
+        var remaining = Math.max(0, LIMIT - used);
+        el.classList.remove('warn', 'exhausted');
+        if (remaining === 0) {
+            el.textContent = 'Daily limit reached — resets at midnight';
+            el.classList.add('exhausted');
+        } else if (remaining === 1) {
+            el.textContent = remaining + ' of ' + LIMIT + ' AI analyses remaining today';
+            el.classList.add('warn');
+        } else {
+            el.textContent = remaining + ' of ' + LIMIT + ' AI analyses remaining today';
+        }
+    }
+
     /* ── Gemini API call ─────────────────────────────────── */
     async function callGeminiAPI(rawText) {
         var prompt =
@@ -4862,6 +4886,7 @@
 
             // Increment rate limit counter only on success
             incrementAutoRateLimit();
+            updateAutoCounter();
 
         } catch (err) {
             console.error('[AUTO] Error:', err);
