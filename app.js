@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     // ── DevTools deterrent ────────────────────────────────
-(function () {
+/*(function () {
     // Block right click
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
@@ -28,7 +28,7 @@
             document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;font-size:1.2rem;background:#090d14;color:#f04455;">Developer tools are not allowed on this page.</div>';
         }
     }, 1000);
-}());
+}());*/
 
     /* ══════════════════════════════════════════════════════
        SHARED — runs on every page
@@ -592,11 +592,14 @@
         /* ── First Year ─────────────────────────────────────── */
         'firstyear': {
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -612,16 +615,24 @@
             'computer aided engineering graphics': 1.5,
             'computer aided machine drawing': 1.5,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -633,7 +644,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -650,20 +663,50 @@
             'art of happiness': 0.5,
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
-            'engineering mathematics ii': 4
+            'engineering mathematics ii': 4,
+        
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+        
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'software engineering and project management': 3,
+            'discrete mathematics and linear algebra': 3,
+            'computer architecture and microprocessor': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── Civil Engineering ───────────────────────────────── */
         'ce': {
             /* ── SEMESTER I & II — Common to all branches ── */
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'engineering mathematics ii': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -685,8 +728,10 @@
 
             /* ── SEMESTER III ── */
             'advance engineering mathematics-i': 3,
+            'advance engineering mathematics 1': 3,
             'advance engineering mathematics i': 3,
             'advanced engineering mathematics-i': 3,
+            'advanced engineering mathematics 1': 3,
             'advanced engineering mathematics i': 3,
             'technical communication': 2,
             'managerial economics & financial accounting': 2,
@@ -706,6 +751,7 @@
 
             /* ── SEMESTER IV ── */
             'advance engineering mathematics-ii': 2,
+            'advance engineering mathematics 2': 2,
             'advance engineering mathematics ii': 2,
             'advanced engineering mathematics-ii': 2,
             'advanced engineering mathematics ii': 2,
@@ -726,6 +772,7 @@
             'construction technology and equipments': 2,
             'construction technology & equipments': 2,
             'structural analysis-i': 2,
+            'structural analysis 1': 2,
             'structural analysis i': 2,
             'structure analysis-i': 2,
             'structure analysis i': 2,
@@ -757,6 +804,7 @@
             'wind and seismic analysis': 2,
             'wind & seismic analysis': 2,
             'structural analysis-ii': 3,
+            'structural analysis 2': 3,
             'structural analysis ii': 3,
             'structure analysis-ii': 3,
             'structure analysis ii': 3,
@@ -836,6 +884,7 @@
             'pipeline engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* ── OPEN ELECTIVE – II (Semester VIII) ── */
@@ -843,12 +892,15 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
             'biomaterials': 3,
             'big data analytics': 3,
+            'big data analytic': 3,
             'ipr, copyright and cyber law of india': 3,
             'ipr copyright and cyber law of india': 3,
             'energy audit and demand side management': 3,
@@ -868,15 +920,22 @@
             'material and human resource management': 3,
             'material & human resource management': 3,
                         'sports-i': 0.5,
+                        'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -888,7 +947,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -906,17 +967,67 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'disaster management': 2,        /* dept elective credit takes precedence */
-    },
+    
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'data communication and computer network': 3,
+            'data communication & computer network': 3,
+            'internet of thing': 3,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'advance engineering mathematics-1': 3,
+            'advanced engineering mathematics-1': 3,
+            'advance engineering mathematics-2': 2,
+            'advanced engineering mathematics 2': 2,
+            'advanced engineering mathematics-2': 2,
+            'structural analysis-1': 2,
+            'structure analysis 1': 2,
+            'structure analysis-1': 2,
+            'structural analysis-2': 3,
+            'structure analysis 2': 3,
+            'structure analysis-2': 3,
+        
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'software engineering and project management': 3,
+            'discrete mathematics and linear algebra': 3,
+            'computer architecture and microprocessor': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+        },
 
         /* ── Computer Science & Engineering ─────────────────── */
         'cse': {
             /* ── SEMESTER I & II (Common) ── */
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -932,6 +1043,7 @@
             'computer aided engineering graphics': 1.5,
             'computer aided machine drawing': 1.5,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'engineering mathematics ii': 4,
             'social outreach discipline & extra curricular activities': 0.5,
             'social outreach discipline and extra curricular activities': 0.5,
@@ -959,11 +1071,15 @@
             'discrete mathematics structure': 3,
             'discrete mathematics': 3,
             'microprocessor & interfaces': 3,
+            'microprocessor & interface': 3,
             'microprocessor and interfaces': 3,
+            'microprocessor and interface': 3,
             'database management system': 3,
             'theory of computation': 3,
             'data communication and computer networks': 3,
+            'data communication and computer network': 3,
             'data communication & computer networks': 3,
+            'data communication & computer network': 3,
             'microprocessor & interfaces lab': 1,
             'microprocessor and interfaces lab': 1,
             'database management system lab': 1.5,
@@ -1011,11 +1127,14 @@
 
             /* ── SEMESTER VII ── */
             'internet of things': 3,
+            'internet of thing': 3,
             'internet of things lab': 2,
+            'internet of thing lab': 2,
             'cyber security lab': 2,
 
             /* ── SEMESTER VIII ── */
             'big data analytics': 3,
+            'big data analytic': 3,
             'big data analytics lab': 1,
             'software testing and validation lab': 1,
             'software testing & validation lab': 1,
@@ -1046,6 +1165,7 @@
             'pipeline engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* ── OPEN ELECTIVE – II ── */
@@ -1053,7 +1173,9 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -1071,16 +1193,23 @@
             'unconventional hydrocarbon resources': 3,
             'energy management & policy': 3,
             'energy management and policy': 3,
-              'sports-i': 0.5,
+            'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -1092,7 +1221,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -1110,7 +1241,26 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'material and human resource management': 3,
-            },
+            
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'microprocessor interfaces lab': 1,
+        },
 
         /* ── CSE (Artificial Intelligence) ──────────────────── */
        'cse-ai': {
@@ -1133,11 +1283,15 @@
             /* II Year - IV Semester */
             'discrete mathematics structure': 3,
             'microprocessor & interfaces': 3,
+            'microprocessor & interface': 3,
             'microprocessor and interfaces': 3,
+            'microprocessor and interface': 3,
             'database management system': 3,
             'theory of computation': 3,
             'data communication and computer networks': 3,
+            'data communication and computer network': 3,
             'data communication & computer networks': 3,
+            'data communication & computer network': 3,
             'microprocessor & interfaces lab': 1,
             'microprocessor and interfaces lab': 1,
             'database management system lab': 1.5,
@@ -1177,7 +1331,9 @@
             'natural language processing': 2,
             'natural language processing (nlp)': 2,
             'predictive modeling and analytics': 3,
+            'predictive modeling and analytic': 3,
             'predictive modelling and analytics': 3,
+            'predictive modelling and analytic': 3,
             'digital image processing lab': 1.5,
             'machine learning lab': 1.5,
             'python lab': 1.5,
@@ -1198,6 +1354,7 @@
 
             /* IV Year - VIII Semester */
             'big data analytics': 3,
+            'big data analytic': 3,
             'big data analytics lab': 1,
             'robot programming lab': 1,
             'robot programing lab': 1,
@@ -1229,6 +1386,7 @@
             'pipeline engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* OPEN ELECTIVE - II (all 3 credits) */
@@ -1237,7 +1395,9 @@
             'waste and by product utilization': 3,
             'fundamentals of robotic system': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -1257,15 +1417,22 @@
             'energy management & policy': 3,
             'energy management and policy': 3,
              'sports-i': 0.5,
+             'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -1277,7 +1444,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -1294,7 +1463,31 @@
             'art of happiness': 0.5,
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
-            'material and human resource management': 3
+            'material and human resource management': 3,
+        
+            'communication skill': 2,
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics 1': 4,
+            'engineering mathematics-1': 4,
+            'engineering mathematics 2': 4,
+            'engineering mathematics-2': 4,
+            'human value': 2,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'internet of thing': 3,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'internet of thing': 3,
+            'internet of thing lab': 2,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'microprocessor interfaces lab': 1,
         },
 
         /* ── CSE (Data Science) ──────────────────────────────── */
@@ -1321,11 +1514,15 @@
             /* ── IV SEMESTER ── */
             'discrete mathematics structure': 3,
             'microprocessor and interfaces': 3,
+            'microprocessor and interface': 3,
             'microprocessor & interfaces': 3,
+            'microprocessor & interface': 3,
             'database management system': 3,
             'theory of computation': 3,
             'data communication and computer networks': 3,
+            'data communication and computer network': 3,
             'data communication & computer networks': 3,
+            'data communication & computer network': 3,
             'microprocessor and interfaces lab': 1,
             'microprocessor & interfaces lab': 1,
             'database management system lab': 1.5,
@@ -1410,6 +1607,7 @@
             'water pollution control engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* OPEN ELECTIVE – II */
@@ -1418,7 +1616,9 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -1439,15 +1639,22 @@
             'energy management and policy': 3,
             'energy management & policy': 3,
              'sports-i': 0.5,
+             'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -1459,7 +1666,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -1477,17 +1686,47 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'material and human resource management': 3,
-            },
+            
+            'communication skill': 2,
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics 1': 4,
+            'engineering mathematics-1': 4,
+            'engineering mathematics 2': 4,
+            'engineering mathematics-2': 4,
+            'human value': 2,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'big data analytic': 3,
+            'internet of thing': 3,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'internet of thing': 3,
+            'internet of thing lab': 2,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'microprocessor interfaces lab': 1,
+        },
 
         /* ── Electronics & Communication Engineering ────────── */
         'ece': {
             /* ── SEMESTER I & II (Common to all branches) ── */
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -1503,12 +1742,15 @@
             'computer aided engineering graphics': 1.5,
             'computer aided machine drawing': 1.5,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'engineering mathematics ii': 4,
 
             /* ── SEMESTER III ── */
             'advanced engineering mathematics-i': 3,
+            'advanced engineering mathematics 1': 3,
             'advanced engineering mathematics i': 3,
             'advance engineering mathematics-i': 3,
+            'advance engineering mathematics 1': 3,
             'advance engineering mathematics i': 3,
             'technical communication': 2,
             'managerial economics and financial accounting': 2,
@@ -1530,11 +1772,14 @@
 
             /* ── SEMESTER IV ── */
             'advanced engineering mathematics-ii': 3,
+            'advanced engineering mathematics 2': 3,
             'advanced engineering mathematics ii': 3,
             'advance engineering mathematics-ii': 3,
             'advance engineering mathematics ii': 3,
             'analog circuits': 3,
+            'analog circuit': 3,
             'microcontrollers': 3,
+            'microcontroller': 3,
             'electronics measurement & instrumentation': 3,
             'electronics measurement and instrumentation': 3,
             'analog and digital communication': 3,
@@ -1613,6 +1858,7 @@
             /* Open Elective II – 3 credits */
             'internet of things (iot) lab': 1,
             'internet of things lab': 1,
+            'internet of thing lab': 1,
             'iot lab': 1,
             'skill development lab': 1,
             'project': 7,
@@ -1644,6 +1890,7 @@
             'water pollution control engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* ── OPEN ELECTIVE – II (VIII Semester) ── */
@@ -1651,7 +1898,9 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -1659,6 +1908,7 @@
             'composite materials': 3,
             'fire and safety engineering': 3,
             'big data analytics': 3,
+            'big data analytic': 3,
             'ipr, copyright and cyber law of india': 3,
             'ipr copyright and cyber law of india': 3,
             'energy audit and demand side management': 3,
@@ -1673,15 +1923,22 @@
             'energy management & policy': 3,
             'energy management and policy': 3,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -1693,7 +1950,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -1711,19 +1970,64 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'material and human resource management': 3,
+        
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'data communication and computer network': 3,
+            'data communication & computer network': 3,
+            'internet of thing': 3,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'line commutated and active rectifier': 3,
+            'line commutated and active pwm rectifier': 3,
+            'advanced engineering mathematics-1': 3,
+            'advanced engineering mathematics-2': 3,
+            'analog and digital communication 1': 3,
+            'analog circuits 1': 3,
+        
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'software engineering and project management': 3,
+            'discrete mathematics and linear algebra': 3,
+            'computer architecture and microprocessor': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── Electrical Engineering ──────────────────────────── */
         'ee': {
             /* ── SEMESTER I & II (Common First Year) ── */
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'engineering mathematics ii': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -1756,6 +2060,7 @@
             'electrical machine-i': 3,
             'electrical machine i': 3,
             'electrical machine - i': 3,
+            'electrical machine 1': 3,
             'electromagnetic field': 2,
             'electromagnetic fields': 2,
             'analog electronics lab': 1,
@@ -1773,6 +2078,7 @@
             'electrical machine-ii': 3,
             'electrical machine ii': 3,
             'electrical machine - ii': 3,
+            'electrical machine 2': 3,
             'electrical machines-ii': 3,
             'electrical machines ii': 3,
             'power electronics': 3,
@@ -1791,6 +2097,7 @@
             /* ── SEMESTER V ── */
             'electrical materials': 2,
             'power system - i': 3,
+            'power system 1': 3,
             'power system i': 3,
             'power system-i': 3,
             'control system': 3,
@@ -1812,6 +2119,7 @@
             /* ── SEMESTER VI ── */
             'computer architecture': 2,
             'power system - ii': 3,
+            'power system 2': 3,
             'power system ii': 3,
             'power system-ii': 3,
             'power system protection': 3,
@@ -1822,6 +2130,7 @@
             'power system planning': 3,
             'digital signal processing': 3,
             'electrical and hybrid vehicles': 3,
+            'electrical and hybrid vehicle': 3,
             /* Labs */
             'power system - ii lab': 2,
             'power system ii lab': 2,
@@ -1848,7 +2157,9 @@
             /* Professional Elective – IV (any one) */
             'hvdc transmission system': 3,
             'line commutated and active rectifiers': 3,
+            'line commutated and active rectifier': 3,
             'line commutated and active pwm rectifiers': 3,
+            'line commutated and active pwm rectifier': 3,
             'advanced electric drives': 2,
             /* Labs & Project */
             'energy systems lab': 2,
@@ -1880,6 +2191,7 @@
             'pipeline engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* ── OPEN ELECTIVE – II (any one, 3 credits) ── */
@@ -1887,7 +2199,9 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -1895,6 +2209,7 @@
             'composite materials': 3,
             'fire and safety engineering': 3,
             'big data analytics': 3,
+            'big data analytic': 3,
             'ipr, copyright and cyber law of india': 3,
             'ipr copyright and cyber law of india': 3,
             'industrial and biomedical applications of rf energy': 3,
@@ -1908,15 +2223,22 @@
             'energy management & policy': 3,
             'energy management and policy': 3,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -1928,7 +2250,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -1946,19 +2270,75 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'material and human resource management': 3,
+        
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'data communication and computer network': 3,
+            'data communication & computer network': 3,
+            'internet of thing': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'electrical & hybrid vehicle': 3,
+            'electrical machine-1': 3,
+            'electrical machine-2': 3,
+            'power system-1': 3,
+            'power system-2': 3,
+            'circuit analysis 1': 3,
+            'circuit analysis-1': 3,
+            'circuit analysis 2': 3,
+            'circuit analysis-2': 3,
+            'advance engineering mathematics 1': 3,
+            'advance engineering mathematics-1': 3,
+            'advance engineering mathematics 3': 3,
+            'advance engineering mathematics-3': 3,
+            'advanced engineering mathematics 1': 3,
+            'advanced engineering mathematics-1': 3,
+            'advanced engineering mathematics 3': 3,
+            'advanced engineering mathematics-3': 3,
+        
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'software engineering and project management': 3,
+            'discrete mathematics and linear algebra': 3,
+            'computer architecture and microprocessor': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── Information Technology ──────────────────────────── */
         'it': {
             /* ===================== SEMESTER I & II (Common) ===================== */
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'engineering mathematics ii': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -2001,7 +2381,9 @@
             'database management system': 3,
             'theory of computation': 3,
             'data communication and computer networks': 3,
+            'data communication and computer network': 3,
             'data communication & computer networks': 3,
+            'data communication & computer network': 3,
             'linux shell programming lab': 1,
             'database management system lab': 1.5,
             'network programming lab': 1.5,
@@ -2047,6 +2429,7 @@
 
             /* ===================== SEMESTER VII ===================== */
             'big data analytics': 3,
+            'big data analytic': 3,
             'big data analytics lab': 2,
             'cyber security lab': 2,
             'security lab': 2,
@@ -2054,7 +2437,9 @@
 
             /* ===================== SEMESTER VIII ===================== */
             'internet of things': 3,
+            'internet of thing': 3,
             'internet of things lab': 1,
+            'internet of thing lab': 1,
             'software testing and validation lab': 1,
             'software testing & validation lab': 1,
             'project': 7,
@@ -2085,6 +2470,7 @@
             'water pollution control engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* ===================== OPEN ELECTIVE – II ===================== */
@@ -2092,7 +2478,9 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -2112,15 +2500,22 @@
             'energy management & policy': 3,
             'energy management and policy': 3,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -2132,7 +2527,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -2150,19 +2547,63 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'material and human resource management': 3,
+        
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'microprocessor & interface': 3,
+            'microprocessor and interface': 3,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'microprocessor & interface lab': 1,
+            'microprocessor and interface lab': 1,
+            'microprocessor interfaces lab': 1,
+        
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'software engineering and project management': 3,
+            'discrete mathematics and linear algebra': 3,
+            'computer architecture and microprocessor': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── Mechanical Engineering ──────────────────────────── */
         'me': {
             /* ===================== SEMESTER I & II (Common) ===================== */
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering mathematics i': 4,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'engineering mathematics ii': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'human values': 2,
+            'human value': 2,
             'programming for problem solving': 2,
             'basic mechanical engineering': 2,
             'basic electrical engineering': 2,
@@ -2182,6 +2623,7 @@
 
             /* ===================== SEMESTER III ===================== */
             'advance engineering mathematics-i': 3,
+            'advance engineering mathematics 1': 3,
             'advance engineering mathematics i': 3,
             'advanced engineering mathematics': 3,
             'technical communication': 2,
@@ -2192,6 +2634,7 @@
             'materials science and engineering': 3,
             'material science and engineering': 3,
             'mechanics of solids': 4,
+            'mechanics of solid': 4,
             'machine drawing practice': 1.5,
             'materials testing lab': 1.5,
             'material testing lab': 1.5,
@@ -2201,11 +2644,15 @@
 
             /* ===================== SEMESTER IV ===================== */
             'data analytics': 2,
+            'data analytic': 2,
             'digital electronics': 2,
             'fluid mechanics and fluid machines': 4,
+            'fluid mechanics and fluid machine': 4,
             'fluid mechanics & fluid machines': 4,
+            'fluid mechanics & fluid machine': 4,
             'manufacturing processes': 3,
             'theory of machines': 4,
+            'theory of machine': 4,
             'digital electronics lab': 1.5,
             'fluid mechanics lab': 1.5,
             'production practice lab': 1.5,
@@ -2219,6 +2666,7 @@
             'design of machine elements i': 3,
             'design of machine elements - i': 3,
             'design of machine elements-i': 3,
+            'design of machine elements 1': 3,
             'principles of management': 2,
             /* Professional Elective I (any one) - Credit 3 */
             'steam engineering': 3,
@@ -2239,16 +2687,21 @@
             'computer integrated manufacturing systems': 3,
             'cims': 3,
             'mechanical vibrations': 3,
+            'mechanical vibration': 3,
             'design of machine elements ii': 3,
             'design of machine elements - ii': 3,
             'design of machine elements-ii': 3,
+            'design of machine elements 2': 3,
             'quality management': 3,
             /* Professional Elective II (any one) - Credit 3 */
             'refrigeration and air conditioning': 3,
             'refrigeration & air conditioning': 3,
             'non conventional machining methods': 3,
+            'non conventional machining method': 3,
             'mems and microsystems': 3,
+            'mems and microsystem': 3,
             'mems & microsystems': 3,
+            'mems & microsystem': 3,
             'micro electro and mechanical systems and microsystems': 3,
             'cims lab': 1.5,
             'vibration lab': 1.5,
@@ -2261,11 +2714,16 @@
             /* ===================== SEMESTER VII ===================== */
             /* Professional Elective (any one) - Credit 3 */
             'i. c. engines': 3,
+            'i. c. engine': 3,
             'i.c. engines': 3,
+            'i.c. engine': 3,
             'ic engines': 3,
+            'ic engine': 3,
             'internal combustion engines': 3,
+            'internal combustion engine': 3,
             'operations research': 3,
             'turbomachines': 3,
+            'turbomachine': 3,
             'fea lab': 1.5,
             'thermal engineering lab ii': 1.5,
             'thermal engineering lab-ii': 1.5,
@@ -2276,7 +2734,9 @@
             /* ===================== SEMESTER VIII ===================== */
             /* Professional Elective (any one) - Credit 3 */
             'hybrid and electric vehicles': 3,
+            'hybrid and electric vehicle': 3,
             'hybrid & electric vehicles': 3,
+            'hybrid & electric vehicle': 3,
             'supply and operations management': 3,
             'supply & operations management': 3,
             'additive manufacturing': 3,
@@ -2310,6 +2770,7 @@
             'pipeline engineering': 3,
             'water pollution control engineering': 3,
             'technical textiles': 3,
+            'technical textile': 3,
             'garment manufacturing technology': 3,
 
             /* ===================== OPEN ELECTIVE – II ===================== */
@@ -2317,7 +2778,9 @@
             'waste and by-product utilization': 3,
             'waste and by product utilization': 3,
             'finite element methods': 3,
+            'finite element method': 3,
             'factor of human interactions': 3,
+            'factor of human interaction': 3,
             'refinery engineering design': 3,
             'fertilizer technology': 3,
             'electrical and electronic ceramics': 3,
@@ -2325,6 +2788,7 @@
             'composite materials': 3,
             'fire and safety engineering': 3,
             'big data analytics': 3,
+            'big data analytic': 3,
             'ipr copyright and cyber law of india': 3,
             'ipr, copyright and cyber law of india': 3,
             'energy audit and demand side management': 3,
@@ -2337,15 +2801,22 @@
             'energy management & policy': 3,
             'energy management and policy': 3,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -2357,7 +2828,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -2375,19 +2848,116 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'material and human resource management': 3,
+        
+            'tinkering & element of design': 0.5,
+            'tinkering and element of design': 0.5,
+            'sketch & rendering': 0.5,
+            'sketch and rendering': 0.5,
+            'engineering mathematics-1': 4,
+            'engineering mathematics-2': 4,
+            'human value activitie': 1,
+            'human value activity': 1,
+            'computer aided engineering graphic': 1.5,
+            'data communication and computer network': 3,
+            'data communication & computer network': 3,
+            'internet of thing': 3,
+            'electrical and hybrid vehicle': 3,
+            'electrical & hybrid vehicle': 3,
+            'predictive modeling and analytic': 3,
+            'predictive modelling and analytic': 3,
+            'supply and operation management': 3,
+            'supply & operation management': 3,
+            'design of machine elements-1': 3,
+            'design of machine element 1': 3,
+            'design of machine element-1': 3,
+            'design of machine elements-2': 3,
+            'design of machine element 2': 3,
+            'design of machine element-2': 3,
+            'machine design practice 1': 1,
+            'machine design practice-1': 1,
+            'machine design practice 2': 1.5,
+            'machine design practice-2': 1.5,
+            'thermal engineering lab-1': 1,
+            'thermal engineering lab-2': 1.5,
+            'advance engineering mathematics-1': 3,
+        
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'software engineering and project management': 3,
+            'discrete mathematics and linear algebra': 3,
+            'computer architecture and microprocessor': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         }
 
     };
+
+    function normalizeRtuKey(name) {
+        if (!name) return '';
+        return name
+            .replace(/\n/g, ' ')
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, ' ')
+            .replace(/ & /g, ' and ')
+            .replace(/\s*-\s*/g, '-')   // normalise spaces around hyphens
+            .replace(/[.,]+$/, '')        // strip trailing punctuation
+            .replace(/\s*\/\s*/g, '/');  // slash spacing
+    }
+
+    function stripSingular(key) {
+        // Strip trailing 's' safely — only from last word, only if result is meaningful
+        var words = key.split(' ');
+        var last  = words[words.length - 1];
+        if (last.length > 2 && last.endsWith('s') && !last.endsWith('ss')) {
+            words[words.length - 1] = last.slice(0, -1);
+            return words.join(' ');
+        }
+        return null;
+    }
+
+    function partialMatchRtu(map, key) {
+        // Strip last word progressively (max 3 attempts) to handle extra suffixes
+        var words = key.split(' ');
+        for (var i = 0; i < 3; i++) {
+            if (words.length <= 2) break;
+            words.pop();
+            var partial = words.join(' ');
+            if (partial in map) return map[partial];
+        }
+        return null;
+    }
 
     function lookupCredits(subjectName, branch) {
         if (!subjectName) return null;
         var map = RTU_CREDIT_MAPS[branch];
         if (!map) return null;
-        var key = subjectName.toLowerCase().trim()
-                     .replace(/\n/g, ' ')
-                     .replace(/\s+/g, ' ')
-                     .replace(/ & /g, ' and ');
-        return (key in map) ? map[key] : null;
+        var key = normalizeRtuKey(subjectName);
+
+        // 1. Exact match
+        if (key in map) return map[key];
+
+        // 2. Singular variant
+        var singular = stripSingular(key);
+        if (singular && singular in map) return map[singular];
+
+        // 3. Partial match (strip trailing extra words progressively)
+        var partial = partialMatchRtu(map, key);
+        if (partial !== null) return partial;
+
+        // 4. Partial match on singular
+        if (singular) {
+            var partialSing = partialMatchRtu(map, singular);
+            if (partialSing !== null) return partialSing;
+        }
+
+        return null;
     }
 
     async function extractPDFText(arrayBuffer) {
@@ -2887,10 +3457,13 @@
         /* ── First Year (Sem 1 + Sem 2 combined) ────────── */
         'firstyear': {
             'engineering mathematics-i': 4,
+            'engineering mathematics 1': 4,
             'engineering physics': 4,
             'engineering chemistry': 4,
             'communication skills': 2,
+            'communication skill': 2,
             'universal human values': 2,
+            'universal human value': 2,
             'computational thinking and programming': 2,
             'basic electrical and electronics engineering': 2,
             'basic civil engineering': 2,
@@ -2908,20 +3481,28 @@
             'social outreach, discipline and extra-curricular activities (sodeca)': 0.5,
             'audit course': 0,
             'engineering mathematics-ii': 4,
+            'engineering mathematics 2': 4,
             'innovation and entrepreneurship': 1,
             'problem solving using object oriented paradigm': 2,
             'object oriented programming lab': 1,
             'technical training': 0,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -2933,7 +3514,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -2973,6 +3556,7 @@
             'technical training': 0,
             'soft skills training': 0,
             'advanced engineering mathematics-ii': 3,
+            'advanced engineering mathematics 2': 3,
             'structural analysis-i': 3,
             'fluid mechanics and hydraulic engineering': 4,
             'concrete technology': 3,
@@ -2983,15 +3567,22 @@
             'environmental engineering lab': 1,
             'structural engineering lab': 1,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3003,7 +3594,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3050,15 +3643,22 @@
             'network programming lab': 1.5,
             'microprocessor lab': 1.5,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3070,7 +3670,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3088,7 +3690,28 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0.5
+            'yoga': 0.5,
+        
+            'communication skill': 2,
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'engineering mathematics 1': 4,
+            'engineering mathematics-1': 4,
+            'engineering mathematics 2': 4,
+            'engineering mathematics-2': 4,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── CSE (Artificial Intelligence) — 2nd Year ────── */
@@ -3117,15 +3740,22 @@
             'full stack development lab': 1.5,
             'microprocessor lab': 1.5,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3137,7 +3767,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3155,7 +3787,28 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0.5
+            'yoga': 0.5,
+        
+            'communication skill': 2,
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'engineering mathematics 1': 4,
+            'engineering mathematics-1': 4,
+            'engineering mathematics 2': 4,
+            'engineering mathematics-2': 4,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── CSE (Data Science) — 2nd Year ─────────────── */
@@ -3186,15 +3839,22 @@
             'full stack development lab': 1.5,
             'microprocessor lab': 1.5,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3206,7 +3866,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3224,7 +3886,28 @@
             'satkaam: preparing from campus to corporate life': 0.5,
             'satkaam preparing from campus to corporate life': 0.5,
             'r-programming for data science': 1.5,
-            'yoga': 0.5
+            'yoga': 0.5,
+        
+            'communication skill': 2,
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'engineering mathematics 1': 4,
+            'engineering mathematics-1': 4,
+            'engineering mathematics 2': 4,
+            'engineering mathematics-2': 4,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── CSE (IOT) — 2nd Year ───────────────────────── */
@@ -3252,15 +3935,22 @@
             'computer architecture and microprocessor': 2,
             'database systems lab': 1.5,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3272,7 +3962,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3292,7 +3984,28 @@
             'network programming lab': 1.5,
             'microprocessor lab': 1.5,
             'data analytics and visualization lab': 1.5,
-            'yoga': 0.5
+            'yoga': 0.5,
+        
+            'communication skill': 2,
+            'electronic devices and circuit': 3,
+            'electronic devices & circuit': 3,
+            'mechanics of solid': 4,
+            'data analytic': 3,
+            'fluid mechanics and fluid machine': 4,
+            'fluid mechanics & fluid machine': 4,
+            'theory of machine': 4,
+            'microcontroller': 3,
+            'universal human value': 2,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
+            'data structure & algorithm': 4,
+            'data structures & algorithm': 4,
+            'engineering mathematics 1': 4,
+            'engineering mathematics-1': 4,
+            'engineering mathematics 2': 4,
+            'engineering mathematics-2': 4,
+            'data structure and algorithm': 4,
+            'data structures and algorithm': 4,
         },
 
         /* ── Electronics & Communication Engineering — 2nd Year */
@@ -3301,6 +4014,7 @@
             'technical communication': 1,
             'managerial economics and financial accounting': 1,
             'electronic devices and circuits': 3,
+            'electronic devices and circuit': 3,
             'digital system design': 3,
             'circuit theory': 4,
             'data structure and algorithm': 2,
@@ -3314,6 +4028,7 @@
             'social outreach, discipline and extra curricular activities': 0.5,
             'technical training': 0,
             'skill development courses': 0,
+            'skill development course': 0,
             'probablity and stochastic process': 2,
             'analog electronics': 3,
             'signal and systems': 3,
@@ -3326,15 +4041,22 @@
             'microprocessor and microcontroller lab': 1,
             'electronics measurement and instrumentaion lab': 1,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3346,7 +4068,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3371,9 +4095,11 @@
             'managerial economics and financial accounting': 1,
             'technical communication': 1,
             'advanced engineering mathematics-i': 3,
+            'advanced engineering mathematics 1': 3,
             'electrical measurement and instrumentation': 3,
             'generation of electrical power': 2,
             'circuit analysis-i': 3,
+            'circuit analysis 1': 3,
             'analog electronics': 2,
             'electrical machine-i': 3,
             'analog electronics lab': 1.5,
@@ -3387,6 +4113,7 @@
             'soft skills training': 0,
             'advanced engineering mathematics-iii': 3,
             'circuit analysis-ii': 3,
+            'circuit analysis 2': 3,
             'signal and systems': 2,
             'electrical machine-ii': 3,
             'power electronics': 3,
@@ -3395,15 +4122,22 @@
             'matlab programming lab': 1.5,
             'digital electronics lab': 1.5,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3415,7 +4149,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3462,15 +4198,22 @@
             'network programming lab': 1.5,
             'web development lab': 1.5,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3482,7 +4225,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3511,6 +4256,7 @@
             'engineering mechanics': 3,
             'engineering thermodynamics': 3,
             'mechanics of solids': 4,
+            'mechanics of solid': 4,
             'materials science and engineering': 3,
             'basic mechanical engineering lab': 1.5,
             'computer aided design lab': 1.5,
@@ -3521,23 +4267,33 @@
             'technical training': 0,
             'soft skills training': 0,
             'data analytics': 3,
+            'data analytic': 3,
             'digital electronics': 2,
             'fluid mechanics and fluid machines': 4,
+            'fluid mechanics and fluid machine': 4,
             'manufacturing processes': 3,
             'theory of machines': 4,
+            'theory of machine': 4,
             'digital electronics lab': 1,
             'fluid mechanics and hydraulic machines lab': 1.5,
             'production engineering lab': 2,
             'sports-i': 0.5,
+            'sport-i': 0.5,
             'sports i': 0.5,
+            'sport i': 0.5,
             'sports ii': 0.5,
+            'sport ii': 0.5,
             'sports-ii': 0.5,
+            'sport-ii': 0.5,
             'national service scheme (nss)': 0.5,
             'national service scheme': 0.5,
             'national cadet corps (ncc)': 0.5,
             'national cadet corps': 0.5,
+            'national cadet corp': 0.5,
             'physical education, health and sports': 0.5,
+            'physical education, health and sport': 0.5,
             'physical education, health & sports': 0.5,
+            'physical education, health & sport': 0.5,
             'corporate social responsibilities': 0.5,
             'financial literacy': 0.5,
             'financial statements analysis': 0.5,
@@ -3549,7 +4305,9 @@
             'spanish': 0.5,
             'logical reasoning': 0.5,
             'business communication and presentation skills': 0.5,
+            'business communication and presentation skill': 0.5,
             'business communication & presentation skills': 0.5,
+            'business communication & presentation skill': 0.5,
             'public speaking': 0.5,
             'entrepreneurship development': 0.5,
             'tinkering & elements of design': 0.5,
@@ -3581,7 +4339,20 @@
             .trim()
             .replace(/\s+/g, ' ')         // collapse multiple spaces
             .replace(/ & /g, ' and ')     // ampersand variants
-            .replace(/\s*\/\s*/g, '/');   // slash spacing variants
+            .replace(/\s*-\s*/g, '-')    // spaces around hyphens
+            .replace(/[.,]+$/, '')         // trailing punctuation
+            .replace(/\s*\/\s*/g, '/');  // slash spacing variants
+    }
+
+    function partialMatchAuto(map, key) {
+        var words = key.split(' ');
+        for (var i = 0; i < 3; i++) {
+            if (words.length <= 2) break;
+            words.pop();
+            var partial = words.join(' ');
+            if (partial in map) return map[partial];
+        }
+        return null;
     }
 
     /* ── Credit lookup — branch specific ────────────────── */
@@ -3589,7 +4360,31 @@
         var map = AUTO_CREDIT_MAPS[branch];
         if (!map) return null;
         var key = normalizeAutoSubject(subjectName);
-        return (key in map) ? map[key] : null;
+
+        // 1. Exact match
+        if (key in map) return map[key];
+
+        // 2. Singular variant (strip trailing s from last word)
+        var words = key.split(' ');
+        var last  = words[words.length - 1];
+        if (last.length > 2 && last.endsWith('s') && !last.endsWith('ss')) {
+            var singWords = words.slice();
+            singWords[singWords.length - 1] = last.slice(0, -1);
+            var singular = singWords.join(' ');
+            if (singular in map) return map[singular];
+        }
+
+        // 3. Partial match on exact key
+        var partial = partialMatchAuto(map, key);
+        if (partial !== null) return partial;
+
+        // 4. Partial match on singular key
+        if (singular in map === false) {  // only if singular didn't already match
+            var partialSing = partialMatchAuto(map, singular);
+            if (partialSing !== null) return partialSing;
+        }
+
+        return null;
     }
 
     /* ── Grade label from grade point ───────────────────── */
@@ -3629,7 +4424,7 @@
         window.scrollTo({ top: 0 });
     }
 
-    /* ── Rate limit check (2 per day via localStorage) ───── */
+    /* ── Client-side rate limit hint (mirrors server-side KV limit of 5/day) ─── */
     function checkAutoRateLimit() {
         var today = new Date().toISOString().slice(0, 10);
         var raw   = localStorage.getItem('bw-auto-usage');
@@ -3701,6 +4496,22 @@
         if (!response.ok) {
             var errBody = '';
             try { errBody = await response.text(); } catch(e) {}
+            // Server-side rate limit (from Cloudflare Worker)
+            if (response.status === 429) {
+                var retryAfter = response.headers.get('Retry-After') || '';
+                var waitMsg = retryAfter && parseInt(retryAfter, 10) > 60
+                    ? 'Daily limit reached. Try again tomorrow.'
+                    : 'AI service is busy. Please wait 60 seconds and try again.';
+                throw new Error('RATE_LIMITED:' + waitMsg);
+            }
+            // Origin blocked by Worker
+            if (response.status === 403) {
+                throw new Error('BLOCKED:Access denied. Please use BunkWise from the official website.');
+            }
+            // Payload too large
+            if (response.status === 413) {
+                throw new Error('TOO_LARGE:PDF is too large for AI analysis. Please upload a single-semester result PDF.');
+            }
             throw new Error('Gemini API error ' + response.status + ': ' + errBody);
         }
 
@@ -3985,12 +4796,21 @@
             return;
         }
 
-        // ── Rate limit check ──
+        // ── PDF size check (5 MB hard limit before any processing) ──
+        var MAX_PDF_BYTES = 5 * 1024 * 1024; // 5 MB
+        if (file.size > MAX_PDF_BYTES) {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ File too large.';
+            showAutoError('PDF is too large (' + (file.size / (1024*1024)).toFixed(1) + ' MB). Maximum allowed size is 5 MB. Please upload your single-semester result PDF only.');
+            return;
+        }
+
+        // ── Client-side rate limit hint (real enforcement is server-side) ──
         var usage = checkAutoRateLimit();
-        if (usage.count >= 2) {
+        if (usage.count >= 3) {
             zone.classList.add('error-state');
             hint.textContent = '⚠ Daily limit reached.';
-            showAutoError('Daily limit reached. You can check 2 results per day. Try again tomorrow.');
+            showAutoError('Daily limit reached. You can analyse 3 results per day. Try again tomorrow.');
             return;
         }
 
@@ -4046,11 +4866,22 @@
         } catch (err) {
             console.error('[AUTO] Error:', err);
             showSGPAState('upload');
-            if (err && err.message && err.message.indexOf('Gemini API error') !== -1) {
+            var msg = err && err.message ? err.message : '';
+            if (msg.indexOf('RATE_LIMITED:') === 0) {
+                zone.classList.add('error-state');
+                hint.textContent = '⚠ Limit reached.';
+                showAutoError(msg.slice('RATE_LIMITED:'.length));
+            } else if (msg.indexOf('BLOCKED:') === 0) {
+                showAutoError(msg.slice('BLOCKED:'.length));
+            } else if (msg.indexOf('TOO_LARGE:') === 0) {
+                zone.classList.add('error-state');
+                hint.textContent = '⚠ File too large.';
+                showAutoError(msg.slice('TOO_LARGE:'.length));
+            } else if (msg.indexOf('Gemini API error') !== -1) {
                 showAutoError('AI analysis failed. Please check your connection and try again.');
-            } else if (err && err.message && err.message.indexOf('JSON') !== -1) {
+            } else if (msg.indexOf('JSON') !== -1) {
                 showAutoError('Could not read result. The PDF may not be a valid SKIT result. Try again.');
-            } else if (err && err.message && err.message.indexOf('fetch') !== -1) {
+            } else if (msg.indexOf('fetch') !== -1 || msg.indexOf('network') !== -1 || msg.indexOf('Failed to fetch') !== -1) {
                 showAutoError('No internet connection detected. Please check your network and try again.');
             } else {
                 showAutoError('Could not process this PDF. Please ensure it is a valid SKIT autonomous result PDF.');
