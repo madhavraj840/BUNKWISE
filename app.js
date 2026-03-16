@@ -4365,12 +4365,13 @@
         if (key in map) return map[key];
 
         // 2. Singular variant (strip trailing s from last word)
+        var singular = null;  // declared here so step 4 can safely reference it
         var words = key.split(' ');
         var last  = words[words.length - 1];
         if (last.length > 2 && last.endsWith('s') && !last.endsWith('ss')) {
             var singWords = words.slice();
             singWords[singWords.length - 1] = last.slice(0, -1);
-            var singular = singWords.join(' ');
+            singular = singWords.join(' ');
             if (singular in map) return map[singular];
         }
 
@@ -4378,8 +4379,8 @@
         var partial = partialMatchAuto(map, key);
         if (partial !== null) return partial;
 
-        // 4. Partial match on singular key
-        if (singular in map === false) {  // only if singular didn't already match
+        // 4. Partial match on singular key (only if singular was computed)
+        if (singular !== null) {
             var partialSing = partialMatchAuto(map, singular);
             if (partialSing !== null) return partialSing;
         }
@@ -4487,8 +4488,7 @@
             body:    JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
                 generationConfig: {
-                    temperature:      0,
-                    responseMimeType: 'application/json'
+                    temperature: 0
                 }
             })
         });
@@ -4879,6 +4879,8 @@
                 showAutoError(msg.slice('TOO_LARGE:'.length));
             } else if (msg.indexOf('Gemini API error') !== -1) {
                 showAutoError('AI analysis failed. Please check your connection and try again.');
+            } else if (msg.indexOf('Gemini returned empty') !== -1) {
+                showAutoError('AI returned no response. The PDF may be too complex or the AI service is temporarily unavailable. Please try again in a moment.');
             } else if (msg.indexOf('JSON') !== -1) {
                 showAutoError('Could not read result. The PDF may not be a valid SKIT result. Try again.');
             } else if (msg.indexOf('fetch') !== -1 || msg.indexOf('network') !== -1 || msg.indexOf('Failed to fetch') !== -1) {
