@@ -55,22 +55,57 @@
 <div id="page-about" class="page" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
     <div class="static-page">
         <h1 class="static-page-title">About Us</h1>
-        <p class="static-intro">BunkWise is a fast, no-login attendance calculator built for college students who are tired of manually computing whether they can skip that Friday lecture.</p>
+        <p class="static-intro">BunkWise is a fast, no-login <strong>attendance calculator</strong> and <strong>SGPA calculator</strong> built for college students across Rajasthan who are tired of manually computing whether they can skip that Friday lecture — or what their SGPA looks like after every semester result.</p>
+
         <div class="static-section">
-            <h2>What we do</h2>
-            <p>Copy your attendance table from your college ERP portal, paste it into BunkWise, and get a full breakdown instantly — aggregate percentage, subject-wise percentages, and exactly how many classes you can bunk or must attend to hit your desired target.</p>
+            <h2>What We Do</h2>
+            <p>BunkWise provides two core tools: an <strong>RTU attendance calculator</strong> that parses your ERP attendance data and tells you exactly how many classes you can bunk or must attend in each subject, and an <strong>RTU SGPA calculator</strong> that reads your semester result PDF and computes your SGPA with a full subject-wise breakdown.</p>
+            <p>Copy your attendance table from your college ERP portal, paste it into BunkWise, and get a full breakdown instantly — aggregate percentage, subject-wise percentages, and exactly how many classes you can bunk or must attend to hit your desired target. No spreadsheets, no manual formulas, no waiting.</p>
+            <p>For SGPA, upload your result PDF (from rtu.ac.in for RTU students, or your autonomous college portal for SKIT students), and BunkWise instantly reads your marks, assigns grades and credit points, and calculates your SGPA — with a downloadable report.</p>
         </div>
+
         <div class="static-section">
-            <h2>How it works</h2>
-            <p>All processing happens directly in your browser. No data is sent anywhere. No account needed. Close the tab and everything is gone.</p>
+            <h2>Who We Support</h2>
+            <p>BunkWise is built primarily for students at <strong>Rajasthan Technical University (RTU)</strong> and all of its affiliated colleges. This includes institutions across Rajasthan such as:</p>
+            <ul>
+                <li><strong>SKIT</strong> — Swami Keshvanand Institute of Technology, Jaipur (Autonomous)</li>
+                <li><strong>Poornima University</strong> — Jaipur</li>
+                <li><strong>VGU</strong> — Vivekananda Global University, Jaipur</li>
+                <li><strong>Arya College of Engineering &amp; IT</strong> — Jaipur</li>
+                <li><strong>JECRC University</strong> — Jaipur</li>
+                <li><strong>Manipal University Jaipur</strong></li>
+                <li><strong>Jaipur Engineering College (JEC)</strong></li>
+                <li>And hundreds of other RTU-affiliated engineering and management colleges across Rajasthan</li>
+            </ul>
+            <p>If your college uses a standard ERP portal for attendance and downloads results from rtu.ac.in (or your autonomous college portal), BunkWise works for you.</p>
         </div>
+
         <div class="static-section">
-            <h2>Why we built it</h2>
-            <p>So you can BUNK classes without any guilt!</p>
+            <h2>Our Tools</h2>
+            <p><strong>Attendance Calculator</strong> — Paste or upload your ERP attendance data and instantly see your aggregate percentage, subject-wise breakdown, and whether you can bunk or need to attend. Works with the <strong>75 attendance calculator</strong> target (adjustable) required by most RTU-affiliated colleges.</p>
+            <p><strong>Class Wise Calculator</strong> — A planning tool that shows you your <em>future</em> attendance if you attend or skip a given number of classes. Perfect for the weeks before exams when you need to plan your attendance strategy.</p>
+            <p><strong>SGPA Calculator</strong> — Upload your RTU or SKIT result PDF and get your SGPA instantly. Supports both the standard RTU result format and the autonomous SKIT result format. Download your results as a formatted report PDF.</p>
+        </div>
+
+        <div class="static-section">
+            <h2>How It Works</h2>
+            <p>All processing happens directly in your browser using JavaScript. No data is sent to any server. No account needed. Close the tab and everything is gone. BunkWise has no backend — it is a 100% client-side tool built with privacy as a first principle.</p>
+            <p>For attendance, BunkWise parses the copied or uploaded data from your college ERP portal. For SGPA, it uses PDF.js to read your result PDF locally and extract the marks, grades, and credit information needed for computation.</p>
+        </div>
+
+        <div class="static-section">
+            <h2>Privacy &amp; Data</h2>
+            <p>Your attendance data, result PDFs, and academic information never leave your device. There are no servers, no databases, no analytics on your data. BunkWise does not know who you are, what your attendance is, or what your results say. Everything is processed locally and discarded when you close the tab.</p>
+        </div>
+
+        <div class="static-section">
+            <h2>Why We Built It</h2>
+            <p>So you can bunk classes without any guilt — and know exactly when you can't! As RTU students ourselves, we got tired of manually computing attendance percentages and grade points every semester. BunkWise is the tool we wished existed when we were calculating these things by hand.</p>
+            <p>We also believe that students deserve simple, fast, private tools that respect their data. BunkWise will always be free, no-login, and completely private.</p>
         </div>
     </div>
 </div>
 
-<script src="app.js"></script>
+<script src="app.js" defer></script>
 </body>
 </html>

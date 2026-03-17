@@ -1,7 +1,24 @@
 (function () {
     'use strict';
+
+    /* ── Lazy script loader ──────────────────────────────────
+       Returns a Promise that resolves once the script is loaded.
+       Safe to call multiple times — skips if already in DOM.
+    ────────────────────────────────────────────────────────── */
+    function loadScript(src) {
+        return new Promise(function (resolve, reject) {
+            if (document.querySelector('script[src="' + src + '"]')) {
+                resolve(); return;
+            }
+            var s = document.createElement('script');
+            s.src = src;
+            s.onload  = resolve;
+            s.onerror = function () { reject(new Error('Failed to load ' + src)); };
+            document.head.appendChild(s);
+        });
+    }
     // ── DevTools deterrent ────────────────────────────────
-(function () {
+/*(function () {
     // Block right click
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
@@ -28,7 +45,7 @@
             document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;font-size:1.2rem;background:#090d14;color:#f04455;">Developer tools are not allowed on this page.</div>';
         }
     }, 1000);
-}());
+}());*/
 
     /* ══════════════════════════════════════════════════════
        SHARED — runs on every page
@@ -2961,8 +2978,11 @@
     }
 
     async function extractPDFText(arrayBuffer) {
+        if (!window.pdfjsLib) {
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+        }
         var pdfjsLib = window.pdfjsLib;
-        if (!pdfjsLib) throw new Error('PDF.js not loaded');
+        if (!pdfjsLib) throw new Error('PDF.js failed to load');
         pdfjsLib.GlobalWorkerOptions.workerSrc =
             'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -4843,12 +4863,6 @@
             zone.classList.add('error-state');
             hint.textContent = '⚠ Please upload a PDF file.';
             showAutoError('Only PDF files are supported. Please upload a valid SKIT autonomous result PDF.');
-            return;
-        }
-
-        // ── Check PDF.js loaded ──
-        if (!window.pdfjsLib) {
-            showAutoError('PDF library not available. Please check your internet connection and refresh.');
             return;
         }
 

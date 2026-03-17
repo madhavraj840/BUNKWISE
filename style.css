@@ -1323,3 +1323,178 @@ button { cursor: pointer; }
     background: var(--bg-card);
     color: var(--text);
 }
+
+/* ══════════════════════════════════════════════════════
+   SHARE BUTTON
+   Used in attendance results and CW results pages
+══════════════════════════════════════════════════════ */
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .42rem 1.1rem;
+    background: var(--bg-card);
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--r);
+    font-family: 'Manrope', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: .01em;
+    transition: background .2s, color .2s, transform .15s, box-shadow .2s;
+}
+.btn-share:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+.btn-share:active { transform: translateY(0); }
+
+/* CW share row — centres the share button below the panel */
+.cw-share-row {
+    display: flex;
+    justify-content: center;
+    margin-top: -.5rem;
+    margin-bottom: 1.75rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   AD CONTAINERS
+   Placeholder blocks for future AdSense units.
+   Visual only — no real ads yet.
+══════════════════════════════════════════════════════ */
+.ad-container {
+    width: 100%;
+    min-height: 90px;
+    background: var(--bg-card);
+    border: 1px dashed var(--border-l);
+    border-radius: var(--r);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+.ad-container::before { content: '// advertisement'; }
+
+/* Banner variant at bottom of home page */
+.ad-container.ad-banner {
+    min-height: 70px;
+    margin: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════
+   SEO SECTION
+   Text blocks added below tools for search engines.
+   Below the fold — users see the tool first.
+══════════════════════════════════════════════════════ */
+.seo-section {
+    width: 100%;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: .5rem;
+    user-select: text;
+    -webkit-user-select: text;
+}
+.seo-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -.02em;
+    margin-bottom: 1rem;
+}
+.seo-section p {
+    font-size: .9rem;
+    color: var(--text-sec);
+    line-height: 1.82;
+    margin-bottom: .85rem;
+}
+.seo-section strong { color: var(--text); font-weight: 600; }
+
+/* ── FAQ inside seo-section ─────────────────────────── */
+.faq-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    width: 100%;
+}
+.faq-section > h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -.02em;
+    margin-bottom: 1rem;
+}
+details.faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    background: var(--bg-card);
+    margin-bottom: .6rem;
+    overflow: hidden;
+    transition: box-shadow .2s;
+}
+details.faq-item[open] {
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    border-color: var(--border-l);
+}
+summary.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: background .15s;
+}
+summary.faq-question::-webkit-details-marker { display: none; }
+summary.faq-question::after {
+    content: '▼';
+    font-size: .65rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform .25s;
+}
+details.faq-item[open] summary.faq-question::after { transform: rotate(180deg); }
+details.faq-item[open] summary.faq-question { background: var(--bg-card-h); }
+summary.faq-question:hover { background: var(--bg-card-h); }
+.faq-answer {
+    padding: 0 1.25rem 1rem;
+    font-size: .87rem;
+    color: var(--text-sec);
+    line-height: 1.78;
+    border-top: 1px solid var(--border);
+}
+.faq-answer p { margin-top: .75rem; }
+
+/* Mobile adjustments for seo-section inside paste-wrap */
+@media (max-width: 660px) {
+    .seo-section { padding: 1.5rem 0 .5rem; }
+    .faq-section { margin-top: 1.5rem; }
+}
