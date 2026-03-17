@@ -255,6 +255,7 @@ button { cursor: pointer; }
 #page-home {
     position: relative; overflow: hidden;
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #0c1530 0%, var(--bg) 68%);
+    justify-content: flex-start;
 }
 [data-theme="light"] #page-home {
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #ddd0b8 0%, var(--bg) 68%);
@@ -274,9 +275,12 @@ button { cursor: pointer; }
     pointer-events: none;
 }
 .home-inner {
+    flex: 1;
     position: relative; z-index: 1;
     display: flex; flex-direction: column;
     align-items: center; text-align: center;
+    justify-content: center;
+    padding-bottom: 1rem;
 }
 .home-badge {
     display: inline-flex; align-items: center; gap: .5rem;
@@ -325,6 +329,16 @@ button { cursor: pointer; }
 .btn-primary:active { transform: translateY(0); }
 .btn-arrow { transition: transform .2s; }
 .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+.home-links {
+    margin-top: 1.25rem;
+    font-size: .85rem;
+    color: var(--text-sec);
+}
+.home-links a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.home-links a:hover { text-decoration: underline; }
 
 /* ══════════════════════════════════════════════════════
    PAGE 2 — PASTE
@@ -1394,11 +1408,9 @@ button { cursor: pointer; }
     border-left: none;
     border-right: none;
     border-bottom: none;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 /* ══════════════════════════════════════════════════════

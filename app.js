@@ -18,7 +18,7 @@
         });
     }
     // ── DevTools deterrent ────────────────────────────────
-(function () {
+/*(function () {
     // Block right click
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
@@ -45,7 +45,7 @@
             document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;font-size:1.2rem;background:#090d14;color:#f04455;">Developer tools are not allowed on this page.</div>';
         }
     }, 1000);
-}());
+}());*/
 
     /* ══════════════════════════════════════════════════════
        SHARED — runs on every page
@@ -3249,13 +3249,18 @@
         }
     }
 
-    function generateReportPDF() {
+    async function generateReportPDF() {
         var data = SGPA_STATE.data;
         if (!data) return;
 
         if (!window.jspdf || !window.jspdf.jsPDF) {
-            alert('PDF generation library not loaded. Please check your internet connection and try again.');
-            return;
+            try {
+                await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+                await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js');
+            } catch (e) {
+                alert('PDF generation library not loaded. Please check your internet connection and try again.');
+                return;
+            }
         }
 
         var jsPDF  = window.jspdf.jsPDF;
@@ -4707,13 +4712,18 @@
     }
 
     /* ── Generate autonomous PDF report ─────────────────── */
-    function generateAutoReportPDF() {
+    async function generateAutoReportPDF() {
         var data = AUTO_STATE.data;
         if (!data) return;
 
         if (!window.jspdf || !window.jspdf.jsPDF) {
-            alert('PDF generation library not loaded. Please check your connection and try again.');
-            return;
+            try {
+                await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+                await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js');
+            } catch (e) {
+                alert('PDF generation library not loaded. Please check your connection and try again.');
+                return;
+            }
         }
 
         var jsPDF = window.jspdf.jsPDF;
