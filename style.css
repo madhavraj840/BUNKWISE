@@ -27,6 +27,22 @@
     --r:    14px;
     --r-sm:  8px;
     --r-lg: 20px;
+
+    /* ── Spacing scale (golden ratio) ── */
+    --space-1: 0.5rem;
+    --space-2: 0.8rem;
+    --space-3: 1rem;
+    --space-4: 1.6rem;
+    --space-5: 2.6rem;
+    --space-6: 4.2rem;
+
+    /* ── Typography scale ── */
+    --text-xs:  0.75rem;
+    --text-sm:  0.9rem;
+    --text-md:  1rem;
+    --text-lg:  1.25rem;
+    --text-xl:  1.6rem;
+    --text-xxl: 2.2rem;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -359,7 +375,7 @@ button { cursor: pointer; }
 }
 .paste-wrap {
     width: 100%; max-width: 660px;
-    display: flex; flex-direction: column; gap: .85rem;
+    display: flex; flex-direction: column; gap: var(--space-2);
 }
 
 .paste-zone {
@@ -403,7 +419,7 @@ button { cursor: pointer; }
 .paste-hint {
     font-family: 'DM Mono', monospace;
     font-size: .82rem;
-    color: var(--text-muted);
+    color: var(--text-sec);
     text-align: center;
     line-height: 1.6;
 }
@@ -466,7 +482,7 @@ button { cursor: pointer; }
 .upload-hint {
     font-family: 'DM Mono', monospace;
     font-size: .82rem;
-    color: var(--text-muted);
+    color: var(--text-sec);
     text-align: center;
     line-height: 1.6;
 }
@@ -531,7 +547,7 @@ button { cursor: pointer; }
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--r);
-    padding: 1.3rem 1.5rem; margin-top: .25rem;
+    padding: 1.3rem 1.5rem; margin-top: var(--space-1);
 }
 .instructions-box h3 {
     font-family: 'DM Mono', monospace;
@@ -652,7 +668,7 @@ button { cursor: pointer; }
 
 .subjects-header {
     display: flex; align-items: center; gap: 1rem;
-    margin-bottom: 1.1rem;
+    margin-bottom: var(--space-3);
 }
 .subjects-header-text {
     font-family: 'DM Mono', monospace;
@@ -668,7 +684,7 @@ button { cursor: pointer; }
     border: 1px solid var(--border);
     border-left: 3px solid transparent;
     border-radius: var(--r);
-    padding: 1.1rem 1.35rem 1.1rem 1.6rem;
+    padding: var(--space-3) 1.25rem var(--space-3) 1.5rem;
     display: grid; grid-template-columns: 170px 1fr;
     gap: 1.75rem; align-items: center;
     box-shadow: 0 2px 14px rgba(0,0,0,.35);
@@ -775,7 +791,7 @@ button { cursor: pointer; }
     color: var(--text); margin-bottom: .6rem; letter-spacing: -.01em;
 }
 .static-section p, .static-section li {
-    font-size: .92rem; color: var(--text-sec); line-height: 1.82;
+    font-size: var(--text-sm); color: var(--text-sec); line-height: 1.82;
 }
 .static-section ul, .static-section ol {
     padding-left: 1.2rem; display: flex; flex-direction: column; gap: .35rem;
@@ -792,7 +808,7 @@ button { cursor: pointer; }
     font-size: 1rem; font-weight: 700;
     color: var(--accent); margin-bottom: .3rem;
 }
-.creator-card p { font-size: .87rem; color: var(--text-sec); line-height: 1.7; }
+.creator-card p { font-size: var(--text-sm); color: var(--text-sec); line-height: 1.7; }
 .creator-github-link {
     display: inline-flex; align-items: center; gap: .5rem;
     margin-top: .9rem;
@@ -1006,7 +1022,7 @@ button { cursor: pointer; }
 .sgpa-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: .88rem;
+    font-size: var(--text-sm);
     background: var(--bg-card);
     min-width: 760px;
 }
