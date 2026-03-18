@@ -272,6 +272,8 @@ button { cursor: pointer; }
    PAGE 1 — HOME
 ══════════════════════════════════════════════════════ */
 #page-home {
+    min-height: 100vh;
+    min-height: 100svh;
     position: relative; overflow: hidden;
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #0c1530 0%, var(--bg) 68%);
     justify-content: flex-start;
@@ -317,10 +319,10 @@ button { cursor: pointer; }
     box-shadow: 0 0 8px var(--accent);
 }
 .home-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: clamp(2.2rem, 5.5vw, 4rem);
     font-weight: 700; line-height: 1.2;
-    min-height: 2.5em;
+    min-height: 3rem;
     letter-spacing: -.04em; color: var(--text);
     margin-bottom: 1.1rem;
 }
@@ -328,11 +330,13 @@ button { cursor: pointer; }
 .home-desc {
     font-size: clamp(.9rem, 2vw, 1.05rem);
     color: var(--text-sec); max-width: 430px;
+    min-height: 4rem;
     line-height: 1.75; margin-bottom: 2.75rem;
 }
 .btn-primary {
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .9rem 2.5rem;
+    min-height: 48px;
     background: var(--accent); color: #fff;
     border: none; border-radius: var(--r);
     font-family: 'Manrope', sans-serif;
