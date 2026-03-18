@@ -30,129 +30,11 @@
         }
     </script>
 
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, Arial, sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .hamburger {
-            position: fixed;
-            top: 1.1rem;
-            left: 1.1rem;
-            z-index: 1100;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .hamburger span {
-            display: block;
-            width: 20px;
-            height: 2px;
-        }
-        .menu-backdrop {
-            position: fixed;
-            inset: 0;
-            display: none;
-            z-index: 1040;
-        }
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -290px;
-            width: 270px;
-            height: 100vh;
-            z-index: 1050;
-            padding: 4.5rem 1rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            overflow-y: auto;
-        }
-        .side-menu a {
-            display: flex;
-            align-items: center;
-            gap: .85rem;
-            padding: .72rem .85rem;
-            text-decoration: none;
-            font-size: .9rem;
-            font-weight: 500;
-        }
-        .page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 1.5rem 3rem;
-        }
-        .ad-container,
-        .ad-banner {
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        button, input, select {
-            min-height: 44px;
-            box-sizing: border-box;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        .static-page {
-            width: 100%;
-            max-width: 660px;
-            padding-top: 2rem;
-            margin: 0 auto;
-        }
-        .static-page-title {
-            font-family: 'Syne', system-ui, sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 700;
-            letter-spacing: -.03em;
-            line-height: 1.2;
-            min-height: 1.2em;
-            margin-bottom: .6rem;
-        }
-        .static-intro,
-        .static-section p,
-        .static-section li {
-            font-family: 'Manrope', system-ui, sans-serif;
-            font-size: .9rem;
-            line-height: 1.82;
-        }
-        .static-intro { font-size: .95rem; line-height: 1.8; margin-bottom: 2rem; }
-        .static-section { margin-bottom: 1.75rem; }
-        .static-section h2 {
-            font-family: 'Syne', system-ui, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: -.01em;
-            line-height: 1.25;
-            min-height: 1.25em;
-            margin-bottom: .6rem;
-        }
-    </style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
-    <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -176,7 +58,7 @@
 </nav>
 
 <main id="main-content">
-<div id="page-terms" class="page" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
+<div id="page-terms" class="page page-top-start">
     <div class="static-page">
         <h1 class="static-page-title">Terms &amp; Conditions</h1>
         <p class="static-intro">Please read these Terms and Conditions carefully before using BunkWise. By accessing or using BunkWise — including the attendance calculator, SGPA calculator, and class-wise calculator — you agree to be bound by these terms. If you do not agree, please do not use this website. <strong>Last updated: March 2026.</strong></p>
@@ -200,13 +82,13 @@
         <div class="static-section">
             <h2>3. Data Processing &amp; Privacy</h2>
             <p>Attendance data you paste or upload, and result PDFs you upload for SGPA calculation via the RTU pipeline, are processed entirely inside your browser. This data is never transmitted to BunkWise's servers. Once you close or refresh the tab, all data is discarded.</p>
-            <p>The Autonomous SGPA Calculator (for SKIT result PDFs) sends the text extracted from your uploaded PDF to Google's Gemini AI API for analysis. By using this feature, you consent to this data being processed by Google in accordance with Google's AI API Terms of Service. For full details, see our <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
-            <p>BunkWise uses Google Analytics to collect anonymised usage statistics. For details on what is collected and how to opt out, see our <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
+            <p>The Autonomous SGPA Calculator (for SKIT result PDFs) sends the text extracted from your uploaded PDF to Google's Gemini AI API for analysis. By using this feature, you consent to this data being processed by Google in accordance with Google's AI API Terms of Service. For full details, see our <a href="privacy.html" class="accent-link">Privacy Policy</a>.</p>
+            <p>BunkWise uses Google Analytics to collect anonymised usage statistics. For details on what is collected and how to opt out, see our <a href="privacy.html" class="accent-link">Privacy Policy</a>.</p>
         </div>
 
         <div class="static-section">
             <h2>4. Advertising</h2>
-            <p>BunkWise currently displays placeholder ad spaces. In the future, BunkWise may use <strong>Google AdSense</strong> to display advertisements. When AdSense is active, Google and its partners may use cookies to serve ads based on your prior visits to BunkWise or other websites. You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google's Ads Settings</a>, or opt out of third-party vendor use of cookies by visiting <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">aboutads.info</a>.</p>
+            <p>BunkWise currently displays placeholder ad spaces. In the future, BunkWise may use <strong>Google AdSense</strong> to display advertisements. When AdSense is active, Google and its partners may use cookies to serve ads based on your prior visits to BunkWise or other websites. You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="accent-link">Google's Ads Settings</a>, or opt out of third-party vendor use of cookies by visiting <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="accent-link">aboutads.info</a>.</p>
             <p>BunkWise will comply with Google AdSense Programme Policies and will not display ads alongside content that violates those policies. Ads displayed on BunkWise are served by Google and BunkWise has no control over their specific content.</p>
         </div>
 
@@ -244,7 +126,7 @@
 
         <div class="static-section">
             <h2>Contact</h2>
-            <p>If you have any questions about these Terms and Conditions, you can contact us via the GitHub profile linked on the <a href="creators.html" style="color:var(--accent)">Creator Description</a> page.</p>
+            <p>If you have any questions about these Terms and Conditions, you can contact us via the GitHub profile linked on the <a href="creators.html" class="accent-link">Creator Description</a> page.</p>
         </div>
     </div>
 </div>

@@ -30,129 +30,11 @@
         }
     </script>
 
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, Arial, sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .hamburger {
-            position: fixed;
-            top: 1.1rem;
-            left: 1.1rem;
-            z-index: 1100;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .hamburger span {
-            display: block;
-            width: 20px;
-            height: 2px;
-        }
-        .menu-backdrop {
-            position: fixed;
-            inset: 0;
-            display: none;
-            z-index: 1040;
-        }
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -290px;
-            width: 270px;
-            height: 100vh;
-            z-index: 1050;
-            padding: 4.5rem 1rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            overflow-y: auto;
-        }
-        .side-menu a {
-            display: flex;
-            align-items: center;
-            gap: .85rem;
-            padding: .72rem .85rem;
-            text-decoration: none;
-            font-size: .9rem;
-            font-weight: 500;
-        }
-        .page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 1.5rem 3rem;
-        }
-        .ad-container,
-        .ad-banner {
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        button, input, select {
-            min-height: 44px;
-            box-sizing: border-box;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        .static-page {
-            width: 100%;
-            max-width: 660px;
-            padding-top: 2rem;
-            margin: 0 auto;
-        }
-        .static-page-title {
-            font-family: 'Syne', system-ui, sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 700;
-            letter-spacing: -.03em;
-            line-height: 1.2;
-            min-height: 1.2em;
-            margin-bottom: .6rem;
-        }
-        .static-intro,
-        .static-section p,
-        .static-section li {
-            font-family: 'Manrope', system-ui, sans-serif;
-            font-size: .9rem;
-            line-height: 1.82;
-        }
-        .static-intro { font-size: .95rem; line-height: 1.8; margin-bottom: 2rem; }
-        .static-section { margin-bottom: 1.75rem; }
-        .static-section h2 {
-            font-family: 'Syne', system-ui, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: -.01em;
-            line-height: 1.25;
-            min-height: 1.25em;
-            margin-bottom: .6rem;
-        }
-    </style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
-    <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -176,7 +58,7 @@
 </nav>
 
 <main id="main-content">
-<div id="page-privacy" class="page" style="justify-content:flex-start;align-items:flex-start;padding-top:6rem">
+<div id="page-privacy" class="page page-top-start">
     <div class="static-page">
         <h1 class="static-page-title">Privacy Policy</h1>
         <p class="static-intro">Your privacy matters. This page explains clearly what data BunkWise collects, why, and how it is used. This policy covers Google Analytics (currently active), Google AdSense (planned for future use), and all other third-party services used by BunkWise. <strong>Last updated: March 2026.</strong></p>
@@ -197,9 +79,9 @@
                 <li>Referral source (e.g. search engine, direct link, social media)</li>
                 <li>Screen resolution and language preference</li>
             </ul>
-            <p>This information is collected using cookies and similar tracking technologies placed by Google. The data is sent to and stored by Google on servers which may be located outside India. Google may use this data in accordance with its own privacy policy, available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">policies.google.com/privacy</a>.</p>
+            <p>This information is collected using cookies and similar tracking technologies placed by Google. The data is sent to and stored by Google on servers which may be located outside India. Google may use this data in accordance with its own privacy policy, available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="accent-link">policies.google.com/privacy</a>.</p>
             <p>BunkWise uses this data solely to improve the website — for example, to understand which tools are most used, which devices need optimisation, and how users discover the site. We do not sell this data or use it to identify you personally.</p>
-            <p>You can opt out of Google Analytics tracking at any time by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google Analytics Opt-out Browser Add-on</a>, or by using your browser's private/incognito mode.</p>
+            <p>You can opt out of Google Analytics tracking at any time by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="accent-link">Google Analytics Opt-out Browser Add-on</a>, or by using your browser's private/incognito mode.</p>
         </div>
 
         <div class="static-section">
@@ -207,21 +89,21 @@
             <p>BunkWise currently shows <strong>placeholder ad spaces only</strong> — no real advertisements are being served at this time. In the future, BunkWise plans to use <strong>Google AdSense</strong> to display advertisements on the website.</p>
             <p>When Google AdSense becomes active, the following will apply:</p>
             <ul>
-                <li>Google and its advertising partners will use cookies (including the <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">_ga</code>, <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">IDE</code>, and <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">DSID</code> cookies) to serve ads based on your prior visits to BunkWise or other websites across the internet.</li>
+                <li>Google and its advertising partners will use cookies (including the <code class="inline-code-chip">_ga</code>, <code class="inline-code-chip">IDE</code>, and <code class="inline-code-chip">DSID</code> cookies) to serve ads based on your prior visits to BunkWise or other websites across the internet.</li>
                 <li>Google may use your browsing activity to show you <strong>personalised (interest-based) advertisements</strong>.</li>
                 <li>Ad content is served entirely by Google — BunkWise has no control over which specific ads are shown.</li>
                 <li>BunkWise will not display ads in a misleading way or in positions that violate Google AdSense Programme Policies.</li>
             </ul>
-            <p>You can opt out of personalised advertising from Google at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google's Ads Settings</a>. You can also opt out of third-party vendor personalised ads via the <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Digital Advertising Alliance opt-out tool</a>. Note that opting out of personalised ads does not mean you will see no ads — it means the ads shown will not be based on your interests.</p>
+            <p>You can opt out of personalised advertising from Google at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="accent-link">Google's Ads Settings</a>. You can also opt out of third-party vendor personalised ads via the <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="accent-link">Digital Advertising Alliance opt-out tool</a>. Note that opting out of personalised ads does not mean you will see no ads — it means the ads shown will not be based on your interests.</p>
         </div>
 
         <div class="static-section">
             <h2>4. Cookies</h2>
-            <p>BunkWise itself sets <strong>one item in localStorage</strong>: your theme preference (<code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">bw-theme</code>, value: <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">light</code> or <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">dark</code>). This never leaves your device.</p>
+            <p>BunkWise itself sets <strong>one item in localStorage</strong>: your theme preference (<code class="inline-code-chip">bw-theme</code>, value: <code class="inline-code-chip">light</code> or <code class="inline-code-chip">dark</code>). This never leaves your device.</p>
             <p>The following <strong>third-party cookies</strong> may be set when you visit BunkWise:</p>
             <ul>
-                <li><strong>Google Analytics:</strong> <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">_ga</code> (2-year expiry), <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">_ga_*</code> (2-year expiry), <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">_gid</code> (24-hour expiry) — used to distinguish visitors and sessions.</li>
-                <li><strong>Google AdSense (future):</strong> <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">IDE</code>, <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">DSID</code> — used by Google to deliver personalised ads once AdSense is enabled.</li>
+                <li><strong>Google Analytics:</strong> <code class="inline-code-chip">_ga</code> (2-year expiry), <code class="inline-code-chip">_ga_*</code> (2-year expiry), <code class="inline-code-chip">_gid</code> (24-hour expiry) — used to distinguish visitors and sessions.</li>
+                <li><strong>Google AdSense (future):</strong> <code class="inline-code-chip">IDE</code>, <code class="inline-code-chip">DSID</code> — used by Google to deliver personalised ads once AdSense is enabled.</li>
             </ul>
             <p>You can manage or delete cookies at any time through your browser settings. Deleting Google Analytics cookies will cause you to be treated as a new visitor on your next visit.</p>
         </div>
@@ -231,7 +113,7 @@
             <p>When you use the <strong>Autonomous SGPA Calculator</strong> feature (for SKIT result PDFs), the raw text extracted from your uploaded PDF is sent to <strong>Google's Gemini AI API</strong> for analysis. This text contains your result data as it appears in the PDF — including your name, roll number, father's name, and subject marks.</p>
             <p>This data is transmitted to Google's servers to perform the analysis and is governed by Google's AI API Terms of Service and Privacy Policy. BunkWise does not store or log this data.</p>
             <p>The API call is routed through a <strong>Cloudflare Worker proxy</strong> — the Gemini API key is stored securely in Cloudflare environment variables and is never exposed in BunkWise's front-end code.</p>
-            <p>A rate limit of 2–3 analyses per device per day is enforced locally using <code style="font-family:'DM Mono',monospace;font-size:.82rem;background:var(--bg-input);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--border)">localStorage</code>. This counter is stored only on your device and is never transmitted anywhere.</p>
+            <p>A rate limit of 2–3 analyses per device per day is enforced locally using <code class="inline-code-chip">localStorage</code>. This counter is stored only on your device and is never transmitted anywhere.</p>
             <p>If you are not comfortable with your result data being processed by Google's AI, please use the <strong>RTU SGPA Calculator</strong> instead — it processes everything locally in your browser with no external API calls.</p>
         </div>
 
@@ -239,9 +121,9 @@
             <h2>6. Third-Party Services Summary</h2>
             <p>The following external services are used by BunkWise. Each is governed by its own privacy policy and terms.</p>
             <ul>
-                <li><strong>Google Analytics 4</strong> — anonymised visitor analytics. Active on all pages. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google Privacy Policy</a></li>
-                <li><strong>Google AdSense</strong> — advertising (planned, not yet active). When active, will serve ads and set cookies. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google Ads Policy</a></li>
-                <li><strong>Google Gemini AI API</strong> — used for autonomous result PDF analysis. Result text is sent to Google's servers. <a href="https://ai.google.dev/terms" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Gemini API Terms</a></li>
+                <li><strong>Google Analytics 4</strong> — anonymised visitor analytics. Active on all pages. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="accent-link">Google Privacy Policy</a></li>
+                <li><strong>Google AdSense</strong> — advertising (planned, not yet active). When active, will serve ads and set cookies. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="accent-link">Google Ads Policy</a></li>
+                <li><strong>Google Gemini AI API</strong> — used for autonomous result PDF analysis. Result text is sent to Google's servers. <a href="https://ai.google.dev/terms" target="_blank" rel="noopener noreferrer" class="accent-link">Gemini API Terms</a></li>
                 <li><strong>Google Fonts</strong> — typography (Syne, DM Mono, Manrope). Google logs the font request; no personal data beyond a standard HTTPS request is shared.</li>
                 <li><strong>Cloudflare CDN</strong> — delivers PDF.js, SheetJS (xlsx), and jsPDF libraries. Cloudflare may log IP addresses per their standard CDN and security policy.</li>
                 <li><strong>Cloudflare Workers</strong> — acts as a secure proxy for Gemini API calls. Processes requests in transit but does not store your result data.</li>
@@ -257,12 +139,12 @@
             <h2>8. Your Rights</h2>
             <p>You have the right to:</p>
             <ul>
-                <li>Opt out of Google Analytics tracking using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google Analytics Opt-out Add-on</a> or browser private mode.</li>
-                <li>Opt out of personalised advertising via <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Google's Ads Settings</a> (applies when AdSense is active).</li>
+                <li>Opt out of Google Analytics tracking using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="accent-link">Google Analytics Opt-out Add-on</a> or browser private mode.</li>
+                <li>Opt out of personalised advertising via <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="accent-link">Google's Ads Settings</a> (applies when AdSense is active).</li>
                 <li>Clear your browser's localStorage to remove the theme preference and rate-limit counter stored by BunkWise.</li>
                 <li>Use the RTU SGPA Calculator instead of the Autonomous calculator to avoid any data leaving your device.</li>
             </ul>
-            <p>If you have questions about how your data is handled, contact the site creator via the GitHub profile linked on the <a href="creators.html" style="color:var(--accent)">Creator Description</a> page.</p>
+            <p>If you have questions about how your data is handled, contact the site creator via the GitHub profile linked on the <a href="creators.html" class="accent-link">Creator Description</a> page.</p>
         </div>
 
         <div class="static-section">
