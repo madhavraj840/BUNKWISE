@@ -16,23 +16,24 @@
     </script>
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-            var s1 = document.createElement('script');
-            s1.async = true;
-            s1.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
-            document.head.appendChild(s1);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WSBK8SX5LT');
+            window.addEventListener('load', function () {
+                var s1 = document.createElement('script');
+                s1.async = true;
+                s1.defer = true;
+                s1.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
+                document.head.appendChild(s1);
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-WSBK8SX5LT');
+            });
         }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="canonical" href="https://bunkwise.in/about.html">
 </head>
 <body>

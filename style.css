@@ -86,12 +86,15 @@
     -ms-user-select: none;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    font-size-adjust: 0.5;
+}
 
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Manrope', sans-serif;
+    font-family: system-ui, -apple-system, Arial, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
