@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://madhavraj840.github.io/BUNKWISE/sitemap.xml
+Sitemap: https://bunkwise.in/sitemap.xml

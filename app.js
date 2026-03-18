@@ -519,7 +519,7 @@
         var shareData = {
             title: 'BunkWise — Attendance & SGPA Calculator',
             text:  'Check your attendance, predict bunks, and calculate SGPA instantly. No login needed.',
-            url:   'https://madhavraj840.github.io/BUNKWISE'
+            url:   'https://bunkwise.in'
         };
 
         if (navigator.share) {
