@@ -274,9 +274,11 @@ button { cursor: pointer; }
 #page-home {
     min-height: 100vh;
     min-height: 100svh;
+    display: flex;
+    flex-direction: column;
     position: relative; overflow: hidden;
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #0c1530 0%, var(--bg) 68%);
-    justify-content: flex-start;
+    justify-content: center;
 }
 [data-theme="light"] #page-home {
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #ddd0b8 0%, var(--bg) 68%);
@@ -297,6 +299,7 @@ button { cursor: pointer; }
 }
 .home-inner {
     flex: 1;
+    min-height: 320px;
     position: relative; z-index: 1;
     display: flex; flex-direction: column;
     align-items: center; text-align: center;
@@ -322,7 +325,7 @@ button { cursor: pointer; }
     font-family: 'Syne', system-ui, sans-serif;
     font-size: clamp(2.2rem, 5.5vw, 4rem);
     font-weight: 700; line-height: 1.2;
-    min-height: 3rem;
+    min-height: 3.2rem;
     letter-spacing: -.04em; color: var(--text);
     margin-bottom: 1.1rem;
 }
@@ -330,7 +333,7 @@ button { cursor: pointer; }
 .home-desc {
     font-size: clamp(.9rem, 2vw, 1.05rem);
     color: var(--text-sec); max-width: 430px;
-    min-height: 4rem;
+    min-height: 5rem;
     line-height: 1.75; margin-bottom: 2.75rem;
 }
 .btn-primary {
@@ -1428,7 +1431,7 @@ button { cursor: pointer; }
 
 /* Banner variant at bottom of home page */
 .ad-container.ad-banner {
-    min-height: 70px;
+    min-height: 90px;
     margin: 0;
     border-radius: 0;
     border-left: none;
