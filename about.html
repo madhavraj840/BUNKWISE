@@ -32,14 +32,128 @@
     </script>
 
     <style>
-        body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; }
-        .hero { padding: 2rem; text-align: center; }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .hamburger {
+            position: fixed;
+            top: 1.1rem;
+            left: 1.1rem;
+            z-index: 1100;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+        }
+        .menu-backdrop {
+            position: fixed;
+            inset: 0;
+            display: none;
+            z-index: 1040;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -290px;
+            width: 270px;
+            height: 100vh;
+            z-index: 1050;
+            padding: 4.5rem 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            overflow-y: auto;
+        }
+        .side-menu a {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            padding: .72rem .85rem;
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 1.5rem 3rem;
+        }
+        .ad-container,
+        .ad-banner {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button, input, select {
+            min-height: 44px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .static-page {
+            width: 100%;
+            max-width: 660px;
+            padding-top: 2rem;
+            margin: 0 auto;
+        }
+        .static-page-title {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: -.03em;
+            line-height: 1.2;
+            min-height: 1.2em;
+            margin-bottom: .6rem;
+        }
+        .static-intro,
+        .static-section p,
+        .static-section li,
+        .creator-card p {
+            font-family: 'Manrope', system-ui, sans-serif;
+            font-size: .9rem;
+            line-height: 1.82;
+        }
+        .static-intro { font-size: .95rem; line-height: 1.8; margin-bottom: 2rem; }
+        .static-section { margin-bottom: 1.75rem; }
+        .static-section h2,
+        .creator-card h3 {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -.01em;
+            line-height: 1.25;
+            min-height: 1.25em;
+            margin-bottom: .6rem;
+        }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
     <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
 </head>
@@ -123,3 +237,4 @@
 <script src="app.js" defer></script>
 </body>
 </html>
+

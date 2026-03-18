@@ -89,6 +89,7 @@
 html {
     scroll-behavior: smooth;
     font-size-adjust: 0.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -104,6 +105,17 @@ body {
 * { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }
 .hidden { display: none !important; }
+
+button, input, select {
+    min-height: 44px;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 /* ══════════════════════════════════════════════════════
    VIEW TRANSITIONS — RIPPLE REVEAL
@@ -266,6 +278,10 @@ button { cursor: pointer; }
     align-items: center; justify-content: center;
     padding: 5rem 1.5rem 3rem;
 }
+.main-container,
+.results-container {
+    width: 100%;
+}
 .page.in { animation: fadeUp .38s ease both; }
 
 /* ══════════════════════════════════════════════════════
@@ -346,7 +362,7 @@ button { cursor: pointer; }
     min-height: 48px;
     background: var(--accent); color: #fff;
     border: none; border-radius: var(--r);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: 1rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
     box-shadow: 0 6px 28px var(--accent-glow);
@@ -379,7 +395,7 @@ button { cursor: pointer; }
     padding-top: 6.5rem; background: var(--bg);
 }
 .page-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: clamp(1.7rem, 4vw, 2.5rem);
     font-weight: 700; letter-spacing: -.03em;
     min-height: 1.2em;
@@ -447,7 +463,7 @@ button { cursor: pointer; }
     padding: .75rem 2rem;
     background: var(--accent); color: #fff;
     border: none; border-radius: var(--r);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: .95rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
     box-shadow: 0 4px 20px var(--accent-glow);
@@ -463,6 +479,7 @@ button { cursor: pointer; }
 /* ── Upload Zone ─────────────────────────────────────── */
 .upload-zone {
     width: 100%;
+    min-height: 180px;
     background: var(--bg-input);
     border: 2px dashed var(--border-l);
     border-radius: var(--r);
@@ -472,6 +489,7 @@ button { cursor: pointer; }
     justify-content: center;
     gap: 1rem;
     padding: 1.75rem 1.5rem;
+    contain: layout;
     transition: border-color .25s, background .25s;
 }
 .upload-zone:hover {
@@ -511,7 +529,7 @@ button { cursor: pointer; }
     color: var(--accent);
     border: 1.5px solid var(--accent);
     border-radius: var(--r);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: .92rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
     transition: background .2s, transform .15s, box-shadow .2s, color .2s;
@@ -563,6 +581,8 @@ button { cursor: pointer; }
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--r);
+    min-height: auto;
+    contain: layout;
     padding: 1.3rem 1.5rem; margin-top: var(--space-1);
 }
 .instructions-box h3 {
@@ -700,6 +720,8 @@ button { cursor: pointer; }
     border: 1px solid var(--border);
     border-left: 3px solid transparent;
     border-radius: var(--r);
+    min-height: auto;
+    contain: layout;
     padding: var(--space-3) 1.25rem var(--space-3) 1.5rem;
     display: grid; grid-template-columns: 170px 1fr;
     gap: 1.75rem; align-items: center;
@@ -760,7 +782,7 @@ button { cursor: pointer; }
 }
 .popup-overlay.open .popup-box { transform: scale(1) translateY(0); }
 .popup-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: 1.05rem; font-weight: 700;
     color: var(--text); margin-bottom: .3rem; letter-spacing: -.01em;
 }
@@ -790,7 +812,7 @@ button { cursor: pointer; }
 ══════════════════════════════════════════════════════ */
 .static-page { max-width: 660px; width: 100%; padding-top: 2rem; }
 .static-page-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     font-weight: 700; letter-spacing: -.03em;
     min-height: 1.2em;
@@ -803,7 +825,7 @@ button { cursor: pointer; }
 }
 .static-section { margin-bottom: 1.75rem; }
 .static-section h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: 1.1rem; font-weight: 700;
     color: var(--text); margin-bottom: .6rem; letter-spacing: -.01em;
 }
@@ -821,7 +843,7 @@ button { cursor: pointer; }
     padding: 1.25rem 1.5rem; margin-bottom: .75rem;
 }
 .creator-card h3 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: 1rem; font-weight: 700;
     color: var(--accent); margin-bottom: .3rem;
 }
@@ -921,7 +943,7 @@ button { cursor: pointer; }
 .sgpa-upload-zone:hover .sgpa-upload-icon { opacity: .8; }
 .sgpa-upload-zone.success .sgpa-upload-icon { opacity: 1; }
 .sgpa-upload-hint {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-sec);
@@ -952,7 +974,7 @@ button { cursor: pointer; }
     animation: sgpaSpin .8s linear infinite;
 }
 .sgpa-loading-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--text);
@@ -1182,7 +1204,7 @@ button { cursor: pointer; }
     color: var(--text-sec);
     border: 1.5px solid var(--border-l);
     border-radius: var(--r);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1348,7 +1370,7 @@ button { cursor: pointer; }
     color: var(--text);
     border: 1px solid var(--border-l);
     border-radius: var(--r-sm);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: .88rem;
     cursor: pointer;
     outline: none;
@@ -1384,7 +1406,7 @@ button { cursor: pointer; }
     color: var(--accent);
     border: 1.5px solid var(--accent);
     border-radius: var(--r);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: .82rem;
     font-weight: 700;
     cursor: pointer;
@@ -1446,6 +1468,15 @@ button { cursor: pointer; }
     z-index: 1;
 }
 
+.ad-banner {
+    min-height: 90px;
+}
+
+.results-container {
+    min-height: 200px;
+    contain: layout;
+}
+
 /* ══════════════════════════════════════════════════════
    SEO SECTION
    Text blocks added below tools for search engines.
@@ -1460,7 +1491,7 @@ button { cursor: pointer; }
     -webkit-user-select: text;
 }
 .seo-section h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: clamp(1.15rem, 2.5vw, 1.45rem);
     font-weight: 700;
     color: var(--text);
@@ -1483,7 +1514,7 @@ button { cursor: pointer; }
     width: 100%;
 }
 .faq-section > h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Syne', system-ui, sans-serif;
     font-size: clamp(1.05rem, 2.2vw, 1.3rem);
     font-weight: 700;
     color: var(--text);
@@ -1508,7 +1539,7 @@ summary.faq-question {
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: var(--text);
@@ -1543,3 +1574,4 @@ summary.faq-question:hover { background: var(--bg-card-h); }
     .seo-section { padding: 1.5rem 0 .5rem; }
     .faq-section { margin-top: 1.5rem; }
 }
+

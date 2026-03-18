@@ -31,14 +31,193 @@
     </script>
 
     <style>
-        body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; }
-        .hero { padding: 2rem; text-align: center; }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .hamburger {
+            position: fixed;
+            top: 1.1rem;
+            left: 1.1rem;
+            z-index: 1100;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+        }
+        .menu-backdrop {
+            position: fixed;
+            inset: 0;
+            display: none;
+            z-index: 1040;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -290px;
+            width: 270px;
+            height: 100vh;
+            z-index: 1050;
+            padding: 4.5rem 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            overflow-y: auto;
+        }
+        .side-menu a {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            padding: .72rem .85rem;
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 500;
+            font-family: 'Manrope', system-ui, sans-serif;
+        }
+        .side-menu-label {
+            font-family: 'DM Mono', monospace;
+            font-size: .62rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            padding: .5rem .8rem;
+            margin-bottom: .2rem;
+        }
+        .side-menu a .ico {
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 1.5rem 3rem;
+        }
+        .page-title {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            line-height: 1.2;
+            min-height: 1.2em;
+            text-align: center;
+        }
+        .page-sub {
+            font-family: 'Manrope', system-ui, sans-serif;
+            font-size: .9rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .sgpa-state {
+            width: 100%;
+            max-width: 980px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .paste-wrap {
+            width: 100%;
+            max-width: 660px;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+        }
+        .paste-zone,
+        .upload-zone,
+        .sgpa-upload-zone {
+            width: 100%;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2.5rem 1.5rem;
+        }
+        .sgpa-upload-icon {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+        .sgpa-upload-hint {
+            font-family: 'Manrope', system-ui, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.6;
+            text-align: center;
+            min-height: 3.2rem;
+        }
+        .auto-branch-wrap {
+            width: 100%;
+            max-width: 360px;
+            text-align: left;
+        }
+        .auto-branch-label {
+            display: block;
+            font-family: 'DM Mono', monospace;
+            font-size: .72rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: .4rem;
+        }
+        .auto-branch-select {
+            width: 100%;
+            padding: .55rem .85rem;
+            padding-right: 2.2rem;
+            font-family: 'Manrope', system-ui, sans-serif;
+            font-size: .88rem;
+        }
+        .ai-counter {
+            font-family: 'DM Mono', monospace;
+            font-size: .78rem;
+            line-height: 1.4;
+            min-height: 1.6rem;
+            text-align: center;
+        }
+        .btn-paste {
+            font-family: 'Manrope', system-ui, sans-serif;
+            font-size: .95rem;
+            font-weight: 700;
+            padding: .75rem 2rem;
+        }
+        .instructions-box { padding: 1.3rem 1.5rem; }
+        .results-container { min-height: 200px; }
+        .ad-container,
+        .ad-banner {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button, input, select {
+            min-height: 44px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
     <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
 </head>
@@ -393,3 +572,4 @@
 <script src="app.js" defer></script>
 </body>
 </html>
+
