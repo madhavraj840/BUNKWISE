@@ -513,13 +513,16 @@
         reader.readAsArrayBuffer(file);
     }
 
+    /* ── Canonical site root — single place to change if domain ever moves ── */
+    var SITE_URL = window.location.origin || 'https://bunkwise.in';
+
     /* ── Wire attendance page ────────────────────────────── */
     /* ── Share handler ───────────────────────────────────── */
     function handleShare(buttonEl) {
         var shareData = {
             title: 'BunkWise — Attendance & SGPA Calculator',
             text:  'Check your attendance, predict bunks, and calculate SGPA instantly. No login needed.',
-            url:   'https://bunkwise.in'
+            url:   SITE_URL
         };
 
         if (navigator.share) {
@@ -4455,8 +4458,18 @@
     }
 
     /* ── Client-side rate limit hint (mirrors server-side KV limit of 5/day) ─── */
+    /* ── Daily limit — single source of truth ───────────── */
+    var AUTO_DAILY_LIMIT = 3;
+
+    /* ── IST date helper — resets at midnight India time ── */
+    function todayIST() {
+        // IST = UTC+5:30 = 330 minutes ahead
+        var nowIST = new Date(new Date().getTime() + 330 * 60 * 1000);
+        return nowIST.toISOString().slice(0, 10);
+    }
+
     function checkAutoRateLimit() {
-        var today = new Date().toISOString().slice(0, 10);
+        var today = todayIST();
         var raw   = localStorage.getItem('bw-auto-usage');
         var usage = { date: '', count: 0 };
         try { if (raw) usage = JSON.parse(raw); } catch (e) { usage = { date: '', count: 0 }; }
@@ -4465,7 +4478,7 @@
     }
 
     function incrementAutoRateLimit() {
-        var today = new Date().toISOString().slice(0, 10);
+        var today = todayIST();
         var raw   = localStorage.getItem('bw-auto-usage');
         var usage = { date: today, count: 0 };
         try { if (raw) usage = JSON.parse(raw); } catch (e) { usage = { date: today, count: 0 }; }
@@ -4474,11 +4487,11 @@
         localStorage.setItem('bw-auto-usage', JSON.stringify(usage));
     }
 
-    /* ── Update the "X of 3 remaining" counter in the upload zone ── */
+    /* ── Update the "X of N remaining" counter in the upload zone ── */
     function updateAutoCounter() {
         var el = document.getElementById('auto-ai-counter');
         if (!el) return;
-        var LIMIT   = 3;
+        var LIMIT   = AUTO_DAILY_LIMIT;
         var usage   = checkAutoRateLimit();
         var used    = usage.count;
         var remaining = Math.max(0, LIMIT - used);
@@ -4861,10 +4874,10 @@
 
         // ── Client-side rate limit hint (real enforcement is server-side) ──
         var usage = checkAutoRateLimit();
-        if (usage.count >= 3) {
+        if (usage.count >= AUTO_DAILY_LIMIT) {
             zone.classList.add('error-state');
             hint.textContent = '⚠ Daily limit reached.';
-            showAutoError('Daily limit reached. You can analyse 3 results per day. Try again tomorrow.');
+            showAutoError('Daily limit reached. You can analyse ' + AUTO_DAILY_LIMIT + ' results per day. Try again tomorrow.');
             return;
         }
 
