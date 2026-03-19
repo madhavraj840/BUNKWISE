@@ -19,9 +19,9 @@
 
     <script>
         (function () {
-            const saved = localStorage.getItem('bw-theme');
+            // Always follow system theme — no localStorage persistence
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            document.documentElement.dataset.theme = preferred;
         })();
     </script>
 
@@ -60,7 +60,7 @@
     <div class="side-menu-label">// navigation</div>
     <a href="index.html"><span class="ico">⌂</span> Home</a>
     <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
-    <a href="cw.html"><span class="ico">⊞</span> Class Wise Calculator</a>
+    <a href="cw.html"><span class="ico">⊞</span> CW Calculator</a>
     <div class="menu-div"></div>
     <a href="about.html"><span class="ico">◈</span> About Us</a>
     <div class="menu-div"></div>

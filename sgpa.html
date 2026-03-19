@@ -18,9 +18,9 @@
 
     <script>
         (function () {
-            const saved = localStorage.getItem('bw-theme');
+            // Always follow system theme — no localStorage persistence
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            document.documentElement.dataset.theme = preferred;
         })();
     </script>
     <script>
@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -243,6 +245,7 @@
         <div class="subjects-header subjects-header-spaced">
             <div class="subjects-header-text">Subject-wise Breakdown</div>
             <div class="subjects-header-line"></div>
+            <button class="btn-share" id="btn-share-sgpa" aria-label="Share BunkWise">⬆ Share</button>
         </div>
 
         <div class="sgpa-table-wrap">
@@ -330,6 +333,7 @@
         <div class="subjects-header subjects-header-spaced">
             <div class="subjects-header-text">Subject-wise Breakdown</div>
             <div class="subjects-header-line"></div>
+            <button class="btn-share" id="btn-share-auto" aria-label="Share BunkWise">⬆ Share</button>
         </div>
 
         <div class="sgpa-table-wrap">

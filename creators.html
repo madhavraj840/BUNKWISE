@@ -15,9 +15,9 @@
 
     <script>
         (function () {
-            const saved = localStorage.getItem('bw-theme');
+            // Always follow system theme — no localStorage persistence
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            document.documentElement.dataset.theme = preferred;
         })();
     </script>
     <script>
@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>

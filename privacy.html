@@ -15,9 +15,9 @@
 
     <script>
         (function () {
-            const saved = localStorage.getItem('bw-theme');
+            // Always follow system theme — no localStorage persistence
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            document.documentElement.dataset.theme = preferred;
         })();
     </script>
     <script>
@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -105,12 +107,13 @@
 
         <div class="static-section">
             <h2>4. Cookies</h2>
-            <p>BunkWise itself sets <strong>one item in localStorage</strong>: your theme preference (<code class="inline-code-chip">bw-theme</code>, value: <code class="inline-code-chip">light</code> or <code class="inline-code-chip">dark</code>). This never leaves your device.</p>
+            <p>BunkWise stores one item in localStorage: the AI analysis usage counter (<code class="inline-code-chip">bw-auto-usage</code>) to enforce the daily limit. Theme preference is not stored — the app always follows your system's dark/light preference automatically. This data never leaves your device.</p>
             <p>The following <strong>third-party cookies</strong> may be set when you visit BunkWise:</p>
             <ul>
                 <li><strong>Google Analytics:</strong> <code class="inline-code-chip">_ga</code> (2-year expiry), <code class="inline-code-chip">_ga_*</code> (2-year expiry), <code class="inline-code-chip">_gid</code> (24-hour expiry) — used to distinguish visitors and sessions.</li>
                 <li><strong>Google AdSense (future):</strong> <code class="inline-code-chip">IDE</code>, <code class="inline-code-chip">DSID</code> — used by Google to deliver personalised ads once AdSense is enabled.</li>
             </ul>
+            <p>BunkWise does <strong>not</strong> set any first-party cookies. The AI usage counter (<code class="inline-code-chip">bw-auto-usage</code>) is stored in <code class="inline-code-chip">localStorage</code>, not a cookie. Theme preference is not persisted.</p>
             <p>You can manage or delete cookies at any time through your browser settings. Deleting Google Analytics cookies will cause you to be treated as a new visitor on your next visit.</p>
         </div>
 

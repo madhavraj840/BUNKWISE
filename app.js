@@ -5,18 +5,35 @@
        Returns a Promise that resolves once the script is loaded.
        Safe to call multiple times — skips if already in DOM.
     ────────────────────────────────────────────────────────── */
+    var _loadingScripts = {};
     function loadScript(src) {
-        return new Promise(function (resolve, reject) {
-            if (document.querySelector('script[src="' + src + '"]')) {
-                resolve(); return;
-            }
+        // Return in-flight promise if already loading — prevents double-inject on rapid calls
+        if (_loadingScripts[src]) return _loadingScripts[src];
+        if (document.querySelector('script[src="' + src + '"]')) {
+            return (_loadingScripts[src] = Promise.resolve());
+        }
+        var p = new Promise(function (resolve, reject) {
             var s = document.createElement('script');
             s.src = src;
-            s.onload  = resolve;
-            s.onerror = function () { reject(new Error('Failed to load ' + src)); };
+            s.onload  = function () { resolve(); };
+            s.onerror = function () {
+                delete _loadingScripts[src];
+                reject(new Error('Failed to load ' + src));
+            };
             document.head.appendChild(s);
         });
+        _loadingScripts[src] = p;
+        return p;
     }
+    /* ── HTML escape — prevents XSS when injecting external data into innerHTML ── */
+    function esc(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
     // ── DevTools deterrent ────────────────────────────────
 /*(function () {
     // Block right click
@@ -98,7 +115,6 @@
 
         function applyTheme() {
             document.documentElement.dataset.theme = targetTheme;
-            localStorage.setItem('bw-theme', targetTheme);
             updateThemeIcon(targetTheme);
         }
 
@@ -127,6 +143,7 @@
         var paste   = document.getElementById('page-paste');
         var results = document.getElementById('page-results');
         var fab     = document.getElementById('fab-pen');
+        var toggle  = document.getElementById('theme-toggle');
         if (!paste || !results) return;
 
         if (id === 'results') {
@@ -135,14 +152,16 @@
             results.classList.remove('hidden');
             void results.offsetWidth;
             results.classList.add('in');
-            if (fab) fab.classList.add('visible');
+            if (fab)    fab.classList.add('visible');
+            if (toggle) toggle.classList.remove('visible'); // hide when FAB is shown
         } else {
             results.classList.add('hidden');
             results.classList.remove('in');
             paste.classList.remove('hidden');
             void paste.offsetWidth;
             paste.classList.add('in');
-            if (fab) fab.classList.remove('visible');
+            if (fab)    fab.classList.remove('visible');
+            if (toggle) toggle.classList.add('visible');    // restore on paste screen
         }
         window.scrollTo({ top: 0 });
     }
@@ -246,6 +265,15 @@
     function drawGauge(svg, pct, green, mini) {
         var cp  = Math.max(0, Math.min(100, pct));
         var col = green ? '#1ed97a' : '#f04455';
+
+        // ── Theme-aware colors — gauge is readable in both dark and light mode ──
+        var isDark     = document.documentElement.dataset.theme !== 'light';
+        var trackCol   = isDark ? '#1c2540' : '#dde1e7';
+        var tickCol    = isDark ? '#2e3a5a' : '#c4b9a8';
+        var needleCol  = isDark ? '#eef0f7' : '#1a1208';
+        var hubOuter   = isDark ? '#eef0f7' : '#1a1208';
+        var hubInner   = isDark ? '#0f1520' : '#f8f9fa';
+
         var W   = mini ? 160 : 270,
             H   = mini ? 100 : 165,
             cx  = W / 2,
@@ -268,7 +296,7 @@
             '<feGaussianBlur stdDeviation="' + (mini ? 8 : 14) + '"/></filter>';
         svg.appendChild(defs);
 
-        svg.appendChild(se('path', { d: fullD(cx, cy, R), fill: 'none', stroke: '#1c2540', 'stroke-width': sw, 'stroke-linecap': 'round' }));
+        svg.appendChild(se('path', { d: fullD(cx, cy, R), fill: 'none', stroke: trackCol, 'stroke-width': sw, 'stroke-linecap': 'round' }));
 
         if (!mini) {
             for (var i = 0; i <= 10; i++) {
@@ -278,7 +306,7 @@
                 svg.appendChild(se('line', {
                     x1: a.x.toFixed(2), y1: a.y.toFixed(2),
                     x2: b.x.toFixed(2), y2: b.y.toFixed(2),
-                    stroke: '#2e3a5a', 'stroke-width': maj ? 2 : 1, 'stroke-linecap': 'round',
+                    stroke: tickCol, 'stroke-width': maj ? 2 : 1, 'stroke-linecap': 'round',
                 }));
             }
         }
@@ -291,9 +319,9 @@
 
         var npt = pPt(cx, cy, R - sw / 2 - (mini ? 10 : 14), cp);
         svg.appendChild(se('line', { x1: cx, y1: cy, x2: npt.x.toFixed(3), y2: npt.y.toFixed(3), stroke: 'rgba(0,0,0,.5)', 'stroke-width': mini ? 3.5 : 5, 'stroke-linecap': 'round' }));
-        svg.appendChild(se('line', { x1: cx, y1: cy, x2: npt.x.toFixed(3), y2: npt.y.toFixed(3), stroke: '#eef0f7', 'stroke-width': mini ? 2 : 3, 'stroke-linecap': 'round' }));
-        svg.appendChild(se('circle', { cx: cx, cy: cy, r: mini ? 4 : 6, fill: '#eef0f7' }));
-        svg.appendChild(se('circle', { cx: cx, cy: cy, r: mini ? 2 : 3, fill: '#0f1520' }));
+        svg.appendChild(se('line', { x1: cx, y1: cy, x2: npt.x.toFixed(3), y2: npt.y.toFixed(3), stroke: needleCol, 'stroke-width': mini ? 2 : 3, 'stroke-linecap': 'round' }));
+        svg.appendChild(se('circle', { cx: cx, cy: cy, r: mini ? 4 : 6, fill: hubOuter }));
+        svg.appendChild(se('circle', { cx: cx, cy: cy, r: mini ? 2 : 3, fill: hubInner }));
 
         if (mini) {
             var t = document.createElementNS(NS, 'text');
@@ -343,14 +371,16 @@
 
         var info = document.createElement('div');
         info.className = 'subject-info';
-        info.innerHTML = '<div class="subject-name" title="' + subject.name + '">' + subject.name + '</div>';
+        info.innerHTML = '<div class="subject-name" title="' + esc(subject.name) + '">' + esc(subject.name) + '</div>';
 
         var stats = document.createElement('div');
         stats.className = 'subject-stats';
+        var statsHtml = '';
         [['Present', subject.present], ['Absent', subject.absent], ['OD', subject.od], ['Makeup', subject.makeup]]
             .forEach(function (pair) {
-                stats.innerHTML += '<div class="stat-item"><span class="stat-lbl">' + pair[0] + '</span><span class="stat-val">' + pair[1] + '</span></div>';
+                statsHtml += '<div class="stat-item"><span class="stat-lbl">' + pair[0] + '</span><span class="stat-val">' + pair[1] + '</span></div>';
             });
+        stats.innerHTML = statsHtml;
         info.appendChild(stats);
 
         var act = document.createElement('span');
@@ -463,6 +493,13 @@
 
         if (!file) return;
 
+        // ── File size guard: 10 MB — prevents main-thread freeze from XLSX.read() ──
+        if (file.size > 10 * 1024 * 1024) {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ File too large. Please upload your exported attendance file only (max 10 MB).';
+            return;
+        }
+
         var ext = file.name.split('.').pop().toLowerCase();
         if (['csv', 'xlsx', 'xls'].indexOf(ext) === -1) {
             zone.classList.add('error-state');
@@ -473,36 +510,44 @@
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            try {
-                var data     = new Uint8Array(e.target.result);
-                var workbook = XLSX.read(data, { type: 'array' });
-                var sheet    = workbook.Sheets[workbook.SheetNames[0]];
-                var rows     = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
-                var parsed   = parseRowsFromSheet(rows);
+            // ── Lazy-load XLSX only when a file is actually being parsed ──
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js')
+                .then(function () {
+                    try {
+                        var data     = new Uint8Array(e.target.result);
+                        var workbook = XLSX.read(data, { type: 'array' });
+                        var sheet    = workbook.Sheets[workbook.SheetNames[0]];
+                        var rows     = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+                        var parsed   = parseRowsFromSheet(rows);
 
-                if (!parsed.length) {
+                        if (!parsed.length) {
+                            zone.classList.add('error-state');
+                            hint.textContent = '⚠ No subject rows found. Check that your file has the correct column layout.';
+                            return;
+                        }
+
+                        zone.classList.add('success');
+                        hint.textContent = '✓ File loaded — ' + parsed.length + ' subject' + (parsed.length > 1 ? 's' : '') + ' found. Calculating…';
+
+                        ATT_STATE.subjects   = parsed;
+                        ATT_STATE.desiredPct = 75;
+
+                        setTimeout(function () {
+                            showSection('results');
+                            renderResults();
+                            zone.classList.remove('success');
+                            hint.textContent = 'Upload your attendance CSV or Excel file to compute attendance';
+                        }, 700);
+
+                    } catch (err) {
+                        zone.classList.add('error-state');
+                        hint.textContent = '⚠ Could not read file. Make sure it is a valid CSV or Excel file.';
+                    }
+                })
+                .catch(function () {
                     zone.classList.add('error-state');
-                    hint.textContent = '⚠ No subject rows found. Check that your file has the correct column layout.';
-                    return;
-                }
-
-                zone.classList.add('success');
-                hint.textContent = '✓ File loaded — ' + parsed.length + ' subject' + (parsed.length > 1 ? 's' : '') + ' found. Calculating…';
-
-                ATT_STATE.subjects   = parsed;
-                ATT_STATE.desiredPct = 75;
-
-                setTimeout(function () {
-                    showSection('results');
-                    renderResults();
-                    zone.classList.remove('success');
-                    hint.textContent = 'Upload your attendance CSV or Excel file to compute attendance';
-                }, 700);
-
-            } catch (err) {
-                zone.classList.add('error-state');
-                hint.textContent = '⚠ Could not read file. Make sure it is a valid CSV or Excel file.';
-            }
+                    hint.textContent = '⚠ Could not load Excel reader. Please check your connection and try again.';
+                });
         };
 
         reader.onerror = function () {
@@ -565,20 +610,49 @@
             document.getElementById('popup-overlay').classList.remove('open');
         });
 
-        document.getElementById('btn-decrease').addEventListener('click', function () {
+        // ── Hold-to-repeat: tap = single step; hold = accelerating repeat ──
+        var _attRenderTimer;
+        function _scheduleRender() {
+            clearTimeout(_attRenderTimer);
+            _attRenderTimer = setTimeout(renderResults, 60);
+        }
+
+        function _makeHoldBtn(btnId, stepFn) {
+            var btn = document.getElementById(btnId);
+            var holdTimer, repeatInterval;
+            function doStep() { stepFn(); }
+            function startHold() {
+                doStep();
+                holdTimer = setTimeout(function () {
+                    repeatInterval = setInterval(doStep, 80);
+                }, 400);
+            }
+            function stopHold() {
+                clearTimeout(holdTimer);
+                clearInterval(repeatInterval);
+            }
+            btn.addEventListener('mousedown',  startHold);
+            btn.addEventListener('touchstart', startHold, { passive: true });
+            btn.addEventListener('mouseup',    stopHold);
+            btn.addEventListener('mouseleave', stopHold);
+            btn.addEventListener('touchend',   stopHold);
+            btn.addEventListener('touchcancel',stopHold);
+        }
+
+        _makeHoldBtn('btn-decrease', function () {
             if (ATT_STATE.desiredPct > 1) {
                 ATT_STATE.desiredPct--;
                 document.getElementById('popup-pct').textContent = ATT_STATE.desiredPct + '%';
                 bump();
-                renderResults();
+                _scheduleRender();
             }
         });
-        document.getElementById('btn-increase').addEventListener('click', function () {
+        _makeHoldBtn('btn-increase', function () {
             if (ATT_STATE.desiredPct < 99) {
                 ATT_STATE.desiredPct++;
                 document.getElementById('popup-pct').textContent = ATT_STATE.desiredPct + '%';
                 bump();
-                renderResults();
+                _scheduleRender();
             }
         });
 
@@ -3172,7 +3246,7 @@
 
             tr.innerHTML =
                 '<td>' + (i + 1) + '</td>' +
-                '<td class="col-subject">' + s.name + '</td>' +
+                '<td class="col-subject">' + esc(s.name) + '</td>' +
                 '<td>' + (s.marks1 !== null ? s.marks1 : '—') + '</td>' +
                 '<td>' + (s.marks2 !== null ? s.marks2 : '—') + '</td>' +
                 '<td>' + (total !== null ? total : '—') + '</td>' +
@@ -4544,16 +4618,31 @@
             '- Do not include the header row as a subject\n\n' +
             'Raw PDF text:\n' + rawText;
 
-        var response = await fetch(GEMINI_ENDPOINT, {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: {
-                    temperature: 0
-                }
-            })
-        });
+        // ── 30-second hard timeout — prevents the loading spinner running forever ──
+        var _abortCtrl  = new AbortController();
+        var _abortTimer = setTimeout(function () { _abortCtrl.abort(); }, 30000);
+
+        var response;
+        try {
+            response = await fetch(GEMINI_ENDPOINT, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        temperature: 0
+                    }
+                }),
+                signal: _abortCtrl.signal
+            });
+        } catch (fetchErr) {
+            if (fetchErr.name === 'AbortError') {
+                throw new Error('TIMEOUT:The AI service took too long to respond. Please try again in a moment.');
+            }
+            throw fetchErr;
+        } finally {
+            clearTimeout(_abortTimer);
+        }
 
         if (!response.ok) {
             var errBody = '';
@@ -4705,7 +4794,7 @@
 
             tr.innerHTML =
                 '<td>' + (i + 1) + '</td>' +
-                '<td class="col-subject">' + s.name + '</td>' +
+                '<td class="col-subject">' + esc(s.name) + '</td>' +
                 '<td>' + (s.ise   !== null ? s.ise   : '—') + '</td>' +
                 '<td>' + (s.see   !== null ? s.see   : '—') + '</td>' +
                 '<td>' + (s.total !== null ? s.total : '—') + '</td>' +
@@ -4929,7 +5018,9 @@
             console.error('[AUTO] Error:', err);
             showSGPAState('upload');
             var msg = err && err.message ? err.message : '';
-            if (msg.indexOf('RATE_LIMITED:') === 0) {
+            if (msg.indexOf('TIMEOUT:') === 0) {
+                showAutoError(msg.slice('TIMEOUT:'.length));
+            } else if (msg.indexOf('RATE_LIMITED:') === 0) {
                 zone.classList.add('error-state');
                 hint.textContent = '⚠ Limit reached.';
                 showAutoError(msg.slice('RATE_LIMITED:'.length));
@@ -4970,6 +5061,7 @@
         var paste   = document.getElementById('page-cw-paste');
         var results = document.getElementById('page-cw-results');
         var fab     = document.getElementById('cw-fab-pen');
+        var toggle  = document.getElementById('theme-toggle');
         if (!paste || !results) return;
 
         if (id === 'results') {
@@ -4978,14 +5070,16 @@
             results.classList.remove('hidden');
             void results.offsetWidth;
             results.classList.add('in');
-            if (fab) fab.classList.add('visible');
+            if (fab)    fab.classList.add('visible');
+            if (toggle) toggle.classList.remove('visible'); // hide when FAB is shown
         } else {
             results.classList.add('hidden');
             results.classList.remove('in');
             paste.classList.remove('hidden');
             void paste.offsetWidth;
             paste.classList.add('in');
-            if (fab) fab.classList.remove('visible');
+            if (fab)    fab.classList.remove('visible');
+            if (toggle) toggle.classList.add('visible');    // restore on paste screen
         }
         window.scrollTo({ top: 0 });
     }
@@ -5072,6 +5166,7 @@
     /* ── Render subject cards ────────────────────────────── */
     function renderCWCards() {
         var list = document.getElementById('cw-subjects-list');
+        if (!list) return;   // element not present on cw.html by design — no subject cards shown
         list.innerHTML = '';
         // calcSubject uses 75 as fixed threshold — ATT_STATE.desiredPct is also 75
         // on cw.html (initAttendancePage never runs there, so it is never changed)
@@ -5141,6 +5236,13 @@
 
         if (!file) return;
 
+        // ── File size guard: 10 MB — prevents main-thread freeze from XLSX.read() ──
+        if (file.size > 10 * 1024 * 1024) {
+            zone.classList.add('error-state');
+            hint.textContent = '⚠ File too large. Please upload your exported attendance file only (max 10 MB).';
+            return;
+        }
+
         var ext = file.name.split('.').pop().toLowerCase();
         if (['csv', 'xlsx', 'xls'].indexOf(ext) === -1) {
             zone.classList.add('error-state');
@@ -5151,37 +5253,45 @@
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            try {
-                var data     = new Uint8Array(e.target.result);
-                var workbook = XLSX.read(data, { type: 'array' });
-                var sheet    = workbook.Sheets[workbook.SheetNames[0]];
-                var rows     = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
-                var parsed   = parseRowsFromSheet(rows);
+            // ── Lazy-load XLSX only when a file is actually being parsed ──
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js')
+                .then(function () {
+                    try {
+                        var data     = new Uint8Array(e.target.result);
+                        var workbook = XLSX.read(data, { type: 'array' });
+                        var sheet    = workbook.Sheets[workbook.SheetNames[0]];
+                        var rows     = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+                        var parsed   = parseRowsFromSheet(rows);
 
-                if (!parsed.length) {
+                        if (!parsed.length) {
+                            zone.classList.add('error-state');
+                            hint.textContent = '⚠ No subject rows found. Check that your file has the correct column layout.';
+                            return;
+                        }
+
+                        zone.classList.add('success');
+                        hint.textContent = '✓ File loaded — ' + parsed.length + ' subject' + (parsed.length > 1 ? 's' : '') + ' found. Calculating…';
+
+                        CW_STATE.subjects     = parsed;
+                        CW_STATE.classesInput = 0;
+
+                        setTimeout(function () {
+                            showCWSection('results');
+                            renderCWMain();
+                            renderCWCards();
+                            zone.classList.remove('success');
+                            hint.textContent = 'Upload your attendance CSV or Excel file to compute attendance';
+                        }, 700);
+
+                    } catch (err) {
+                        zone.classList.add('error-state');
+                        hint.textContent = '⚠ Could not read file. Make sure it is a valid CSV or Excel file.';
+                    }
+                })
+                .catch(function () {
                     zone.classList.add('error-state');
-                    hint.textContent = '⚠ No subject rows found. Check that your file has the correct column layout.';
-                    return;
-                }
-
-                zone.classList.add('success');
-                hint.textContent = '✓ File loaded — ' + parsed.length + ' subject' + (parsed.length > 1 ? 's' : '') + ' found. Calculating…';
-
-                CW_STATE.subjects     = parsed;
-                CW_STATE.classesInput = 0;
-
-                setTimeout(function () {
-                    showCWSection('results');
-                    renderCWMain();
-                    renderCWCards();
-                    zone.classList.remove('success');
-                    hint.textContent = 'Upload your attendance CSV or Excel file to compute attendance';
-                }, 700);
-
-            } catch (err) {
-                zone.classList.add('error-state');
-                hint.textContent = '⚠ Could not read file. Make sure it is a valid CSV or Excel file.';
-            }
+                    hint.textContent = '⚠ Could not load Excel reader. Please check your connection and try again.';
+                });
         };
 
         reader.onerror = function () {
@@ -5221,18 +5331,46 @@
             document.getElementById('cw-popup-overlay').classList.remove('open');
         });
 
-        document.getElementById('cw-btn-decrease').addEventListener('click', function () {
+        // ── Hold-to-repeat: tap = single step; hold = accelerating repeat ──
+        var _cwRenderTimer;
+        function _scheduleCWRender() {
+            clearTimeout(_cwRenderTimer);
+            _cwRenderTimer = setTimeout(renderCWMain, 60);
+        }
+
+        function _makeCWHoldBtn(btnId, stepFn) {
+            var btn = document.getElementById(btnId);
+            var holdTimer, repeatInterval;
+            function doStep() { stepFn(); }
+            function startHold() {
+                doStep();
+                holdTimer = setTimeout(function () {
+                    repeatInterval = setInterval(doStep, 80);
+                }, 400);
+            }
+            function stopHold() {
+                clearTimeout(holdTimer);
+                clearInterval(repeatInterval);
+            }
+            btn.addEventListener('mousedown',  startHold);
+            btn.addEventListener('touchstart', startHold, { passive: true });
+            btn.addEventListener('mouseup',    stopHold);
+            btn.addEventListener('mouseleave', stopHold);
+            btn.addEventListener('touchend',   stopHold);
+            btn.addEventListener('touchcancel',stopHold);
+        }
+
+        _makeCWHoldBtn('cw-btn-decrease', function () {
             CW_STATE.classesInput--;
             updateCWDisplay();
             bumpCW();
-            renderCWMain();
+            _scheduleCWRender();
         });
-
-        document.getElementById('cw-btn-increase').addEventListener('click', function () {
+        _makeCWHoldBtn('cw-btn-increase', function () {
             CW_STATE.classesInput++;
             updateCWDisplay();
             bumpCW();
-            renderCWMain();
+            _scheduleCWRender();
         });
 
         // ── Share button ──
@@ -5265,13 +5403,10 @@
         // ── SHARED: active nav item ──
         markActiveNav();
 
-        // ── SHARED: theme toggle (visible only on index.html) ──
+        // ── SHARED: theme toggle — visible on all pages ──
         var themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
-            var currentFile = (window.location.pathname.split('/').pop() || 'index.html');
-            if (currentFile === '' || currentFile === 'index.html') {
-                themeToggle.classList.add('visible');
-            }
+            themeToggle.classList.add('visible');
             themeToggle.addEventListener('click', function () { toggleTheme(themeToggle); });
         }
 
