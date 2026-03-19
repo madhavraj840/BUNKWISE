@@ -68,6 +68,11 @@
     <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
 </nav>
 
+<div class="desktop-layout-wrapper">
+<aside class="left-ad-rail" aria-hidden="true">
+    <div class="ad-container"></div>
+</aside>
+
 <main id="main-content">
 <div id="page-cgpa" class="page">
 
@@ -99,13 +104,16 @@
                 <button class="btn-paste" id="btn-sgpa-upload">
                     Upload Result PDF <span class="btn-arrow">→</span>
                 </button>
+                <button class="btn-view-result" id="btn-rtu-view-result" disabled aria-label="View RTU SGPA result">
+                    View Result
+                </button>
             </div>
 
             <div class="error-banner" id="sgpa-error-banner">
                 <span>⚠</span>&nbsp; <span id="sgpa-error-text">Could not parse the PDF. Please upload a valid RTU result PDF.</span>
             </div>
 
-            <div class="sgpa-divider"><span>— or —</span></div>
+            <div class="ad-container"></div>
 
             <div class="sgpa-upload-zone" id="auto-upload-zone">
                 <div class="sgpa-upload-icon">📄</div>
@@ -131,13 +139,14 @@
                 <button class="btn-paste" id="btn-auto-upload">
                     Upload Autonomous Result PDF <span class="btn-arrow">→</span>
                 </button>
+                <button class="btn-view-result" id="btn-auto-view-result" disabled aria-label="View Autonomous SGPA result">
+                    View Result
+                </button>
             </div>
 
             <div class="error-banner" id="auto-error-banner">
                 <span>⚠</span>&nbsp; <span id="auto-error-text">Could not parse the PDF. Please upload a valid SKIT autonomous result PDF.</span>
             </div>
-
-            <div class="ad-container"></div>
 
             <div class="instructions-box">
                 <h3>// how to get your result pdf</h3>
@@ -155,7 +164,7 @@
                 <p>For students at <strong>SKIT (Swami Keshvanand Institute of Technology)</strong> Jaipur and other autonomous colleges affiliated to RTU, BunkWise provides a dedicated <strong>SKIT autonomous SGPA calculator</strong>. The autonomous pipeline reads the SKIT result PDF format — with ISE (Internal) and SEE (External) columns — and accurately computes your SGPA using the autonomous grading scheme.</p>
                 <p>The <strong>RTU result calculator</strong> reads your result PDF entirely within your browser — no uploads to any server, no login required. Your academic data stays completely private and is never stored anywhere.</p>
                 <p>BunkWise supports both the <strong>RTU SGPA calculator</strong> (for standard RTU result PDFs from rtu.ac.in) and the <strong>SKIT result calculator</strong> (for autonomous college result PDFs). Whether your result came from the RTU portal or your autonomous college's portal, BunkWise handles it instantly.</p>
-                <p>Students from <strong>Poornima University</strong>, <strong>VGU (Vivekananda Global University)</strong>, <strong>Arya College of Engineering</strong>, <strong>JECRC University</strong>, Manipal University Jaipur, and all other RTU-affiliated institutions use BunkWise to track their academic performance semester by semester using our <strong>rtu sgpa calculator</strong>.</p>
+                <p>Students from <strong>Poornima University</strong>, <strong>VGU (Vivekananda Global University)</strong>, <strong>Arya College of Engineering</strong>, <strong>JECRC University</strong>, and all other RTU-affiliated institutions use BunkWise to track their academic performance semester by semester using our <strong>rtu sgpa calculator</strong>.</p>
                 <p>The <strong>skit sgpa calculator</strong> feature is specifically designed for SKIT Jaipur students whose results follow the autonomous grading pattern. BunkWise automatically reads the Course Title, ISE/SEE marks, and computes grades and credit points using the correct grading formula. Per-subject remarks are also checked to derive an overall PASS/FAIL status.</p>
                 <p>Beyond SGPA, BunkWise shows you Total Marks, Maximum Marks, Grade Points, Credits, and Credit Points — a complete academic breakdown that you can download as a beautifully formatted report PDF to share or save for your records.</p>
                 <p>BunkWise is trusted by engineering students across Rajasthan — from Jaipur to Kota, Jodhpur to Bikaner — to instantly calculate SGPA after every semester result. No more manual grade point calculations or spreadsheets.</p>
@@ -218,184 +227,15 @@
         </div>
     </div>
 
-    <!-- ── State C: Results ──────────────────────────────── -->
-    <div id="sgpa-results-state" class="sgpa-state hidden">
 
-        <div class="sgpa-info-card">
-            <div class="sgpa-info-grid">
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Student Name</span>
-                    <span class="sgpa-info-val" id="sgpa-name">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Father's Name</span>
-                    <span class="sgpa-info-val" id="sgpa-father">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Roll Number</span>
-                    <span class="sgpa-info-val" id="sgpa-roll">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Remarks</span>
-                    <span class="sgpa-remarks" id="sgpa-remarks">PASS</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="subjects-header subjects-header-spaced">
-            <div class="subjects-header-text">Subject-wise Breakdown</div>
-            <div class="subjects-header-line"></div>
-            <button class="btn-share" id="btn-share-sgpa" aria-label="Share BunkWise">⬆ Share</button>
-        </div>
 
-        <div class="sgpa-table-wrap">
-            <table class="sgpa-table" id="sgpa-table">
-                <thead>
-                    <tr>
-                        <th class="col-sno">SNO</th>
-                        <th class="col-subject">Subject Name</th>
-                        <th class="col-num">Internal</th>
-                        <th class="col-num">External</th>
-                        <th class="col-num">Total</th>
-                        <th class="col-grade">Grade</th>
-                        <th class="col-num">Credits</th>
-                        <th class="col-num">Credit Points</th>
-                    </tr>
-                </thead>
-                <tbody id="sgpa-tbody"></tbody>
-                <tfoot>
-                    <tr class="sgpa-tfoot-row">
-                        <td colspan="2" class="sgpa-tfoot-sgpa">
-                            SGPA &nbsp;<span class="sgpa-number" id="sgpa-value">—</span>
-                        </td>
-                        <td colspan="2" class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Total Marks</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-marks">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Max Marks</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-max-marks">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Grade Pts</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-gp">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Credits</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-credits">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Credit Pts</div>
-                            <div class="sgpa-tfoot-num" id="sgpa-total-cp">—</div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <div class="sgpa-actions">
-            <button class="btn-primary" id="btn-download-report">
-                ⬇ Download Report PDF
-            </button>
-            <button class="btn-check-another" id="btn-check-another">
-                ↺ Check Another
-            </button>
-        </div>
-
-        <div class="ad-container"></div>
-
-    </div><!-- /sgpa-results-state -->
-
-    <!-- ── State D: Autonomous Results ──────────────────── -->
-    <div id="auto-results-state" class="sgpa-state hidden">
-
-        <div class="sgpa-info-card">
-            <div class="sgpa-info-grid">
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Student Name</span>
-                    <span class="sgpa-info-val" id="auto-name">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Father's Name</span>
-                    <span class="sgpa-info-val" id="auto-father">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Roll Number</span>
-                    <span class="sgpa-info-val" id="auto-roll">—</span>
-                </div>
-                <div class="sgpa-info-item">
-                    <span class="sgpa-info-lbl">Remarks</span>
-                    <span class="sgpa-remarks" id="auto-remarks">PASS</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="subjects-header subjects-header-spaced">
-            <div class="subjects-header-text">Subject-wise Breakdown</div>
-            <div class="subjects-header-line"></div>
-            <button class="btn-share" id="btn-share-auto" aria-label="Share BunkWise">⬆ Share</button>
-        </div>
-
-        <div class="sgpa-table-wrap">
-            <table class="sgpa-table" id="auto-table">
-                <thead>
-                    <tr>
-                        <th class="col-sno">SNO</th>
-                        <th class="col-subject">Subject Name</th>
-                        <th class="col-num">Internal</th>
-                        <th class="col-num">External</th>
-                        <th class="col-num">Total</th>
-                        <th class="col-grade">Grade</th>
-                        <th class="col-num">Credits</th>
-                        <th class="col-num">Credit Points</th>
-                    </tr>
-                </thead>
-                <tbody id="auto-tbody"></tbody>
-                <tfoot>
-                    <tr class="sgpa-tfoot-row">
-                        <td colspan="2" class="sgpa-tfoot-sgpa">
-                            SGPA &nbsp;<span class="sgpa-number" id="auto-value">—</span>
-                        </td>
-                        <td colspan="2" class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Total Marks</div>
-                            <div class="sgpa-tfoot-num" id="auto-total-marks">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Max Marks</div>
-                            <div class="sgpa-tfoot-num" id="auto-max-marks">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Grade Pts</div>
-                            <div class="sgpa-tfoot-num" id="auto-total-gp">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Credits</div>
-                            <div class="sgpa-tfoot-num" id="auto-total-credits">—</div>
-                        </td>
-                        <td class="sgpa-tfoot-stat">
-                            <div class="sgpa-tfoot-lbl">Credit Pts</div>
-                            <div class="sgpa-tfoot-num" id="auto-total-cp">—</div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <div class="sgpa-actions">
-            <button class="btn-primary" id="btn-auto-download">
-                ⬇ Download Report PDF
-            </button>
-            <button class="btn-check-another" id="btn-auto-check-another">
-                ↺ Check Another
-            </button>
-        </div>
-
-        <div class="ad-container"></div>
-
-    </div><!-- /auto-results-state -->
 
 </div><!-- /page-cgpa -->
 </main>
+
+<div class="right-ad-spacer" aria-hidden="true"></div>
+</div><!-- /desktop-layout-wrapper -->
 
 <script src="app.js" defer></script>
 </body>

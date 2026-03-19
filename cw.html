@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Bunk Calculator (Future Predictor) | BunkWise</title>
+    <title>BunkWise — Class Wise Calculator</title>
     <meta name="description" content="Class Wise Calculator — see your current attendance and instantly calculate your future attendance based on classes you plan to take or skip.">
-    <link rel="canonical" href="https://bunkwise.in/cw.html" />
-    <meta property="og:type"        content="website" />
-    <meta property="og:url"         content="https://bunkwise.in/cw.html" />
-    <meta property="og:title"       content="Attendance Bunk Calculator — Future Predictor | BunkWise" />
-    <meta property="og:description" content="Plan your future attendance at any RTU-affiliated college. See what your attendance will be after attending or skipping a set number of future classes." />
-    <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
-    <meta name="twitter:card"       content="summary" />
-    <meta name="twitter:title"      content="Attendance Future Predictor | BunkWise" />
-    <meta name="twitter:description" content="See what your attendance will be after attending or skipping future classes. Free RTU attendance planner." />
-    <link rel="manifest" href="manifest.json" />
 
     <script>
         (function () {
@@ -26,26 +16,20 @@
 
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-            window.addEventListener('load', function () {
-                var s1 = document.createElement('script');
-                s1.async = true;
-                s1.defer = true;
-                s1.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
-                document.head.appendChild(s1);
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-WSBK8SX5LT');
-            });
+            var s1 = document.createElement('script');
+            s1.async = true;
+            s1.src = "https://www.googletagmanager.com/gtag/js?id=G-0HHJFB4Q89";
+            document.head.appendChild(s1);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0HHJFB4Q89');
         }
     </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
@@ -70,6 +54,11 @@
     <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
 </nav>
 
+<div class="desktop-layout-wrapper">
+<aside class="left-ad-rail" aria-hidden="true">
+    <div class="ad-container"></div>
+</aside>
+
 <main id="main-content">
 <!-- FAB pen — shown when results are visible -->
 <button class="fab-pen" id="cw-fab-pen" aria-label="Set classes to take or leave">✎</button>
@@ -90,10 +79,12 @@
             </button>
         </div>
 
+        <div class="ad-container"></div>
+
         <div class="upload-zone" id="cw-upload-zone">
             <div class="upload-icon">📂</div>
             <div class="upload-hint" id="cw-upload-hint">Upload your attendance CSV or Excel file to compute attendance</div>
-            <input type="file" id="cw-file-input" accept=".csv,.xlsx,.xls" class="inline-hidden">
+            <input type="file" id="cw-file-input" accept=".csv,.xlsx,.xls" style="display:none">
             <button class="btn-upload" id="btn-cw-upload">
                 Upload CSV / Excel <span class="btn-arrow">→</span>
             </button>
@@ -102,8 +93,6 @@
         <div class="error-banner" id="cw-error-banner">
             <span>⚠</span>&nbsp; Invalid Attendance Report!
         </div>
-
-        <div class="ad-container"></div>
 
         <div class="instructions-box">
             <h3>// how to copy your attendance</h3>
@@ -114,56 +103,6 @@
                 <li>Copy the selection — <span class="key">Ctrl + C</span></li>
                 <li>Return here and click <strong>Paste Attendance</strong> above</li>
             </ol>
-        </div>
-
-        <div class="seo-section">
-            <h2>Class Wise Attendance Calculator — Plan Your Future Attendance</h2>
-            <p>The BunkWise Class Wise Calculator is the smartest <strong>attendance analysis</strong> tool for planning your future attendance at any RTU-affiliated college. It answers the key question every student asks: "What will my attendance be if I attend — or skip — a certain number of future classes?"</p>
-            <p>Most colleges under <strong>Rajasthan Technical University</strong>, including <strong>Poornima University</strong>, <strong>VGU (Vivekananda Global University)</strong>, <strong>Arya College of Engineering</strong>, <strong>JECRC University</strong>, and <strong>SKIT Jaipur</strong>, enforce a strict <strong>75% attendance</strong> requirement. Falling below this threshold can bar you from sitting for semester examinations. The Class Wise Calculator helps you plan ahead before it's too late.</p>
-            <p>Just paste your current attendance data from the ERP portal, then use the adjustor to add or subtract future classes. The <strong>college attendance calculator</strong> instantly recalculates your projected aggregate and tells you whether you're on track to meet your target.</p>
-            <p>This tool is especially useful in the weeks before exams when you want to know exactly how many more classes you absolutely need — or how many you can safely skip without jeopardising your <strong>75 attendance calculator</strong> target. No more guessing or using Excel sheets.</p>
-            <p>Students at <strong>Rajasthan Technical University</strong> colleges use the Class Wise Calculator alongside the main attendance calculator to make informed decisions about their attendance strategy for the rest of the semester. It's the <strong>bunk calculator college</strong> feature taken to the next level.</p>
-            <p>The tool works with the same ERP paste or CSV/Excel upload method as the main attendance page — no extra setup needed. Your data stays entirely in your browser, just like every other BunkWise tool. No login, no server, completely private.</p>
-            <p>Whether you're a first-year student still figuring out college rules, or a final-year student managing a packed schedule, the Class Wise Calculator gives you the clarity you need to make the smartest possible attendance decisions for your situation.</p>
-
-            <div class="faq-section">
-                <h2>Frequently Asked Questions</h2>
-
-                <details class="faq-item">
-                    <summary class="faq-question">How is the Class Wise Calculator different from the Attendance Calculator?</summary>
-                    <div class="faq-answer">
-                        <p>The main Attendance Calculator shows your <em>current</em> attendance status based on your existing data. The Class Wise Calculator goes a step further — it lets you simulate what your attendance will be <em>after</em> you attend or skip a certain number of future classes. It's a planning tool for the remainder of the semester.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">What does "1 class = 1 hour" mean?</summary>
-                    <div class="faq-answer">
-                        <p>In RTU and its affiliated colleges, attendance is typically tracked in hours (1-hour slots). So when you adjust the class count using the ✎ button, each unit corresponds to 1 hour of class attendance. This matches the standard ERP attendance report format.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Can I calculate what happens if I attend all remaining classes?</summary>
-                    <div class="faq-answer">
-                        <p>Yes. Set the class adjustor to the number of remaining classes in the semester and see your projected attendance. You can also set it to a negative number to see what happens if you skip classes. The future attendance percentage updates live as you adjust.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Does the Class Wise tool work with CSV/Excel upload?</summary>
-                    <div class="faq-answer">
-                        <p>Yes. Just like the main Attendance Calculator, the Class Wise Calculator also supports uploading your attendance data as a CSV or Excel file exported from your ERP portal, in addition to the standard clipboard paste method.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Which colleges can use this tool?</summary>
-                    <div class="faq-answer">
-                        <p>Any student at an RTU-affiliated college whose ERP portal generates a standard attendance report can use this tool — including colleges like Poornima, VGU, Arya, JECRC, SKIT, Manipal Jaipur, JEC, and all other institutions affiliated to Rajasthan Technical University.</p>
-                    </div>
-                </details>
-            </div>
         </div>
     </div>
 </div>
@@ -179,34 +118,36 @@
         <!-- Left half — Current Attendance -->
         <div class="cw-panel-half">
             <div class="cw-panel-label">Current Attendance</div>
+            <div class="gauge-svg-wrap">
+                <svg id="cw-current-gauge" xmlns="http://www.w3.org/2000/svg"
+                     width="270" height="165" viewBox="0 0 270 165"></svg>
+            </div>
             <div class="gauge-readout">
                 <div class="gauge-pct-text green" id="cw-current-pct">0.00%</div>
                 <div class="gauge-curr-label">Current Aggregate</div>
             </div>
-            <!-- SVG hidden — kept in DOM so app.js drawGauge() does not throw -->
-            <svg id="cw-current-gauge" xmlns="http://www.w3.org/2000/svg"
-                 width="0" height="0" class="inline-hidden"></svg>
         </div>
 
         <!-- Right half — Future Attendance -->
         <div class="cw-panel-half">
             <div class="cw-panel-label">Future Attendance</div>
+            <div class="gauge-svg-wrap">
+                <svg id="cw-future-gauge" xmlns="http://www.w3.org/2000/svg"
+                     width="270" height="165" viewBox="0 0 270 165"></svg>
+            </div>
             <div class="gauge-readout">
                 <div class="cw-future-pct green" id="cw-future-pct">0.00%</div>
                 <div class="cw-future-sub" id="cw-future-sub">No change</div>
             </div>
-            <!-- SVG hidden — kept in DOM so app.js drawGauge() does not throw -->
-            <svg id="cw-future-gauge" xmlns="http://www.w3.org/2000/svg"
-                 width="0" height="0" class="inline-hidden"></svg>
         </div>
 
     </div>
 
-    <div class="cw-share-row">
-        <button class="btn-share" id="btn-share-cw" aria-label="Share BunkWise">⬆ Share BunkWise</button>
+    <div class="subjects-header">
+        <div class="subjects-header-text">Subject Breakdown</div>
+        <div class="subjects-header-line"></div>
     </div>
-
-    <div class="ad-container"></div>
+    
 
 </div>
 
@@ -226,7 +167,11 @@
         <div class="popup-close" id="cw-popup-close">click outside or here to close</div>
     </div>
 </div>
+
 </main>
+
+<div class="right-ad-spacer" aria-hidden="true"></div>
+</div><!-- /desktop-layout-wrapper -->
 
 <script src="app.js" defer></script>
 </body>

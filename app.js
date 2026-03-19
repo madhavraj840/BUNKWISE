@@ -34,8 +34,23 @@
             .replace(/"/g, '&quot;');
     }
 
+    /* ── Safe AdSense push — no-op if ad-blocked or already pushed ──────────
+       Called the exact moment a result container becomes visible to the user.
+       Wrapped in try/catch so ad-blocker failures never break the tool.
+    ───────────────────────────────────────────────────────────────────────── */
+    function _adPush(containerEl) {
+        if (!containerEl) return;
+        if (containerEl.dataset.adPushed) return; // guard: push once per slot only
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            containerEl.dataset.adPushed = 'true';
+        } catch (e) {
+            // Ad blocked or AdSense not loaded — tool continues normally
+        }
+    }
+
     // ── DevTools deterrent ────────────────────────────────
-(function () {
+/*(function () {
     // Block right click
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
@@ -62,7 +77,7 @@
             document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;font-size:1.2rem;background:#090d14;color:#f04455;">Developer tools are not allowed on this page.</div>';
         }
     }, 1000);
-}());
+}());*/
 
     /* ══════════════════════════════════════════════════════
        SHARED — runs on every page
@@ -155,6 +170,8 @@
             results.classList.add('in');
             if (fab)    fab.classList.add('visible');
             if (toggle) toggle.classList.remove('visible'); // hide when FAB is shown
+            // JIT ad push — fires only now that the results div is visible
+            _adPush(results.querySelector('.ad-container'));
         } else {
             results.classList.add('hidden');
             results.classList.remove('in');
@@ -3288,8 +3305,13 @@
             return;
         }
 
-        showSGPAState('loading');
-        setSGPALoadingMsg('Reading PDF file…');
+        // ── Set View Result button to analyzing state ──
+        var _rtuViewBtn = document.getElementById('btn-rtu-view-result');
+        if (_rtuViewBtn) {
+            _rtuViewBtn.disabled = true;
+            _rtuViewBtn.className = 'btn-view-result view-result-analyzing';
+            _rtuViewBtn.innerHTML = '<span class="btn-spinner"></span> Analysing result…';
+        }
 
         try {
             var arrayBuffer = await new Promise(function (resolve, reject) {
@@ -3299,15 +3321,14 @@
                 reader.readAsArrayBuffer(file);
             });
 
-            setSGPALoadingMsg('Extracting text from PDF…');
             var fullText = await extractPDFText(arrayBuffer);
 
-            setSGPALoadingMsg('Parsing result data…');
             var parsed = parseRTUResult(fullText);
 
             if (!parsed.subjects.length) {
                 showSGPAState('upload');
                 showSGPAError('No subject rows found. Please upload a valid RTU result PDF.');
+                if (_rtuViewBtn) { _rtuViewBtn.disabled = true; _rtuViewBtn.className = 'btn-view-result'; _rtuViewBtn.textContent = 'View Result'; }
                 return;
             }
 
@@ -3316,14 +3337,29 @@
 
             SGPA_STATE.data = Object.assign({}, parsed, computed);
 
-            setSGPALoadingMsg('Rendering results…');
-            renderSGPAResults(SGPA_STATE.data);
-            showSGPAState('results');
+            // ── Store result in localStorage for rtu_result.html ──
+            localStorage.setItem('bw-rtu-result', JSON.stringify(SGPA_STATE.data));
+            localStorage.setItem('bw-rtu-result-ts', Date.now().toString());
+
+            // ── Enable View Result button with shine animation ──
+            showSGPAState('upload');
+            var viewBtn = document.getElementById('btn-rtu-view-result');
+            if (viewBtn) {
+                viewBtn.disabled = false;
+                viewBtn.className = 'btn-view-result view-result-ready';
+                viewBtn.textContent = 'View Result →';
+            }
 
         } catch (err) {
             console.error('[SGPA] Parse error:', err);
             showSGPAState('upload');
             showSGPAError('Could not process this PDF. Ensure it is a valid RTU result PDF and try again.');
+            var viewBtn2 = document.getElementById('btn-rtu-view-result');
+            if (viewBtn2) {
+                viewBtn2.disabled = true;
+                viewBtn2.className = 'btn-view-result';
+                viewBtn2.textContent = 'View Result';
+            }
         }
     }
 
@@ -3465,17 +3501,22 @@
             e.target.value = '';
         });
 
-        document.getElementById('btn-download-report').addEventListener('click', generateReportPDF);
+        // ── These buttons live on rtu_result.html — null-guard required on sgpa.html ──
+        var _sgpaDlBtn = document.getElementById('btn-download-report');
+        if (_sgpaDlBtn) _sgpaDlBtn.addEventListener('click', generateReportPDF);
 
-        document.getElementById('btn-check-another').addEventListener('click', function () {
-            SGPA_STATE.data = null;
-            var zone = document.getElementById('sgpa-upload-zone');
-            var hint = document.getElementById('sgpa-hint');
-            zone.classList.remove('success', 'error-state');
-            hint.textContent = 'Select your RTU result PDF to analyse';
-            clearSGPAError();
-            showSGPAState('upload');
-        });
+        var _sgpaChkBtn = document.getElementById('btn-check-another');
+        if (_sgpaChkBtn) {
+            _sgpaChkBtn.addEventListener('click', function () {
+                SGPA_STATE.data = null;
+                var zone = document.getElementById('sgpa-upload-zone');
+                var hint = document.getElementById('sgpa-hint');
+                if (zone) zone.classList.remove('success', 'error-state');
+                if (hint) hint.textContent = 'Select your RTU result PDF to analyse';
+                clearSGPAError();
+                showSGPAState('upload');
+            });
+        }
 
         // ── RTU Branch selector ──
         var rtuBranchSelect = document.getElementById('rtu-branch-select');
@@ -3542,6 +3583,45 @@
         var btnShareAuto = document.getElementById('btn-share-auto');
         if (btnShareAuto) {
             btnShareAuto.addEventListener('click', function () { handleShare(btnShareAuto); });
+        }
+
+        // ── Wire View Result buttons — navigate to result pages ──
+        var btnRtuView = document.getElementById('btn-rtu-view-result');
+        if (btnRtuView) {
+            btnRtuView.addEventListener('click', function () {
+                if (!btnRtuView.disabled) {
+                    window.location.href = 'rtu_result.html';
+                }
+            });
+        }
+        var btnAutoView = document.getElementById('btn-auto-view-result');
+        if (btnAutoView) {
+            btnAutoView.addEventListener('click', function () {
+                if (!btnAutoView.disabled) {
+                    window.location.href = 'auto_result.html';
+                }
+            });
+        }
+
+        // ── Back-button recovery — restore View Result ready state if data exists ──
+        var _rtuTs  = localStorage.getItem('bw-rtu-result-ts');
+        var _autoTs = localStorage.getItem('bw-auto-result-ts');
+        var _24h    = 24 * 60 * 60 * 1000;
+        if (_rtuTs && (Date.now() - parseInt(_rtuTs, 10)) < _24h) {
+            var _rBtn = document.getElementById('btn-rtu-view-result');
+            if (_rBtn) {
+                _rBtn.disabled = false;
+                _rBtn.className = 'btn-view-result view-result-ready';
+                _rBtn.textContent = 'View Result →';
+            }
+        }
+        if (_autoTs && (Date.now() - parseInt(_autoTs, 10)) < _24h) {
+            var _aBtn = document.getElementById('btn-auto-view-result');
+            if (_aBtn) {
+                _aBtn.disabled = false;
+                _aBtn.className = 'btn-view-result view-result-ready';
+                _aBtn.textContent = 'View Result →';
+            }
         }
     }
 
@@ -4979,8 +5059,13 @@
             return;
         }
 
-        showSGPAState('loading');
-        setSGPALoadingMsg('Reading PDF file…');
+        // ── Set View Result button to analyzing state ──
+        var _autoViewBtn = document.getElementById('btn-auto-view-result');
+        if (_autoViewBtn) {
+            _autoViewBtn.disabled = true;
+            _autoViewBtn.className = 'btn-view-result view-result-analyzing';
+            _autoViewBtn.innerHTML = '<span class="btn-spinner"></span> Analysing result…';
+        }
 
         try {
             var arrayBuffer = await new Promise(function (resolve, reject) {
@@ -4990,15 +5075,14 @@
                 reader.readAsArrayBuffer(file);
             });
 
-            setSGPALoadingMsg('Extracting text from PDF…');
             var fullText = await extractPDFText(arrayBuffer);
 
-            setSGPALoadingMsg('Analysing result with AI…');
             var geminiData = await callGeminiAPI(fullText);
 
             if (!geminiData || !geminiData.subjects || !geminiData.subjects.length) {
                 showSGPAState('upload');
                 showAutoError('No subjects found in this PDF. Please upload a valid SKIT autonomous result PDF.');
+                if (_autoViewBtn) { _autoViewBtn.disabled = true; _autoViewBtn.className = 'btn-view-result'; _autoViewBtn.textContent = 'View Result'; }
                 return;
             }
 
@@ -5007,17 +5091,28 @@
 
             AUTO_STATE.data = result;
 
-            setSGPALoadingMsg('Rendering results…');
-            renderAutoResults(result);
-            showAutoResults();
+            // ── Store result in localStorage for auto_result.html ──
+            localStorage.setItem('bw-auto-result', JSON.stringify(result));
+            localStorage.setItem('bw-auto-result-ts', Date.now().toString());
 
             // Increment rate limit counter only on success
             incrementAutoRateLimit();
             updateAutoCounter();
 
+            // ── Enable View Result button with shine animation ──
+            showSGPAState('upload');
+            var autoViewBtn = document.getElementById('btn-auto-view-result');
+            if (autoViewBtn) {
+                autoViewBtn.disabled = false;
+                autoViewBtn.className = 'btn-view-result view-result-ready';
+                autoViewBtn.textContent = 'View Result →';
+            }
+
         } catch (err) {
             console.error('[AUTO] Error:', err);
             showSGPAState('upload');
+            // Reset View Result button on any error
+            if (_autoViewBtn) { _autoViewBtn.disabled = true; _autoViewBtn.className = 'btn-view-result'; _autoViewBtn.textContent = 'View Result'; }
             var msg = err && err.message ? err.message : '';
             if (msg.indexOf('TIMEOUT:') === 0) {
                 showAutoError(msg.slice('TIMEOUT:'.length));
@@ -5073,6 +5168,8 @@
             results.classList.add('in');
             if (fab)    fab.classList.add('visible');
             if (toggle) toggle.classList.remove('visible'); // hide when FAB is shown
+            // JIT ad push — fires only now that the CW results div is visible
+            _adPush(results.querySelector('.ad-container'));
         } else {
             results.classList.add('hidden');
             results.classList.remove('in');
@@ -5382,6 +5479,230 @@
     }
 
     /* ══════════════════════════════════════════════════════
+       RTU RESULT PAGE  (rtu_result.html)
+       Reads SGPA_STATE.data from localStorage, validates
+       24-hour expiry, renders table, wires download/share/
+       check-another. Redirects to sgpa.html if data missing.
+    ══════════════════════════════════════════════════════ */
+    /* ══════════════════════════════════════════════════════
+       CONFETTI ENGINE
+       Pure-canvas confetti cannon. No external libraries.
+       Fires on result pages based on SGPA score.
+       SGPA ≥ 10 → max intensity (triple burst)
+       SGPA ≥  9 → high intensity (double burst)
+       SGPA ≥  8 → medium intensity (single burst + extras)
+       SGPA ≥  7 → light burst
+       SGPA  < 7 → no animation
+    ══════════════════════════════════════════════════════ */
+    function _launchConfetti(sgpa) {
+        if (!sgpa || sgpa < 7) return;  // no animation below 7
+
+        // Determine intensity parameters
+        var particleCount, burstCount, duration, spread;
+        if (sgpa >= 10) {
+            particleCount = 220; burstCount = 3; duration = 3000; spread = 90;
+        } else if (sgpa >= 9) {
+            particleCount = 160; burstCount = 2; duration = 2500; spread = 75;
+        } else if (sgpa >= 8) {
+            particleCount = 100; burstCount = 1; duration = 2000; spread = 65;
+        } else {
+            particleCount = 55;  burstCount = 1; duration = 1800; spread = 50;
+        }
+
+        var canvas = document.createElement('canvas');
+        canvas.id = 'bw-confetti-canvas';
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        document.body.appendChild(canvas);
+        var ctx = canvas.getContext('2d');
+
+        var COLORS = ['#4d8af0','#1ed97a','#f0c040','#f04455','#a064f0','#40d4f0','#f07840'];
+
+        function _particle(originX) {
+            var angle = (Math.random() * spread - spread / 2) * Math.PI / 180;
+            var speed = 6 + Math.random() * 8;
+            return {
+                x:  originX,
+                y:  canvas.height * 0.1,
+                vx: Math.sin(angle) * speed,
+                vy: -(Math.cos(angle) * speed),
+                rot: Math.random() * 360,
+                rotSpeed: (Math.random() - 0.5) * 8,
+                w:  7 + Math.random() * 7,
+                h:  4 + Math.random() * 5,
+                color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                opacity: 1,
+                gravity: 0.22 + Math.random() * 0.12
+            };
+        }
+
+        var particles = [];
+
+        function _spawnBurst() {
+            var cx = canvas.width * (0.3 + Math.random() * 0.4);
+            for (var i = 0; i < particleCount; i++) {
+                particles.push(_particle(cx + (Math.random() - 0.5) * 40));
+            }
+        }
+
+        // Fire first burst immediately, subsequent bursts staggered
+        _spawnBurst();
+        var burstsFired = 1;
+        var burstInterval = null;
+        if (burstCount > 1) {
+            burstInterval = setInterval(function () {
+                _spawnBurst();
+                burstsFired++;
+                if (burstsFired >= burstCount) clearInterval(burstInterval);
+            }, 500);
+        }
+
+        var startTime = performance.now();
+        var raf;
+
+        function _tick(now) {
+            var elapsed = now - startTime;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Fade out in last 600ms
+            var fadeStart = duration - 600;
+            var globalAlpha = elapsed > fadeStart
+                ? Math.max(0, 1 - (elapsed - fadeStart) / 600)
+                : 1;
+
+            for (var i = particles.length - 1; i >= 0; i--) {
+                var p = particles[i];
+                p.x  += p.vx;
+                p.y  += p.vy;
+                p.vy += p.gravity;
+                p.vx *= 0.99;
+                p.rot += p.rotSpeed;
+
+                if (p.y > canvas.height + 20) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = globalAlpha * p.opacity;
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rot * Math.PI / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                ctx.restore();
+            }
+
+            if (elapsed < duration || particles.length > 0) {
+                raf = requestAnimationFrame(_tick);
+            } else {
+                // Clean up
+                cancelAnimationFrame(raf);
+                if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+            }
+        }
+
+        raf = requestAnimationFrame(_tick);
+
+        // Hard cleanup at duration + 1s regardless
+        setTimeout(function () {
+            cancelAnimationFrame(raf);
+            if (burstInterval) clearInterval(burstInterval);
+            if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+        }, duration + 1000);
+    }
+
+    function initRTUResultPage() {
+        var sentinel = document.getElementById('rtu-result-page');
+        if (!sentinel) return; // not on rtu_result.html — exit
+
+        var raw = localStorage.getItem('bw-rtu-result');
+        var ts  = localStorage.getItem('bw-rtu-result-ts');
+
+        // Validate: data must exist and be less than 24 hours old
+        if (!raw || !ts || (Date.now() - parseInt(ts, 10)) > 86400000) {
+            window.location.href = 'sgpa.html';
+            return;
+        }
+
+        try {
+            SGPA_STATE.data = JSON.parse(raw);
+        } catch (e) {
+            window.location.href = 'sgpa.html';
+            return;
+        }
+
+        renderSGPAResults(SGPA_STATE.data);
+
+        // ── Confetti — fires after a short delay so the table renders first ──
+        setTimeout(function () {
+            _launchConfetti(SGPA_STATE.data && SGPA_STATE.data.sgpa);
+        }, 400);
+
+        var btnDownload = document.getElementById('btn-download-report');
+        if (btnDownload) btnDownload.addEventListener('click', generateReportPDF);
+
+        var btnCheck = document.getElementById('btn-check-another');
+        if (btnCheck) {
+            btnCheck.addEventListener('click', function () {
+                // Clear stale data so back-button on sgpa.html starts fresh
+                localStorage.removeItem('bw-rtu-result');
+                localStorage.removeItem('bw-rtu-result-ts');
+                window.location.href = 'sgpa.html';
+            });
+        }
+
+        var btnShare = document.getElementById('btn-share-sgpa');
+        if (btnShare) btnShare.addEventListener('click', function () { handleShare(btnShare); });
+    }
+
+    /* ══════════════════════════════════════════════════════
+       AUTO RESULT PAGE  (auto_result.html)
+       Same pattern as initRTUResultPage but for autonomous
+       (SKIT) pipeline data stored under bw-auto-result.
+    ══════════════════════════════════════════════════════ */
+    function initAutoResultPage() {
+        var sentinel = document.getElementById('auto-result-page');
+        if (!sentinel) return; // not on auto_result.html — exit
+
+        var raw = localStorage.getItem('bw-auto-result');
+        var ts  = localStorage.getItem('bw-auto-result-ts');
+
+        if (!raw || !ts || (Date.now() - parseInt(ts, 10)) > 86400000) {
+            window.location.href = 'sgpa.html';
+            return;
+        }
+
+        try {
+            AUTO_STATE.data = JSON.parse(raw);
+        } catch (e) {
+            window.location.href = 'sgpa.html';
+            return;
+        }
+
+        renderAutoResults(AUTO_STATE.data);
+
+        // ── Confetti — fires after a short delay so the table renders first ──
+        setTimeout(function () {
+            _launchConfetti(AUTO_STATE.data && AUTO_STATE.data.sgpa);
+        }, 400);
+        if (btnDownload) btnDownload.addEventListener('click', function () {
+            if (AUTO_STATE.data) generateAutoReportPDF();
+        });
+
+        var btnCheck = document.getElementById('btn-auto-check-another');
+        if (btnCheck) {
+            btnCheck.addEventListener('click', function () {
+                localStorage.removeItem('bw-auto-result');
+                localStorage.removeItem('bw-auto-result-ts');
+                window.location.href = 'sgpa.html';
+            });
+        }
+
+        var btnShare = document.getElementById('btn-share-auto');
+        if (btnShare) btnShare.addEventListener('click', function () { handleShare(btnShare); });
+    }
+
+    /* ══════════════════════════════════════════════════════
        DOM READY — wire everything
     ══════════════════════════════════════════════════════ */
     document.addEventListener('DOMContentLoaded', function () {
@@ -5427,6 +5748,12 @@
 
         // ── CW page ──
         initCWPage();
+
+        // ── RTU result page ──
+        initRTUResultPage();
+
+        // ── AUTO result page ──
+        initAutoResultPage();
     });
 
 }());

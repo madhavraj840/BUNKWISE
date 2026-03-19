@@ -27,22 +27,6 @@
     --r:    14px;
     --r-sm:  8px;
     --r-lg: 20px;
-
-    /* ── Spacing scale (golden ratio) ── */
-    --space-1: 0.5rem;
-    --space-2: 0.8rem;
-    --space-3: 1rem;
-    --space-4: 1.6rem;
-    --space-5: 2.6rem;
-    --space-6: 4.2rem;
-
-    /* ── Typography scale ── */
-    --text-xs:  0.75rem;
-    --text-sm:  0.9rem;
-    --text-md:  1rem;
-    --text-lg:  1.25rem;
-    --text-xl:  1.6rem;
-    --text-xxl: 2.2rem;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -86,16 +70,12 @@
     -ms-user-select: none;
 }
 
-html {
-    scroll-behavior: smooth;
-    font-size-adjust: 0.5;
-    -webkit-font-smoothing: antialiased;
-}
+html { scroll-behavior: smooth; }
 
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: system-ui, -apple-system, Arial, sans-serif;
+    font-family: 'Manrope', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -105,45 +85,6 @@ body {
 * { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }
 .hidden { display: none !important; }
-
-.inline-hidden { display: none !important; }
-
-.page-top-center {
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 6.5rem;
-}
-
-.page-top-start {
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 6rem;
-}
-
-.paste-wrap-narrow { max-width: 620px; }
-.subjects-header-spaced { margin-top: 1.75rem; }
-
-.accent-link { color: var(--accent); }
-
-.inline-code-chip {
-    font-family: 'DM Mono', monospace;
-    font-size: .82rem;
-    background: var(--bg-input);
-    padding: .1rem .4rem;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-}
-
-button, input, select {
-    min-height: 44px;
-    box-sizing: border-box;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
 
 /* ══════════════════════════════════════════════════════
    VIEW TRANSITIONS — RIPPLE REVEAL
@@ -205,7 +146,7 @@ img {
 #theme-toggle {
     position: fixed;
     top: 1.1rem;
-    right: 4.2rem;       /* sits left of FAB — both can coexist without overlap */
+    right: 1.1rem;       /* ← top-right, not left */
     z-index: 1100;
     width: 44px;
     height: 44px;
@@ -213,7 +154,7 @@ img {
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
     cursor: pointer;
-    display: none;       /* hidden by default; JS adds .visible on all pages */
+    display: none;       /* hidden by default; JS adds .visible on home page */
     align-items: center;
     justify-content: center;
     font-size: 1.15rem;
@@ -306,26 +247,21 @@ img {
     align-items: center; justify-content: center;
     padding: 5rem 1.5rem 3rem;
 }
-.main-container { width: 100%; }
-.results-container {
-    width: 100%;
-    min-height: 200px;
-    contain: layout;
-}
 .page.in { animation: fadeUp .38s ease both; }
 
 /* ══════════════════════════════════════════════════════
    PAGE 1 — HOME
 ══════════════════════════════════════════════════════ */
 #page-home {
-    min-height: 100vh;
-    min-height: 100svh;
+    height: 100svh;
+    min-height: 560px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative; overflow: hidden;
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #0c1530 0%, var(--bg) 68%);
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
 }
 [data-theme="light"] #page-home {
     background: radial-gradient(ellipse 90% 70% at 50% 55%, #ddd0b8 0%, var(--bg) 68%);
@@ -348,12 +284,12 @@ img {
     flex: 1;
     width: 100%;
     max-width: 700px;
-    min-height: 320px;
     position: relative; z-index: 1;
     display: flex; flex-direction: column;
     align-items: center; text-align: center;
     justify-content: center;
-    padding-bottom: 1rem;
+    gap: 1.25rem;
+    padding: 1rem 1rem;
 }
 .home-badge {
     display: inline-flex; align-items: center; gap: .5rem;
@@ -363,7 +299,7 @@ img {
     padding: .35rem 1rem;
     font-family: 'DM Mono', monospace;
     font-size: .7rem; letter-spacing: .12em;
-    color: var(--accent); margin-bottom: 1.75rem;
+    color: var(--accent); margin: 0;
 }
 .home-badge::before {
     content: ''; width: 7px; height: 7px;
@@ -375,24 +311,26 @@ img {
     font-size: clamp(2.2rem, 5.5vw, 4rem);
     font-weight: 700; line-height: 1.2;
     display: block;
-    min-height: 3.2rem;
     letter-spacing: -.04em; color: var(--text);
-    margin-bottom: 1.1rem;
+    margin: 0;
 }
 .home-title .hl { color: var(--accent); }
 .home-desc {
-    font-size: clamp(.9rem, 2vw, 1.05rem);
-    color: var(--text-sec); max-width: 430px;
-    min-height: 5rem;
-    line-height: 1.75; margin-bottom: 2.75rem;
+    font-size: clamp(.85rem, 1.8vw, .98rem);
+    color: var(--text-sec); max-width: 420px;
+    line-height: 1.7; margin: 0;
 }
+.home-desc a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.home-desc a:hover { text-decoration: underline; }
 .btn-primary {
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .9rem 2.5rem;
-    min-height: 48px;
     background: var(--accent); color: #fff;
     border: none; border-radius: var(--r);
-    font-family: 'Manrope', system-ui, sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
     box-shadow: 0 6px 28px var(--accent-glow);
@@ -406,16 +344,6 @@ img {
 .btn-primary:active { transform: translateY(0); }
 .btn-arrow { transition: transform .2s; }
 .btn-primary:hover .btn-arrow { transform: translateX(4px); }
-.home-links {
-    margin-top: 1.25rem;
-    font-size: .85rem;
-    color: var(--text-sec);
-}
-.home-links a {
-    color: var(--accent);
-    text-decoration: none;
-}
-.home-links a:hover { text-decoration: underline; }
 
 /* ══════════════════════════════════════════════════════
    PAGE 2 — PASTE
@@ -425,10 +353,9 @@ img {
     padding-top: 6.5rem; background: var(--bg);
 }
 .page-title {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: clamp(1.7rem, 4vw, 2.5rem);
-    font-weight: 700; letter-spacing: -.03em;
-    min-height: 1.2em;
+    font-weight: 800; letter-spacing: -.03em;
     color: var(--text); margin-bottom: .4rem; text-align: center;
 }
 .page-sub {
@@ -437,7 +364,7 @@ img {
 }
 .paste-wrap {
     width: 100%; max-width: 660px;
-    display: flex; flex-direction: column; gap: var(--space-2);
+    display: flex; flex-direction: column; gap: .85rem;
 }
 
 .paste-zone {
@@ -481,7 +408,7 @@ img {
 .paste-hint {
     font-family: 'DM Mono', monospace;
     font-size: .82rem;
-    color: var(--text-sec);
+    color: var(--text-muted);
     text-align: center;
     line-height: 1.6;
 }
@@ -493,7 +420,7 @@ img {
     padding: .75rem 2rem;
     background: var(--accent); color: #fff;
     border: none; border-radius: var(--r);
-    font-family: 'Manrope', system-ui, sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: .95rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
     box-shadow: 0 4px 20px var(--accent-glow);
@@ -509,7 +436,6 @@ img {
 /* ── Upload Zone ─────────────────────────────────────── */
 .upload-zone {
     width: 100%;
-    min-height: 180px;
     background: var(--bg-input);
     border: 2px dashed var(--border-l);
     border-radius: var(--r);
@@ -519,7 +445,6 @@ img {
     justify-content: center;
     gap: 1rem;
     padding: 1.75rem 1.5rem;
-    contain: layout;
     transition: border-color .25s, background .25s;
 }
 .upload-zone:hover {
@@ -546,7 +471,7 @@ img {
 .upload-hint {
     font-family: 'DM Mono', monospace;
     font-size: .82rem;
-    color: var(--text-sec);
+    color: var(--text-muted);
     text-align: center;
     line-height: 1.6;
 }
@@ -559,7 +484,7 @@ img {
     color: var(--accent);
     border: 1.5px solid var(--accent);
     border-radius: var(--r);
-    font-family: 'Manrope', system-ui, sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: .92rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
     transition: background .2s, transform .15s, box-shadow .2s, color .2s;
@@ -583,37 +508,11 @@ img {
 }
 .error-banner.visible { display: flex; animation: fadeUp .2s ease; }
 
-/* ── AI usage counter strip (autonomous upload zone) ── */
-.ai-counter {
-    font-size: .78rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--r-sm);
-    padding: .45rem .9rem;
-    text-align: center;
-    margin-top: .5rem;
-    transition: color .2s, border-color .2s, background .2s;
-}
-.ai-counter.warn {
-    color: #d97706;
-    background: rgba(217,119,6,.08);
-    border-color: rgba(217,119,6,.35);
-}
-.ai-counter.exhausted {
-    color: var(--red);
-    background: var(--red-dim);
-    border-color: rgba(240,68,85,.35);
-}
-
 .instructions-box {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--r);
-    min-height: auto;
-    contain: layout;
-    padding: 1.3rem 1.5rem; margin-top: var(--space-1);
+    padding: 1.3rem 1.5rem; margin-top: .25rem;
 }
 .instructions-box h3 {
     font-family: 'DM Mono', monospace;
@@ -734,7 +633,7 @@ img {
 
 .subjects-header {
     display: flex; align-items: center; gap: 1rem;
-    margin-bottom: var(--space-3);
+    margin-bottom: 1.1rem;
 }
 .subjects-header-text {
     font-family: 'DM Mono', monospace;
@@ -750,9 +649,7 @@ img {
     border: 1px solid var(--border);
     border-left: 3px solid transparent;
     border-radius: var(--r);
-    min-height: auto;
-    contain: layout;
-    padding: var(--space-3) 1.25rem var(--space-3) 1.5rem;
+    padding: 1.1rem 1.35rem 1.1rem 1.6rem;
     display: grid; grid-template-columns: 170px 1fr;
     gap: 1.75rem; align-items: center;
     box-shadow: 0 2px 14px rgba(0,0,0,.35);
@@ -812,7 +709,7 @@ img {
 }
 .popup-overlay.open .popup-box { transform: scale(1) translateY(0); }
 .popup-title {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: 1.05rem; font-weight: 700;
     color: var(--text); margin-bottom: .3rem; letter-spacing: -.01em;
 }
@@ -842,10 +739,9 @@ img {
 ══════════════════════════════════════════════════════ */
 .static-page { max-width: 660px; width: 100%; padding-top: 2rem; }
 .static-page-title {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 700; letter-spacing: -.03em;
-    min-height: 1.2em;
+    font-weight: 800; letter-spacing: -.03em;
     color: var(--text); margin-bottom: .6rem;
 }
 .static-intro {
@@ -855,12 +751,12 @@ img {
 }
 .static-section { margin-bottom: 1.75rem; }
 .static-section h2 {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: 1.1rem; font-weight: 700;
     color: var(--text); margin-bottom: .6rem; letter-spacing: -.01em;
 }
 .static-section p, .static-section li {
-    font-size: var(--text-sm); color: var(--text-sec); line-height: 1.82;
+    font-size: .92rem; color: var(--text-sec); line-height: 1.82;
 }
 .static-section ul, .static-section ol {
     padding-left: 1.2rem; display: flex; flex-direction: column; gap: .35rem;
@@ -873,11 +769,11 @@ img {
     padding: 1.25rem 1.5rem; margin-bottom: .75rem;
 }
 .creator-card h3 {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: 1rem; font-weight: 700;
     color: var(--accent); margin-bottom: .3rem;
 }
-.creator-card p { font-size: var(--text-sm); color: var(--text-sec); line-height: 1.7; }
+.creator-card p { font-size: .87rem; color: var(--text-sec); line-height: 1.7; }
 .creator-github-link {
     display: inline-flex; align-items: center; gap: .5rem;
     margin-top: .9rem;
@@ -972,16 +868,7 @@ img {
 }
 .sgpa-upload-zone:hover .sgpa-upload-icon { opacity: .8; }
 .sgpa-upload-zone.success .sgpa-upload-icon { opacity: 1; }
-.sgpa-upload-hint {
-    font-family: 'Manrope', system-ui, sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-sec);
-    text-align: center;
-    line-height: 1.6;
-}
-.sgpa-upload-zone.success .sgpa-upload-hint { color: var(--green); }
-.sgpa-upload-zone.error-state .sgpa-upload-hint { color: var(--red); }
+/* sgpa-upload-hint defined below with bold styling */
 
 /* ── Loading screen ──────────────────────────────────── */
 @keyframes sgpaSpin {
@@ -1004,7 +891,7 @@ img {
     animation: sgpaSpin .8s linear infinite;
 }
 .sgpa-loading-title {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--text);
@@ -1091,7 +978,7 @@ img {
 .sgpa-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: var(--text-sm);
+    font-size: .88rem;
     background: var(--bg-card);
     min-width: 760px;
 }
@@ -1234,7 +1121,7 @@ img {
     color: var(--text-sec);
     border: 1.5px solid var(--border-l);
     border-radius: var(--r);
-    font-family: 'Manrope', system-ui, sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1358,75 +1245,212 @@ img {
     #page-cw-results { padding-left: 1rem; padding-right: 1rem; }
 }
 
-/* ── SGPA divider between RTU and Autonomous upload zones ── */
-.sgpa-divider {
+/* ══════════════════════════════════════════════════════
+   DESKTOP LAYOUT WRAPPER
+   Used on attendance.html, sgpa.html, cw.html only.
+   Provides symmetric left rail (ad) + center content
+   + right spacer so the tool stays visually centered.
+   Hidden on everything below 1200px — zero mobile impact.
+══════════════════════════════════════════════════════ */
+.desktop-layout-wrapper {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    color: var(--text-muted);
-    font-family: 'DM Mono', monospace;
-    font-size: .8rem;
-    letter-spacing: .08em;
-}
-.sgpa-divider::before,
-.sgpa-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-}
-/* ── Branch selector inside autonomous upload zone ──── */
-.auto-branch-wrap {
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
-    max-width: 360px;
-    text-align: left;
+    min-height: 100vh;
 }
 
-.auto-branch-label {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    color: var(--text-muted);
-    letter-spacing: .06em;
-    margin-bottom: .4rem;
-    text-transform: uppercase;
+.left-ad-rail {
+    display: none; /* hidden mobile/tablet */
+    width: 160px;
+    flex-shrink: 0;
+    margin-left: 2.5rem;   /* keeps rail away from browser edge */
+    margin-right: 48px;    /* safety gutter */
+    position: sticky;
+    top: 1.1rem;
+    align-self: flex-start;
+    padding-top: 5.5rem;
 }
 
-.auto-branch-select {
-    width: 100%;
-    padding: .55rem .85rem;
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid var(--border-l);
-    border-radius: var(--r-sm);
-    font-family: 'Manrope', system-ui, sans-serif;
-    font-size: .88rem;
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7a99' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right .85rem center;
-    padding-right: 2.2rem;
-    transition: border-color .2s, box-shadow .2s;
+.right-ad-spacer {
+    display: none; /* hidden mobile/tablet */
+    width: 160px;
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+    margin-left: 48px;
 }
 
-.auto-branch-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px var(--accent-glow);
+@media (min-width: 1200px) {
+    .left-ad-rail,
+    .right-ad-spacer {
+        display: block;
+    }
 }
 
-.auto-branch-select option {
-    background: var(--bg-card);
-    color: var(--text);
+/* Rail ad placeholder — 160×600 skyscraper slot */
+.left-ad-rail .ad-container {
+    width: 160px;
+    min-height: 600px;
+    margin: 0;
+    border-radius: var(--r);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
 
 /* ══════════════════════════════════════════════════════
-   SHARE BUTTON
-   Used in attendance results and CW results pages
+   VIEW RESULT BUTTON (SGPA pipelines)
+   Three states: disabled → analyzing → ready (shine)
 ══════════════════════════════════════════════════════ */
+.btn-view-result {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .72rem 2rem;
+    background: var(--bg-card);
+    color: var(--text-muted);
+    border: 1.5px solid var(--border-l);
+    border-radius: var(--r);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: not-allowed;
+    letter-spacing: .01em;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s, color .2s, border-color .2s, transform .15s, box-shadow .2s;
+    margin-top: .5rem;
+}
+.btn-view-result:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+.btn-view-result.view-result-analyzing {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    cursor: not-allowed;
+    opacity: 1;
+    box-shadow: 0 4px 20px var(--accent-glow);
+}
+@keyframes shine {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+}
+.btn-view-result.view-result-ready {
+    background: linear-gradient(90deg, var(--accent) 0%, #7cb3ff 45%, var(--accent) 100%);
+    background-size: 200% auto;
+    animation: shine 2s linear infinite;
+    color: #fff;
+    border-color: transparent;
+    cursor: pointer;
+    opacity: 1;
+    box-shadow: 0 4px 24px var(--accent-glow);
+}
+.btn-view-result.view-result-ready:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--accent-glow);
+}
+.btn-view-result.view-result-ready:active { transform: translateY(0); }
+@keyframes btnSpin { to { transform: rotate(360deg); } }
+.btn-spinner {
+    display: inline-block;
+    width: 13px; height: 13px;
+    border: 2px solid rgba(255,255,255,.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btnSpin .7s linear infinite;
+    flex-shrink: 0;
+}
+
+/* ── SGPA upload hint — bolder and larger so users know which zone to use ── */
+.sgpa-upload-hint {
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.5;
+}
+.sgpa-upload-zone.success .sgpa-upload-hint { color: var(--green); }
+.sgpa-upload-zone.error-state .sgpa-upload-hint { color: var(--red); }
+
+/* ── Confetti canvas overlay ── */
+#bw-confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ══════════════════════════════════════════════════════
+   MISSING CSS BLOCKS — restored
+══════════════════════════════════════════════════════ */
+
+/* ── Utility ── */
+.inline-hidden { display: none !important; }
+
+.page-top-center {
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 6.5rem;
+}
+
+.page-top-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 6rem;
+}
+
+.paste-wrap-narrow { max-width: 620px; }
+.subjects-header-spaced { margin-top: 1.75rem; }
+.accent-link { color: var(--accent); }
+
+.inline-code-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: .82rem;
+    background: var(--bg-input);
+    padding: .1rem .4rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+/* ── Ad containers — placeholder styling (remove dashed border before AdSense goes live) ── */
+.ad-container {
+    width: 100%;
+    min-height: 90px;
+    background: var(--bg-card);
+    border: 1px dashed var(--border-l);
+    border-radius: var(--r);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+.ad-container::before { content: '// advertisement'; }
+
+.ad-container.ad-banner {
+    min-height: 90px;
+    margin: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.ad-banner { min-height: 90px; }
+
+/* ── Share button ── */
 .btn-share {
     display: inline-flex;
     align-items: center;
@@ -1453,7 +1477,6 @@ img {
 }
 .btn-share:active { transform: translateY(0); }
 
-/* CW share row — centres the share button below the panel */
 .cw-share-row {
     display: flex;
     justify-content: center;
@@ -1461,55 +1484,7 @@ img {
     margin-bottom: 1.75rem;
 }
 
-/* ══════════════════════════════════════════════════════
-   AD CONTAINERS
-   Placeholder blocks for future AdSense units.
-   Visual only — no real ads yet.
-══════════════════════════════════════════════════════ */
-.ad-container {
-    width: 100%;
-    min-height: 90px;
-    /* Placeholder styling — remove border/bg/pseudo when activating real AdSense */
-    background: var(--bg-card);
-    border: 1px dashed var(--border-l);
-    border-radius: var(--r);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-family: 'DM Mono', monospace;
-    font-size: .65rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-}
-/* IMPORTANT: Remove this pseudo-element before enabling real AdSense units —
-   AdSense injects its own content and the ::before text will conflict/violate policy */
-.ad-container::before { content: '// advertisement'; }
-
-/* Banner variant at bottom of home page */
-.ad-container.ad-banner {
-    min-height: 90px;
-    margin: 0;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-}
-
-.ad-banner {
-    min-height: 90px;
-}
-
-/* ══════════════════════════════════════════════════════
-   SEO SECTION
-   Text blocks added below tools for search engines.
-   Below the fold — users see the tool first.
-══════════════════════════════════════════════════════ */
+/* ── SEO section ── */
 .seo-section {
     width: 100%;
     padding: 2rem 0 1rem;
@@ -1534,7 +1509,7 @@ img {
 }
 .seo-section strong { color: var(--text); font-weight: 600; }
 
-/* ── FAQ inside seo-section ─────────────────────────── */
+/* ── FAQ ── */
 .faq-section {
     margin-top: 2rem;
     padding-top: 1.5rem;
@@ -1597,7 +1572,93 @@ summary.faq-question:hover { background: var(--bg-card-h); }
 }
 .faq-answer p { margin-top: .75rem; }
 
-/* Mobile adjustments for seo-section inside paste-wrap */
+/* ── Branch selector (SGPA upload zones) ── */
+.auto-branch-wrap {
+    width: 100%;
+    max-width: 360px;
+    text-align: left;
+}
+.auto-branch-label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    color: var(--text-muted);
+    letter-spacing: .06em;
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+}
+.auto-branch-select {
+    width: 100%;
+    padding: .55rem .85rem;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border-l);
+    border-radius: var(--r-sm);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: .88rem;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7a99' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .85rem center;
+    padding-right: 2.2rem;
+    transition: border-color .2s, box-shadow .2s;
+    min-height: 44px;
+}
+.auto-branch-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+.auto-branch-select option {
+    background: var(--bg-card);
+    color: var(--text);
+}
+
+/* ── AI usage counter ── */
+.ai-counter {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: .45rem .9rem;
+    text-align: center;
+    margin-top: .5rem;
+    transition: color .2s, border-color .2s, background .2s;
+}
+.ai-counter.warn {
+    color: #d97706;
+    background: rgba(217,119,6,.08);
+    border-color: rgba(217,119,6,.35);
+}
+.ai-counter.exhausted {
+    color: var(--red);
+    background: var(--red-dim);
+    border-color: rgba(240,68,85,.35);
+}
+
+/* ── SGPA divider (kept for backwards compat even though not used) ── */
+.sgpa-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .8rem;
+    letter-spacing: .08em;
+}
+.sgpa-divider::before,
+.sgpa-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
 @media (max-width: 660px) {
     .seo-section { padding: 1.5rem 0 .5rem; }
     .faq-section { margin-top: 1.5rem; }
