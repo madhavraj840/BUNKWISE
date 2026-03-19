@@ -15,9 +15,9 @@
 
     <script>
         (function () {
-            // Always follow system theme — no localStorage persistence
+            const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = preferred;
+            document.documentElement.dataset.theme = saved || preferred;
         })();
     </script>
     <script>
@@ -107,7 +107,7 @@
 
         <div class="static-section">
             <h2>4. Cookies</h2>
-            <p>BunkWise stores one item in localStorage: the AI analysis usage counter (<code class="inline-code-chip">bw-auto-usage</code>) to enforce the daily limit. Theme preference is not stored — the app always follows your system's dark/light preference automatically. This data never leaves your device.</p>
+            <p>BunkWise stores two items in localStorage: your theme preference (<code class="inline-code-chip">bw-theme</code>, value: <code class="inline-code-chip">light</code> or <code class="inline-code-chip">dark</code>) and the AI analysis usage counter (<code class="inline-code-chip">bw-auto-usage</code>) to enforce the daily limit. Both values never leave your device.</p>
             <p>The following <strong>third-party cookies</strong> may be set when you visit BunkWise:</p>
             <ul>
                 <li><strong>Google Analytics:</strong> <code class="inline-code-chip">_ga</code> (2-year expiry), <code class="inline-code-chip">_ga_*</code> (2-year expiry), <code class="inline-code-chip">_gid</code> (24-hour expiry) — used to distinguish visitors and sessions.</li>

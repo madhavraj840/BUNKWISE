@@ -35,7 +35,7 @@
     }
 
     // ── DevTools deterrent ────────────────────────────────
-/*(function () {
+(function () {
     // Block right click
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
@@ -62,7 +62,7 @@
             document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;font-size:1.2rem;background:#090d14;color:#f04455;">Developer tools are not allowed on this page.</div>';
         }
     }, 1000);
-}());*/
+}());
 
     /* ══════════════════════════════════════════════════════
        SHARED — runs on every page
@@ -115,6 +115,7 @@
 
         function applyTheme() {
             document.documentElement.dataset.theme = targetTheme;
+            localStorage.setItem('bw-theme', targetTheme);
             updateThemeIcon(targetTheme);
         }
 

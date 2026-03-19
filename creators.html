@@ -15,9 +15,9 @@
 
     <script>
         (function () {
-            // Always follow system theme — no localStorage persistence
+            const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = preferred;
+            document.documentElement.dataset.theme = saved || preferred;
         })();
     </script>
     <script>
@@ -75,6 +75,9 @@
             <p>Creator of BunkWise. Designed and developed the attendance calculator from the ground up — including the core calculation engine, the subject-wise and aggregate percentage logic, the speedometer gauge UI, and the live desired-percentage update system. Built to save every college student the five minutes of painful mental math before bunking a class.</p>
             <a href="https://github.com/madhavraj840/" target="_blank" rel="noopener noreferrer" class="creator-github-link">
                 <span>⌥</span> github.com/madhavraj840
+            </a>
+            <a href="https://t.me/madhavraj840" target="_blank" rel="noopener noreferrer" class="creator-github-link">
+                <span>⌥</span> t.me/madhavraj840
             </a>
         </div>
     </div>
