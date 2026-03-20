@@ -2,12 +2,12 @@
    CSS VARIABLES — DARK THEME (default)
 ══════════════════════════════════════════════════════ */
 :root {
-    --bg:           #090d14;
-    --bg-card:      #0f1520;
-    --bg-card-h:    #151e30;
-    --bg-input:     #0d1220;
-    --border:       #1c2540;
-    --border-l:     #232d4a;
+    --bg:           #161614;
+    --bg-card:      #262624;
+    --bg-card-h:    #2e2e2b;
+    --bg-input:     #1e1e1c;
+    --border:       #363634;
+    --border-l:     #444442;
 
     --accent:       #4d8af0;
     --accent-h:     #3772d8;
@@ -259,7 +259,7 @@ button { cursor: pointer; }
     flex-direction: column;
     align-items: center;
     position: relative; overflow: hidden;
-    background: radial-gradient(ellipse 90% 70% at 50% 55%, #0c1530 0%, var(--bg) 68%);
+    background: radial-gradient(ellipse 90% 70% at 50% 55%, #1e1e1a 0%, var(--bg) 68%);
     justify-content: space-between;
     width: 100%;
 }
@@ -329,7 +329,7 @@ button { cursor: pointer; }
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .9rem 2.5rem;
     background: var(--accent); color: #fff;
-    border: none; border-radius: var(--r);
+    border: none; border-radius: 6px;
     font-family: 'Manrope', sans-serif;
     font-size: 1rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
@@ -419,7 +419,7 @@ button { cursor: pointer; }
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .75rem 2rem;
     background: var(--accent); color: #fff;
-    border: none; border-radius: var(--r);
+    border: none; border-radius: 6px;
     font-family: 'Manrope', sans-serif;
     font-size: .95rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
@@ -483,7 +483,7 @@ button { cursor: pointer; }
     background: var(--bg-card);
     color: var(--accent);
     border: 1.5px solid var(--accent);
-    border-radius: var(--r);
+    border-radius: 6px;
     font-family: 'Manrope', sans-serif;
     font-size: .92rem; font-weight: 700;
     cursor: pointer; letter-spacing: .01em;
@@ -1120,7 +1120,7 @@ button { cursor: pointer; }
     background: var(--bg-card);
     color: var(--text-sec);
     border: 1.5px solid var(--border-l);
-    border-radius: var(--r);
+    border-radius: 6px;
     font-family: 'Manrope', sans-serif;
     font-size: 1rem;
     font-weight: 700;
@@ -1310,7 +1310,7 @@ button { cursor: pointer; }
     background: var(--bg-card);
     color: var(--text-muted);
     border: 1.5px solid var(--border-l);
-    border-radius: var(--r);
+    border-radius: 6px;
     font-family: 'Manrope', system-ui, sans-serif;
     font-size: .95rem;
     font-weight: 700;
@@ -1459,7 +1459,7 @@ button { cursor: pointer; }
     background: var(--bg-card);
     color: var(--accent);
     border: 1.5px solid var(--accent);
-    border-radius: var(--r);
+    border-radius: 6px;
     font-family: 'Manrope', system-ui, sans-serif;
     font-size: .82rem;
     font-weight: 700;
