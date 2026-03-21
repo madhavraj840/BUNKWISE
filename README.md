@@ -3,7 +3,7 @@
 **A free, no-login academic tool for college students.**
 Calculate attendance, predict bunks, and compute SGPA — all inside your browser. No data sent anywhere.
 
-🔗 **Live site:** [madhavraj840.github.io/BUNKWISE](https://madhavraj840.github.io/BUNKWISE)
+🔗 **Live site:** [madhavraj840.github.io/BUNKWISE](https://bunkwise.in/)
 
 ---
 
@@ -67,6 +67,7 @@ BUNKWISE/
 ├── creators.html       — Creator Description
 ├── app.js              — All JavaScript logic
 └── style.css           — All styles (dark + light theme)
+to be updated
 ```
 
 ---
@@ -78,7 +79,7 @@ BUNKWISE/
 - **SKIT result PDFs** — raw text is sent to Google Gemini API for analysis via a secure Cloudflare Worker proxy. The API key is stored in Cloudflare — never in the source code.
 - **Analytics** — Google Analytics collects anonymous usage data (pages visited, device type, location). No personal data is collected by BunkWise.
 
-Full details in the [Privacy Policy](https://madhavraj840.github.io/BUNKWISE/privacy.html).
+Full details in the [Privacy Policy](https://bunkwise.in/privacy.html).
 
 ---
 
