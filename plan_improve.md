@@ -140,7 +140,7 @@ After removing `<div class="ad-container ad-banner">` (Task 2), **nothing replac
 **Header HTML to add (copy from index.html exactly):**
 ```html
 <header class="site-header" role="banner">
-    <a href="index.html" class="site-header-logo">BunkWise</a>
+    <a href="/" class="site-header-logo">BunkWise</a>
     <nav class="site-header-nav" aria-label="Main navigation">
         <a href="attendance.html">Attendance</a>
         <a href="sgpa.html">SGPA Calculator</a>
