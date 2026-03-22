@@ -12,7 +12,7 @@
     <meta property="og:description" content="Paste or upload your ERP attendance report and instantly get subject-wise percentages, bunk counts, and your aggregate attendance for any RTU-affiliated college." />
     <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
     <meta name="twitter:card"       content="summary" />
-    <meta name="twitter:title"      content="RTU Attendance Calculator | BunkWise" />
+    <meta name="twitter:title"      content="RTU Attendance Calculator (75% Tracker) | BunkWise" />
     <meta name="twitter:description" content="Paste your ERP attendance and instantly see your bunk count and subject-wise percentages. Free, no login." />
     <link rel="manifest" href="manifest.json" />
 
@@ -29,29 +29,40 @@
     </script>
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-            window.addEventListener('load', function () {
-                var s1 = document.createElement('script');
-                s1.async = true;
-                s1.defer = true;
-                s1.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
-                document.head.appendChild(s1);
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-WSBK8SX5LT');
-            });
+            var _gaScript = document.createElement('script');
+            _gaScript.async = true;
+            _gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
+            document.head.appendChild(_gaScript);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WSBK8SX5LT', { 'transport_type': 'beacon' });
         }
     </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
 
-<button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
+<header class="site-header" role="banner">
+    <a href="index.html" class="site-header-logo">BunkWise</a>
+    <nav class="site-header-nav" aria-label="Main navigation">
+        <a href="attendance.html">Attendance</a>
+        <a href="sgpa.html">SGPA Calculator</a>
+        <a href="cw.html">Class Wise</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="site-header-right">
+        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+    </div>
+</header>
+
+
+<button id="theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -70,11 +81,16 @@
     <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
     <div class="menu-div"></div>
     <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+    <div class="menu-div"></div>
+    <a href="contact.html"><span class="ico">✉</span> Contact</a>
+    <div class="menu-div"></div>
+    <a href="#" id="side-menu-theme" onclick="return false;" aria-label="Switch theme" style="font-family:'DM Mono',monospace;font-size:.85rem;letter-spacing:.06em;">
+        <span class="ico" id="side-menu-theme-icon">&#9675;</span> Change Theme
+    </a>
 </nav>
 
 <div class="desktop-layout-wrapper">
 <aside class="left-ad-rail" aria-hidden="true">
-    <div class="ad-container"></div>
 </aside>
 
 <main id="main-content">
@@ -94,8 +110,6 @@
                 Paste Attendance <span class="btn-arrow">→</span>
             </button>
         </div>
-
-        <div class="ad-container"></div>
 
         <div class="upload-zone" id="upload-zone">
             <div class="upload-icon">📂</div>
@@ -211,7 +225,6 @@
         <button class="btn-share" id="btn-share-att" aria-label="Share BunkWise">⬆ Share</button>
     </div>
     <div class="subjects-list" id="subjects-list"></div>
-    <div class="ad-container"></div>
 
 </div>
 
@@ -233,6 +246,17 @@
 <div class="right-ad-spacer" aria-hidden="true"></div>
 </div><!-- /desktop-layout-wrapper -->
 
-<script src="app.js" defer></script>
+<footer class="site-footer">
+    <span class="site-footer-copy">&copy; 2026 BunkWise &mdash; Free tools for RTU students</span>
+    <nav class="site-footer-links" aria-label="Footer navigation">
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="creators.html">Creator</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</footer>
+
+<script src="app.js?v=1.2" defer></script>
 </body>
 </html>

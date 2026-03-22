@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BunkWise — Class Wise Calculator</title>
-    <meta name="description" content="Class Wise Calculator — see your current attendance and instantly calculate your future attendance based on classes you plan to take or skip.">
+    <title>RTU Class Wise Attendance Calculator | BunkWise</title>
+    <meta name="description" content="RTU Class Wise Attendance Calculator — see your current attendance and instantly simulate your future attendance after skipping or attending a set number of classes.">
+    <link rel="canonical" href="https://bunkwise.in/cw.html" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://bunkwise.in/cw.html" />
+    <meta property="og:title"       content="RTU Class Wise Attendance Calculator | BunkWise" />
+    <meta property="og:description" content="Simulate your future attendance percentage instantly. Paste your ERP data and see exactly how skipping or attending classes affects your 75% threshold." />
+    <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
+    <meta name="twitter:card"       content="summary" />
+    <meta name="twitter:title"      content="RTU Class Wise Attendance Calculator | BunkWise" />
+    <meta name="twitter:description" content="See your future attendance before you skip. Paste your ERP attendance and simulate any number of future classes instantly." />
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9723168163784339"
      crossorigin="anonymous"></script>
@@ -21,22 +30,38 @@
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
             var s1 = document.createElement('script');
             s1.async = true;
-            s1.src = "https://www.googletagmanager.com/gtag/js?id=G-0HHJFB4Q89";
+            s1.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
             document.head.appendChild(s1);
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-0HHJFB4Q89');
+            gtag('config', 'G-WSBK8SX5LT');
         }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
 
-<button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
+<header class="site-header" role="banner">
+    <a href="index.html" class="site-header-logo">BunkWise</a>
+    <nav class="site-header-nav" aria-label="Main navigation">
+        <a href="attendance.html">Attendance</a>
+        <a href="sgpa.html">SGPA Calculator</a>
+        <a href="cw.html">Class Wise</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="site-header-right">
+        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+    </div>
+</header>
+
+
+<button id="theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -55,11 +80,16 @@
     <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
     <div class="menu-div"></div>
     <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+    <div class="menu-div"></div>
+    <a href="contact.html"><span class="ico">✉</span> Contact</a>
+    <div class="menu-div"></div>
+    <a href="#" id="side-menu-theme" onclick="return false;" aria-label="Switch theme" style="font-family:'DM Mono',monospace;font-size:.85rem;letter-spacing:.06em;">
+        <span class="ico" id="side-menu-theme-icon">&#9675;</span> Change Theme
+    </a>
 </nav>
 
 <div class="desktop-layout-wrapper">
 <aside class="left-ad-rail" aria-hidden="true">
-    <div class="ad-container"></div>
 </aside>
 
 <main id="main-content">
@@ -81,8 +111,6 @@
                 Paste Attendance <span class="btn-arrow">→</span>
             </button>
         </div>
-
-        <div class="ad-container"></div>
 
         <div class="upload-zone" id="cw-upload-zone">
             <div class="upload-icon">📂</div>
@@ -146,10 +174,6 @@
 
     </div>
 
-    <div class="subjects-header">
-        <div class="subjects-header-text">Subject Breakdown</div>
-        <div class="subjects-header-line"></div>
-    </div>
     
 
 </div>
@@ -176,6 +200,17 @@
 <div class="right-ad-spacer" aria-hidden="true"></div>
 </div><!-- /desktop-layout-wrapper -->
 
-<script src="app.js" defer></script>
+<footer class="site-footer">
+    <span class="site-footer-copy">&copy; 2026 BunkWise &mdash; Free tools for RTU students</span>
+    <nav class="site-footer-links" aria-label="Footer navigation">
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="creators.html">Creator</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</footer>
+
+<script src="app.js?v=1.2" defer></script>
 </body>
 </html>

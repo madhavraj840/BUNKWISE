@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTU Attendance & SGPA Calculator | BunkWise</title>
+    <title>RTU SGPA Calculator &amp; Attendance | BunkWise</title>
     <meta name="description" content="Free RTU attendance calculator and SGPA calculator for SKIT, Poornima, VGU, Arya and other colleges. Check 75% attendance, bunk limit and analyse results instantly.">
     <link rel="canonical" href="https://bunkwise.in/" />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://bunkwise.in/" />
-    <meta property="og:title"       content="RTU Attendance &amp; SGPA Calculator | BunkWise" />
+    <meta property="og:title"       content="RTU SGPA Calculator &amp; Attendance | BunkWise" />
     <meta property="og:description" content="Free RTU attendance calculator and SGPA calculator for SKIT, Poornima, VGU, Arya and other colleges. Check 75% attendance, bunk limit and analyse results instantly." />
     <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
     <meta name="twitter:card"       content="summary" />
-    <meta name="twitter:title"      content="RTU Attendance &amp; SGPA Calculator | BunkWise" />
+    <meta name="twitter:title"      content="RTU SGPA Calculator &amp; Attendance | BunkWise" />
     <meta name="twitter:description" content="Free RTU attendance calculator and SGPA calculator. Check 75% attendance, bunk limit and analyse results instantly." />
     <link rel="manifest" href="manifest.json" />
 
@@ -30,29 +30,39 @@
 
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-            window.addEventListener('load', function () {
-                var s1 = document.createElement('script');
-                s1.async = true;
-                s1.defer = true;
-                s1.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
-                document.head.appendChild(s1);
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-WSBK8SX5LT');
-            });
+            var _gaScript = document.createElement('script');
+            _gaScript.async = true;
+            _gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
+            document.head.appendChild(_gaScript);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WSBK8SX5LT', { 'transport_type': 'beacon' });
         }
     </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
-<body>
+<body class="page-home-body">
 
-<button id="theme-toggle" aria-label="Switch to light mode">☀️</button>
+<header class="site-header" role="banner">
+    <a href="index.html" class="site-header-logo">BunkWise</a>
+    <nav class="site-header-nav" aria-label="Main navigation">
+        <a href="attendance.html">Attendance</a>
+        <a href="sgpa.html">SGPA Calculator</a>
+        <a href="cw.html">Class Wise</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="site-header-right">
+        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+    </div>
+</header>
+
+<button id="theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -71,22 +81,118 @@
     <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
     <div class="menu-div"></div>
     <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+    <div class="menu-div"></div>
+    <a href="contact.html"><span class="ico">✉</span> Contact</a>
 </nav>
 
 <main id="main-content">
 <div id="page-home" class="page">
     <div class="home-inner">
-        <div class="home-badge">attendance tracker</div>
         <h1 class="home-title"><b>Welcome to</b><br><span class="hl"><b>BunkWise</b></span></h1>
-        <button class="btn-primary" id="btn-get-started">
-            Get Started <span class="btn-arrow">→</span>
-        </button>
-        <p class="home-desc">Free <strong>attendance</strong> and <strong>SGPA calculator</strong> for RTU students — SKIT, Poornima, VGU, Arya, JECRC and more. Instant 75% bunk counter and result analysis. Try the <a href="attendance.html">Attendance Calculator</a> or the <a href="sgpa.html">SGPA Calculator</a>.</p>
-    </div>
-    <div class="ad-container ad-banner"></div>
-</div>
+        <div class="home-btn-row">
+            <button class="btn-primary" id="btn-get-started">
+                Attendance Calculator <span class="btn-arrow">→</span>
+            </button>
+            <a href="sgpa.html" class="btn-secondary">SGPA Calculator <span class="btn-arrow">→</span></a>
+            <a href="cw.html" class="btn-secondary">Class Wise <span class="btn-arrow">→</span></a>
+        </div>
+        <section class="home-seo" aria-label="About BunkWise">
+            <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
+            <p><strong>BunkWise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
+            </section>
+
+            <section class="home-seo home-seo-feature" aria-label="Attendance Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>&#128203; Attendance Calculator — Know Exactly How Many Classes You Can Bunk</h3>
+            <p>The <strong>RTU attendance calculator</strong> is the core tool on BunkWise. Copy your attendance table directly from your college ERP portal, paste it into BunkWise, and get instant results:</p>
+            <ul>
+                <li><strong>Aggregate attendance percentage</strong> across all subjects combined</li>
+                <li><strong>Subject-wise breakdown</strong> — exact percentage for each course</li>
+                <li><strong>Bunk counter</strong> — how many hours of class you can safely skip per subject</li>
+                <li><strong>Classes to attend</strong> — if you are below 75%, how many you must attend to recover</li>
+                <li>Adjustable target — change your desired percentage from 75% to any value with the &#9998; button</li>
+                <li>Also supports CSV and Excel file uploads directly from your ERP export</li>
+            </ul>
+            <p>Most RTU-affiliated colleges enforce a strict <strong>75% attendance rule</strong>. Falling below this threshold bars you from appearing in semester examinations. BunkWise tells you exactly where you stand — subject by subject — so you can make informed decisions about when to attend and when you have room to skip.</p>
+            </section>
+
+            <section class="home-seo home-seo-feature" aria-label="SGPA Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>&#128196; SGPA Calculator — Instant Result Analysis from Your PDF</h3>
+            <p>The <strong>RTU SGPA calculator</strong> reads your result PDF directly from rtu.ac.in and computes your Semester Grade Point Average automatically — no manual data entry. Upload your PDF and get:</p>
+            <ul>
+                <li>Your <strong>SGPA</strong> computed using the official RTU credit-weighted formula</li>
+                <li>Subject-wise grade points, credits, and credit points in a clean table</li>
+                <li>Total marks, maximum marks, and overall PASS/FAIL status</li>
+                <li>A downloadable <strong>PDF report</strong> of your result analysis</li>
+            </ul>
+            <p>BunkWise also supports <strong>SKIT autonomous results</strong> through an AI-powered pipeline. SKIT result PDFs use a different format with ISE (Internal) and SEE (External) marks, a 10-point grading scale, and a separate credit structure. BunkWise reads the PDF, extracts and corrects the data using Google Gemini AI, and computes your autonomous SGPA with the correct SKIT credit map for your branch and year.</p>
+            <p>Branches supported for RTU SGPA: First Year, Civil, CSE, CSE-AI, CSE-DS, ECE, EE, IT, Mechanical. Branches supported for SKIT autonomous: First Year, CSE, CSE-AI, CSE-DS, CSE-IOT, ECE, EE, IT, ME, CE.</p>
+            </section>
+
+            <section class="home-seo home-seo-feature" aria-label="Class Wise Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>&#128202; Class Wise Calculator — See Your Future Attendance Before You Skip</h3>
+            <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time — so you know exactly what impact skipping tomorrow's lecture will have before you make the decision.</p>
+            </section>
+
+            <section class="home-seo home-seo-faq" aria-label="Frequently Asked Questions">
+            <div class="home-seo-divider"></div>
+            <h2>Frequently Asked Questions</h2>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">What is the minimum attendance required at RTU colleges?</summary>
+                <p class="home-faq-a">Rajasthan Technical University and most affiliated colleges require a minimum of <strong>75% attendance</strong> in each subject to be eligible for semester examinations. Some colleges set a higher threshold of 80%. BunkWise uses 75% as the default target but you can adjust it to any value using the &#9998; button on the attendance results page.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">Does BunkWise work for SKIT, Poornima, VGU, Arya, and other RTU colleges?</summary>
+                <p class="home-faq-a">Yes. The <strong>attendance calculator</strong> works for any college that uses a standard ERP portal to display attendance reports — including SKIT, Poornima University, VGU, Arya College, JECRC, and all other RTU-affiliated institutions. The RTU SGPA calculator works for any college whose result PDF comes from rtu.ac.in. The autonomous SGPA calculator is specifically built for SKIT Jaipur students whose results use the autonomous exam format.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">Is my data safe? Is anything uploaded to a server?</summary>
+                <p class="home-faq-a">Your attendance data and RTU result PDFs are processed entirely in your browser — nothing is uploaded to any BunkWise server. The only exception is the SKIT autonomous SGPA feature, which sends the text extracted from your PDF to Google's Gemini AI API for analysis. This data is processed in transit and not stored. After analysis it is saved in your browser's local storage for 24 hours so you can revisit your result, then it expires automatically.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How is SGPA calculated at RTU?</summary>
+                <p class="home-faq-a">RTU SGPA = Sum of (Grade Point &times; Credits) for all subjects &divide; Total Credits. The grade point scale is: A++ = 10, A+ = 9, A = 8.5, B+ = 8, B = 7.5, C+ = 7, C = 6.5, D+ = 6, D = 5.5, E+ = 5, E = 4, F = 0. Note that grade A carries 8.5 points (not 8) — this is a common source of manual calculation errors that BunkWise handles automatically.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How do I get my RTU result PDF?</summary>
+                <p class="home-faq-a">Go to rtu.sumsraj.com or rtu.ac.in and navigate to the Results section. Enter your roll number to load your result. When the result page opens, press Ctrl+P (Cmd+P on Mac), set the destination to "Save as PDF", and save the file. Upload that saved PDF to the SGPA Calculator on BunkWise.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How many AI analyses can I do per day for the SKIT autonomous result?</summary>
+                <p class="home-faq-a">The SKIT autonomous result analysis uses Google Gemini AI, which is a paid service. To keep BunkWise free for everyone, there is a limit of <strong>3 AI analyses per user per day</strong>. This limit resets at midnight IST. The regular RTU SGPA calculator (for rtu.ac.in PDFs) has no such limit — it runs entirely in your browser with no API calls.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">Can I use BunkWise on my mobile phone?</summary>
+                <p class="home-faq-a">Yes. BunkWise is fully responsive and works on all screen sizes. The attendance paste and upload features work on mobile. For the SGPA calculator on mobile, you can use your phone's file picker to select a saved PDF from your downloads folder. The Class Wise calculator also works on mobile with touch-friendly controls.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How do I convert SGPA to percentage for RTU?</summary>
+                <p class="home-faq-a">The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes — job applications, higher studies — always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
+            </details>
+            </section>
 </main>
 
-<script src="app.js" defer></script>
+<footer class="site-footer">
+    <span class="site-footer-copy">© 2026 BunkWise — Free tools for RTU students</span>
+    <nav class="site-footer-links" aria-label="Footer navigation">
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="creators.html">Creator</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</footer>
+
+<script src="app.js?v=1.2" defer></script>
 </body>
 </html>
