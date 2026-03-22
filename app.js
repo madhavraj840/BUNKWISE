@@ -639,7 +639,8 @@
             var btn = document.getElementById(btnId);
             var holdTimer, repeatInterval;
             function doStep() { stepFn(); }
-            function startHold() {
+            function startHold(e) {
+                e.preventDefault();
                 doStep();
                 holdTimer = setTimeout(function () {
                     repeatInterval = setInterval(doStep, 80);
@@ -650,7 +651,7 @@
                 clearInterval(repeatInterval);
             }
             btn.addEventListener('mousedown',  startHold);
-            btn.addEventListener('touchstart', startHold, { passive: true });
+            btn.addEventListener('touchstart', startHold, { passive: false });
             btn.addEventListener('mouseup',    stopHold);
             btn.addEventListener('mouseleave', stopHold);
             btn.addEventListener('touchend',   stopHold);
@@ -5440,7 +5441,8 @@
             var btn = document.getElementById(btnId);
             var holdTimer, repeatInterval;
             function doStep() { stepFn(); }
-            function startHold() {
+            function startHold(e) {
+                e.preventDefault();
                 doStep();
                 holdTimer = setTimeout(function () {
                     repeatInterval = setInterval(doStep, 80);
@@ -5451,7 +5453,7 @@
                 clearInterval(repeatInterval);
             }
             btn.addEventListener('mousedown',  startHold);
-            btn.addEventListener('touchstart', startHold, { passive: true });
+            btn.addEventListener('touchstart', startHold, { passive: false });
             btn.addEventListener('mouseup',    stopHold);
             btn.addEventListener('mouseleave', stopHold);
             btn.addEventListener('touchend',   stopHold);
