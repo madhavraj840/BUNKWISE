@@ -112,7 +112,7 @@ No build step required. Just open any HTML file directly in a browser or use a l
 python -m http.server 8000
 ```
 
-Note: The Autonomous SGPA feature (Gemini API call) will not work on localhost because the Cloudflare Worker is restricted to the live GitHub Pages domain. All other features work fully on localhost.
+Note: The Autonomous SGPA feature (Gemini API call) will not work on localhost because the Cloudflare Worker is restricted to the live bunkwise domain. All other features work fully on localhost.
 
 ---
 
