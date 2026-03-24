@@ -22,9 +22,13 @@
 
     <script>
         (function () {
-            const saved = localStorage.getItem('bw-theme');
-            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            try {
+                var saved = localStorage.getItem('bw-theme');
+                var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.dataset.theme = saved || preferred;
+            } catch (e) {
+                document.documentElement.dataset.theme = 'dark';
+            }
         })();
     </script>
     <script>
@@ -40,11 +44,55 @@
         }
     </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- ── Critical CSS — inline for zero render-blocking ── -->
+    <style>
+:root{--bg:#161614;--bg-card:#262624;--bg-card-h:#2e2e2b;--bg-input:#1e1e1c;--border:#363634;--border-l:#444442;--accent:#c9a84c;--accent-h:#b08a35;--accent-glow:rgba(201,168,76,.35);--green:#1ed97a;--red:#f04455;--text:#e8edf8;--text-sec:#7d8baa;--text-muted:#3d4d6a;--overlay:rgba(0,0,0,.72);--r:5px;--r-sm:5px;--r-lg:5px}
+[data-theme=light]{--bg:#f5f0e8;--bg-card:#fdf9f2;--bg-card-h:#ede6d8;--bg-input:#ece6da;--border:#c8b99a;--border-l:#b5a488;--accent:#8b6914;--accent-h:#6e5110;--accent-glow:rgba(139,105,20,.30);--green:#0e7a42;--red:#b82030;--text:#1a1208;--text-sec:#3d2f18;--text-muted:#7a6548;--overlay:rgba(20,12,4,.45)}
+[data-theme=batman]{--bg:#0d0d0d;--bg-card:#1a1a1a;--bg-card-h:#222222;--bg-input:#141414;--border:#333333;--border-l:#444444;--accent:#f9d71c;--accent-h:#e6c400;--accent-glow:rgba(249,215,28,.35);--green:#1ed97a;--red:#f04455;--text:#fff;--text-sec:#a1a1a1;--text-muted:#555;--overlay:rgba(0,0,0,.85);--r:5px;--r-sm:5px;--r-lg:5px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope','Segoe UI','Helvetica Neue',Arial,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+button{cursor:pointer}
+.hidden{display:none!important}
+.site-header{display:none;position:fixed;top:0;left:0;right:0;z-index:1050;height:56px;background:rgba(22,22,20,.80);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);align-items:center;padding:0 2rem;gap:1.5rem}
+[data-theme=light] .site-header{background:rgba(245,240,232,.85);border-bottom:1px solid rgba(0,0,0,.08)}
+[data-theme=batman] .site-header{background:rgba(13,13,13,.88);border-bottom:1px solid rgba(249,215,28,.12)}
+@media(min-width:900px){.site-header{display:flex}#theme-toggle{display:none!important}.hamburger{display:none!important}}
+.site-header-logo{font-family:'Syne','Segoe UI',system-ui,sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent);text-decoration:none;letter-spacing:-.02em;white-space:nowrap;flex-shrink:0}
+.site-header-nav{display:flex;align-items:center;gap:.25rem;flex:1;justify-content:flex-end}
+.site-header-nav a{padding:.42rem .9rem;border-radius:var(--r-sm);color:var(--text-sec);text-decoration:none;font-size:.88rem;font-weight:600;transition:background .15s,color .15s;white-space:nowrap}
+.site-header-nav a:hover{background:rgba(77,138,240,.1);color:var(--accent)}
+.site-header-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.site-header-theme{width:36px;height:36px;background:linear-gradient(135deg,#8b1a2a 0%,#6b1020 100%);border:none;border-radius:var(--r-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 1px 6px rgba(107,16,32,.5);transition:filter .2s,transform .2s}
+.site-header-theme svg{stroke:#fff}
+#theme-toggle{position:fixed;top:1.1rem;right:1.1rem;z-index:1100;width:42px;height:42px;background:linear-gradient(135deg,#8b1a2a 0%,#6b1020 100%);border:none;border-radius:var(--r-sm);cursor:pointer;display:none;align-items:center;justify-content:center;color:#fff;box-shadow:0 2px 10px rgba(107,16,32,.5)}
+#theme-toggle svg{stroke:#fff}
+#theme-toggle.visible{display:flex}
+.hamburger{position:fixed;top:1.1rem;left:1.1rem;z-index:1100;width:44px;height:44px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-sm);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s ease,opacity .2s ease}
+.menu-backdrop{position:fixed;inset:0;background:var(--overlay);z-index:1040;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none}
+.menu-backdrop.visible{display:block}
+.side-menu{position:fixed;top:0;left:-290px;width:270px;height:100vh;background:var(--bg-card);border-right:1px solid var(--border);z-index:1050;padding:4.5rem 1rem 2rem;transition:left .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.side-menu.open{left:0}
+.side-menu-label{font-family:'DM Mono','Consolas',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);padding:.5rem .8rem;margin-bottom:.2rem}
+.side-menu a{display:flex;align-items:center;gap:.85rem;padding:.72rem .85rem;border-radius:var(--r-sm);color:var(--text-sec);text-decoration:none;font-size:.9rem;font-weight:500;transition:background .15s,color .15s;cursor:pointer}
+.side-menu a:hover,.side-menu a.active{background:rgba(77,138,240,.1);color:var(--accent)}
+.side-menu a .ico{font-size:1rem;width:22px;text-align:center;flex-shrink:0}
+.menu-div{height:1px;background:var(--border);margin:.6rem .5rem}
+.site-footer{display:none;width:100%;border-top:1px solid var(--border);background:var(--bg-card);padding:1.1rem 2rem;box-sizing:border-box}
+@media(min-width:900px){.site-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}}
+.site-footer-copy{font-family:'DM Mono','Consolas',monospace;font-size:.7rem;color:var(--text-muted);letter-spacing:.06em}
+.site-footer-links{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.site-footer-links a{font-size:.82rem;color:var(--text-sec);text-decoration:none;transition:color .15s}
+.site-footer-links a:hover{color:var(--accent)}
+    </style>
+    <!-- ── Rest of CSS deferred — non-blocking ── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" as="style" onload="this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="style.css?v=1.2" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css?v=1.2"></noscript>
 </head>
 <body>
 
@@ -264,5 +312,72 @@
 
 <script src="app.js?v=1.2" defer></script>
 <script src="bw-sgpa.js?v=1.2" defer></script>
+
+<!-- ── SGPA Calculator Selector Overlay ───────────────
+     Shows on first visit each session. Lets user pick
+     RTU, SKIT Autonomous, or Universal calculator.
+──────────────────────────────────────────────────── -->
+<div class="calc-sel-overlay" id="calc-sel-overlay" role="dialog" aria-modal="true" aria-label="Choose calculator type">
+    <div class="calc-sel-box">
+        <div class="calc-sel-title">Which calculator do you need?</div>
+        <div class="calc-sel-sub">Choose the type of SGPA calculator</div>
+        <div class="calc-sel-grid">
+            <button class="calc-sel-card" id="calc-sel-rtu" aria-label="RTU SGPA Calculator">
+                <span class="calc-sel-icon">📄</span>
+                <span class="calc-sel-name">RTU SGPA Calculator</span>
+                <span class="calc-sel-desc">Upload your RTU result PDF — auto-calculated with branch credit maps</span>
+            </button>
+            <button class="calc-sel-card" id="calc-sel-skit" aria-label="SKIT Autonomous SGPA Calculator">
+                <span class="calc-sel-icon">🤖</span>
+                <span class="calc-sel-name">SKIT Autonomous Calculator</span>
+                <span class="calc-sel-desc">Upload your SKIT result PDF — AI-powered extraction for autonomous results</span>
+            </button>
+            <button class="calc-sel-card calc-sel-card-accent" id="calc-sel-univ" aria-label="Universal SGPA Calculator">
+                <span class="calc-sel-icon">✏️</span>
+                <span class="calc-sel-name">Universal SGPA Calculator</span>
+                <span class="calc-sel-desc">Manually enter subjects, credits and grade points — works for any university</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    // Show overlay unless user has already chosen in this session
+    var overlay = document.getElementById('calc-sel-overlay');
+    if (!overlay) return;
+
+    // Always show on page load (no sessionStorage skip — user wants to see it every time)
+    overlay.classList.add('open');
+
+    function closeOverlay() {
+        overlay.classList.remove('open');
+    }
+
+    document.getElementById('calc-sel-rtu').addEventListener('click', function () {
+        closeOverlay();
+        // Scroll to RTU upload zone
+        var el = document.getElementById('sgpa-upload-zone');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    document.getElementById('calc-sel-skit').addEventListener('click', function () {
+        closeOverlay();
+        // Scroll to autonomous upload zone
+        var el = document.getElementById('auto-upload-zone');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    document.getElementById('calc-sel-univ').addEventListener('click', function () {
+        window.location.href = 'universal_sgpa.html';
+    });
+
+    // Close on backdrop click
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeOverlay();
+    });
+}());
+</script>
+
 </body>
 </html>
