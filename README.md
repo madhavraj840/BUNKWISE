@@ -3,7 +3,7 @@
 **A free, no-login academic tool for college students.**
 Calculate attendance, predict bunks, and compute SGPA — all inside your browser. No data sent anywhere.
 
-🔗 **Live site:** [madhavraj840.github.io/BUNKWISE](https://bunkwise.in/)
+🔗 **Live site:** [BUNKWISE](https://bunkwise.in/)
 
 ---
 
