@@ -15,11 +15,12 @@
 
         rowCount++;
         var rid = 'row-' + rowCount;
+           var subjectPlaceholder = 'Subject ' + rowCount;
 
         var tr = document.createElement('tr');
         tr.id = rid;
         tr.innerHTML =
-            '<td class="univ-td-name"><input type="text" class="univ-input univ-input-name" placeholder="e.g. Engineering Mathematics" value="' + (name || '') + '" aria-label="Subject name"></td>' +
+              '<td class="univ-td-name"><input type="text" class="univ-input univ-input-name" placeholder="' + subjectPlaceholder + '" value="' + (name || '') + '" aria-label="Subject name"></td>' +
             '<td class="univ-td-num"><input type="number" class="univ-input univ-input-num" placeholder="e.g. 4" min="0" step="0.5" value="' + (credits !== undefined ? credits : '') + '" aria-label="Credits"></td>' +
             '<td class="univ-td-num"><input type="number" class="univ-input univ-input-num" placeholder="e.g. 9" min="0" max="10" step="0.5" value="' + (gradePoint !== undefined ? gradePoint : '') + '" aria-label="Grade point"></td>' +
             '<td class="univ-td-del"><button class="univ-del-btn" aria-label="Delete row" onclick="univDeleteRow(\'' + rid + '\')">✕</button></td>';
