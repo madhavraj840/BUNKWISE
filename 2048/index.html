@@ -6,6 +6,19 @@
   <meta name="description" content="Play the classic 2048 puzzle game online and learn strategies, tips, and brain training benefits. Enjoy a responsive 2048 number game experience on desktop and mobile.">
   <meta name="keywords" content="2048 game, play 2048 online, 2048 puzzle game, number merge game, brain training game, logic puzzle, strategy game, responsive web game, free online game">
 
+    <script>
+        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+            var _gaScript = document.createElement('script');
+            _gaScript.async = true;
+            _gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
+            document.head.appendChild(_gaScript);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WSBK8SX5LT', { 'transport_type': 'beacon' });
+        }
+    </script>
+
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,7 +38,7 @@
     </div>
 
     <div class="above-game">
-      <a class="website-button" href="https://bunkwise.in" target="_blank" rel="noopener noreferrer">Back to Website</a>
+      <a class="website-button" href="https://bunkwise.in">Back to Website</a>
       <a class="restart-button">New Game</a>
     </div>
 
