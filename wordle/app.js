@@ -128,7 +128,7 @@ const ALLOWED_EXTRA = [
   "WINDY","WISPY","WITTY","WORMY","WOOZY","YUCKY","ZIPPY","ZLOTY","ZINGY"
 ];
 
-const APP_VERSION = (document.querySelector('meta[name="game-version"]')?.content || '1.2.3').trim();
+const APP_VERSION = (document.querySelector('meta[name="game-version"]')?.content || '1.2.5').trim();
 
 function normalizeWordList(words) {
   if (!Array.isArray(words)) return [];
