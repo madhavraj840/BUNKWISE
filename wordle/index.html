@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WORDLE</title>
+  <meta name="game-version" content="1.2.0">
+  <!-- POKI SDK — must be the very first script -->
+  <script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
+  <link rel="stylesheet" href="style.css?v=1.2.0">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       CONFETTI CANVAS (win celebration)
+  ═══════════════════════════════════ -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ═══════════════════════════════════
+       LOADING SCREEN
+  ═══════════════════════════════════ -->
+  <div id="loading-screen">
+    <div class="ld-logo">WORDLE</div>
+    <div class="ld-bar-wrap"><div class="ld-bar" id="ld-bar"></div></div>
+    <div class="ld-pct" id="ld-pct">0%</div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       MAIN GAME
+  ═══════════════════════════════════ -->
+  <div id="game">
+
+    <!-- HEADER -->
+    <header id="header">
+      <div class="hdr-left">
+        <!-- 5 position-status diamonds -->
+        <div class="pos-dots" id="pos-dots">
+          <span class="pdot" data-p="0"></span>
+          <span class="pdot" data-p="1"></span>
+          <span class="pdot" data-p="2"></span>
+          <span class="pdot" data-p="3"></span>
+          <span class="pdot" data-p="4"></span>
+        </div>
+        <span class="logo">WORDLE</span>
+      </div>
+      <div class="hdr-right">
+        <!-- Hint / Rewarded AD button -->
+        <button type="button" class="ibtn" id="hint-btn" title="Hint (watch ad)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M9 18h6"/>
+            <path d="M10 22h4"/>
+            <path d="M12 2a6 6 0 0 0-3.5 10.9c.8.6 1.4 1.7 1.4 2.8V16h4.2v-.3c0-1.1.6-2.2 1.4-2.8A6 6 0 0 0 12 2z"/>
+          </svg>
+          <span class="ibtn-badge">AD</span>
+        </button>
+        <!-- Skip current word / Rewarded AD -->
+        <button type="button" class="ibtn" id="skip-btn" title="Skip word (watch ad)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polygon points="5,7 12,12 5,17" fill="currentColor" stroke="none"/>
+            <polygon points="12,7 19,12 12,17" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="ibtn-badge">AD</span>
+        </button>
+        <!-- Tutorial / How to play -->
+        <button type="button" class="ibtn" id="tutorial-btn" title="How to play">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M9.5 9.5a3 3 0 1 1 3 3v1.5"/>
+            <circle cx="12" cy="17.5" r="1" fill="currentColor"/>
+          </svg>
+        </button>
+        <!-- Settings -->
+        <button type="button" class="ibtn" id="settings-btn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- TOAST -->
+    <div id="toast"></div>
+
+    <!-- BOARD -->
+    <div id="board-wrap">
+      <div id="board"></div>
+    </div>
+
+    <!-- KEYBOARD -->
+    <div id="keyboard">
+      <div class="krow" id="krow0"></div>
+      <div class="krow" id="krow1"></div>
+      <div class="krow" id="krow2"></div>
+    </div>
+
+  </div><!-- /#game -->
+
+  <!-- ══════════════════════════════════════════════════
+       MODAL: TUTORIAL
+  ══════════════════════════════════════════════════ -->
+  <div class="overlay" id="tut-overlay">
+    <div class="panel tut-panel">
+      <div class="panel-hdr">
+        <h2>TUTORIAL</h2>
+        <button type="button" class="x-btn" data-dismiss="tut-overlay">✕</button>
+      </div>
+      <div class="panel-body">
+        <p>You have <strong>6 tries</strong> to guess the WORD.</p>
+        <p>Enter a valid 5-letter word and press <strong>ENTER</strong>.</p>
+        <p>After submitting, tile colors give you hints.</p>
+
+        <div class="ex-row">
+          <div class="ex-tile green">W</div><div class="ex-tile">O</div>
+          <div class="ex-tile">R</div><div class="ex-tile">L</div><div class="ex-tile">D</div>
+        </div>
+        <p class="ex-label" style="color:var(--clr-green)">Letter colored in green</p>
+        <p class="ex-desc">exists in the word and is in the correct position.</p>
+
+        <div class="ex-row">
+          <div class="ex-tile">M</div><div class="ex-tile yellow">O</div>
+          <div class="ex-tile">D</div><div class="ex-tile">E</div><div class="ex-tile">L</div>
+        </div>
+        <p class="ex-label" style="color:var(--clr-yellow)">Letter colored in yellow</p>
+        <p class="ex-desc">exists in the word but in the wrong position.</p>
+
+        <div class="ex-row">
+          <div class="ex-tile">R</div><div class="ex-tile">A</div>
+          <div class="ex-tile">I</div><div class="ex-tile">S</div><div class="ex-tile">E</div>
+        </div>
+        <p class="ex-label">Letter colored in dark</p>
+        <p class="ex-desc">does not exist in the target word at all.</p>
+
+        <button type="button" class="act-btn" data-dismiss="tut-overlay">GOT IT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       MODAL: SETTINGS
+  ══════════════════════════════════════════════════ -->
+  <div class="overlay" id="set-overlay">
+    <div class="panel set-panel">
+      <div class="panel-hdr">
+        <h2>SETTING</h2>
+        <button type="button" class="x-btn" data-dismiss="set-overlay">✕</button>
+      </div>
+      <div class="panel-body">
+        <div class="set-row">
+          <span class="set-lbl">THEME</span>
+          <label class="tog">
+            <input type="checkbox" id="tog-theme">
+            <span class="tog-track">
+              <span class="tog-thumb">
+                <!-- Sun icon for light / moon for dark toggled by JS -->
+                <svg id="theme-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="5"/>
+                  <g stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="2" x2="12" y2="4"/>
+                    <line x1="12" y1="20" x2="12" y2="22"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="2" y1="12" x2="4" y2="12"/>
+                    <line x1="20" y1="12" x2="22" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                  </g>
+                </svg>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="set-row">
+          <span class="set-lbl">BGM</span>
+          <label class="tog">
+            <input type="checkbox" id="tog-bgm" checked>
+            <span class="tog-track">
+              <span class="tog-thumb">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 18V5l12-2v13M9 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm12-2c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+                </svg>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="set-row">
+          <span class="set-lbl">SE</span>
+          <label class="tog">
+            <input type="checkbox" id="tog-se" checked>
+            <span class="tog-track">
+              <span class="tog-thumb">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                </svg>
+              </span>
+            </span>
+          </label>
+        </div>
+        <p class="ver-label" id="ver-label">ver.1.2.0</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       MODAL: ONE MORE TRY
+  ══════════════════════════════════════════════════ -->
+  <div class="overlay" id="omt-overlay">
+    <div class="panel omt-panel">
+      <!-- Countdown ring -->
+      <div class="cd-wrap">
+        <svg class="cd-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--cd-track)" stroke-width="7"/>
+          <circle id="cd-arc" cx="50" cy="50" r="44" fill="none"
+            stroke="var(--cd-color)" stroke-width="7"
+            stroke-linecap="round"
+            stroke-dasharray="276.46"
+            stroke-dashoffset="0"
+            transform="rotate(-90 50 50)"/>
+        </svg>
+        <div class="cd-num" id="cd-num">10</div>
+      </div>
+      <!-- Partial word reveal -->
+      <div class="ht-row" id="omt-tiles">
+        <div class="ht" data-p="0"></div>
+        <div class="ht" data-p="1"></div>
+        <div class="ht" data-p="2"></div>
+        <div class="ht" data-p="3"></div>
+        <div class="ht" data-p="4"></div>
+      </div>
+      <!-- CTA buttons -->
+      <button type="button" class="omt-btn" id="omt-yes-btn">
+        ONE MORE TRY
+        <span class="adbadge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <polygon points="10,9.5 16,12 10,14.5" fill="currentColor" stroke="none"/>
+          </svg>
+          AD
+        </span>
+      </button>
+      <button type="button" class="omt-no-btn" id="omt-no-btn">NO, THANKS</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       MODAL: END SCREEN (WIN or FAIL)
+  ══════════════════════════════════════════════════ -->
+  <div class="overlay" id="end-overlay">
+    <div class="panel end-panel">
+      <h2 id="end-title">FAILED</h2>
+      <!-- Partial reveal tiles (same hint as one-more-try) -->
+      <div class="ht-row" id="end-tiles">
+        <div class="ht" data-p="0"></div>
+        <div class="ht" data-p="1"></div>
+        <div class="ht" data-p="2"></div>
+        <div class="ht" data-p="3"></div>
+        <div class="ht" data-p="4"></div>
+      </div>
+      <!-- Full word (shown directly on FAIL) -->
+      <p class="answer-text" id="answer-text"></p>
+      <!-- Stats -->
+      <div class="stats-box" id="stats-box">
+        <h3>STATISTICS</h3>
+        <div class="stat-row">
+          <div class="stat"><span id="st-played">0</span><span>PLAYED</span></div>
+          <div class="stat"><span id="st-pct">0</span><span>WON,%</span></div>
+          <div class="stat"><span id="st-streak">0</span><span>WINNING STREAK</span></div>
+          <div class="stat"><span id="st-best">0</span><span>MAX STREAK</span></div>
+        </div>
+        <p class="dist-title">GUESSES</p>
+        <div id="dist-bars"></div>
+      </div>
+      <button type="button" class="next-btn" id="next-btn">NEXT WORD</button>
+    </div>
+  </div>
+
+  <script src="words-extra.js?v=1.2.0"></script>
+  <script src="app.js?v=1.2.0"></script>
+</body>
+</html>
