@@ -25,8 +25,8 @@
   --clr-absent:  #7a7872;
 
   /* Keyboard */
-  --key-bg:      #cac7c0;
-  --key-text:    #1a1a18;
+  --key-bg:      #ffffff;
+  --key-text:    #000000;
 
   /* Modal */
   --modal-bg:    #f4f2ee;
@@ -76,8 +76,8 @@
   --clr-yellow:  #b09830;
   --clr-absent:  #4a4a46;
 
-  --key-bg:      #2a2a26;
-  --key-text:    #efefeb;
+  --key-bg:      #ffffff;
+  --key-text:    #000000;
 
   --modal-bg:    #1c1c1a;
   --overlay:     rgba(0,0,0,.70);
@@ -184,10 +184,15 @@ button {
 ═══════════════════════════════════════════════════════════════════ */
 #game {
   display: none;
+  height: 100vh;  /* fallback */
+  height: 100svh;
   height: 100dvh;
-  height: 100vh; /* fallback */
+  min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
   max-height: 100vh;
+  max-height: 100svh;
+  max-height: 100dvh;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
@@ -392,7 +397,7 @@ button {
   width: 100%;
   max-width: 520px;
   padding: 4px 8px;
-  padding-bottom: max(6px, env(safe-area-inset-bottom));
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
 }
 
 .krow {
@@ -405,14 +410,14 @@ button {
 .key {
   flex: 1 1 0;
   min-width: 0;
-  height: clamp(40px, 7.6vw, 52px);
+  height: clamp(44px, 8.8vw, 56px);
   max-width: none;
   background: var(--key-bg);
   border-radius: 4px;
   color: var(--key-text);
   font-family: var(--ff-body);
-  font-size: clamp(.62rem, 2.2vw, .9rem);
-  font-weight: 700;
+  font-size: clamp(.74rem, 2.9vw, 1.08rem);
+  font-weight: 900;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -422,9 +427,9 @@ button {
   transition: background .12s, color .12s;
 }
 .key.wide {
-  flex: 1.55 1 0;
+  flex: 1.34 1 0;
   max-width: none;
-  font-size: clamp(.55rem, 1.8vw, .78rem);
+  font-size: clamp(.68rem, 2.35vw, .94rem);
   letter-spacing: .03em;
 }
 .key:active { filter: brightness(.8); }
@@ -852,6 +857,23 @@ button {
   #header {
     padding: 0 10px;
   }
+  #keyboard {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
+  .krow {
+    gap: 2px;
+    margin-bottom: 5px;
+  }
+  .key {
+    height: 48px;
+    font-size: .86rem;
+  }
+  .key.wide {
+    flex: 1.28 1 0;
+    font-size: .78rem;
+  }
   .hdr-right {
     gap: 4px;
   }
@@ -867,8 +889,8 @@ button {
 /* Very small phones */
 @media (max-height: 580px) {
   #header { height: 48px; }
-  .key { height: 36px; }
-  .key.wide { font-size: .62rem; }
+  .key { height: 42px; font-size: .8rem; }
+  .key.wide { font-size: .72rem; }
   #board { gap: 4px; }
   .krow { margin-bottom: 3px; }
 }

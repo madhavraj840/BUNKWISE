@@ -128,7 +128,7 @@ const ALLOWED_EXTRA = [
   "WINDY","WISPY","WITTY","WORMY","WOOZY","YUCKY","ZIPPY","ZLOTY","ZINGY"
 ];
 
-const APP_VERSION = (document.querySelector('meta[name="game-version"]')?.content || '1.2.0').trim();
+const APP_VERSION = (document.querySelector('meta[name="game-version"]')?.content || '1.2.2').trim();
 
 function normalizeWordList(words) {
   if (!Array.isArray(words)) return [];
@@ -377,20 +377,36 @@ function buildKeyboard() {
   applyResponsiveLayout();
 }
 
+function getViewportSize() {
+  const vv = window.visualViewport;
+  if (vv && vv.width && vv.height) {
+    return {
+      width: Math.round(vv.width),
+      height: Math.round(vv.height)
+    };
+  }
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight
+  };
+}
+
 function applyResponsiveLayout() {
   const board = document.getElementById('board');
   const header = document.getElementById('header');
   const keyboard = document.getElementById('keyboard');
   if (!board || !header || !keyboard) return;
 
+  const viewport = getViewportSize();
+
   const rows = Math.max(tiles.length || 0, G.maxRows, 6);
-  const gap = window.innerHeight <= 620 ? 4 : 5;
-  const widthCap = Math.min(window.innerWidth, 520);
+  const gap = viewport.height <= 620 ? 4 : 5;
+  const widthCap = Math.min(viewport.width, 520);
   const byWidth = (widthCap - 20 - (gap * 4)) / 5;
 
   const headerH = header.offsetHeight || 54;
   const keyboardH = keyboard.offsetHeight || 168;
-  const usableH = window.innerHeight - headerH - keyboardH - 24;
+  const usableH = viewport.height - headerH - keyboardH - 24;
   const byHeight = (usableH - (gap * (rows - 1))) / rows;
 
   const tile = Math.max(30, Math.floor(Math.min(byWidth, byHeight, 72)));
@@ -1080,6 +1096,10 @@ if (versionLabel) versionLabel.textContent = `ver.${APP_VERSION}`;
 
 window.addEventListener('resize', applyResponsiveLayout);
 window.addEventListener('orientationchange', () => setTimeout(applyResponsiveLayout, 80));
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', applyResponsiveLayout);
+  window.visualViewport.addEventListener('scroll', applyResponsiveLayout);
+}
 
 Poki.init().then(() => {
   Settings.load();
