@@ -128,7 +128,7 @@ const ALLOWED_EXTRA = [
   "WINDY","WISPY","WITTY","WORMY","WOOZY","YUCKY","ZIPPY","ZLOTY","ZINGY"
 ];
 
-const APP_VERSION = (document.querySelector('meta[name="game-version"]')?.content || '1.2.2').trim();
+const APP_VERSION = (document.querySelector('meta[name="game-version"]')?.content || '1.2.3').trim();
 
 function normalizeWordList(words) {
   if (!Array.isArray(words)) return [];
@@ -357,7 +357,7 @@ function buildBoard() {
 const KEYS = [
   ['Q','W','E','R','T','Y','U','I','O','P'],
   ['A','S','D','F','G','H','J','K','L'],
-  ['ENTER','Z','X','C','V','B','N','M','⌫']
+  ['⌫','Z','X','C','V','B','N','M','ENTER']
 ];
 
 function buildKeyboard() {
@@ -1093,6 +1093,11 @@ document.querySelectorAll('.overlay').forEach(ov => {
 ═══════════════════════════════════════════════════════════════════ */
 const versionLabel = document.getElementById('ver-label');
 if (versionLabel) versionLabel.textContent = `ver.${APP_VERSION}`;
+
+window.addEventListener('pageshow', (event) => {
+  // Avoid stale UI snapshots when browser restores page from back-forward cache.
+  if (event.persisted) window.location.reload();
+});
 
 window.addEventListener('resize', applyResponsiveLayout);
 window.addEventListener('orientationchange', () => setTimeout(applyResponsiveLayout, 80));
