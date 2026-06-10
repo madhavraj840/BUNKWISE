@@ -43,40 +43,47 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Mono:wght@400..500&family=Manrope:wght@200..800&display=block" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="style.css?v=1.2">
 
+    <!-- Variable-font transitions -->
     <style>
-    /* â”€â”€ Flashlight overlay â”€â”€ */
-    #fl {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-        background: rgba(8, 8, 12, 0.9);
-        -webkit-mask-image: radial-gradient(
-            circle clamp(170px, 26vw, 280px) at var(--fx, -999px) var(--fy, -999px),
-            transparent 0%,
-            rgba(0,0,0,.05) 50%,
-            black 80%
-        );
-        mask-image: radial-gradient(
-            circle clamp(170px, 26vw, 280px) at var(--fx, -999px) var(--fy, -999px),
-            transparent 0%,
-            rgba(0,0,0,.05) 50%,
-            black 80%
-        );
-        opacity: 0;
-        transition: opacity .55s ease;
+    h1,h2,h3,.page-title,.page-sub,.home-title,.static-page-title{
+        transition: font-weight .12s ease;
     }
-    #fl.fl-on { opacity: 1; }
-    /* Light theme: lighter overlay */
-    [data-theme="light"] #fl {
-        background: rgba(244, 244, 248, 0.88);
+    /* ── Flashlight overlay (desktop only) ── */
+    #fl { display: none; }
+    @media (min-width: 900px) {
+        #fl {
+            display: block;
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: rgba(8, 8, 12, 0.9);
+            -webkit-mask-image: radial-gradient(
+                circle 280px at var(--fx, -999px) var(--fy, -999px),
+                transparent 0%,
+                rgba(0,0,0,.05) 50%,
+                black 80%
+            );
+            mask-image: radial-gradient(
+                circle 280px at var(--fx, -999px) var(--fy, -999px),
+                transparent 0%,
+                rgba(0,0,0,.05) 50%,
+                black 80%
+            );
+            opacity: 0;
+            transition: opacity .55s ease;
+        }
+        #fl.fl-on { opacity: 1; }
+        /* Light theme: lighter overlay */
+        [data-theme="light"] #fl {
+            background: rgba(244, 244, 248, 0.88);
+        }
+        /* Batman theme: deeper overlay */
+        [data-theme="batman"] #fl {
+            background: rgba(5, 5, 6, 0.93);
+        }
     }
-    /* Batman theme: deeper overlay */
-    [data-theme="batman"] #fl {
-        background: rgba(5, 5, 6, 0.93);
-    }
-    /* Home page game buttons â€” subtle styling */
+    /* Home page game buttons — subtle styling */
     .home-game-links {
         display: flex;
         align-items: center;
@@ -118,7 +125,7 @@
 </head>
 <body class="page-home-body">
 
-<!-- Flashlight overlay -->
+<!-- Flashlight overlay (desktop only) -->
 <div id="fl" aria-hidden="true"></div>
 
 <header class="site-header" role="banner">
@@ -143,18 +150,18 @@
 <div class="menu-backdrop" id="menu-backdrop"></div>
 <nav class="side-menu" id="side-menu">
     <div class="side-menu-label">// navigation</div>
-    <a href="/"><span class="ico">âŒ‚</span> Home</a>
-    <a href="sgpa.html"><span class="ico">â—Ž</span> SGPA Calculator</a>
-    <a href="cw.html"><span class="ico">âŠž</span> CW Calculator</a>
+    <a href="/"><span class="ico">⌂</span> Home</a>
+    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
+    <a href="cw.html"><span class="ico">⊞</span> CW Calculator</a>
     <div class="menu-div"></div>
-    <a href="about.html"><span class="ico">â—ˆ</span> About Us</a>
+    <a href="about.html"><span class="ico">◈</span> About Us</a>
     <div class="menu-div"></div>
-    <a href="terms.html"><span class="ico">â—‡</span> Terms &amp; Conditions</a>
-    <a href="privacy.html"><span class="ico">â—‰</span> Privacy Policy</a>
+    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
+    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
     <div class="menu-div"></div>
-    <a href="creators.html"><span class="ico">âœ¦</span> Creator Description</a>
+    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
     <div class="menu-div"></div>
-    <a href="contact.html"><span class="ico">âœ‰</span> Contact</a>
+    <a href="contact.html"><span class="ico">✉</span> Contact</a>
 </nav>
 
 <main id="main-content">
@@ -165,13 +172,13 @@
         <!-- Core tool buttons -->
         <div class="home-btn-row">
             <button class="btn-primary" id="btn-get-started">
-                Attendance Calculator <span class="btn-arrow">â†’</span>
+                Attendance Calculator <span class="btn-arrow">→</span>
             </button>
-            <a href="sgpa.html" class="btn-secondary">SGPA Calculator <span class="btn-arrow">â†’</span></a>
-            <a href="cw.html" class="btn-secondary">Class Wise <span class="btn-arrow">â†’</span></a>
+            <a href="sgpa.html" class="btn-secondary">SGPA Calculator <span class="btn-arrow">→</span></a>
+            <a href="cw.html" class="btn-secondary">Class Wise <span class="btn-arrow">→</span></a>
         </div>
 
-        <!-- Game links â€” secondary, visually separated -->
+        <!-- Game links — secondary, visually separated -->
         <div class="home-game-links">
             <span class="home-game-lbl">// games</span>
             <a href="/wordle/" class="btn-game">WORDLE</a>
@@ -180,28 +187,28 @@
 
         <section class="home-seo" aria-label="About BunkWise">
             <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
-            <p><strong>BunkWise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges â€” <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
+            <p><strong>BunkWise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
             </section>
 
             <section class="home-seo home-seo-feature" aria-label="Attendance Calculator">
             <div class="home-seo-divider"></div>
-            <h3>&#128203; Attendance Calculator â€” Know Exactly How Many Classes You Can Bunk</h3>
+            <h3>&#128203; Attendance Calculator — Know Exactly How Many Classes You Can Bunk</h3>
             <p>The <strong>RTU attendance calculator</strong> is the core tool on BunkWise. Copy your attendance table directly from your college ERP portal, paste it into BunkWise, and get instant results:</p>
             <ul>
                 <li><strong>Aggregate attendance percentage</strong> across all subjects combined</li>
-                <li><strong>Subject-wise breakdown</strong> â€” exact percentage for each course</li>
-                <li><strong>Bunk counter</strong> â€” how many hours of class you can safely skip per subject</li>
-                <li><strong>Classes to attend</strong> â€” if you are below 75%, how many you must attend to recover</li>
-                <li>Adjustable target â€” change your desired percentage from 75% to any value with the &#9998; button</li>
+                <li><strong>Subject-wise breakdown</strong> — exact percentage for each course</li>
+                <li><strong>Bunk counter</strong> — how many hours of class you can safely skip per subject</li>
+                <li><strong>Classes to attend</strong> — if you are below 75%, how many you must attend to recover</li>
+                <li>Adjustable target — change your desired percentage from 75% to any value with the &#9998; button</li>
                 <li>Also supports CSV and Excel file uploads directly from your ERP export</li>
             </ul>
-            <p>Most RTU-affiliated colleges enforce a strict <strong>75% attendance rule</strong>. Falling below this threshold bars you from appearing in semester examinations. BunkWise tells you exactly where you stand â€” subject by subject â€” so you can make informed decisions about when to attend and when you have room to skip.</p>
+            <p>Most RTU-affiliated colleges enforce a strict <strong>75% attendance rule</strong>. Falling below this threshold bars you from appearing in semester examinations. BunkWise tells you exactly where you stand — subject by subject — so you can make informed decisions about when to attend and when you have room to skip.</p>
             </section>
 
             <section class="home-seo home-seo-feature" aria-label="SGPA Calculator">
             <div class="home-seo-divider"></div>
-            <h3>&#128196; SGPA Calculator â€” Instant Result Analysis from Your PDF</h3>
-            <p>The <strong>RTU SGPA calculator</strong> reads your result PDF directly from rtu.ac.in and computes your Semester Grade Point Average automatically â€” no manual data entry. Upload your PDF and get:</p>
+            <h3>&#128196; SGPA Calculator — Instant Result Analysis from Your PDF</h3>
+            <p>The <strong>RTU SGPA calculator</strong> reads your result PDF directly from rtu.ac.in and computes your Semester Grade Point Average automatically — no manual data entry. Upload your PDF and get:</p>
             <ul>
                 <li>Your <strong>SGPA</strong> computed using the official RTU credit-weighted formula</li>
                 <li>Subject-wise grade points, credits, and credit points in a clean table</li>
@@ -214,8 +221,8 @@
 
             <section class="home-seo home-seo-feature" aria-label="Class Wise Calculator">
             <div class="home-seo-divider"></div>
-            <h3>&#128202; Class Wise Calculator â€” See Your Future Attendance Before You Skip</h3>
-            <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time â€” so you know exactly what impact skipping tomorrow's lecture will have before you make the decision.</p>
+            <h3>&#128202; Class Wise Calculator — See Your Future Attendance Before You Skip</h3>
+            <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time — so you know exactly what impact skipping tomorrow's lecture will have before you make the decision.</p>
             </section>
 
             <section class="home-seo home-seo-faq" aria-label="Frequently Asked Questions">
@@ -229,17 +236,17 @@
 
             <details class="home-faq-item">
                 <summary class="home-faq-q">Does BunkWise work for SKIT, Poornima, VGU, Arya, and other RTU colleges?</summary>
-                <p class="home-faq-a">Yes. The <strong>attendance calculator</strong> works for any college that uses a standard ERP portal to display attendance reports â€” including SKIT, Poornima University, VGU, Arya College, JECRC, and all other RTU-affiliated institutions. The RTU SGPA calculator works for any college whose result PDF comes from rtu.ac.in. The autonomous SGPA calculator is specifically built for SKIT Jaipur students whose results use the autonomous exam format.</p>
+                <p class="home-faq-a">Yes. The <strong>attendance calculator</strong> works for any college that uses a standard ERP portal to display attendance reports — including SKIT, Poornima University, VGU, Arya College, JECRC, and all other RTU-affiliated institutions. The RTU SGPA calculator works for any college whose result PDF comes from rtu.ac.in. The autonomous SGPA calculator is specifically built for SKIT Jaipur students whose results use the autonomous exam format.</p>
             </details>
 
             <details class="home-faq-item">
                 <summary class="home-faq-q">Is my data safe? Is anything uploaded to a server?</summary>
-                <p class="home-faq-a">Your attendance data and RTU result PDFs are processed entirely in your browser â€” nothing is uploaded to any BunkWise server. The only exception is the SKIT autonomous SGPA feature, which sends the text extracted from your PDF to Google's Gemini AI API for analysis. This data is processed in transit and not stored. After analysis it is saved in your browser's local storage for 24 hours so you can revisit your result, then it expires automatically.</p>
+                <p class="home-faq-a">Your attendance data and RTU result PDFs are processed entirely in your browser — nothing is uploaded to any BunkWise server. The only exception is the SKIT autonomous SGPA feature, which sends the text extracted from your PDF to Google's Gemini AI API for analysis. This data is processed in transit and not stored. After analysis it is saved in your browser's local storage for 24 hours so you can revisit your result, then it expires automatically.</p>
             </details>
 
             <details class="home-faq-item">
                 <summary class="home-faq-q">How is SGPA calculated at RTU?</summary>
-                <p class="home-faq-a">RTU SGPA = Sum of (Grade Point &times; Credits) for all subjects &divide; Total Credits. The grade point scale is: A++ = 10, A+ = 9, A = 8.5, B+ = 8, B = 7.5, C+ = 7, C = 6.5, D+ = 6, D = 5.5, E+ = 5, E = 4, F = 0. Note that grade A carries 8.5 points (not 8) â€” this is a common source of manual calculation errors that BunkWise handles automatically.</p>
+                <p class="home-faq-a">RTU SGPA = Sum of (Grade Point &times; Credits) for all subjects &divide; Total Credits. The grade point scale is: A++ = 10, A+ = 9, A = 8.5, B+ = 8, B = 7.5, C+ = 7, C = 6.5, D+ = 6, D = 5.5, E+ = 5, E = 4, F = 0. Note that grade A carries 8.5 points (not 8) — this is a common source of manual calculation errors that BunkWise handles automatically.</p>
             </details>
 
             <details class="home-faq-item">
@@ -249,7 +256,7 @@
 
             <details class="home-faq-item">
                 <summary class="home-faq-q">How many AI analyses can I do per day for the SKIT autonomous result?</summary>
-                <p class="home-faq-a">The SKIT autonomous result analysis uses Google Gemini AI, which is a paid service. To keep BunkWise free for everyone, there is a limit of <strong>3 AI analyses per user per day</strong>. This limit resets at midnight IST. The regular RTU SGPA calculator (for rtu.ac.in PDFs) has no such limit â€” it runs entirely in your browser with no API calls.</p>
+                <p class="home-faq-a">The SKIT autonomous result analysis uses Google Gemini AI, which is a paid service. To keep BunkWise free for everyone, there is a limit of <strong>3 AI analyses per user per day</strong>. This limit resets at midnight IST. The regular RTU SGPA calculator (for rtu.ac.in PDFs) has no such limit — it runs entirely in your browser with no API calls.</p>
             </details>
 
             <details class="home-faq-item">
@@ -259,7 +266,7 @@
 
             <details class="home-faq-item">
                 <summary class="home-faq-q">How do I convert SGPA to percentage for RTU?</summary>
-                <p class="home-faq-a">The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes â€” job applications, higher studies â€” always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
+                <p class="home-faq-a">The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes — job applications, higher studies — always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
             </details>
             </section>
     </div><!-- /home-inner -->
@@ -267,7 +274,7 @@
 </main>
 
 <footer class="site-footer">
-    <span class="site-footer-copy">Â© 2026 BunkWise â€” Free tools for RTU students</span>
+    <span class="site-footer-copy">© 2026 BunkWise — Free tools for RTU students</span>
     <nav class="site-footer-links" aria-label="Footer navigation">
         <a href="about.html">About</a>
         <a href="terms.html">Terms</a>
@@ -280,10 +287,11 @@
 <script src="app.js?v=1.2" defer></script>
 
 <script>
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FLASHLIGHT REVEAL  Â·  
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════════════════════════
+   FLASHLIGHT REVEAL  ·  desktop pointer:fine only
+═══════════════════════════════════════════════════ */
 (function () {
+    if (!window.matchMedia('(min-width:900px)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
 
     var fl   = document.getElementById('fl');
@@ -318,19 +326,55 @@
         window.addEventListener('load', function () { setTimeout(init, 80); });
     }
 
-    document.addEventListener('pointermove', function (e) {
+    document.addEventListener('mousemove', function (e) {
         if (raf) cancelAnimationFrame(raf);
         var x = e.clientX, y = e.clientY;
         raf = requestAnimationFrame(function () { move(x, y); });
     }, { passive: true });
-
-    document.addEventListener('pointerdown', function (e) {
-        move(e.clientX, e.clientY);
-    }, { passive: true });
 }());
 
+/* ═══════════════════════════════════════════════════
+   VARIABLE-FONT GRAVITATIONAL PULL  ·  touch only
+   (desktop uses flashlight as its signature effect)
+═══════════════════════════════════════════════════ */
+(function () {
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+    var SEL = 'h1,h2,h3,.page-title,.page-sub,.home-title';
+    var els = null;
+    var raf = null;
+
+    function query() { els = Array.from(document.querySelectorAll(SEL)); }
+
+    function update(x, y) {
+        if (!els) query();
+        els.forEach(function (el) {
+            var b  = el.getBoundingClientRect();
+            var cx = b.left + b.width  * 0.5;
+            var cy = b.top  + b.height * 0.5;
+            var d  = Math.hypot(x - cx, y - cy);
+            var t  = Math.max(0, 1 - d / 320);
+            t = t * t * (3 - 2 * t); /* smoothstep */
+            el.style.fontWeight = Math.round(300 + 500 * t);
+        });
+    }
+
+    function reset() {
+        if (!els) return;
+        els.forEach(function (el) { el.style.fontWeight = ''; });
+    }
+
+    document.addEventListener('touchmove', function (e) {
+        var t = e.touches[0];
+        if (raf) cancelAnimationFrame(raf);
+        var x = t.clientX, y = t.clientY;
+        raf = requestAnimationFrame(function () { update(x, y); });
+    }, { passive: true });
+
+    document.addEventListener('touchend', function () {
+        setTimeout(reset, 600);
+    }, { passive: true });
+}());
 </script>
 </body>
 </html>
-
-
