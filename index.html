@@ -16,9 +16,6 @@
     <meta name="twitter:description" content="Free RTU attendance calculator and SGPA calculator. Check 75% attendance, bunk limit and analyse results instantly." />
     <link rel="manifest" href="manifest.json" />
 
-
-    
-
     <script>
         (function () {
             const saved = localStorage.getItem('bw-theme');
@@ -40,13 +37,96 @@
         }
     </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Mono:wght@400..500&family=Manrope:wght@200..800&display=block" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Mono:wght@400..500&family=Manrope:wght@200..800&display=block" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="style.css?v=1.2">
+
+    <!-- Variable-font transitions -->
+    <style>
+    h1,h2,h3,.page-title,.page-sub,.home-title,.static-page-title{
+        transition: font-weight .12s ease;
+    }
+    /* ── Flashlight overlay (desktop only) ── */
+    #fl { display: none; }
+    @media (min-width: 900px) {
+        #fl {
+            display: block;
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: rgba(8, 8, 12, 0.9);
+            -webkit-mask-image: radial-gradient(
+                circle 280px at var(--fx, -999px) var(--fy, -999px),
+                transparent 0%,
+                rgba(0,0,0,.05) 50%,
+                black 80%
+            );
+            mask-image: radial-gradient(
+                circle 280px at var(--fx, -999px) var(--fy, -999px),
+                transparent 0%,
+                rgba(0,0,0,.05) 50%,
+                black 80%
+            );
+            opacity: 0;
+            transition: opacity .55s ease;
+        }
+        #fl.fl-on { opacity: 1; }
+        /* Light theme: lighter overlay */
+        [data-theme="light"] #fl {
+            background: rgba(244, 244, 248, 0.88);
+        }
+        /* Batman theme: deeper overlay */
+        [data-theme="batman"] #fl {
+            background: rgba(5, 5, 6, 0.93);
+        }
+    }
+    /* Home page game buttons — subtle styling */
+    .home-game-links {
+        display: flex;
+        align-items: center;
+        gap: .55rem;
+        flex-wrap: wrap;
+        margin-top: .5rem;
+    }
+    .home-game-lbl {
+        font-family: 'DM Mono', monospace;
+        font-size: .58rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+    .btn-game {
+        display: inline-flex;
+        align-items: center;
+        padding: .45rem .95rem;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        border-radius: var(--r-sm);
+        font-family: 'Manrope', sans-serif;
+        font-size: .8rem;
+        font-weight: 600;
+        text-decoration: none;
+        letter-spacing: .04em;
+        transition: border-color .14s, color .14s, background .14s;
+    }
+    .btn-game:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: var(--accent-dim);
+    }
+    @media (max-width: 599px) {
+        .home-game-links { margin-top: .35rem; }
+        .home-game-lbl { display: none; }
+    }
+    </style>
 </head>
 <body class="page-home-body">
+
+<!-- Flashlight overlay (desktop only) -->
+<div id="fl" aria-hidden="true"></div>
 
 <header class="site-header" role="banner">
     <a href="/" class="site-header-logo">BunkWise</a>
@@ -88,15 +168,23 @@
 <div id="page-home" class="page">
     <div class="home-inner">
         <h1 class="home-title"><b>Welcome to</b><br><span class="hl"><b>BunkWise</b></span></h1>
+
+        <!-- Core tool buttons -->
         <div class="home-btn-row">
             <button class="btn-primary" id="btn-get-started">
                 Attendance Calculator <span class="btn-arrow">→</span>
             </button>
             <a href="sgpa.html" class="btn-secondary">SGPA Calculator <span class="btn-arrow">→</span></a>
             <a href="cw.html" class="btn-secondary">Class Wise <span class="btn-arrow">→</span></a>
-            <a href="/wordle/" class="btn-secondary">WORDLE <span class="btn-arrow">→</span></a>
-            <a href="/2048/" class="btn-secondary">2048 <span class="btn-arrow">→</span></a>
         </div>
+
+        <!-- Game links — secondary, visually separated -->
+        <div class="home-game-links">
+            <span class="home-game-lbl">// games</span>
+            <a href="/wordle/" class="btn-game">WORDLE</a>
+            <a href="/2048/" class="btn-game">2048</a>
+        </div>
+
         <section class="home-seo" aria-label="About BunkWise">
             <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
             <p><strong>BunkWise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
@@ -181,6 +269,8 @@
                 <p class="home-faq-a">The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes — job applications, higher studies — always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
             </details>
             </section>
+    </div><!-- /home-inner -->
+</div><!-- /page-home -->
 </main>
 
 <footer class="site-footer">
@@ -195,5 +285,96 @@
 </footer>
 
 <script src="app.js?v=1.2" defer></script>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   FLASHLIGHT REVEAL  ·  desktop pointer:fine only
+═══════════════════════════════════════════════════ */
+(function () {
+    if (!window.matchMedia('(min-width:900px)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+    var fl   = document.getElementById('fl');
+    var root = document.documentElement;
+    if (!fl) return;
+
+    var raf = null;
+
+    function move(x, y) {
+        root.style.setProperty('--fx', x + 'px');
+        root.style.setProperty('--fy', y + 'px');
+    }
+
+    /* Place flashlight on the hero title before revealing overlay */
+    function init() {
+        var inner = document.querySelector('.home-inner');
+        if (inner) {
+            var b = inner.getBoundingClientRect();
+            move(b.left + b.width * 0.38, b.top + b.height * 0.22);
+        } else {
+            move(window.innerWidth * 0.38, window.innerHeight * 0.28);
+        }
+        /* Small delay so the initial position is painted before fade-in */
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () { fl.classList.add('fl-on'); });
+        });
+    }
+
+    if (document.readyState === 'complete') {
+        setTimeout(init, 80);
+    } else {
+        window.addEventListener('load', function () { setTimeout(init, 80); });
+    }
+
+    document.addEventListener('mousemove', function (e) {
+        if (raf) cancelAnimationFrame(raf);
+        var x = e.clientX, y = e.clientY;
+        raf = requestAnimationFrame(function () { move(x, y); });
+    }, { passive: true });
+}());
+
+/* ═══════════════════════════════════════════════════
+   VARIABLE-FONT GRAVITATIONAL PULL  ·  touch only
+   (desktop uses flashlight as its signature effect)
+═══════════════════════════════════════════════════ */
+(function () {
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+    var SEL = 'h1,h2,h3,.page-title,.page-sub,.home-title';
+    var els = null;
+    var raf = null;
+
+    function query() { els = Array.from(document.querySelectorAll(SEL)); }
+
+    function update(x, y) {
+        if (!els) query();
+        els.forEach(function (el) {
+            var b  = el.getBoundingClientRect();
+            var cx = b.left + b.width  * 0.5;
+            var cy = b.top  + b.height * 0.5;
+            var d  = Math.hypot(x - cx, y - cy);
+            var t  = Math.max(0, 1 - d / 320);
+            t = t * t * (3 - 2 * t); /* smoothstep */
+            el.style.fontWeight = Math.round(300 + 500 * t);
+        });
+    }
+
+    function reset() {
+        if (!els) return;
+        els.forEach(function (el) { el.style.fontWeight = ''; });
+    }
+
+    document.addEventListener('touchmove', function (e) {
+        var t = e.touches[0];
+        if (raf) cancelAnimationFrame(raf);
+        var x = t.clientX, y = t.clientY;
+        raf = requestAnimationFrame(function () { update(x, y); });
+    }, { passive: true });
+
+    document.addEventListener('touchend', function () {
+        setTimeout(reset, 600);
+    }, { passive: true });
+}());
+</script>
 </body>
 </html>
