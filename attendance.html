@@ -410,28 +410,18 @@
   </div>
 </div>
 
-<script>
-  (function () {
-    var SEEN_KEY = 'bw_tester_seen';
-    var overlay  = document.getElementById('tester-overlay');
-
-    // Show once per session; if already dismissed this session, stay hidden
-    if (!sessionStorage.getItem(SEEN_KEY)) {
-      setTimeout(function () { overlay.classList.remove('t-hidden'); }, 900);
-    }
-
-    document.getElementById('btn-tester-join').addEventListener('click', function () {
-      window.open('https://groups.google.com/g/qr-scanner-app-testing', '_blank', 'noopener');
-      overlay.classList.add('t-hidden');
-      sessionStorage.setItem(SEEN_KEY, '1');
-    });
-
-    document.getElementById('btn-tester-sorry').addEventListener('click', function () {
-      overlay.classList.add('t-hidden');
-      sessionStorage.setItem(SEEN_KEY, '1');
-    });
-  })();
-</script>
+<script>                                                                                                                                                   
+    (function () {                                                                                                                                           
+      document.getElementById('btn-tester-join').addEventListener('click', function () {                                                                     
+        window.open('https://groups.google.com/g/qr-scanner-app-testing', '_blank', 'noopener');                                                             
+        document.getElementById('tester-overlay').classList.add('t-hidden');                                                                                 
+      });                                                                                                                                                    
+                                                                                                                                                             
+      document.getElementById('btn-tester-sorry').addEventListener('click', function () {                                                                    
+        document.getElementById('tester-overlay').classList.add('t-hidden');                                                                                 
+      });                                                                                                                                                    
+    })();                                                                                                                                                    
+  </script>
 <!-- ── END TESTER RECRUITMENT OVERLAY ────────────────── -->
 
 
