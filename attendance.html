@@ -259,6 +259,8 @@
      
    
   
+<!-- PASTE THIS ENTIRE BLOCK JUST ABOVE </body> AT THE BOTTOM OF attendance.html -->
+
 <!-- ── TESTER RECRUITMENT OVERLAY ───────────────────── -->
 <style>
   #tester-overlay {
@@ -288,7 +290,7 @@
     font-family: 'Manrope', sans-serif;
     animation: tCardIn .3s cubic-bezier(.22,.68,0,1.2);
   }
-  @keyframes tCardIn { from { transform:translateY(24px);opaciacity:1 } }
+  @keyframes tCardIn { from { transform:translateY(24px);opacity:0 } to { transform:none;opacity:1 } }
 
   [data-theme="dark"] .tester-card {
     background: #1a1a1a;
@@ -326,7 +328,7 @@
     text-align: left;
     margin: 4px 0 14px;
   }
-  [data-theme="dark"] .tester-steps { background: rgba(255,255
+  [data-theme="dark"] .tester-steps { background: rgba(255,255,255,0.07); }
 
   .tester-steps p {
     font-size: 0.82rem;
@@ -387,25 +389,22 @@
   <div class="tester-card">
     <div class="tester-badge">📣 Beta Testers Needed</div>
     <h2>Can You Help Us Test Our New App?</h2>
-    <p>We need <strong>12 testers</strong> for just <strong>14 days</strong> to try our QR Scanner app before launch. Takes barely any time — and we'll
-happily test <em>your</em> app in return! 🤝</p>
+    <p>We need <strong>12 testers</strong> for just <strong>14 days</strong> to try our QR Scanner app before launch. Takes barely any time — and we'll happily test <em>your</em> app in return! 🤝</p>
 
     <div class="tester-steps">
       <p><strong>Step 1</strong> — Click <em>Join Group</em> below to join the testers group</p>
-      <p><strong>Step 2</strong> — Accept your tester invite h
-        <a href="https://play.google.com/apps/testing/com.bunkwise.qrscanner" target="_blank"
-rel="noopener">play.google.com/apps/testing/com.bunkwise.qrsca
+      <p><strong>Step 2</strong> — Accept your tester invite here:<br>
+        <a href="https://play.google.com/apps/testing/com.bunkwise.qrscanner" target="_blank" rel="noopener">play.google.com/apps/testing/com.bunkwise.qrscanner</a>
       </p>
-      <p><strong>Step 3</strong> — Download the app from Play
-        <a href="https://play.google.com/store/apps/details?id=com.bunkwise.qrscanner" target="_blank" rel="noopener">QR Scanner by BunkWise — Play
-Store</a>
+      <p><strong>Step 3</strong> — Download the app from Play Store:<br>
+        <a href="https://play.google.com/store/apps/details?id=com.bunkwise.qrscanner" target="_blank" rel="noopener">QR Scanner by BunkWise — Play Store</a>
       </p>
     </div>
 
-    <p class="tester-thanks">🙏 Genuinely grateful for any hel<br>We <strong>will test your app in return</strong>. Promise.❤️</p>
+    <p class="tester-thanks">🙏 Genuinely grateful for any help — it means the world to us.<br>We <strong>will test your app in return</strong>. Promise. ❤️</p>
 
     <div class="tester-btns">
-      <button class="btn-tester-join" id="btn-tester-join">Joi
+      <button class="btn-tester-join" id="btn-tester-join">Join Group →</button>
       <button class="btn-tester-sorry" id="btn-tester-sorry">Sorry, not now</button>
     </div>
   </div>
@@ -421,19 +420,20 @@ Store</a>
       setTimeout(function () { overlay.classList.remove('t-hidden'); }, 900);
     }
 
-    document.getElementById('btn-tester-join').addEventListene
+    document.getElementById('btn-tester-join').addEventListener('click', function () {
       window.open('https://groups.google.com/g/qr-scanner-app-testing', '_blank', 'noopener');
       overlay.classList.add('t-hidden');
       sessionStorage.setItem(SEEN_KEY, '1');
     });
 
-    document.getElementById('btn-tester-sorry').addEventListen
+    document.getElementById('btn-tester-sorry').addEventListener('click', function () {
       overlay.classList.add('t-hidden');
       sessionStorage.setItem(SEEN_KEY, '1');
     });
   })();
 </script>
 <!-- ── END TESTER RECRUITMENT OVERLAY ────────────────── -->
+
 
 </body>
 </html>
