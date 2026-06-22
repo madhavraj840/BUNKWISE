@@ -17,7 +17,7 @@
     <link rel="manifest" href="manifest.json" />
 
 
-    
+
 
     <script>
         (function () {
@@ -42,9 +42,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=block" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="style.css?v=1.3">
 </head>
 <body class="page-home-body">
 
@@ -87,7 +87,9 @@
 <main id="main-content">
 <div id="page-home" class="page">
     <div class="home-inner">
-        <h1 class="home-title"><b>Welcome to</b><br><span class="hl"><b>BunkWise</b></span></h1>
+        <span class="home-eyebrow">BunkWise · RTU attendance &amp; SGPA</span>
+        <h1 class="home-title">Stay above<br><span class="hl">the line.</span></h1>
+        <p class="home-desc">Paste your ERP attendance or drop your result PDF. BunkWise tells you exactly how many classes you can bunk, where each subject stands, and your SGPA — instant, free, and it never leaves your browser.</p>
         <div class="home-btn-row">
             <button class="btn-primary" id="btn-get-started">
                 Attendance Calculator <span class="btn-arrow">→</span>
@@ -96,6 +98,9 @@
             <a href="cw.html" class="btn-secondary">Class Wise <span class="btn-arrow">→</span></a>
             <a href="/wordle/" class="btn-secondary">WORDLE <span class="btn-arrow">→</span></a>
             <a href="/2048/" class="btn-secondary">2048 <span class="btn-arrow">→</span></a>
+        </div>
+        <div class="home-threshold">
+            <div class="threshold-line"><span class="tag">75% minimum attendance</span></div>
         </div>
         <section class="home-seo" aria-label="About BunkWise">
             <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
@@ -348,17 +353,17 @@
   </div>
 </div>
 
-<script>                                                                                                                                                   
-    (function () {                                                                                                                                           
-      document.getElementById('btn-tester-join').addEventListener('click', function () {                                                                     
-        window.open('https://groups.google.com/g/qr-scanner-app-testing', '_blank', 'noopener');                                                             
-        document.getElementById('tester-overlay').classList.add('t-hidden');                                                                                 
-      });                                                                                                                                                    
-                                                                                                                                                             
-      document.getElementById('btn-tester-sorry').addEventListener('click', function () {                                                                    
-        document.getElementById('tester-overlay').classList.add('t-hidden');                                                                                 
-      });                                                                                                                                                    
-    })();                                                                                                                                                    
+<script>
+    (function () {
+      document.getElementById('btn-tester-join').addEventListener('click', function () {
+        window.open('https://groups.google.com/g/qr-scanner-app-testing', '_blank', 'noopener');
+        document.getElementById('tester-overlay').classList.add('t-hidden');
+      });
+
+      document.getElementById('btn-tester-sorry').addEventListener('click', function () {
+        document.getElementById('tester-overlay').classList.add('t-hidden');
+      });
+    })();
   </script>
 <!-- ── END TESTER RECRUITMENT OVERLAY ────────────────── -->
 </body>
