@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night mode Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-top: #FBF1E4;
+    --bg-bottom: #F5E4C9;
+    --paper: #FFFFFF;
+    --ink: #2E271E;
+    --body: #5B5346;
+    --muted: #9A8F79;
+    --hair: #E7DCC5;
+    --accent: #B9762A;
+    --accent-strong: #2E2A3D;
+    --accent-on-strong: #F4C765;
+    --chip-bg: #F5EFE2;
+    --focus: #B9762A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-top: #12101E;
+      --bg-bottom: #0A0916;
+      --paper: #1A1728;
+      --ink: #EDE7F5;
+      --body: #C9C0DB;
+      --muted: #8D85A3;
+      --hair: rgba(255,255,255,0.12);
+      --accent: #F4C765;
+      --accent-strong: #F4C765;
+      --accent-on-strong: #2E271E;
+      --chip-bg: rgba(255,255,255,0.06);
+      --focus: #F4C765;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg-top: #12101E;
+    --bg-bottom: #0A0916;
+    --paper: #1A1728;
+    --ink: #EDE7F5;
+    --body: #C9C0DB;
+    --muted: #8D85A3;
+    --hair: rgba(255,255,255,0.12);
+    --accent: #F4C765;
+    --accent-strong: #F4C765;
+    --accent-on-strong: #2E271E;
+    --chip-bg: rgba(255,255,255,0.06);
+    --focus: #F4C765;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 420px, var(--bg-bottom) 100%);
+    color: var(--ink);
+    font-family: 'Nunito', -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+  a:hover { color: var(--focus); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  header.hero {
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--accent-on-strong);
+    background: var(--accent-strong);
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+  h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 38px);
+    line-height: 1.15;
+    margin: 16px 0 8px;
+    text-wrap: balance;
+  }
+  .updated {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--body);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  nav.toc {
+    margin-top: 28px;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 16px rgba(46,39,30,0.06);
+  }
+  nav.toc .toc-label {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: block;
+  }
+  nav.toc ol {
+    columns: 2;
+    column-gap: 24px;
+    margin: 0;
+    padding-left: 20px;
+    font-size: 13.5px;
+  }
+  nav.toc li { break-inside: avoid; margin-bottom: 6px; }
+  nav.toc a { text-decoration: none; color: var(--body); }
+  nav.toc a:hover { color: var(--accent); }
+
+  section {
+    margin-top: 34px;
+    scroll-margin-top: 20px;
+  }
+  section h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section h2 .num {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--accent-on-strong);
+    background: var(--accent-strong);
+    min-width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  section p {
+    font-size: 15px;
+    color: var(--body);
+    margin: 0 0 12px;
+  }
+  section ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+    font-size: 15px;
+    color: var(--body);
+  }
+  section ul li { margin-bottom: 6px; }
+  section ul li b { color: var(--ink); }
+
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 16px rgba(46,39,30,0.05);
+  }
+
+  .not-collected {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 0 14px;
+  }
+  .not-collected span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--body);
+    background: var(--chip-bg);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+  .not-collected span::before {
+    content: "\2715 ";
+    color: #C0554F;
+    font-weight: 800;
+  }
+
+  .permission {
+    border-bottom: 1px solid var(--hair);
+    padding: 14px 0;
+  }
+  .permission:last-child { border-bottom: none; padding-bottom: 0; }
+  .permission:first-child { padding-top: 0; }
+  .permission .p-title {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    margin-bottom: 3px;
+  }
+  .permission .p-desc {
+    font-size: 14px;
+    color: var(--body);
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 7px;
+    background: var(--chip-bg);
+    color: var(--muted);
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .stamp {
+    margin-top: 40px;
+    background: linear-gradient(120deg, var(--accent-strong), color-mix(in srgb, var(--accent-strong) 70%, #6B4FA0));
+    border-radius: 16px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .stamp .stamp-label {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent-on-strong);
+    margin-bottom: 4px;
+  }
+  .stamp p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+  }
+  [data-theme="dark"] .stamp p, :root:not([data-theme="light"]) .stamp p {
+    color: rgba(255,255,255,0.82);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .stamp p { color: rgba(255,255,255,0.85); }
+  }
+
+  footer {
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hair);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    nav.toc, .stamp { display: none; }
+    .wrap { max-width: none; padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Night mode</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: September 14, 2026</p>
+    <p class="lede">
+      This Privacy Policy describes how Night mode ("the App", "we", "us", "our") handles
+      information when you use it. The App is built offline-first: it collects no personal
+      data, has no account, no ads, and no analytics.
+    </p>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="toc-label">On this page</span>
+    <ol>
+      <li><a href="#offline-first">Offline-first approach</a></li>
+      <li><a href="#collect">Information we collect</a></li>
+      <li><a href="#local-storage">Settings stored on your device</a></li>
+      <li><a href="#accessibility">Accessibility Service</a></li>
+      <li><a href="#permissions">Permissions used</a></li>
+      <li><a href="#internet">No internet access</a></li>
+      <li><a href="#sharing">Data sharing</a></li>
+      <li><a href="#security">Data security</a></li>
+      <li><a href="#retention">Retention &amp; deletion</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#links">Third-party links</a></li>
+      <li><a href="#oss">Open source software</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <section id="offline-first">
+    <h2><span class="num">1</span>Offline-first approach</h2>
+    <p>
+      Night mode is designed to run entirely on your device. Turning the dimming overlay on or
+      off, choosing a dim level, scheduling bedtime hours, setting per-app profiles, saving
+      presets, and every other feature are all processed locally. We do not operate any servers
+      that collect, store, process, sell, rent, or share your settings, your usage, or anything
+      about how you use the App.
+    </p>
+  </section>
+
+  <section id="collect">
+    <h2><span class="num">2</span>Information we collect</h2>
+    <p>We do not collect personal information from users. Specifically, we do not collect:</p>
+    <div class="not-collected">
+      <span>Name</span><span>Email address</span><span>Phone number</span>
+      <span>Physical address</span><span>Location</span><span>IP address</span>
+      <span>Device identifiers</span><span>Advertising identifiers</span>
+      <span>Payment information</span><span>Usage analytics</span>
+      <span>Browsing history</span><span>Screen content</span>
+    </div>
+    <p>
+      The App has no account system and no sign-in of any kind - there is nothing tied to you
+      for us to collect even if we wanted to.
+    </p>
+  </section>
+
+  <section id="local-storage">
+    <h2><span class="num">3</span>Settings stored on your device</h2>
+    <p>The App stores your preferences locally, using Android's standard app-storage mechanism, so they persist between sessions:</p>
+    <ul>
+      <li>Dimming on/off state and dim level</li>
+      <li>Schedule on/off times and repeat days</li>
+      <li>Per-app profile list and levels</li>
+      <li>Saved presets</li>
+      <li>Color filter/tint choice</li>
+      <li>Notification and Quick Settings tile preferences</li>
+      <li>Local usage statistics (total time dimmed, session count) shown back to you in the App</li>
+    </ul>
+    <p>This information never leaves your device. It is not transmitted to us or to any third party.</p>
+  </section>
+
+  <section id="accessibility">
+    <h2><span class="num">4</span>Accessibility Service - what it sees, and why</h2>
+    <div class="card">
+      <div class="permission">
+        <div class="p-title">Emergency off</div>
+        <div class="p-desc">Watches for the Volume Up + Volume Down button combination, so you can turn dimming off from anywhere, even outside the App. It does not read anything else about what you're doing.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Per-app profiles</div>
+        <div class="p-desc">Reads which app is currently in the foreground, purely to apply the dim level you've chosen for that app. The current app's identity is used only in memory to pick a level - it is never logged, stored as history, or transmitted.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Auto-Dim <span class="tag">Pro, optional</span></div>
+        <div class="p-desc">Periodically captures a screenshot through Android's Accessibility screenshot API, shrinks it to a tiny low-resolution grid, and measures its average brightness on-device to nudge the dim level automatically. The screenshot is processed entirely in memory and discarded immediately after - never saved as an image, never written to disk, never transmitted anywhere. Auto-Dim only runs while you've explicitly turned it on.</div>
+      </div>
+    </div>
+    <p style="margin-top:14px">
+      All three share one Accessibility service, but each has its own on/off switch, so turning
+      one on doesn't turn on the others - and none of them function unless you've separately
+      granted Accessibility permission in Android's system settings.
+    </p>
+  </section>
+
+  <section id="permissions">
+    <h2><span class="num">5</span>Permissions used by the App</h2>
+    <div class="card">
+      <div class="permission">
+        <div class="p-title">Display over other apps</div>
+        <div class="p-desc">Draws the darkening overlay itself - the one permission the App's core function depends on.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Notifications</div>
+        <div class="p-desc">Shows an ongoing status notification while dimming is on, with optional quick-adjust buttons.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Accessibility <span class="tag">optional</span></div>
+        <div class="p-desc">Powers the three features described in Section 4, and nothing else.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Ignore battery optimization <span class="tag">optional</span></div>
+        <div class="p-desc">Some phone manufacturers aggressively stop background apps to save power; this helps keep dimming running reliably. Asked for, never required.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Run at startup</div>
+        <div class="p-desc">Lets the App restore your schedule and, if you've turned that on, resume dimming after your phone restarts.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Vibration</div>
+        <div class="p-desc">Haptic feedback on certain interactions.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Foreground service</div>
+        <div class="p-desc">Android requires an ongoing, visible service (with a notification) for an app like this to keep the overlay active reliably - that's what this provides.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="internet">
+    <h2><span class="num">6</span>No internet access</h2>
+    <p>
+      The App does not request Android's Internet permission at all. It has no technical ability
+      to send data anywhere - over Wi-Fi, mobile data, or otherwise.
+    </p>
+  </section>
+
+  <section id="sharing">
+    <h2><span class="num">7</span>Data sharing and third parties</h2>
+    <p>
+      Because we do not collect personal information, and the App has no internet access, we do
+      not - and cannot - sell, rent, share, trade, or disclose personal information to third
+      parties. The App contains no advertising and no analytics software of any kind.
+    </p>
+  </section>
+
+  <section id="security">
+    <h2><span class="num">8</span>Data security</h2>
+    <p>
+      Since nothing is transmitted to or stored on any server we operate, there is no remote data
+      of yours to secure. Information stored by the App remains on your device; keeping your
+      device itself secure (screen lock, OS updates, and so on) is what protects it.
+    </p>
+  </section>
+
+  <section id="retention">
+    <h2><span class="num">9</span>Data retention and deletion</h2>
+    <p>We do not retain personal information because we do not collect it. Data stored locally by the App remains entirely under your control. You can delete it by:</p>
+    <ul>
+      <li>Using <b>"Reset everything"</b> in the App's Diagnostics screen</li>
+      <li>Clearing the App's storage through Android Settings</li>
+      <li>Uninstalling the App - since there's no account and no server, uninstalling removes everything the App stored, with nothing left behind anywhere</li>
+    </ul>
+  </section>
+
+  <section id="children">
+    <h2><span class="num">10</span>Children's privacy</h2>
+    <p>
+      The App is not directed at children under 13. Because the App does not collect personal
+      information from anyone, this applies equally to users of any age.
+    </p>
+  </section>
+
+  <section id="links">
+    <h2><span class="num">11</span>Third-party links</h2>
+    <p>The App does not currently link out to any external websites or services from within its own screens. If that changes in a future version, this section will be updated to reflect it.</p>
+  </section>
+
+  <section id="oss">
+    <h2><span class="num">12</span>Open source software</h2>
+    <p>
+      The App is built using standard Android and Jetpack Compose framework libraries, each
+      under its own open-source license (for example, the Apache License 2.0). No proprietary
+      third-party SDKs are used.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2><span class="num">13</span>Changes to this Privacy Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. Any changes will be posted on this
+      page, with the "Last updated" date above revised accordingly. We encourage you to review
+      it periodically.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2><span class="num">14</span>Contact us</h2>
+    <p>If you have any questions, suggestions, or concerns about this Privacy Policy, contact us at:</p>
+    <p style="margin-top:-4px"><b>Email:</b> <a href="mailto:madhavu2027@gmail.com">madhavu2027@gmail.com</a></p>
+  </section>
+
+  <div class="stamp">
+    <div class="stamp-label">In short</div>
+    <p>Night mode works fully offline, collects nothing, has no account to leak, and uninstalling it removes everything. Every permission above only does exactly what's described here.</p>
+  </div>
+
+  <footer>
+    <span>Night mode</span>
+    <span>Privacy Policy &middot; Last updated September 14, 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
