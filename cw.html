@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Wise Attendance Calculator | BunkWise</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <meta name="description" content="RTU Class Wise Attendance Calculator — see your current attendance and instantly simulate your future attendance after skipping or attending a set number of classes.">
     <link rel="canonical" href="https://bunkwise.in/cw.html" />
     <meta property="og:type"        content="website" />
@@ -20,7 +21,7 @@
         (function () {
             const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            document.documentElement.dataset.theme = (saved === 'dark' || saved === 'light') ? saved : preferred;
         })();
     </script>
 
@@ -39,14 +40,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
 
 <header class="site-header" role="banner">
-    <a href="/" class="site-header-logo">BunkWise</a>
+    <a href="/" class="site-header-logo"><img src="assets/bunkwise-logo.png" alt="BunkWise" width="74" height="30"><span>Technologies</span></a>
     <nav class="site-header-nav" aria-label="Main navigation">
         <a href="attendance.html">Attendance</a>
         <a href="sgpa.html">SGPA Calculator</a>
@@ -54,12 +54,12 @@
         <a href="contact.html">Contact</a>
     </nav>
     <div class="site-header-right">
-        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
     </div>
 </header>
 
 
-<button id="theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+<button id="theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -67,22 +67,22 @@
 
 <div class="menu-backdrop" id="menu-backdrop"></div>
 <nav class="side-menu" id="side-menu">
-    <div class="side-menu-label">// navigation</div>
-    <a href="/"><span class="ico">⌂</span> Home</a>
-    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
-    <a href="cw.html"><span class="ico">⊞</span> CW Calculator</a>
+    <div class="side-menu-label">Menu</div>
+    <a href="/">Home</a>
+    <a href="sgpa.html">SGPA Calculator</a>
+    <a href="cw.html">CW Calculator</a>
     <div class="menu-div"></div>
-    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <a href="about.html">About Us</a>
     <div class="menu-div"></div>
-    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
-    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
     <div class="menu-div"></div>
-    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+    <a href="creators.html">Creator Description</a>
     <div class="menu-div"></div>
-    <a href="contact.html"><span class="ico">✉</span> Contact</a>
+    <a href="contact.html">Contact</a>
     <div class="menu-div"></div>
-    <a href="#" id="side-menu-theme" onclick="return false;" aria-label="Switch theme" style="font-family:'DM Mono',monospace;font-size:.85rem;letter-spacing:.06em;">
-        <span class="ico" id="side-menu-theme-icon">&#9675;</span> Change Theme
+    <a href="#" id="side-menu-theme" onclick="return false;" aria-label="Switch theme">
+        <span class="ico" id="side-menu-theme-icon">&#9675;</span> Switch theme
     </a>
 </nav>
 
@@ -124,7 +124,7 @@
         </div>
 
         <div class="instructions-box">
-            <h3>// how to copy your attendance</h3>
+            <h3>How to copy your attendance</h3>
             <ol>
                 <li>Open your college <strong>ERP portal</strong> and log in</li>
                 <li>Navigate to the <strong>Attendance</strong> section</li>
@@ -199,7 +199,7 @@
 </div><!-- /desktop-layout-wrapper -->
 
 <footer class="site-footer">
-    <span class="site-footer-copy">&copy; 2026 BunkWise &mdash; Free tools for RTU students</span>
+    <span class="site-footer-copy">&copy; 2026 BunkWise Technologies &middot; Jaipur</span>
     <nav class="site-footer-links" aria-label="Footer navigation">
         <a href="about.html">About</a>
         <a href="terms.html">Terms</a>
@@ -209,6 +209,6 @@
     </nav>
 </footer>
 
-<script src="app.js?v=1.2" defer></script>
+<script src="app.js?v=2.0" defer></script>
 </body>
 </html>

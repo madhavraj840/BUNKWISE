@@ -128,56 +128,38 @@
         if (backdrop) backdrop.classList.remove('visible');
     }
 
-    /* ── Theme toggle ────────────────────────────────────── */
-    // Cycle order: light → dark → batman → light
-    var _THEMES = ['light', 'dark', 'batman'];
-
+    /* ── Theme toggle (light ⇄ dark) ─────────────────────── */
     var _THEME_ICONS = {
-        dark: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>',
-        light: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
-        batman: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 3L10 7.5H14L17 3V11C17 11 16 13 12 13C8 13 7 11 7 11V3Z"/><path d="M2 11C2 9 4 8 7 8L10 11.5H14L17 8C20 8 22 9 22 11V16C22 19 19 21 12 21C5 21 2 19 2 16V11Z"/></svg>'
+        // Shown while in light mode: moon = "switch to dark"
+        light: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>',
+        // Shown while in dark mode: sun = "switch to light"
+        dark: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>'
     };
 
+    function currentTheme() {
+        return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    }
+
     function updateThemeIcon(theme) {
-        var icon  = _THEME_ICONS[theme] || _THEME_ICONS.dark;
-        var label = theme === 'light'  ? 'Switch to dark mode'
-                  : theme === 'batman' ? 'Switch to light mode'
-                  : 'Switch to batman mode';
-        // Update floating toggle
-        var btn = document.getElementById('theme-toggle');
-        if (btn) { btn.innerHTML = icon; btn.setAttribute('aria-label', label); }
-        // Update header toggle (desktop header — all pages ≥900px)
-        var hBtn = document.getElementById('header-theme-toggle');
-        if (hBtn) { hBtn.innerHTML = icon; hBtn.setAttribute('aria-label', label); }
-        // Update side-menu theme item (mobile on FAB pages)
+        var icon  = _THEME_ICONS[theme];
+        var label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+        ['theme-toggle', 'header-theme-toggle'].forEach(function (id) {
+            var b = document.getElementById(id);
+            if (b) { b.innerHTML = icon; b.setAttribute('aria-label', label); }
+        });
         var smIcon = document.getElementById('side-menu-theme-icon');
         if (smIcon) { smIcon.innerHTML = icon; }
         var smBtn = document.getElementById('side-menu-theme');
         if (smBtn) { smBtn.setAttribute('aria-label', label); }
     }
 
-    function toggleTheme(buttonEl) {
-        var current = document.documentElement.dataset.theme || 'dark';
-        var idx = _THEMES.indexOf(current);
-        var targetTheme = _THEMES[(idx + 1) % _THEMES.length];
-
-        var rect = buttonEl.getBoundingClientRect();
-        var x = ((rect.left + rect.width  / 2) / window.innerWidth  * 100).toFixed(2) + '%';
-        var y = ((rect.top  + rect.height / 2) / window.innerHeight * 100).toFixed(2) + '%';
-        document.documentElement.style.setProperty('--vt-x', x);
-        document.documentElement.style.setProperty('--vt-y', y);
-
-        function applyTheme() {
-            document.documentElement.dataset.theme = targetTheme;
-            _store.set('bw-theme', targetTheme);
-            updateThemeIcon(targetTheme);
-        }
-
-        if (!document.startViewTransition) {
-            applyTheme();
-            return;
-        }
-        document.startViewTransition(applyTheme);
+    function toggleTheme() {
+        var target = currentTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = target;
+        _store.set('bw-theme', target);
+        updateThemeIcon(target);
+        // Gauges are drawn in SVG with resolved colours — redraw them
+        document.dispatchEvent(new CustomEvent('bw-theme-change'));
     }
 
     /* ══════════════════════════════════════════════════════
@@ -322,39 +304,29 @@
 
     function drawGauge(svg, pct, green, mini) {
         var cp  = Math.max(0, Math.min(100, pct));
-        var col = green ? '#1ed97a' : '#f04455';
-
-        // ── Theme-aware colors — gauge is readable in both dark and light mode ──
-        var isDark     = document.documentElement.dataset.theme !== 'light';
-        var trackCol   = isDark ? '#1c2540' : '#dde1e7';
-        var tickCol    = isDark ? '#2e3a5a' : '#c4b9a8';
-        var needleCol  = isDark ? '#eef0f7' : '#1a1208';
-        var hubOuter   = isDark ? '#eef0f7' : '#1a1208';
-        var hubInner   = isDark ? '#0f1520' : '#f8f9fa';
+        // Colours come from the active theme's CSS tokens (style.css)
+        var css        = getComputedStyle(document.documentElement);
+        var tok        = function (n) { return css.getPropertyValue(n).trim(); };
+        var col        = tok(green ? '--green' : '--red');
+        var trackCol   = tok('--border');
+        var tickCol    = tok('--border-l');
+        var needleCol  = tok('--text');
+        var hubOuter   = needleCol;
+        var hubInner   = tok('--bg-card');
 
         var W   = mini ? 160 : 270,
             H   = mini ? 100 : 165,
             cx  = W / 2,
             cy  = mini ? 94 : 148,
             R   = mini ? 72 : 120,
-            sw  = mini ? 11 : 17,
-            uid = 'g' + Math.random().toString(36).slice(2, 8);
+            sw  = mini ? 11 : 17;
 
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
         svg.setAttribute('width', W);
         svg.setAttribute('height', H);
         svg.innerHTML = '';
 
-        var defs = se('defs');
-        defs.innerHTML =
-            '<filter id="gl-' + uid + '" x="-50%" y="-50%" width="200%" height="200%">' +
-            '<feGaussianBlur stdDeviation="' + (mini ? 3 : 6) + '" result="b"/>' +
-            '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
-            '<filter id="sg-' + uid + '" x="-40%" y="-40%" width="180%" height="180%">' +
-            '<feGaussianBlur stdDeviation="' + (mini ? 8 : 14) + '"/></filter>';
-        svg.appendChild(defs);
-
-        svg.appendChild(se('path', { d: fullD(cx, cy, R), fill: 'none', stroke: trackCol, 'stroke-width': sw, 'stroke-linecap': 'round' }));
+        svg.appendChild(se('path', { d: fullD(cx, cy, R), fill: 'none', stroke: trackCol, 'stroke-width': sw, 'stroke-linecap': 'butt' }));
 
         if (!mini) {
             for (var i = 0; i <= 10; i++) {
@@ -371,12 +343,10 @@
 
         if (cp > 0) {
             var aD = arcD(cx, cy, R, cp);
-            svg.appendChild(se('path', { d: aD, fill: 'none', stroke: col, 'stroke-width': sw + 10, 'stroke-linecap': 'round', opacity: '.18', filter: 'url(#sg-' + uid + ')' }));
-            svg.appendChild(se('path', { d: aD, fill: 'none', stroke: col, 'stroke-width': sw, 'stroke-linecap': 'round', filter: 'url(#gl-' + uid + ')' }));
+            svg.appendChild(se('path', { d: aD, fill: 'none', stroke: col, 'stroke-width': sw, 'stroke-linecap': 'butt' }));
         }
 
         var npt = pPt(cx, cy, R - sw / 2 - (mini ? 10 : 14), cp);
-        svg.appendChild(se('line', { x1: cx, y1: cy, x2: npt.x.toFixed(3), y2: npt.y.toFixed(3), stroke: 'rgba(0,0,0,.5)', 'stroke-width': mini ? 3.5 : 5, 'stroke-linecap': 'round' }));
         svg.appendChild(se('line', { x1: cx, y1: cy, x2: npt.x.toFixed(3), y2: npt.y.toFixed(3), stroke: needleCol, 'stroke-width': mini ? 2 : 3, 'stroke-linecap': 'round' }));
         svg.appendChild(se('circle', { cx: cx, cy: cy, r: mini ? 4 : 6, fill: hubOuter }));
         svg.appendChild(se('circle', { cx: cx, cy: cy, r: mini ? 2 : 3, fill: hubInner }));
@@ -385,7 +355,7 @@
             var t = document.createElementNS(NS, 'text');
             t.setAttribute('x', cx); t.setAttribute('y', cy + 15);
             t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', col);
-            t.setAttribute('font-size', '12.5'); t.setAttribute('font-family', 'DM Mono,monospace');
+            t.setAttribute('font-size', '12.5'); t.setAttribute('font-family', 'IBM Plex Mono,monospace');
             t.setAttribute('font-weight', '500');
             t.textContent = cp.toFixed(1) + '%';
             svg.appendChild(t);
@@ -792,7 +762,7 @@
         var n = CW_STATE.classesInput;
         if (n === 0) {
             el.textContent  = '0';
-            el.style.color  = '';           // revert to CSS default (var(--accent))
+            el.style.color  = '';           // revert to CSS default
         } else if (n > 0) {
             el.textContent  = '+' + n;
             el.style.color  = 'var(--green)';
@@ -1078,7 +1048,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         // ── SHARED: theme icon ──
-        updateThemeIcon(document.documentElement.dataset.theme || 'dark');
+        updateThemeIcon(currentTheme());
 
         // ── SHARED: hamburger ──
         var hamburger = document.getElementById('hamburger');
@@ -1104,19 +1074,19 @@
             if (!_hasFab) {
                 themeToggle.classList.add('visible');
             }
-            themeToggle.addEventListener('click', function () { toggleTheme(themeToggle); });
+            themeToggle.addEventListener('click', function () { toggleTheme(); });
         }
 
         // ── Header theme toggle (desktop header — all pages ≥900px) ──
         var headerThemeToggle = document.getElementById('header-theme-toggle');
         if (headerThemeToggle) {
-            headerThemeToggle.addEventListener('click', function () { toggleTheme(headerThemeToggle); });
+            headerThemeToggle.addEventListener('click', function () { toggleTheme(); });
         }
 
         // ── Side-menu theme toggle (mobile on FAB pages) ──
         var sideMenuTheme = document.getElementById('side-menu-theme');
         if (sideMenuTheme) {
-            sideMenuTheme.addEventListener('click', function () { toggleTheme(sideMenuTheme); });
+            sideMenuTheme.addEventListener('click', function () { toggleTheme(); });
         }
 
         // ── INDEX: Get Started button ──
@@ -1126,6 +1096,12 @@
                 window.location.href = 'attendance.html';
             });
         }
+
+        // ── Redraw SVG gauges in the new theme's colours ──
+        document.addEventListener('bw-theme-change', function () {
+            if (ATT_STATE.subjects.length && document.getElementById('subjects-list')) renderResults();
+            if (CW_STATE.subjects.length && document.getElementById('cw-current-gauge')) renderCWMain();
+        });
 
         // ── ATTENDANCE page ──
         initAttendancePage();

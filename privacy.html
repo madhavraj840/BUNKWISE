@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — BunkWise Attendance &amp; SGPA Calculator</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <meta name="description" content="Privacy Policy for BunkWise — the free RTU attendance calculator and SGPA calculator. Learn what data we collect via Google Analytics, how Google AdSense will work, and how your attendance and result data is handled.">
     <link rel="canonical" href="https://bunkwise.in/privacy.html" />
     <meta property="og:type"        content="website" />
@@ -18,7 +19,7 @@
         (function () {
             const saved = localStorage.getItem('bw-theme');
             const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = saved || preferred;
+            document.documentElement.dataset.theme = (saved === 'dark' || saved === 'light') ? saved : preferred;
         })();
     </script>
     <script>
@@ -34,16 +35,15 @@
         }
     </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
 
 <header class="site-header" role="banner">
-    <a href="/" class="site-header-logo">BunkWise</a>
+    <a href="/" class="site-header-logo"><img src="assets/bunkwise-logo.png" alt="BunkWise" width="74" height="30"><span>Technologies</span></a>
     <nav class="site-header-nav" aria-label="Main navigation">
         <a href="attendance.html">Attendance</a>
         <a href="sgpa.html">SGPA Calculator</a>
@@ -51,12 +51,12 @@
         <a href="contact.html">Contact</a>
     </nav>
     <div class="site-header-right">
-        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
     </div>
 </header>
 
 
-<button id="theme-toggle" aria-label="Switch to batman mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+<button id="theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
 
 <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -64,19 +64,19 @@
 
 <div class="menu-backdrop" id="menu-backdrop"></div>
 <nav class="side-menu" id="side-menu">
-    <div class="side-menu-label">// navigation</div>
-    <a href="/"><span class="ico">⌂</span> Home</a>
-    <a href="sgpa.html"><span class="ico">◎</span> SGPA Calculator</a>
-    <a href="cw.html"><span class="ico">⊞</span> CW Calculator</a>
+    <div class="side-menu-label">Menu</div>
+    <a href="/">Home</a>
+    <a href="sgpa.html">SGPA Calculator</a>
+    <a href="cw.html">CW Calculator</a>
     <div class="menu-div"></div>
-    <a href="about.html"><span class="ico">◈</span> About Us</a>
+    <a href="about.html">About Us</a>
     <div class="menu-div"></div>
-    <a href="terms.html"><span class="ico">◇</span> Terms &amp; Conditions</a>
-    <a href="privacy.html"><span class="ico">◉</span> Privacy Policy</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
     <div class="menu-div"></div>
-    <a href="creators.html"><span class="ico">✦</span> Creator Description</a>
+    <a href="creators.html">Creator Description</a>
     <div class="menu-div"></div>
-    <a href="contact.html"><span class="ico">✉</span> Contact</a>
+    <a href="contact.html">Contact</a>
 </nav>
 
 <main id="main-content">
@@ -148,7 +148,7 @@
                 <li><strong>Google Analytics 4</strong> — anonymised visitor analytics. Active on all pages. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="accent-link">Google Privacy Policy</a></li>
                 <li><strong>Google AdSense</strong> — advertising (planned, not yet active). When active, will serve ads and set cookies. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="accent-link">Google Ads Policy</a></li>
                 <li><strong>Google Gemini AI API</strong> — used for autonomous result PDF analysis. Result text is sent to Google's servers. <a href="https://ai.google.dev/terms" target="_blank" rel="noopener noreferrer" class="accent-link">Gemini API Terms</a></li>
-                <li><strong>Google Fonts</strong> — typography (Space Grotesk, DM Mono, Inter). Google logs the font request; no personal data beyond a standard HTTPS request is shared.</li>
+                <li><strong>Google Fonts</strong> — typography (IBM Plex Sans, IBM Plex Mono). Google logs the font request; no personal data beyond a standard HTTPS request is shared.</li>
                 <li><strong>Cloudflare CDN</strong> — delivers PDF.js, SheetJS (xlsx), and jsPDF libraries. Cloudflare may log IP addresses per their standard CDN and security policy.</li>
                 <li><strong>Cloudflare Workers</strong> — acts as a secure proxy for Gemini API calls. Processes requests in transit but does not store your result data.</li>
             </ul>
@@ -180,7 +180,7 @@
 </main>
 
 <footer class="site-footer">
-    <span class="site-footer-copy">&copy; 2026 BunkWise &mdash; Free tools for RTU students</span>
+    <span class="site-footer-copy">&copy; 2026 BunkWise Technologies &middot; Jaipur</span>
     <nav class="site-footer-links" aria-label="Footer navigation">
         <a href="about.html">About</a>
         <a href="terms.html">Terms</a>
@@ -190,6 +190,6 @@
     </nav>
 </footer>
 
-<script src="app.js?v=1.2" defer></script>
+<script src="app.js?v=2.0" defer></script>
 </body>
 </html>
