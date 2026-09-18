@@ -76,12 +76,14 @@ h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.2; font-weight: 600; le
 .facts span { font-size: 14px; color: var(--ink-3); }
 
 /* Products */
-.products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .product {
     background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
     padding: 28px; display: flex; flex-direction: column;
 }
 .product-logo { width: 56px; height: 56px; border-radius: 13px; margin-bottom: 22px; }
+.product-logo-empty { border: 1px dashed var(--line); background: var(--bg); }
+.product .soon { color: var(--ink-3); }
 .product h3 { font-size: 19px; font-weight: 600; }
 .status { font-size: 12px; color: var(--ink-3); margin: 4px 0 14px; display: flex; align-items: center; gap: 7px; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: #2f9e5b; }
@@ -98,7 +100,8 @@ h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.2; font-weight: 600; le
 .sectors h3 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
 .sectors p { color: var(--ink-2); max-width: 62ch; }
 .tag { font-size: 12px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink-3); white-space: nowrap; }
-.tag-live { background: var(--brand); border-color: var(--brand); color: var(--ink); }
+.tag-active { background: #1d7a46; border-color: #1d7a46; color: #fff; }
+.tag-progress { background: var(--brand); border-color: var(--brand); color: var(--ink); }
 
 .split { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
 .role { color: var(--ink-3); }
