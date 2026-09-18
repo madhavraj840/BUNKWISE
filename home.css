@@ -76,7 +76,7 @@ h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.2; font-weight: 600; le
 .facts span { font-size: 14px; color: var(--ink-3); }
 
 /* Products */
-.products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .product {
     background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
     padding: 28px; display: flex; flex-direction: column;
