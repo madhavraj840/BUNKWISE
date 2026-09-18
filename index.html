@@ -3,31 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunkwise Technologies — Android apps and RTU attendance &amp; SGPA calculator</title>
-    <meta name="description" content="Bunkwise Technologies makes Android apps and free RTU attendance and SGPA calculators for SKIT, Poornima, VGU, Arya and other colleges. Check 75% attendance, bunk limit and analyse results instantly.">
+    <title>BunkWise Technologies | From technologies to everything beyond</title>
+    <meta name="description" content="BunkWise Technologies is a Jaipur-based company building its own products, starting with apps and software, and expanding into hyperlocal delivery, agriculture, cement processing and fund management.">
     <link rel="canonical" href="https://bunkwise.in/" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://bunkwise.in/" />
-    <meta property="og:title"       content="Bunkwise Technologies — Android apps and RTU SGPA &amp; Attendance Calculator" />
-    <meta property="og:description" content="Android apps and free RTU attendance and SGPA calculators for SKIT, Poornima, VGU, Arya and other colleges." />
-    <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
+    <meta property="og:title"       content="BunkWise Technologies" />
+    <meta property="og:description" content="From technologies to everything beyond. A Jaipur-based company building products across software, hyperlocal delivery, agriculture, cement processing and fund management." />
+    <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
     <meta name="twitter:card"       content="summary" />
-    <meta name="twitter:title"      content="Bunkwise Technologies" />
-    <meta name="twitter:description" content="Android apps and free RTU attendance and SGPA calculators." />
+    <meta name="twitter:title"      content="BunkWise Technologies" />
+    <meta name="twitter:description" content="From technologies to everything beyond." />
     <link rel="manifest" href="manifest.json" />
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Bunkwise Technologies",
-        "url": "https://bunkwise.in/",
-        "email": "madhavff1@gmail.com",
-        "founder": { "@type": "Person", "name": "Madhav Raj" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Jaipur", "addressRegion": "Rajasthan", "addressCountry": "IN" },
-        "sameAs": ["https://play.google.com/store/apps/dev?id=5045673712463792199", "https://www.instagram.com/madhavraj840/"]
-    }
-    </script>
 
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
@@ -44,438 +32,277 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg:        #FFFFFF;
-            --bg-subtle: #F3F4F5;
-            --text:      #17191C;
-            --text-2:    #545A61;
-            --line:      #E1E4E7;
-            --line-2:    #C9CDD2;
-
-            --font: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-            --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
-            --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
-
-            --page: 960px;
-            --measure: 640px;
-            --r-control: 4px;
-            --r-icon: 12px;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; }
-        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--font);
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-        a:hover { text-decoration-thickness: 2px; }
-        :focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 2px; }
-
-        h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.25; }
-        p { margin: 0; }
-
-        .wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--s5); }
-
-        /* ── Student tools bar (first thing on every screen size) ── */
-        .toolbar {
-            background: var(--bg-subtle);
-            border-bottom: 1px solid var(--line);
-            font-size: 14px;
-        }
-        .toolbar .wrap {
-            display: flex;
-            align-items: center;
-            gap: var(--s4);
-            min-height: 44px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .toolbar-label { color: var(--text-2); }
-        .toolbar a {
-            font-weight: 500;
-            text-decoration: none;
-            padding: var(--s2) 0;
-        }
-        .toolbar a:hover { text-decoration: underline; }
-
-        /* ── Header ── */
-        .site-header .wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--s4);
-            padding-top: var(--s5);
-            padding-bottom: var(--s5);
-        }
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: var(--s3);
-            font-size: 17px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .brand img { width: 32px; height: 32px; }
-        .site-nav { display: flex; gap: var(--s5); font-size: 15px; }
-        .site-nav a { color: var(--text-2); text-decoration: none; }
-        .site-nav a:hover { color: var(--text); text-decoration: underline; }
-
-        /* ── Intro ── */
-        .intro { padding: var(--s7) 0 var(--s8); }
-        .intro h1 {
-            font-size: 40px;
-            letter-spacing: -0.015em;
-            max-width: 22ch;
-        }
-        .intro p {
-            margin-top: var(--s4);
-            font-size: 18px;
-            color: var(--text-2);
-            max-width: 56ch;
-        }
-        .intro-actions {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--s5);
-            margin-top: var(--s6);
-        }
-        .btn {
-            display: inline-block;
-            padding: 11px 18px;
-            border-radius: var(--r-control);
-            background: var(--text);
-            color: #FFFFFF;
-            font-size: 15px;
-            font-weight: 500;
-            text-decoration: none;
-        }
-        .btn:hover { background: #33373C; }
-        .intro-actions a:not(.btn) { font-size: 15px; font-weight: 500; }
-
-        /* ── Sections ── */
-        .section { border-top: 1px solid var(--line); padding: var(--s7) 0; }
-        .section > .wrap > h2 { font-size: 24px; letter-spacing: -0.01em; }
-        .section-lead {
-            margin-top: var(--s2);
-            color: var(--text-2);
-            max-width: var(--measure);
-        }
-
-        /* ── Founder ── */
-        .founder { margin-top: var(--s6); max-width: var(--measure); }
-        .founder h3 { font-size: 18px; }
-        .founder-role { color: var(--text-2); font-size: 15px; }
-        .founder p + p { margin-top: var(--s3); }
-        .founder .founder-role + p { margin-top: var(--s3); }
-
-        /* ── Contact ── */
-        .contact-list {
-            display: grid;
-            grid-template-columns: 120px minmax(0, 1fr);
-            margin: var(--s5) 0 0;
-            max-width: var(--measure);
-        }
-        .contact-list dt, .contact-list dd { margin: 0; padding: var(--s3) 0; border-top: 1px solid var(--line); }
-        .contact-list dt { color: var(--text-2); }
-
-        /* ── Tool list ── */
-        .rows { list-style: none; margin: var(--s6) 0 0; padding: 0; max-width: 760px; }
-        .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: var(--s5);
-            padding: var(--s4) 0;
-            border-top: 1px solid var(--line);
-        }
-        .row:last-child { border-bottom: 1px solid var(--line); }
-        .row h3 { font-size: 17px; }
-        .row p { margin-top: 2px; color: var(--text-2); font-size: 15px; }
-        .row > a { flex-shrink: 0; font-weight: 500; font-size: 15px; }
-        .tool-extra { margin-top: var(--s4); font-size: 15px; color: var(--text-2); }
-
-        /* ── Long-form tool details and FAQ ── */
-        .details { margin-top: var(--s7); max-width: var(--measure); }
-        .details h2 { font-size: 20px; }
-        .details h3 { font-size: 17px; margin-top: var(--s6); }
-        .details p, .details ul { margin-top: var(--s3); }
-        .details ul { padding-left: 20px; }
-        .details li + li { margin-top: var(--s1); }
-        .details strong { font-weight: 600; }
-
-        .faq { margin-top: var(--s7); max-width: var(--measure); }
-        .faq h2 { font-size: 20px; margin-bottom: var(--s4); }
-        .faq details { border-top: 1px solid var(--line); }
-        .faq details:last-child { border-bottom: 1px solid var(--line); }
-        .faq summary {
-            cursor: pointer;
-            padding: var(--s4) var(--s6) var(--s4) 0;
-            font-weight: 500;
-            list-style: none;
-            position: relative;
-        }
-        .faq summary::-webkit-details-marker { display: none; }
-        .faq summary::after {
-            content: "+";
-            position: absolute;
-            right: 0;
-            top: var(--s4);
-            color: var(--text-2);
-        }
-        .faq details[open] summary::after { content: "\2212"; }
-        .faq details p { padding-bottom: var(--s4); color: var(--text-2); }
-
-        /* ── Footer ── */
-        .site-footer {
-            border-top: 1px solid var(--line);
-            padding: var(--s6) 0 var(--s7);
-            font-size: 14px;
-            color: var(--text-2);
-        }
-        .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s4); }
-        .footer-links { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); }
-        .footer-links a { text-decoration: none; }
-        .footer-links a:hover { color: var(--text); text-decoration: underline; }
-
-        /* ── Small screens ── */
-        @media (max-width: 720px) {
-            .wrap { padding: 0 var(--s4); }
-            .site-header .wrap { padding-top: var(--s4); padding-bottom: var(--s4); }
-            .site-nav { gap: var(--s4); font-size: 14px; }
-            .site-nav .nav-optional { display: none; }
-            .intro { padding: var(--s6) 0 var(--s7); }
-            .intro h1 { font-size: 30px; }
-            .intro p { font-size: 17px; }
-            .section { padding: var(--s6) 0; }
-            .section > .wrap > h2 { font-size: 22px; }
-
-            .contact-list { grid-template-columns: 96px minmax(0, 1fr); }
-            .row { flex-direction: column; gap: var(--s2); }
-        }
-        @media (max-width: 380px) {
-            .toolbar .wrap { gap: var(--s3); }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css?v=3">
 </head>
 <body>
 
-<!-- Student tools: kept at the very top so mobile users reach the calculators without scrolling -->
-<div class="toolbar">
+<div class="tools-bar">
     <nav class="wrap" aria-label="Student tools">
-        <span class="toolbar-label">Student tools:</span>
-        <a href="attendance.html">Attendance</a>
-        <a href="sgpa.html">SGPA</a>
+        <span class="label mono">Student tools</span>
+        <a href="attendance.html">Attendance Calculator</a>
+        <a href="sgpa.html">SGPA Calculator</a>
         <a href="cw.html">Class Wise</a>
+        <a href="/wordle/">Wordle</a>
+        <a href="/2048/">2048</a>
     </nav>
 </div>
 
-<header class="site-header">
+<header class="site-head">
     <div class="wrap">
-        <a href="/" class="brand">
-            <!-- Company logo: upload to icons/bunkwise-logo.png and it appears here automatically -->
-            <img src="icons/bunkwise-logo.png" alt="" onerror="this.remove()">
-            Bunkwise Technologies
-        </a>
-        <nav class="site-nav" aria-label="Main navigation">
-            <a href="products.html">Products</a>
-            <a href="#tools" class="nav-optional">Student tools</a>
-            <a href="#company" class="nav-optional">Company</a>
+        <a href="/" class="brand"><img src="assets/bunkwise-logo.png" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
+        <nav aria-label="Main navigation">
+            <a href="#sectors">Sectors</a>
+            <a href="#products">Products</a>
+            <a href="#founder">About</a>
             <a href="#contact">Contact</a>
         </nav>
     </div>
 </header>
 
-<main id="main-content">
+<main>
 
-    <section class="intro">
-        <div class="wrap">
-            <h1>Practical products for everyday problems.</h1>
-            <p>Bunkwise Technologies starts with software: Android apps on Google Play and free web tools for engineering students.</p>
-            <div class="intro-actions">
-                <a class="btn" href="products.html">See our products</a>
-                <a href="#tools">Open the student tools</a>
-            </div>
+<section class="hero">
+    <div class="wrap">
+        <p class="eyebrow mono">BunkWise Technologies · Jaipur</p>
+        <h1>From technologies to everything beyond.</h1>
+        <p class="lead">We are a young company building our own products. We started with software and are now moving into businesses that people rely on every day: local delivery, agriculture, construction materials and finance.</p>
+        <div class="btn-row">
+            <a href="#sectors" class="btn btn-solid">Where we're headed</a>
+            <a href="#contact" class="btn btn-line">Get in touch</a>
         </div>
-    </section>
+        <div class="facts">
+            <div><strong>5</strong><span>sectors on our roadmap</span></div>
+            <div><strong>2</strong><span>Android apps on Google Play</span></div>
+            <div><strong>9,000+</strong><span>monthly visitors to our web tools</span></div>
+        </div>
+    </div>
+</section>
 
-    <section class="section" id="products" aria-labelledby="products-title">
-        <div class="wrap">
-            <h2 id="products-title">Products</h2>
-            <ul class="rows">
-                <li class="row">
-                    <div>
-                        <h3>QR Scanner</h3>
-                        <p>Scan QR codes and barcodes in batches, and create your own. Available on Google Play.</p>
-                    </div>
-                    <a href="products.html#qr-scanner">View QR Scanner</a>
-                </li>
-                <li class="row">
-                    <div>
-                        <h3>Night Mode</h3>
-                        <p>Dims the screen below Android's lowest brightness. Public release on 30 September 2026.</p>
-                    </div>
-                    <a href="products.html#night-mode">View Night Mode</a>
-                </li>
+<section id="sectors">
+    <div class="wrap">
+        <p class="eyebrow mono">Sectors</p>
+        <h2>What we're building towards</h2>
+        <p class="section-intro">Technology is where we started. These are the fields we plan to enter next, one at a time.</p>
+
+        <ol class="sectors">
+            <li>
+                <span class="n mono">01</span>
+                <div>
+                    <h3>Technology</h3>
+                    <p>Apps and software we design, build and run ourselves. This is where BunkWise began, and it supports everything else we do.</p>
+                </div>
+                <span class="tag tag-live mono">Active</span>
+            </li>
+            <li>
+                <span class="n mono">02</span>
+                <div>
+                    <h3>Hyperlocal delivery</h3>
+                    <p>An app that delivers fresh vegetables and daily essentials within a single housing society, quickly and from nearby sources.</p>
+                </div>
+                <span class="tag mono">Planned</span>
+            </li>
+            <li>
+                <span class="n mono">03</span>
+                <div>
+                    <h3>Agriculture</h3>
+                    <p>Setting up vermicompost plants that turn organic waste into natural fertiliser for farms and gardens.</p>
+                </div>
+                <span class="tag mono">Planned</span>
+            </li>
+            <li>
+                <span class="n mono">04</span>
+                <div>
+                    <h3>Cement processing</h3>
+                    <p>Processing cement and loading it into bulk cement tankers for construction sites. We process and supply; we don't manufacture.</p>
+                </div>
+                <span class="tag mono">Planned</span>
+            </li>
+            <li>
+                <span class="n mono">05</span>
+                <div>
+                    <h3>Fund management</h3>
+                    <p>Growing, over the long term, into managing investments across global markets.</p>
+                </div>
+                <span class="tag mono">Long term</span>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section id="products">
+    <div class="wrap">
+        <p class="eyebrow mono">Products</p>
+        <h2>What we've shipped</h2>
+        <p class="section-intro">Our work so far, all designed, built and maintained in-house.</p>
+
+        <div class="products">
+            <article class="product">
+                <img class="product-logo" src="assets/qr-scanner.png" alt="" width="56" height="56">
+                <h3>QR Scanner</h3>
+                <p class="status mono"><span class="dot"></span>Live · Android</p>
+                <p>A QR and barcode scanner with no ads. Scan codes in batches and generate your own QR codes.</p>
+                <div class="links">
+                    <a href="https://play.google.com/store/apps/details?id=com.bunkwise.qrscanner" target="_blank" rel="noopener">Get it on Google Play</a>
+                </div>
+            </article>
+
+            <article class="product">
+                <img class="product-logo" src="assets/night-mode.png" alt="" width="56" height="56">
+                <h3>Night Mode</h3>
+                <p class="status mono">Launching 30 Sept 2026 · Android</p>
+                <p>A screen filter for easier reading at night. In testing on Google Play, with a public release on 30 September.</p>
+                <div class="links">
+                    <a href="https://play.google.com/store/apps/details?id=com.bunkwise.nightmode" target="_blank" rel="noopener">View on Google Play</a>
+                </div>
+            </article>
+
+            <article class="product">
+                <img class="product-logo" src="assets/bunkwise-app.png" alt="" width="56" height="56">
+                <h3>BunkWise Calculator</h3>
+                <p class="status mono"><span class="dot"></span>Live · Web</p>
+                <p>Our first product: free attendance and SGPA tools for college students, used by over 9,000 people a month.</p>
+                <div class="links">
+                    <a href="attendance.html">Open the calculator</a>
+                </div>
+            </article>
+        </div>
+
+        <p class="all-apps"><a href="https://play.google.com/store/apps/dev?id=5045673712463792199" target="_blank" rel="noopener">All BunkWise apps on Google Play →</a></p>
+    </div>
+</section>
+
+<section id="founder" class="founder">
+    <div class="wrap split">
+        <div>
+            <p class="eyebrow mono">About</p>
+            <h2>Madhav</h2>
+            <p class="role">Founder &amp; Developer</p>
+        </div>
+        <div>
+            <p>I'm a final-year engineering student from Jaipur. I started BunkWise by writing software: first a calculator that thousands of students now use every month, then Android apps on Google Play.</p>
+            <p>BunkWise Technologies is the next step. Software taught me how to build something, put it in front of people and keep improving it. I want to bring that approach to real-world businesses too, starting close to home and growing from there.</p>
+            <ul class="meta">
+                <li><span>Company</span><span>BunkWise Technologies (LLP incorporation in progress)</span></li>
+                <li><span>Based in</span><span>Jaipur, Rajasthan</span></li>
+                <li><span>Founded by</span><span>Madhav</span></li>
             </ul>
-            <p class="tool-extra"><a href="products.html">All products</a></p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section" id="company" aria-labelledby="company-title">
-        <div class="wrap">
-            <h2 id="company-title">Company</h2>
-            <p class="section-lead">Bunkwise Technologies is an independent company. Today we build our own Android apps and web tools; over time we plan to work in fields beyond software. We are not taking client projects at the moment.</p>
-
-            <div class="founder">
-                <h3>Madhav Raj</h3>
-                <p class="founder-role">Founder and Developer</p>
-                <p>Madhav designs, builds and publishes every Bunkwise product himself. He works mainly in Kotlin and Java with Android Studio, and also builds with Flutter.</p>
-                <p>He is studying for a B.Tech in Computer Science at Swami Keshvanand Institute of Technology (2023–2027).</p>
-            </div>
+<section id="contact" class="contact">
+    <div class="wrap">
+        <p class="eyebrow mono">Contact</p>
+        <h2>Let's talk</h2>
+        <p>If you'd like to partner, invest, supply or simply share an idea, send an email. I read every message.</p>
+        <div class="btn-row">
+            <a href="mailto:madhavff1@gmail.com" class="btn btn-solid">Email us</a>
         </div>
-    </section>
+        <span class="mail mono">madhavff1@gmail.com</span>
+    </div>
+</section>
 
-    <section class="section" id="contact" aria-labelledby="contact-title">
-        <div class="wrap">
-            <h2 id="contact-title">Contact</h2>
-            <p class="section-lead">Questions about an app, a bug report, or a problem with the calculators: send an email.</p>
-            <dl class="contact-list">
-                <dt>Email</dt>
-                <dd><a href="mailto:madhavff1@gmail.com">madhavff1@gmail.com</a></dd>
-                <dt>Instagram</dt>
-                <dd><a href="https://www.instagram.com/madhavraj840/" target="_blank" rel="noopener">@madhavraj840</a></dd>
-                <dt>Google Play</dt>
-                <dd><a href="https://play.google.com/store/apps/dev?id=5045673712463792199" target="_blank" rel="noopener">Bunkwise developer page</a></dd>
-            </dl>
-        </div>
-    </section>
+<section class="student" aria-label="Student tools">
+    <div class="wrap">
+        <section class="home-seo" aria-label="About BunkWise">
+            <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
+            <p><strong>BunkWise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
+            </section>
 
-    <section class="section" id="tools" aria-labelledby="tools-title">
-        <div class="wrap">
-            <h2 id="tools-title">Student tools</h2>
-            <p class="section-lead">Free calculators for students at RTU and RTU-affiliated colleges. No login, and your data stays in your browser.</p>
-
-            <ul class="rows">
-                <li class="row">
-                    <div>
-                        <h3>Attendance calculator</h3>
-                        <p>Paste your ERP attendance to see how many classes you can miss in each subject.</p>
-                    </div>
-                    <a href="attendance.html">Open attendance calculator</a>
-                </li>
-                <li class="row">
-                    <div>
-                        <h3>SGPA calculator</h3>
-                        <p>Upload your RTU or SKIT autonomous result PDF to get your SGPA.</p>
-                    </div>
-                    <a href="sgpa.html">Open SGPA calculator</a>
-                </li>
-                <li class="row">
-                    <div>
-                        <h3>Class Wise calculator</h3>
-                        <p>See what your attendance will be after attending or skipping upcoming classes.</p>
-                    </div>
-                    <a href="cw.html">Open Class Wise calculator</a>
-                </li>
+            <section class="home-seo home-seo-feature" aria-label="Attendance Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>Attendance Calculator — Know Exactly How Many Classes You Can Bunk</h3>
+            <p>The <strong>RTU attendance calculator</strong> is the core tool on BunkWise. Copy your attendance table directly from your college ERP portal, paste it into BunkWise, and get instant results:</p>
+            <ul>
+                <li><strong>Aggregate attendance percentage</strong> across all subjects combined</li>
+                <li><strong>Subject-wise breakdown</strong> — exact percentage for each course</li>
+                <li><strong>Bunk counter</strong> — how many hours of class you can safely skip per subject</li>
+                <li><strong>Classes to attend</strong> — if you are below 75%, how many you must attend to recover</li>
+                <li>Adjustable target — change your desired percentage from 75% to any value with the &#9998; button</li>
+                <li>Also supports CSV and Excel file uploads directly from your ERP export</li>
             </ul>
-            <p class="tool-extra">Also on this site: <a href="/wordle/">Wordle</a> and <a href="/2048/">2048</a>.</p>
+            <p>Most RTU-affiliated colleges enforce a strict <strong>75% attendance rule</strong>. Falling below this threshold bars you from appearing in semester examinations. BunkWise tells you exactly where you stand — subject by subject — so you can make informed decisions about when to attend and when you have room to skip.</p>
+            </section>
 
-            <div class="details">
-                <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
-                <p><strong>Bunkwise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
+            <section class="home-seo home-seo-feature" aria-label="SGPA Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>SGPA Calculator — Instant Result Analysis from Your PDF</h3>
+            <p>The <strong>RTU SGPA calculator</strong> reads your result PDF directly from rtu.ac.in and computes your Semester Grade Point Average automatically — no manual data entry. Upload your PDF and get:</p>
+            <ul>
+                <li>Your <strong>SGPA</strong> computed using the official RTU credit-weighted formula</li>
+                <li>Subject-wise grade points, credits, and credit points in a clean table</li>
+                <li>Total marks, maximum marks, and overall PASS/FAIL status</li>
+                <li>A downloadable <strong>PDF report</strong> of your result analysis</li>
+            </ul>
+            <p>BunkWise also supports <strong>SKIT autonomous results</strong> through an AI-powered pipeline. SKIT result PDFs use a different format with ISE (Internal) and SEE (External) marks, a 10-point grading scale, and a separate credit structure. BunkWise reads the PDF, extracts and corrects the data using Google Gemini AI, and computes your autonomous SGPA with the correct SKIT credit map for your branch and year.</p>
+            <p>Branches supported for RTU SGPA: First Year, Civil, CSE, CSE-AI, CSE-DS, ECE, EE, IT, Mechanical. Branches supported for SKIT autonomous: First Year, CSE, CSE-AI, CSE-DS, CSE-IOT, ECE, EE, IT, ME, CE.</p>
+            </section>
 
-                <h3>Attendance Calculator — Know Exactly How Many Classes You Can Bunk</h3>
-                <p>The <strong>RTU attendance calculator</strong> is the core tool on Bunkwise. Copy your attendance table directly from your college ERP portal, paste it into Bunkwise, and get instant results:</p>
-                <ul>
-                    <li><strong>Aggregate attendance percentage</strong> across all subjects combined</li>
-                    <li><strong>Subject-wise breakdown</strong> — exact percentage for each course</li>
-                    <li><strong>Bunk counter</strong> — how many hours of class you can safely skip per subject</li>
-                    <li><strong>Classes to attend</strong> — if you are below 75%, how many you must attend to recover</li>
-                    <li>Adjustable target — change your desired percentage from 75% to any value with the &#9998; button</li>
-                    <li>Also supports CSV and Excel file uploads directly from your ERP export</li>
-                </ul>
-                <p>Most RTU-affiliated colleges enforce a strict <strong>75% attendance rule</strong>. Falling below this threshold bars you from appearing in semester examinations. Bunkwise tells you exactly where you stand — subject by subject — so you can make informed decisions about when to attend and when you have room to skip.</p>
+            <section class="home-seo home-seo-feature" aria-label="Class Wise Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>Class Wise Calculator — See Your Future Attendance Before You Skip</h3>
+            <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time — so you know exactly what impact skipping tomorrow's lecture will have before you make the decision.</p>
+            </section>
 
-                <h3>SGPA Calculator — Instant Result Analysis from Your PDF</h3>
-                <p>The <strong>RTU SGPA calculator</strong> reads your result PDF directly from rtu.ac.in and computes your Semester Grade Point Average automatically — no manual data entry. Upload your PDF and get:</p>
-                <ul>
-                    <li>Your <strong>SGPA</strong> computed using the official RTU credit-weighted formula</li>
-                    <li>Subject-wise grade points, credits, and credit points in a clean table</li>
-                    <li>Total marks, maximum marks, and overall PASS/FAIL status</li>
-                    <li>A downloadable <strong>PDF report</strong> of your result analysis</li>
-                </ul>
-                <p>Bunkwise also supports <strong>SKIT autonomous results</strong> through an AI-powered pipeline. SKIT result PDFs use a different format with ISE (Internal) and SEE (External) marks, a 10-point grading scale, and a separate credit structure. Bunkwise reads the PDF, extracts and corrects the data using Google Gemini AI, and computes your autonomous SGPA with the correct SKIT credit map for your branch and year.</p>
-                <p>Branches supported for RTU SGPA: First Year, Civil, CSE, CSE-AI, CSE-DS, ECE, EE, IT, Mechanical. Branches supported for SKIT autonomous: First Year, CSE, CSE-AI, CSE-DS, CSE-IOT, ECE, EE, IT, ME, CE.</p>
+            <section class="home-seo home-seo-faq" aria-label="Frequently Asked Questions">
+            <div class="home-seo-divider"></div>
+            <h2>Frequently Asked Questions</h2>
 
-                <h3>Class Wise Calculator — See Your Future Attendance Before You Skip</h3>
-                <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time — so you know exactly what impact skipping tomorrow's lecture will have before you make the decision.</p>
-            </div>
+            <details class="home-faq-item">
+                <summary class="home-faq-q">What is the minimum attendance required at RTU colleges?</summary>
+                <p class="home-faq-a">Rajasthan Technical University and most affiliated colleges require a minimum of <strong>75% attendance</strong> in each subject to be eligible for semester examinations. Some colleges set a higher threshold of 80%. BunkWise uses 75% as the default target but you can adjust it to any value using the &#9998; button on the attendance results page.</p>
+            </details>
 
-            <div class="faq">
-                <h2>Frequently asked questions</h2>
-                <details>
-                    <summary>What is the minimum attendance required at RTU colleges?</summary>
-                    <p>Rajasthan Technical University and most affiliated colleges require a minimum of <strong>75% attendance</strong> in each subject to be eligible for semester examinations. Some colleges set a higher threshold of 80%. Bunkwise uses 75% as the default target but you can adjust it to any value using the &#9998; button on the attendance results page.</p>
-                </details>
-                <details>
-                    <summary>Does Bunkwise work for SKIT, Poornima, VGU, Arya, and other RTU colleges?</summary>
-                    <p>Yes. The <strong>attendance calculator</strong> works for any college that uses a standard ERP portal to display attendance reports — including SKIT, Poornima University, VGU, Arya College, JECRC, and all other RTU-affiliated institutions. The RTU SGPA calculator works for any college whose result PDF comes from rtu.ac.in. The autonomous SGPA calculator is specifically built for SKIT Jaipur students whose results use the autonomous exam format.</p>
-                </details>
-                <details>
-                    <summary>Is my data safe? Is anything uploaded to a server?</summary>
-                    <p>Your attendance data and RTU result PDFs are processed entirely in your browser — nothing is uploaded to any Bunkwise server. The only exception is the SKIT autonomous SGPA feature, which sends the text extracted from your PDF to Google's Gemini AI API for analysis. This data is processed in transit and not stored. After analysis it is saved in your browser's local storage for 24 hours so you can revisit your result, then it expires automatically.</p>
-                </details>
-                <details>
-                    <summary>How is SGPA calculated at RTU?</summary>
-                    <p>RTU SGPA = Sum of (Grade Point &times; Credits) for all subjects &divide; Total Credits. The grade point scale is: A++ = 10, A+ = 9, A = 8.5, B+ = 8, B = 7.5, C+ = 7, C = 6.5, D+ = 6, D = 5.5, E+ = 5, E = 4, F = 0. Note that grade A carries 8.5 points (not 8) — this is a common source of manual calculation errors that Bunkwise handles automatically.</p>
-                </details>
-                <details>
-                    <summary>How do I get my RTU result PDF?</summary>
-                    <p>Go to rtu.sumsraj.com or rtu.ac.in and navigate to the Results section. Enter your roll number to load your result. When the result page opens, press Ctrl+P (Cmd+P on Mac), set the destination to "Save as PDF", and save the file. Upload that saved PDF to the SGPA Calculator on Bunkwise.</p>
-                </details>
-                <details>
-                    <summary>How many AI analyses can I do per day for the SKIT autonomous result?</summary>
-                    <p>The SKIT autonomous result analysis uses Google Gemini AI, which is a paid service. To keep Bunkwise free for everyone, there is a limit of <strong>3 AI analyses per user per day</strong>. This limit resets at midnight IST. The regular RTU SGPA calculator (for rtu.ac.in PDFs) has no such limit — it runs entirely in your browser with no API calls.</p>
-                </details>
-                <details>
-                    <summary>Can I use Bunkwise on my mobile phone?</summary>
-                    <p>Yes. Bunkwise is fully responsive and works on all screen sizes. The attendance paste and upload features work on mobile. For the SGPA calculator on mobile, you can use your phone's file picker to select a saved PDF from your downloads folder. The Class Wise calculator also works on mobile with touch-friendly controls.</p>
-                </details>
-                <details>
-                    <summary>How do I convert SGPA to percentage for RTU?</summary>
-                    <p>The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes — job applications, higher studies — always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
-                </details>
-            </div>
-        </div>
-    </section>
+            <details class="home-faq-item">
+                <summary class="home-faq-q">Does BunkWise work for SKIT, Poornima, VGU, Arya, and other RTU colleges?</summary>
+                <p class="home-faq-a">Yes. The <strong>attendance calculator</strong> works for any college that uses a standard ERP portal to display attendance reports — including SKIT, Poornima University, VGU, Arya College, JECRC, and all other RTU-affiliated institutions. The RTU SGPA calculator works for any college whose result PDF comes from rtu.ac.in. The autonomous SGPA calculator is specifically built for SKIT Jaipur students whose results use the autonomous exam format.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">Is my data safe? Is anything uploaded to a server?</summary>
+                <p class="home-faq-a">Your attendance data and RTU result PDFs are processed entirely in your browser — nothing is uploaded to any BunkWise server. The only exception is the SKIT autonomous SGPA feature, which sends the text extracted from your PDF to Google's Gemini AI API for analysis. This data is processed in transit and not stored. After analysis it is saved in your browser's local storage for 24 hours so you can revisit your result, then it expires automatically.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How is SGPA calculated at RTU?</summary>
+                <p class="home-faq-a">RTU SGPA = Sum of (Grade Point &times; Credits) for all subjects &divide; Total Credits. The grade point scale is: A++ = 10, A+ = 9, A = 8.5, B+ = 8, B = 7.5, C+ = 7, C = 6.5, D+ = 6, D = 5.5, E+ = 5, E = 4, F = 0. Note that grade A carries 8.5 points (not 8) — this is a common source of manual calculation errors that BunkWise handles automatically.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How do I get my RTU result PDF?</summary>
+                <p class="home-faq-a">Go to rtu.sumsraj.com or rtu.ac.in and navigate to the Results section. Enter your roll number to load your result. When the result page opens, press Ctrl+P (Cmd+P on Mac), set the destination to "Save as PDF", and save the file. Upload that saved PDF to the SGPA Calculator on BunkWise.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How many AI analyses can I do per day for the SKIT autonomous result?</summary>
+                <p class="home-faq-a">The SKIT autonomous result analysis uses Google Gemini AI, which is a paid service. To keep BunkWise free for everyone, there is a limit of <strong>3 AI analyses per user per day</strong>. This limit resets at midnight IST. The regular RTU SGPA calculator (for rtu.ac.in PDFs) has no such limit — it runs entirely in your browser with no API calls.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">Can I use BunkWise on my mobile phone?</summary>
+                <p class="home-faq-a">Yes. BunkWise is fully responsive and works on all screen sizes. The attendance paste and upload features work on mobile. For the SGPA calculator on mobile, you can use your phone's file picker to select a saved PDF from your downloads folder. The Class Wise calculator also works on mobile with touch-friendly controls.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary class="home-faq-q">How do I convert SGPA to percentage for RTU?</summary>
+                <p class="home-faq-a">The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes — job applications, higher studies — always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
+            </details>
+            </section>
+    </div>
+</section>
 
 </main>
 
-<footer class="site-footer">
+<footer>
     <div class="wrap">
-        <span>© 2026 Bunkwise Technologies, Jaipur, Rajasthan, India</span>
-        <nav class="footer-links" aria-label="Footer navigation">
+        <span>© 2026 BunkWise Technologies (LLP incorporation in progress) · Jaipur</span>
+        <nav aria-label="Footer navigation">
             <a href="about.html">About</a>
             <a href="terms.html">Terms</a>
             <a href="privacy.html">Privacy</a>
             <a href="creators.html">Creator</a>
             <a href="contact.html">Contact</a>
-            <a href="/wordle/">Wordle</a>
-            <a href="/2048/">2048</a>
-            <a href="https://www.instagram.com/madhavraj840/" target="_blank" rel="noopener">Instagram</a>
         </nav>
     </div>
 </footer>
