@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Calculator (75% Tracker) | BunkWise</title>
+    <title>Attendance Calculator 75% – How Many Classes Can I Bunk? | BunkWise</title>
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/bunkwise-app.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png" />
-    <meta name="description" content="Paste or upload your ERP attendance report and instantly get subject-wise percentages, bunk counts, and your aggregate attendance.">
+    <meta name="description" content="Free 75% attendance calculator. Slide in classes attended and total classes, or paste your ERP report, and see exactly how many classes you can bunk or must attend. No login.">
     <link rel="canonical" href="https://bunkwise.in/attendance.html" />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://bunkwise.in/attendance.html" />
-    <meta property="og:title"       content="Attendance Calculator (75% Tracker) | BunkWise" />
-    <meta property="og:description" content="Paste or upload your ERP attendance report and instantly get subject-wise percentages, bunk counts, and your aggregate attendance for any RTU-affiliated college." />
-    <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
+    <meta property="og:title"       content="75% Attendance Calculator – How Many Classes Can I Bunk? | BunkWise" />
+    <meta property="og:description" content="Slide in your classes attended and total, or paste your ERP attendance, and instantly see how many classes you can bunk or must attend to stay above 75%." />
+    <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
     <meta name="twitter:card"       content="summary" />
-    <meta name="twitter:title"      content="RTU Attendance Calculator (75% Tracker) | BunkWise" />
-    <meta name="twitter:description" content="Paste your ERP attendance and instantly see your bunk count and subject-wise percentages. Free, no login." />
+    <meta name="twitter:title"      content="75% Attendance Calculator – Bunk Calculator | BunkWise" />
+    <meta name="twitter:description" content="How many classes can you bunk? Slide in your attendance or paste your ERP report. Free, no login." />
     <link rel="manifest" href="manifest.json" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BunkWise Attendance Calculator",
+        "url": "https://bunkwise.in/attendance.html",
+        "description": "Free 75% attendance calculator: see how many classes you can bunk or must attend, from a quick slider or your college ERP attendance report.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en-IN",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "publisher": { "@id": "https://bunkwise.in/#organization" }
+    }
+    </script>
 
 
 
@@ -43,7 +57,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
 
@@ -52,9 +66,9 @@
     <nav class="site-header-nav" aria-label="Main navigation">
         <a href="attendance.html">Attendance</a>
         <a href="sgpa.html">SGPA Calculator</a>
+        <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
         <a href="cw.html">Class Wise</a>
         <a href="contact.html">Contact</a>
-        
     </nav>
     <div class="site-header-right">
         <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
@@ -72,7 +86,10 @@
 <nav class="side-menu" id="side-menu">
     <div class="side-menu-label">Menu</div>
     <a href="/">Home</a>
+    <a href="attendance.html">Attendance Calculator</a>
     <a href="sgpa.html">SGPA Calculator</a>
+    <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
+    <a href="universal_sgpa.html">SGPA (Any University)</a>
     <a href="cw.html">CW Calculator</a>
     <div class="menu-div"></div>
     <a href="about.html">About Us</a>
@@ -99,7 +116,7 @@
 
 <!-- ── PASTE / UPLOAD ─────────────────────────────────── -->
 <div id="page-paste" class="page page-top-center">
-    <h1 class="page-title">Attendance Calculator</h1>
+    <h1 class="page-title">75% Attendance Calculator</h1>
     <p class="page-sub">Copy your attendance from the ERP portal, then click the button below.</p>
 
     <div class="paste-wrap">
@@ -110,6 +127,44 @@
                 Paste Attendance <span class="btn-arrow">→</span>
             </button>
         </div>
+
+        <!-- Quick calculator — sliders, no ERP data needed -->
+        <section class="quick-calc" id="quick-calc" aria-labelledby="qc-title">
+            <h2 class="quick-calc-title" id="qc-title">Quick attendance calculator</h2>
+            <p class="quick-calc-sub">No ERP data? Just slide in your numbers.</p>
+
+            <div class="qc-row">
+                <div class="qc-head"><label for="qc-total">Total classes held</label><output class="qc-val" id="qc-total-val" for="qc-total">40</output></div>
+                <div class="qc-control">
+                    <button type="button" class="popup-btn qc-step" data-for="qc-total" data-step="-1" aria-label="One less class held">−</button>
+                    <input type="range" id="qc-total" min="1" max="300" value="40">
+                    <button type="button" class="popup-btn qc-step" data-for="qc-total" data-step="1" aria-label="One more class held">+</button>
+                </div>
+            </div>
+
+            <div class="qc-row">
+                <div class="qc-head"><label for="qc-attended">Classes attended</label><output class="qc-val" id="qc-attended-val" for="qc-attended">30</output></div>
+                <div class="qc-control">
+                    <button type="button" class="popup-btn qc-step" data-for="qc-attended" data-step="-1" aria-label="One less class attended">−</button>
+                    <input type="range" id="qc-attended" min="0" max="40" value="30">
+                    <button type="button" class="popup-btn qc-step" data-for="qc-attended" data-step="1" aria-label="One more class attended">+</button>
+                </div>
+            </div>
+
+            <div class="qc-row">
+                <div class="qc-head"><label for="qc-target">Target attendance</label><output class="qc-val" id="qc-target-val" for="qc-target">75%</output></div>
+                <div class="qc-control">
+                    <button type="button" class="popup-btn qc-step" data-for="qc-target" data-step="-1" aria-label="Lower target">−</button>
+                    <input type="range" id="qc-target" min="50" max="95" value="75">
+                    <button type="button" class="popup-btn qc-step" data-for="qc-target" data-step="1" aria-label="Raise target">+</button>
+                </div>
+            </div>
+
+            <div class="qc-result" aria-live="polite">
+                <div class="qc-pct" id="qc-pct">75.00%</div>
+                <div class="qc-msg" id="qc-msg"></div>
+            </div>
+        </section>
 
         <div class="upload-zone" id="upload-zone">
             <div class="upload-icon">📂</div>
@@ -137,12 +192,23 @@
         <div class="seo-section">
             <h2>Attendance Calculator for RTU &amp; Affiliated Colleges</h2>
             <p>BunkWise is the fastest <strong>attendance calculator for RTU (Rajasthan Technical University)</strong> students and for students at all RTU-affiliated colleges across Rajasthan. Whether you're studying at <strong>Poornima University</strong>, <strong>VGU (Vivekananda Global University)</strong>, <strong>Arya College of Engineering</strong>, <strong>JECRC University</strong>, <strong>SKIT Jaipur</strong>, or any other affiliated institution, BunkWise gives you instant, accurate attendance analysis.</p>
-            <p>Most colleges under Rajasthan Technical University enforce a strict <strong>75% attendance</strong> requirement. Falling below this minimum can bar you from appearing in semester examinations. Our <strong>75 attendance calculator</strong> tells you exactly how many classes you can skip before hitting that limit — and how many you must attend if you're already close to it.</p>
+            <p>Most colleges under Rajasthan Technical University enforce a strict <strong>75% attendance</strong> requirement. Falling below this minimum can bar you from appearing in semester examinations. Our <strong>75 percent attendance calculator</strong> tells you exactly how many classes you can skip before hitting that limit — and how many you must attend if you're already close to it.</p>
             <p>Using the <strong>RTU attendance calculator</strong> is simple: copy your attendance table directly from your college ERP portal and paste it into BunkWise. Within seconds, you'll see your aggregate attendance percentage, a subject-wise breakdown, and the precise bunk count for every subject.</p>
             <p>Unlike spreadsheets or manual calculations, our <strong>college attendance calculator</strong> is completely instant and private. Your attendance data is processed entirely in your browser — nothing is uploaded to any server, no account is needed, and no data is stored.</p>
             <p>The <strong>attendance analysis</strong> BunkWise provides is subject-level, not just a single aggregate number. You can immediately spot which subjects are putting your eligibility at risk, and which subjects give you the most room to breathe. This is what makes BunkWise the go-to <strong>bunk calculator</strong> for college students across Rajasthan.</p>
             <p>We also support CSV and Excel file uploads directly from your ERP portal export. So even if the clipboard paste method doesn't work for your college's portal, you can upload the exported file directly and get the same instant results.</p>
             <p>BunkWise is trusted by students from hundreds of RTU-affiliated institutions — Jaipur Engineering College, Lachoo Memorial College, Global Institute of Technology, Engineering College Ajmer, Government Engineering College Bikaner, and many more. Our tool works with the standard ERP attendance report format used across RTU-affiliated colleges.</p>
+
+            <h2>How to Calculate 75% Attendance in College</h2>
+            <p>Don't have your ERP report handy? Use the <strong>quick attendance calculator</strong> above: slide in your total classes and classes attended, and it shows your percentage plus how many classes you can bunk or must attend. It uses the same maths as the full calculator:</p>
+            <div class="univ-formula-box" style="margin:0 0 14px;">Attendance % = Classes attended ÷ Total classes × 100</div>
+            <ul>
+                <li><strong>Classes you can bunk</strong> = (Attended − 0.75 × Total) ÷ 0.75, rounded down</li>
+                <li><strong>Classes you must attend</strong> = (0.75 × Total − Attended) ÷ 0.25, rounded up</li>
+            </ul>
+            <p><strong>Example 1:</strong> you attended 34 of 40 classes, so your attendance is 85%. You can bunk (34 − 30) ÷ 0.75 = 5.33, which rounds down to <strong>5 classes</strong>. After 5 bunks you are at 34/45 = 75.6%, and a 6th bunk drops you below 75%.</p>
+            <p><strong>Example 2:</strong> you attended 25 of 40 classes, so your attendance is 62.5%. You must attend (30 − 25) ÷ 0.25 = <strong>20 classes in a row</strong> to reach 45/60 = 75%.</p>
+            <p>If your college needs 80% or any other percentage, move the target slider, or use the ✎ button after pasting your ERP data. To see how your attendance will look after a specific number of classes, use the <a href="cw.html">Class Wise attendance calculator</a>. After results, check your semester SGPA with the <a href="sgpa.html">RTU SGPA calculator</a> and your overall CGPA with the <a href="rtu-cgpa-calculator.html">RTU CGPA calculator</a>.</p>
 
             <div class="faq-section">
                 <h2>Frequently Asked Questions</h2>
@@ -151,6 +217,13 @@
                     <summary class="faq-question">What is the minimum attendance required at RTU colleges?</summary>
                     <div class="faq-answer">
                         <p>Rajasthan Technical University (RTU) and most of its affiliated colleges require a minimum of <strong>75% attendance</strong> in each subject to be eligible for semester examinations. Some colleges may have a higher threshold (80%), so always check your institution's specific rules. BunkWise uses 75% as the default target, but you can adjust it using the ✎ button.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">How many classes can I bunk and still keep 75% attendance?</summary>
+                    <div class="faq-answer">
+                        <p>Classes you can bunk = (Attended − 0.75 × Total) ÷ 0.75, rounded down. For example, with 34 of 40 classes attended you can bunk 5 more classes and stay at 75% or above. The quick calculator at the top of this page does this for you as you move the sliders.</p>
                     </div>
                 </details>
 
@@ -258,6 +331,72 @@
 </footer>
 
 <script src="app.js?v=2.0" defer></script>
+
+<!-- ── Quick attendance calculator (sliders) ────────────
+     Same maths and rounding as calcToTake / calcToLeave
+     in app.js, for a single attended/total pair.
+──────────────────────────────────────────────────── -->
+<script>
+(function () {
+    var total    = document.getElementById('qc-total');
+    var attended = document.getElementById('qc-attended');
+    var target   = document.getElementById('qc-target');
+    if (!total || !attended || !target) return;
+
+    function toTake(A, T, D) {
+        if (D >= 1) return 9999;
+        var raw = (D * T - A) / (1 - D);
+        return raw <= 0 ? 0 : Math.ceil(parseFloat(raw.toFixed(2)));
+    }
+
+    function toLeave(A, T, D) {
+        if (D <= 0) return 9999;
+        return Math.floor(parseFloat((Math.abs((D * T - A) / D)).toFixed(2)));
+    }
+
+    function plural(n) { return n === 1 ? ' class' : ' classes'; }
+
+    function update() {
+        var T = +total.value;
+        attended.max = T;                              // can't attend more than were held
+        if (+attended.value > T) attended.value = T;
+        var A = +attended.value, d = +target.value, D = d / 100;
+        var pct = (A / T) * 100;
+
+        document.getElementById('qc-total-val').textContent    = T;
+        document.getElementById('qc-attended-val').textContent = A;
+        document.getElementById('qc-target-val').textContent   = d + '%';
+
+        var pctEl = document.getElementById('qc-pct');
+        pctEl.textContent = pct.toFixed(2) + '%';
+        pctEl.className = 'qc-pct ' + (pct >= d ? 'green' : 'red');
+
+        var msg;
+        if (pct < d) {
+            var need = toTake(A, T, D);
+            msg = 'Attend the next <strong>' + need + plural(need) + '</strong> in a row to reach ' + d + '%.';
+        } else {
+            var can = toLeave(A, T, D);
+            msg = can > 0
+                ? 'You can bunk <strong>' + can + plural(can) + '</strong> and stay at ' + d + '% or above.'
+                : 'You are right at the limit. Bunking the next class takes you below ' + d + '%.';
+        }
+        document.getElementById('qc-msg').innerHTML = msg;
+    }
+
+    [total, attended, target].forEach(function (el) { el.addEventListener('input', update); });
+
+    document.querySelectorAll('.qc-step').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var el = document.getElementById(btn.dataset.for);
+            el.value = +el.value + (+btn.dataset.step);   // browser clamps to min/max
+            update();
+        });
+    });
+
+    update();
+}());
+</script>
 
 
 

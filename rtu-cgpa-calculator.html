@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTU CGPA Calculator 2026 – CGPA to Percentage | BunkWise</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/bunkwise-app.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png" />
+    <meta name="description" content="Free RTU CGPA calculator with official semester credits. Enter your SGPAs and get your CGPA, equivalent percentage (10 × CGPA) and division instantly. For RTU B.Tech 2020-21 onwards.">
+    <link rel="canonical" href="https://bunkwise.in/rtu-cgpa-calculator.html" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://bunkwise.in/rtu-cgpa-calculator.html" />
+    <meta property="og:title"       content="RTU CGPA Calculator – CGPA to Percentage | BunkWise" />
+    <meta property="og:description" content="Enter your semester SGPAs and get your RTU CGPA, equivalent percentage and division instantly. Free, no login, nothing stored." />
+    <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content="RTU CGPA Calculator – CGPA to Percentage | BunkWise" />
+    <meta name="twitter:description" content="Enter your semester SGPAs and get your RTU CGPA, percentage and division instantly. Free, no login." />
+    <link rel="manifest" href="manifest.json" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BunkWise RTU CGPA Calculator",
+        "url": "https://bunkwise.in/rtu-cgpa-calculator.html",
+        "description": "Calculate your RTU CGPA from your semester SGPAs using the official semester credits, with the equivalent percentage (10 × CGPA) and division.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en-IN",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "publisher": { "@id": "https://bunkwise.in/#organization" }
+    }
+    </script>
+
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('bw-theme');
+                var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.dataset.theme = (saved === 'dark' || saved === 'light') ? saved : preferred;
+            } catch (e) {
+                document.documentElement.dataset.theme = 'light';
+            }
+        })();
+    </script>
+    <script>
+        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+            var _gaScript = document.createElement('script');
+            _gaScript.async = true;
+            _gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
+            document.head.appendChild(_gaScript);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WSBK8SX5LT', { 'transport_type': 'beacon' });
+        }
+    </script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.1">
+</head>
+<body>
+
+<header class="site-header" role="banner">
+    <a href="/" class="site-header-logo"><img src="assets/bunkwise-logo.png" alt="BunkWise" width="74" height="30"><span>Technologies</span></a>
+    <nav class="site-header-nav" aria-label="Main navigation">
+        <a href="attendance.html">Attendance</a>
+        <a href="sgpa.html">SGPA Calculator</a>
+        <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
+        <a href="cw.html">Class Wise</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="site-header-right">
+        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+    </div>
+</header>
+
+<button id="theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+</button>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<nav class="side-menu" id="side-menu">
+    <div class="side-menu-label">Menu</div>
+    <a href="/">Home</a>
+    <a href="attendance.html">Attendance Calculator</a>
+    <a href="sgpa.html">SGPA Calculator</a>
+    <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
+    <a href="universal_sgpa.html">SGPA (Any University)</a>
+    <a href="cw.html">CW Calculator</a>
+    <div class="menu-div"></div>
+    <a href="about.html">About Us</a>
+    <div class="menu-div"></div>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <div class="menu-div"></div>
+    <a href="creators.html">Creator Description</a>
+    <div class="menu-div"></div>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<main id="main-content">
+<div id="page-cgpa-calc" class="page" style="justify-content:flex-start;align-items:center;padding-top:5.5rem;padding-bottom:4rem;">
+
+    <div class="univ-wrap">
+
+        <h1 class="page-title" style="text-align:center;margin-bottom:.35rem;">RTU CGPA Calculator</h1>
+        <p class="page-sub" style="text-align:center;margin-bottom:2rem;">Enter your SGPA for each semester you have completed. Credits are pre-filled from RTU's official B.Tech scheme.</p>
+
+        <a href="sgpa.html" class="univ-back-link">← Don't know your SGPA? Get it from your RTU result PDF</a>
+
+        <div class="univ-error-banner" id="cgpa-error" role="alert"></div>
+
+        <div class="univ-table-wrap">
+            <table class="univ-table" style="min-width:0;">
+                <thead>
+                    <tr>
+                        <th class="univ-th-name">Semester</th>
+                        <th class="univ-th-num">SGPA</th>
+                        <th class="univ-th-num">Credits</th>
+                    </tr>
+                </thead>
+                <tbody id="cgpa-tbody">
+                    <tr><td>Semester 1</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 1 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="20.5" aria-label="Semester 1 credits"></td></tr>
+                    <tr><td>Semester 2</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 2 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="20.5" aria-label="Semester 2 credits"></td></tr>
+                    <tr><td>Semester 3</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 3 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="24.5" aria-label="Semester 3 credits"></td></tr>
+                    <tr><td>Semester 4</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 4 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="23.5" aria-label="Semester 4 credits"></td></tr>
+                    <tr><td>Semester 5</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 5 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="23" aria-label="Semester 5 credits"></td></tr>
+                    <tr><td>Semester 6</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 6 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="23.5" aria-label="Semester 6 credits"></td></tr>
+                    <tr><td>Semester 7</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 7 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="15" aria-label="Semester 7 credits"></td></tr>
+                    <tr><td>Semester 8</td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" max="10" step="0.01" placeholder="8.2" aria-label="Semester 8 SGPA"></td><td><input type="number" class="univ-input univ-input-num" inputmode="decimal" min="0" step="0.5" value="15.5" aria-label="Semester 8 credits"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="univ-actions">
+            <button class="btn-primary" id="cgpa-btn-calc">
+                Calculate CGPA <span class="btn-arrow">→</span>
+            </button>
+            <button class="btn-check-another" id="cgpa-btn-reset">
+                ↺ Reset
+            </button>
+        </div>
+
+        <div class="univ-result hidden" id="cgpa-result">
+            <div class="univ-result-header">
+                <div class="univ-sgpa-label">Your CGPA</div>
+                <div class="univ-sgpa-number sgpa-good" id="cgpa-val">—</div>
+                <div class="qc-msg" id="cgpa-extra"></div>
+            </div>
+            <div class="univ-formula-box" id="cgpa-formula">—</div>
+        </div>
+
+        <!-- How it works — SEO section -->
+        <div class="seo-section" style="max-width:660px;margin-top:2.5rem;">
+            <h2>How to Calculate CGPA at RTU</h2>
+            <p><strong>CGPA</strong> (Cumulative Grade Point Average) is the average of your <strong>SGPAs</strong> across all the semesters you have completed, weighted by the credits of each semester:</p>
+            <div class="univ-formula-box" style="margin:1rem 0;">CGPA = Σ(SGPA × Semester credits) ÷ Σ(Semester credits)</div>
+            <p>At <strong>Rajasthan Technical University</strong> the semesters carry different credits, so a plain average of your SGPAs is slightly off. The calculator above is pre-filled with RTU's official B.Tech semester credits (for students admitted in 2020-21 and later), so the CGPA it gives is credit-weighted, like RTU's. Change the credits if your scheme is different, or clear them all for a simple average. RTU rounds SGPA and CGPA to two decimals on the higher side (rounds up), and so does this calculator.</p>
+            <div class="univ-result-table-wrap">
+                <table class="univ-result-table" style="min-width:0;">
+                    <thead><tr><th>Semester</th><th>Credits</th></tr></thead>
+                    <tbody>
+                        <tr><td class="univ-res-name">Semester I</td><td>20.5</td></tr>
+                        <tr><td class="univ-res-name">Semester II</td><td>20.5</td></tr>
+                        <tr><td class="univ-res-name">Semester III</td><td>24.5</td></tr>
+                        <tr><td class="univ-res-name">Semester IV</td><td>23.5</td></tr>
+                        <tr><td class="univ-res-name">Semester V</td><td>23</td></tr>
+                        <tr><td class="univ-res-name">Semester VI</td><td>23.5</td></tr>
+                        <tr><td class="univ-res-name">Semester VII</td><td>15</td></tr>
+                        <tr><td class="univ-res-name">Semester VIII</td><td>15.5</td></tr>
+                        <tr><td class="univ-res-name"><strong>Total</strong></td><td><strong>166</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>That is 166 credits in total (125 for lateral entry students, who start in semester III).</p>
+            <p><strong>Example:</strong> Semester 1 SGPA 8.00 with 20 credits, Semester 2 SGPA 9.00 with 25 credits. CGPA = (8.00 × 20 + 9.00 × 25) ÷ (20 + 25) = 385 ÷ 45 = <strong>8.56</strong>. A simple average of the two SGPAs would give 8.50.</p>
+
+            <h2>RTU CGPA to Percentage</h2>
+            <p>For B.Tech students admitted in <strong>2020-21 and later</strong>, RTU's CBCS guidelines (clause 12(iv)) give the conversion as:</p>
+            <div class="univ-formula-box" style="margin:1rem 0;">Equivalent Percentage = 10 × CGPA</div>
+            <p>So a CGPA of 7.50 equals 75%, 8.20 equals 82% and 9.00 equals 90%. The calculator above shows your equivalent percentage next to your CGPA. Use this figure on placement and job forms that ask for a percentage.</p>
+            <p>RTU writes this rule for CGPA. For a single semester, students commonly apply the same formula to SGPA (SGPA × 10), but your official percentage comes from your CGPA.</p>
+            <p>You may also see <strong>Percentage = (CGPA × 10) − 7.5</strong>. That rule comes from RTU's PG admission notices (DAT 2019, CAM 2020), which convert the CGPA of applicants to M.Tech and other PG courses. It is not the B.Tech 2020-21 onwards rule. Source: <a href="https://rtu.ac.in/index/Adminpanel/Images/Media/27122020104617-media.pdf" target="_blank" rel="noopener">RTU CBCS guidelines for B.Tech 2020-21 onwards (PDF)</a>.</p>
+
+            <h2>RTU Division by CGPA</h2>
+            <p>RTU awards the division from your final CGPA, provided you have passed every semester course (Table 12.1):</p>
+            <ul>
+                <li><strong>CGPA 7.00 and above:</strong> 1st Division with Distinction</li>
+                <li><strong>6.00 to below 7.00:</strong> 1st Division</li>
+                <li><strong>5.00 to below 6.00:</strong> 2nd Division</li>
+                <li><strong>4.00 to below 5.00:</strong> Pass</li>
+            </ul>
+
+            <h2>SGPA vs CGPA</h2>
+            <p><strong>SGPA</strong> (Semester Grade Point Average) measures one semester: the credit-weighted average of the grade points in that semester's subjects. <strong>CGPA</strong> measures your whole degree so far by combining every semester's SGPA. After your final semester, your CGPA is the figure on your degree marksheet.</p>
+            <p>RTU uses a 10-point grade scale: A++ = 10, A+ = 9, A = 8.5, B+ = 8, B = 7.5, C+ = 7, C = 6.5, D+ = 6, D = 5.5, E+ = 5, E = 4, F = 0.</p>
+
+            <h2>How to Find Your SGPA for Each Semester</h2>
+            <ul>
+                <li><strong>RTU students:</strong> your SGPA is printed on each semester's result. If you have the result PDF, upload it to the <a href="sgpa.html">RTU SGPA calculator</a> and it calculates the SGPA with a subject-wise breakdown.</li>
+                <li><strong>SKIT autonomous students:</strong> use the Autonomous option on the <a href="sgpa.html">SGPA calculator</a>.</li>
+                <li><strong>Any other university:</strong> use the <a href="universal_sgpa.html">SGPA calculator for any university</a> and enter each subject's credits and grade points.</li>
+            </ul>
+            <p>You don't need all 8 semesters. Fill in only the semesters you have completed and the calculator gives your CGPA so far. If you have a back paper (F grade), RTU leaves that course out of your CGPA until you clear it, so your official CGPA can differ slightly from this estimate. For your attendance, use the <a href="attendance.html">75% attendance calculator</a>.</p>
+
+            <div class="faq-section" style="margin-top:1.75rem;">
+                <h2>Frequently Asked Questions</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">How is CGPA calculated at RTU?</summary>
+                    <div class="faq-answer">
+                        <p>CGPA = Σ(SGPA × semester credits) ÷ Σ(semester credits), across every semester you have completed, rounded up to two decimals. RTU's B.Tech semester credits are 20.5, 20.5, 24.5, 23.5, 23, 23.5, 15 and 15.5, and the calculator fills them in for you.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">How do I convert RTU CGPA to percentage?</summary>
+                    <div class="faq-answer">
+                        <p>For B.Tech students admitted in 2020-21 and later, Equivalent Percentage = 10 × CGPA. A CGPA of 8.20 is 82%. The (CGPA × 10) − 7.5 formula you may see elsewhere is RTU's rule for PG admissions, not for B.Tech marksheets.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">What CGPA is first division at RTU?</summary>
+                    <div class="faq-answer">
+                        <p>A final CGPA of 6.00 or more is 1st Division, and 7.00 or more is 1st Division with Distinction. 5.00 to below 6.00 is 2nd Division, and 4.00 to below 5.00 is Pass.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Do I need to enter credits?</summary>
+                    <div class="faq-answer">
+                        <p>No. The official RTU B.Tech semester credits are already filled in. Change them if your scheme is different, or clear all of them to get a simple average of your SGPAs.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Can I calculate my CGPA after only 2 or 3 semesters?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. Fill in only the semesters you have results for and leave the rest empty. The result is your CGPA up to that semester.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Does this work for SKIT, Poornima, JECRC, Arya and other RTU colleges?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. All RTU-affiliated colleges follow the same CGPA calculation. The calculator also works for any university that calculates CGPA from semester SGPAs on a 10-point scale.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Is my data stored or sent anywhere?</summary>
+                    <div class="faq-answer">
+                        <p>No. The calculation runs entirely in your browser. Nothing is sent to a server and nothing is saved.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </div><!-- /univ-wrap -->
+
+</div><!-- /page-cgpa-calc -->
+</main>
+
+<footer class="site-footer">
+    <span class="site-footer-copy">&copy; 2026 BunkWise Technologies &middot; Jaipur</span>
+    <nav class="site-footer-links" aria-label="Footer navigation">
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="creators.html">Creator</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</footer>
+
+<script src="app.js?v=2.0" defer></script>
+
+<!-- ── CGPA calculator ─────────────────────────────────
+     Rules from RTU's B.Tech CBCS guidelines (2020-21 onwards):
+     credits pre-filled from Table 5.1, CGPA rounded to two
+     decimals "on higher side" (12.ii), % = 10 × CGPA (12.iv),
+     division bands from Table 12.1.
+     Rows without an SGPA are skipped. Credits on every used row
+     → credit-weighted; credits on none → simple average.
+──────────────────────────────────────────────────── -->
+<script>
+(function () {
+    var tbody  = document.getElementById('cgpa-tbody');
+    var errEl  = document.getElementById('cgpa-error');
+    var result = document.getElementById('cgpa-result');
+
+    // "rounded off to two decimal digits on higher side"; epsilon absorbs float noise (8.5 * 100 = 850.0000001)
+    function roundUp2(x) { return Math.ceil(x * 100 - 1e-9) / 100; }
+
+    function division(cgpa) {
+        if (cgpa >= 7) return '1st Division with Distinction';
+        if (cgpa >= 6) return '1st Division';
+        if (cgpa >= 5) return '2nd Division';
+        if (cgpa >= 4) return 'Pass';
+        return 'Below the 4.00 pass mark';
+    }
+
+    function showError(msg, input) {
+        errEl.textContent = msg;
+        errEl.classList.add('visible');
+        if (input) input.classList.add('univ-input-error');
+        result.classList.add('hidden');
+    }
+
+    function clearError() {
+        errEl.classList.remove('visible');
+        tbody.querySelectorAll('.univ-input-error').forEach(function (i) { i.classList.remove('univ-input-error'); });
+    }
+
+    function calculate() {
+        clearError();
+        var rows = [];
+        var trs = tbody.querySelectorAll('tr');
+        for (var i = 0; i < trs.length; i++) {
+            var inputs = trs[i].querySelectorAll('input');
+            var sIn = inputs[0], cIn = inputs[1];
+            if (sIn.value === '') continue;
+            var sgpa = parseFloat(sIn.value), credits = cIn.value === '' ? null : parseFloat(cIn.value);
+            if (isNaN(sgpa) || sgpa < 0 || sgpa > 10) return showError('SGPA must be between 0 and 10 for Semester ' + (i + 1) + '.', sIn);
+            if (credits !== null && (isNaN(credits) || credits <= 0)) return showError('Credits must be a positive number for Semester ' + (i + 1) + '.', cIn);
+            rows.push({ sgpa: sgpa, credits: credits });
+        }
+        if (!rows.length) return showError('Enter the SGPA of at least one semester.');
+
+        var withCredits = rows.filter(function (r) { return r.credits !== null; }).length;
+        if (withCredits && withCredits !== rows.length) {
+            return showError('Enter credits for every semester you filled in, or leave all credits blank.');
+        }
+
+        var raw, formula;
+        if (withCredits) {
+            var points = 0, credits = 0;
+            rows.forEach(function (r) { points += r.sgpa * r.credits; credits += r.credits; });
+            raw = points / credits;
+            formula = 'CGPA = ' + points.toFixed(2) + ' ÷ ' + credits + ' = ' + roundUp2(raw).toFixed(2);
+        } else {
+            var sum = 0;
+            rows.forEach(function (r) { sum += r.sgpa; });
+            raw = sum / rows.length;
+            formula = 'CGPA = (' + rows.map(function (r) { return r.sgpa; }).join(' + ') + ') ÷ ' + rows.length + ' = ' + roundUp2(raw).toFixed(2);
+        }
+
+        var cgpa  = roundUp2(raw);
+        var valEl = document.getElementById('cgpa-val');
+        valEl.textContent = cgpa.toFixed(2);
+        valEl.className = 'univ-sgpa-number ' + (cgpa >= 7.5 ? 'sgpa-good' : cgpa >= 5 ? 'sgpa-avg' : 'sgpa-low');
+        document.getElementById('cgpa-extra').innerHTML =
+            'Equivalent percentage <strong>' + (cgpa * 10).toFixed(2) + '%</strong><br>' + division(cgpa);
+        document.getElementById('cgpa-formula').textContent = formula;
+        result.classList.remove('hidden');
+        result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('cgpa-btn-calc').addEventListener('click', calculate);
+    document.getElementById('cgpa-btn-reset').addEventListener('click', function () {
+        tbody.querySelectorAll('input').forEach(function (i) { i.value = i.defaultValue; });   // SGPA → empty, credits → official values
+        clearError();
+        result.classList.add('hidden');
+    });
+}());
+</script>
+</body>
+</html>

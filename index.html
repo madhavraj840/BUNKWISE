@@ -3,20 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BunkWise Technologies | From technologies to everything beyond</title>
-    <meta name="description" content="BunkWise Technologies is a Jaipur-based company building its own products, starting with apps and software, and expanding into hyperlocal delivery, agriculture, cement processing and fund management.">
+    <title>BunkWise Technologies | Attendance, SGPA &amp; CGPA Calculator</title>
+    <meta name="description" content="BunkWise Technologies, Jaipur. Makers of the free 75% attendance calculator and RTU SGPA &amp; CGPA calculators used by 9,000+ students a month, plus Android apps on Google Play.">
     <link rel="canonical" href="https://bunkwise.in/" />
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/bunkwise-app.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png" />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://bunkwise.in/" />
     <meta property="og:title"       content="BunkWise Technologies" />
-    <meta property="og:description" content="From technologies to everything beyond. A Jaipur-based company building products across software, hyperlocal delivery, agriculture, cement processing and fund management." />
+    <meta property="og:description" content="From technologies to everything beyond. Makers of the BunkWise attendance, SGPA and CGPA calculators and Android apps, expanding into hyperlocal delivery, agriculture and more. Jaipur." />
     <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
     <meta name="twitter:card"       content="summary" />
     <meta name="twitter:title"      content="BunkWise Technologies" />
     <meta name="twitter:description" content="From technologies to everything beyond." />
     <link rel="manifest" href="manifest.json" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://bunkwise.in/#organization",
+                "name": "BunkWise Technologies",
+                "alternateName": "BunkWise",
+                "url": "https://bunkwise.in/",
+                "logo": "https://bunkwise.in/assets/bunkwise-app.png",
+                "slogan": "From technologies to everything beyond",
+                "email": "madhavff1@gmail.com",
+                "founder": { "@type": "Person", "name": "Madhav Raj", "url": "https://github.com/madhavraj840" },
+                "address": { "@type": "PostalAddress", "addressLocality": "Jaipur", "addressRegion": "Rajasthan", "addressCountry": "IN" },
+                "sameAs": [
+                    "https://play.google.com/store/apps/dev?id=5045673712463792199",
+                    "https://github.com/madhavraj840"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://bunkwise.in/#website",
+                "name": "BunkWise",
+                "alternateName": "BunkWise Technologies",
+                "url": "https://bunkwise.in/",
+                "publisher": { "@id": "https://bunkwise.in/#organization" }
+            }
+        ]
+    }
+    </script>
 
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
@@ -43,6 +74,8 @@
         <span class="label mono">Student tools</span>
         <a href="attendance.html">Attendance Calculator</a>
         <a href="sgpa.html">SGPA Calculator</a>
+        <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
+        <a href="universal_sgpa.html">SGPA (Any University)</a>
         <a href="cw.html">Class Wise</a>
     </nav>
 </div>
@@ -150,7 +183,9 @@
                 <p class="status mono"><span class="dot"></span>Live · Web</p>
                 <p>Our first product: free attendance and SGPA tools for college students, used by over 9,000 people a month.</p>
                 <div class="links">
-                    <a href="attendance.html">Open the calculator</a>
+                    <a href="attendance.html">Attendance calculator</a>
+                    <a href="sgpa.html">SGPA calculator</a>
+                    <a href="rtu-cgpa-calculator.html">CGPA calculator</a>
                 </div>
             </article>
 
@@ -224,8 +259,8 @@
 <section class="student" aria-label="Student tools">
     <div class="wrap">
         <section class="home-seo" aria-label="About BunkWise">
-            <h2>Free RTU SGPA Calculator &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
-            <p><strong>BunkWise</strong> is the fastest free <strong>RTU SGPA calculator</strong> and <strong>RTU attendance calculator</strong> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
+            <h2>Free RTU SGPA, CGPA &amp; Attendance Calculator for Engineering Students in Rajasthan</h2>
+            <p><strong>BunkWise</strong> is the fastest free <a href="sgpa.html"><strong>RTU SGPA calculator</strong></a>, <a href="rtu-cgpa-calculator.html"><strong>RTU CGPA calculator</strong></a> and <a href="attendance.html"><strong>attendance calculator</strong></a> for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — <strong>SKIT Jaipur</strong>, Poornima University, VGU, Arya College of Engineering, JECRC University, Jaipur Engineering College, Government Engineering College Ajmer, Lachoo Memorial College, Global Institute of Technology, and hundreds more. No login. No account. No data uploaded to any server. Every tool runs entirely in your browser.</p>
             </section>
 
             <section class="home-seo home-seo-feature" aria-label="Attendance Calculator">
@@ -241,6 +276,7 @@
                 <li>Also supports CSV and Excel file uploads directly from your ERP export</li>
             </ul>
             <p>Most RTU-affiliated colleges enforce a strict <strong>75% attendance rule</strong>. Falling below this threshold bars you from appearing in semester examinations. BunkWise tells you exactly where you stand — subject by subject — so you can make informed decisions about when to attend and when you have room to skip.</p>
+            <p>No ERP data? The quick calculator on the same page takes just your classes attended and total classes on sliders. <a href="attendance.html">Open the 75% attendance calculator →</a></p>
             </section>
 
             <section class="home-seo home-seo-feature" aria-label="SGPA Calculator">
@@ -255,12 +291,19 @@
             </ul>
             <p>BunkWise also supports <strong>SKIT autonomous results</strong> through an AI-powered pipeline. SKIT result PDFs use a different format with ISE (Internal) and SEE (External) marks, a 10-point grading scale, and a separate credit structure. BunkWise reads the PDF, extracts and corrects the data using Google Gemini AI, and computes your autonomous SGPA with the correct SKIT credit map for your branch and year.</p>
             <p>Branches supported for RTU SGPA: First Year, Civil, CSE, CSE-AI, CSE-DS, ECE, EE, IT, Mechanical. Branches supported for SKIT autonomous: First Year, CSE, CSE-AI, CSE-DS, CSE-IOT, ECE, EE, IT, ME, CE.</p>
+            <p><a href="sgpa.html">Open the RTU SGPA calculator →</a> Not at RTU? Use the <a href="universal_sgpa.html">SGPA calculator for any university</a>, which also converts total credit points to SGPA.</p>
+            </section>
+
+            <section class="home-seo home-seo-feature" aria-label="CGPA Calculator">
+            <div class="home-seo-divider"></div>
+            <h3>CGPA Calculator — Your Overall RTU CGPA from Semester SGPAs</h3>
+            <p>The <strong>RTU CGPA calculator</strong> combines the SGPAs of every semester you have completed into your <strong>Cumulative Grade Point Average</strong>. Enter your SGPAs for a quick average, or add each semester's credits for the exact credit-weighted CGPA, and see the full calculation. It works for SKIT, Poornima, JECRC, Arya and every other RTU-affiliated college. <a href="rtu-cgpa-calculator.html">Open the RTU CGPA calculator →</a></p>
             </section>
 
             <section class="home-seo home-seo-feature" aria-label="Class Wise Calculator">
             <div class="home-seo-divider"></div>
             <h3>Class Wise Calculator — See Your Future Attendance Before You Skip</h3>
-            <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time — so you know exactly what impact skipping tomorrow's lecture will have before you make the decision.</p>
+            <p>The <strong>Class Wise calculator</strong> shows you what your attendance percentage will look like after attending or skipping a specific number of future classes. Paste your same ERP attendance data, then use the &#9998; button to enter how many classes you plan to take or skip. The calculator shows your <strong>current attendance</strong> alongside your <strong>projected future attendance</strong> in real time — so you know exactly what impact skipping tomorrow's lecture will have before you make the decision. <a href="cw.html">Open the Class Wise calculator →</a></p>
             </section>
 
             <section class="home-seo home-seo-faq" aria-label="Frequently Asked Questions">
@@ -303,8 +346,8 @@
             </details>
 
             <details class="home-faq-item">
-                <summary class="home-faq-q">How do I convert SGPA to percentage for RTU?</summary>
-                <p class="home-faq-a">The commonly used approximation for RTU is: <strong>Percentage = (SGPA &minus; 0.5) &times; 10</strong>. For example, an SGPA of 8.2 &asymp; 77%. However RTU does not publish an official formula for this conversion. For official purposes — job applications, higher studies — always use your official RTU mark-sheet and contact RTU for an equivalence certificate if required.</p>
+                <summary class="home-faq-q">How do I convert RTU CGPA or SGPA to percentage?</summary>
+                <p class="home-faq-a">For B.Tech students admitted in 2020-21 and later, RTU's official rule is <strong>Equivalent Percentage = 10 &times; CGPA</strong> (CBCS guidelines, clause 12(iv)). For example, a CGPA of 8.20 equals 82%. The rule is written for CGPA; for a single semester, students commonly apply the same formula to SGPA. The (CGPA &times; 10) &minus; 7.5 formula you may see elsewhere is from RTU's PG admission notices, not the B.Tech rule. Use the <a href="rtu-cgpa-calculator.html">RTU CGPA calculator</a> to get your CGPA, percentage and division together.</p>
             </details>
             </section>
     </div>

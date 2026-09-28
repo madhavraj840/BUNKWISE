@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGPA Calculator</title>
+    <title>RTU SGPA Calculator 2026 – Upload Result PDF | BunkWise</title>
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/bunkwise-app.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png" />
-    <meta name="description" content="Free RTU, SKIT, Poornima, VGU and Arya college attendance and SGPA calculator. Upload result PDF and calculate instantly.">
+    <meta name="description" content="Free RTU SGPA calculator. Upload your RTU or SKIT autonomous result PDF and get your SGPA instantly with a subject-wise grade and credit breakdown. No login, no manual entry.">
     <link rel="canonical" href="https://bunkwise.in/sgpa.html" />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://bunkwise.in/sgpa.html" />
-    <meta property="og:title"       content="RTU SGPA Calculator (Result PDF Tool) | BunkWise" />
+    <meta property="og:title"       content="RTU SGPA Calculator – Upload Result PDF | BunkWise" />
     <meta property="og:description" content="Upload your RTU or SKIT autonomous result PDF and instantly calculate your SGPA with subject-wise grade breakdown and downloadable report." />
-    <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
+    <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
     <meta name="twitter:card"       content="summary" />
     <meta name="twitter:title"      content="RTU SGPA Calculator | BunkWise" />
     <meta name="twitter:description" content="Upload your RTU or SKIT result PDF and get your SGPA instantly. Free, no login, no data stored." />
     <link rel="manifest" href="manifest.json" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BunkWise RTU SGPA Calculator",
+        "url": "https://bunkwise.in/sgpa.html",
+        "description": "Upload your RTU or SKIT autonomous result PDF and get your SGPA with a subject-wise grade, credit and credit-point breakdown.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en-IN",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "publisher": { "@id": "https://bunkwise.in/#organization" }
+    }
+    </script>
 
 
 
@@ -47,7 +61,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
 
@@ -56,6 +70,7 @@
     <nav class="site-header-nav" aria-label="Main navigation">
         <a href="attendance.html">Attendance</a>
         <a href="sgpa.html">SGPA Calculator</a>
+        <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
         <a href="cw.html">Class Wise</a>
         <a href="contact.html">Contact</a>
     </nav>
@@ -75,7 +90,10 @@
 <nav class="side-menu" id="side-menu">
     <div class="side-menu-label">Menu</div>
     <a href="/">Home</a>
+    <a href="attendance.html">Attendance Calculator</a>
     <a href="sgpa.html">SGPA Calculator</a>
+    <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
+    <a href="universal_sgpa.html">SGPA (Any University)</a>
     <a href="cw.html">CW Calculator</a>
     <div class="menu-div"></div>
     <a href="about.html">About Us</a>
@@ -97,8 +115,28 @@
 
     <!-- ── State A: Upload ───────────────────────────────── -->
     <div id="sgpa-upload-state" class="sgpa-state">
-        <h1 class="page-title">SGPA Calculator</h1>
+        <h1 class="page-title">RTU SGPA Calculator</h1>
         <p class="page-sub">Upload your result PDF — your SGPA is computed instantly, right in your browser.</p>
+
+        <!-- ── Calculator picker (inline) ─────────────────── -->
+        <div class="calc-sel-box calc-sel-inline" aria-label="Choose calculator type">
+            <div class="calc-sel-title">Which calculator do you need?</div>
+            <div class="calc-sel-sub">Choose the type of SGPA calculator</div>
+            <div class="calc-sel-grid">
+                <button class="calc-sel-card" id="calc-sel-rtu" aria-label="RTU SGPA Calculator">
+                    <span class="calc-sel-name">RTU SGPA Calculator</span>
+                    <span class="calc-sel-desc">Upload your RTU result PDF — auto-calculated with branch credit maps</span>
+                </button>
+                <button class="calc-sel-card" id="calc-sel-skit" aria-label="SKIT Autonomous SGPA Calculator">
+                    <span class="calc-sel-name">Autonomous SGPA Calculator</span>
+                    <span class="calc-sel-desc">Upload your SKIT result PDF — AI-powered analysis with Google Gemini</span>
+                </button>
+                <a class="calc-sel-card calc-sel-card-accent" id="calc-sel-univ" href="universal_sgpa.html">
+                    <span class="calc-sel-name">Universal SGPA Calculator</span>
+                    <span class="calc-sel-desc">Manually enter subjects, credits and grade points — works for any university</span>
+                </a>
+            </div>
+        </div>
 
         <div class="paste-wrap paste-wrap-narrow">
             <div class="sgpa-upload-zone" id="sgpa-upload-zone">
@@ -185,6 +223,7 @@
                 <p>The <strong>skit sgpa calculator</strong> feature is specifically designed for SKIT Jaipur students whose results follow the autonomous grading pattern. BunkWise automatically reads the Course Title, ISE/SEE marks, and computes grades and credit points using the correct grading formula. Per-subject remarks are also checked to derive an overall PASS/FAIL status.</p>
                 <p>Beyond SGPA, BunkWise shows you Total Marks, Maximum Marks, Grade Points, Credits, and Credit Points — a complete academic breakdown that you can download as a beautifully formatted report PDF to share or save for your records.</p>
                 <p>BunkWise is trusted by engineering students across Rajasthan — from Jaipur to Kota, Jodhpur to Bikaner — to instantly calculate SGPA after every semester result. No more manual grade point calculations or spreadsheets.</p>
+                <p>Once you have your SGPA for every semester, enter them in the <a href="rtu-cgpa-calculator.html">RTU CGPA calculator</a> to get your overall CGPA. If your university is not RTU or your result is not a PDF, use the <a href="universal_sgpa.html">SGPA calculator for any university</a> and type in your subjects, credits and grade points.</p>
 
                 <div class="faq-section">
                     <h2>Frequently Asked Questions</h2>
@@ -268,66 +307,16 @@
 <script src="app.js?v=2.0" defer></script>
 <script src="bw-sgpa.js?v=2.0" defer></script>
 
-<!-- ── SGPA Calculator Selector Overlay ───────────────
-     Shows on first visit each session. Lets user pick
-     RTU, SKIT Autonomous, or Universal calculator.
-──────────────────────────────────────────────────── -->
-<div class="calc-sel-overlay" id="calc-sel-overlay" role="dialog" aria-modal="true" aria-label="Choose calculator type">
-    <div class="calc-sel-box">
-        <div class="calc-sel-title">Which calculator do you need?</div>
-        <div class="calc-sel-sub">Choose the type of SGPA calculator</div>
-        <div class="calc-sel-grid">
-            <button class="calc-sel-card" id="calc-sel-rtu" aria-label="RTU SGPA Calculator">
-                <span class="calc-sel-name">RTU SGPA Calculator</span>
-                <span class="calc-sel-desc">Upload your RTU result PDF — auto-calculated with branch credit maps</span>
-            </button>
-            <button class="calc-sel-card" id="calc-sel-skit" aria-label="SKIT Autonomous SGPA Calculator">
-                <span class="calc-sel-name">Autonomous SGPA Calculator</span>
-                <span class="calc-sel-desc">Upload your SKIT result PDF — AI-powered to get analysis from genimi flash 3.1 lite</span>
-            </button>
-            <button class="calc-sel-card calc-sel-card-accent" id="calc-sel-univ" aria-label="Universal SGPA Calculator">
-                <span class="calc-sel-name">Universal SGPA Calculator</span>
-                <span class="calc-sel-desc">Manually enter subjects, credits and grade points — works for any university</span>
-            </button>
-        </div>
-    </div>
-</div>
-
 <script>
 (function () {
-    // Show overlay unless user has already chosen in this session
-    var overlay = document.getElementById('calc-sel-overlay');
-    if (!overlay) return;
-
-    // Always show on page load (no sessionStorage skip — user wants to see it every time)
-    overlay.classList.add('open');
-
-    function closeOverlay() {
-        overlay.classList.remove('open');
+    // Calculator picker cards: RTU / SKIT scroll to their upload zone,
+    // Universal is a plain link to universal_sgpa.html.
+    function goTo(id) {
+        var el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-
-    document.getElementById('calc-sel-rtu').addEventListener('click', function () {
-        closeOverlay();
-        // Scroll to RTU upload zone
-        var el = document.getElementById('sgpa-upload-zone');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    document.getElementById('calc-sel-skit').addEventListener('click', function () {
-        closeOverlay();
-        // Scroll to autonomous upload zone
-        var el = document.getElementById('auto-upload-zone');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    document.getElementById('calc-sel-univ').addEventListener('click', function () {
-        window.location.href = 'universal_sgpa.html';
-    });
-
-    // Close on backdrop click
-    overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) closeOverlay();
-    });
+    document.getElementById('calc-sel-rtu').addEventListener('click', function () { goTo('sgpa-upload-zone'); });
+    document.getElementById('calc-sel-skit').addEventListener('click', function () { goTo('auto-upload-zone'); });
 }());
 </script>
 

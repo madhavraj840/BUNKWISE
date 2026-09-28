@@ -338,6 +338,30 @@ button, .hamburger, .fab-pen, .popup-btn, .calc-sel-card, summary { user-select:
 .sgpa-upload-zone.error-state .sgpa-upload-hint { color: var(--red); }
 
 /* Error banner */
+/* ── Quick attendance calculator (attendance.html) ──── */
+.quick-calc {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    display: flex; flex-direction: column; gap: 18px;
+    padding: 28px 24px;
+}
+.quick-calc-title { font-size: 19px; font-weight: 600; color: var(--text); text-align: center; }
+.quick-calc-sub   { font-size: 15px; color: var(--text-sec); text-align: center; margin-top: -12px; }
+.qc-row  { display: flex; flex-direction: column; gap: 6px; }
+.qc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15px; color: var(--text-sec); }
+.qc-val  { font-family: var(--mono); font-size: 18px; font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; }
+.qc-control { display: flex; align-items: center; gap: 10px; }
+.qc-control input[type="range"] { flex: 1; min-width: 0; height: 32px; accent-color: var(--accent); cursor: pointer; }
+.qc-step { width: 40px; height: 40px; flex-shrink: 0; font-size: 20px; }
+.qc-result { text-align: center; padding-top: 16px; border-top: 1px solid var(--border); }
+.qc-pct { font-size: 36px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.qc-pct.green { color: var(--green); }
+.qc-pct.red   { color: var(--red); }
+.qc-msg { font-size: 15px; color: var(--text-sec); margin-top: 4px; }
+.qc-msg strong { color: var(--text); font-weight: 600; }
+
 .error-banner, .univ-error-banner {
     display: none; align-items: center; gap: 8px;
     background: var(--red-dim);
@@ -912,6 +936,8 @@ details.faq-item[open] summary.faq-question::after { content: '\2212'; }
 .calc-sel-icon { display: none; }
 .calc-sel-name { font-size: 16px; font-weight: 600; color: var(--text); }
 .calc-sel-desc { font-size: 14px; color: var(--text-sec); line-height: 1.5; }
+.calc-sel-inline { max-width: 620px; margin: 0 auto 24px; }
+a.calc-sel-card { text-decoration: none; }
 
 /* ══════════════════════════════════════════════════════
    UNIVERSAL SGPA

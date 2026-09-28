@@ -4,20 +4,34 @@
     <meta charset="UTF-8">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universal SGPA Calculator — BunkWise</title>
+    <title>SGPA Calculator – Any University, Any Grading Scale | BunkWise</title>
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/bunkwise-app.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png" />
-    <meta name="description" content="Free universal SGPA calculator for any university and any grading scale. Enter your subjects, credits and grade points and get your Semester Grade Point Average instantly.">
+    <meta name="description" content="Free SGPA calculator for any university and any grading scale. Enter your subjects, credits and grade points and get your Semester Grade Point Average instantly, with the formula shown.">
     <link rel="canonical" href="https://bunkwise.in/universal_sgpa.html" />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://bunkwise.in/universal_sgpa.html" />
-    <meta property="og:title"       content="Universal SGPA Calculator | BunkWise" />
+    <meta property="og:title"       content="SGPA Calculator for Any University | BunkWise" />
     <meta property="og:description" content="Free universal SGPA calculator for any university. Enter subjects, credits and grade points — get your SGPA instantly. No login, no data stored." />
-    <meta property="og:image"       content="https://bunkwise.in/icons/Icon-512.png" />
+    <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
     <meta name="twitter:card"        content="summary" />
-    <meta name="twitter:title"       content="Universal SGPA Calculator | BunkWise" />
+    <meta name="twitter:title"       content="SGPA Calculator for Any University | BunkWise" />
     <meta name="twitter:description" content="Calculate SGPA for any university. Enter subjects, credits and grade points and get your result instantly." />
     <link rel="manifest" href="manifest.json" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BunkWise SGPA Calculator",
+        "url": "https://bunkwise.in/universal_sgpa.html",
+        "description": "Free SGPA calculator for any university: enter subjects, credits and grade points and get your SGPA with the full calculation.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en-IN",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "publisher": { "@id": "https://bunkwise.in/#organization" }
+    }
+    </script>
 
 
     <script>
@@ -48,7 +62,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
 
@@ -57,6 +71,7 @@
     <nav class="site-header-nav" aria-label="Main navigation">
         <a href="attendance.html">Attendance</a>
         <a href="sgpa.html">SGPA Calculator</a>
+        <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
         <a href="cw.html">Class Wise</a>
         <a href="contact.html">Contact</a>
     </nav>
@@ -75,7 +90,10 @@
 <nav class="side-menu" id="side-menu">
     <div class="side-menu-label">Menu</div>
     <a href="/">Home</a>
+    <a href="attendance.html">Attendance Calculator</a>
     <a href="sgpa.html">SGPA Calculator</a>
+    <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
+    <a href="universal_sgpa.html">SGPA (Any University)</a>
     <a href="cw.html">CW Calculator</a>
     <div class="menu-div"></div>
     <a href="about.html">About Us</a>
@@ -94,11 +112,11 @@
     <!-- ── Calculator section ─────────────────────────── -->
     <div class="univ-wrap">
 
-        <h1 class="page-title" style="text-align:center;margin-bottom:.35rem;">Universal SGPA Calculator</h1>
+        <h1 class="page-title" style="text-align:center;margin-bottom:.35rem;">SGPA Calculator for Any University</h1>
         <p class="page-sub" style="text-align:center;margin-bottom:2rem;">Works for any university and any grading scale. Enter your subjects below.</p>
 
         <!-- Back link -->
-        <a href="sgpa.html" class="univ-back-link">← Back to SGPA Calculator</a>
+        <a href="sgpa.html" class="univ-back-link">← Have an RTU result PDF? Use the RTU SGPA Calculator</a>
 
         <!-- Error banner -->
         <div class="univ-error-banner" id="univ-error" role="alert"></div>
@@ -155,6 +173,21 @@
             <div class="univ-formula-box" id="univ-formula">—</div>
         </div>
 
+        <!-- Credit points → SGPA (one division, no subject list needed) -->
+        <section class="quick-calc" aria-labelledby="cp-title" style="margin-bottom:32px;">
+            <h2 class="quick-calc-title" id="cp-title">Credit Points to SGPA Calculator</h2>
+            <p class="quick-calc-sub">Already have your total credit points? Enter them with your total credits.</p>
+            <div class="qc-control">
+                <input type="number" class="univ-input univ-input-num" id="cp-points" inputmode="decimal" min="0" step="0.5" placeholder="Credit points" aria-label="Total credit points">
+                <span aria-hidden="true">÷</span>
+                <input type="number" class="univ-input univ-input-num" id="cp-credits" inputmode="decimal" min="0" step="0.5" placeholder="Credits" aria-label="Total credits">
+            </div>
+            <div class="qc-result" aria-live="polite">
+                <div class="qc-pct" id="cp-sgpa">—</div>
+                <div class="qc-msg">SGPA</div>
+            </div>
+        </section>
+
         <!-- How it works — SEO section -->
         <div class="seo-section" style="max-width:660px;margin-top:2.5rem;">
             <h2>How to Calculate SGPA</h2>
@@ -171,8 +204,21 @@
                 <li>Divide total credit points by total credits — the result is your SGPA.</li>
             </ul>
 
+            <h3 style="margin-top:1.25rem;margin-bottom:.6rem;font-size:.95rem;font-weight:700;">How to Calculate SGPA from Total Credit Points</h3>
+            <p>If your marksheet already shows your <strong>total credit points</strong> (sometimes written as total grade points or ΣCP), you don't need the subject list. <strong>SGPA = Total credit points ÷ Total credits.</strong> For example, 180 credit points over 22 credits gives an SGPA of 180 ÷ 22 = <strong>8.18</strong>. Use the Credit Points to SGPA box above to do this instantly.</p>
+
+            <h3 style="margin-top:1.25rem;margin-bottom:.6rem;font-size:.95rem;font-weight:700;">From SGPA to CGPA</h3>
+            <p>Your <strong>CGPA</strong> (Cumulative Grade Point Average) combines the SGPAs of all your semesters. Once you have your SGPA for each semester, enter them in the <a href="rtu-cgpa-calculator.html">CGPA calculator</a> to get your overall CGPA. RTU students can skip the typing: upload your result PDF to the <a href="sgpa.html">RTU SGPA calculator</a> and the SGPA is calculated for you.</p>
+
             <div class="faq-section" style="margin-top:1.75rem;">
                 <h2>Frequently Asked Questions</h2>
+
+                <details class="faq-item">
+                    <summary class="faq-question">How do I convert total credit points to SGPA?</summary>
+                    <div class="faq-answer">
+                        <p>Divide your total credit points by your total credits. For example, 180 credit points ÷ 22 credits = 8.18 SGPA. Each subject's credit points are its credits multiplied by the grade point you earned.</p>
+                    </div>
+                </details>
 
                 <details class="faq-item">
                     <summary class="faq-question">Does this work for any university?</summary>
@@ -222,5 +268,17 @@
 
 <script src="app.js?v=2.0" defer></script>
 <script src="universal-sgpa.js?v=1.1" defer></script>
+<script>
+(function () {
+    var points = document.getElementById('cp-points');
+    var credits = document.getElementById('cp-credits');
+    function update() {
+        var p = parseFloat(points.value), c = parseFloat(credits.value);
+        document.getElementById('cp-sgpa').textContent = (p >= 0 && c > 0) ? (p / c).toFixed(2) : '—';
+    }
+    points.addEventListener('input', update);
+    credits.addEventListener('input', update);
+}());
+</script>
 </body>
 </html>
