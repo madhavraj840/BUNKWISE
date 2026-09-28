@@ -27,6 +27,8 @@ SEO_PLANS = [
     ('seoGrowth', 'Growth SEO', '2–4 SEO articles a month, new landing pages, competitor monitoring, backlink and citation work'),
     ('seoAdv', 'Advanced SEO', '4–8 content pieces a month, multiple landing pages, link-building, digital PR, conversion-rate optimisation'),
 ]
+GROUP_ORDER = ['Countries', 'US states', 'Cities', 'SEO costs', 'Hiring guides']
+PROJECTS = '12 client projects so far, including 3 for international clients (2 in the UAE, 1 in progress)'  # keep in sync with website-design.html
 BUNKWISE_BLOCK = re.compile(r'<!-- bunkwise -->.*?<!-- /bunkwise -->', re.S)
 
 
@@ -87,6 +89,7 @@ def bunkwise_table(region):
                 </table>
             </div>
             <p class="sources">BunkWise prices as published on the <a href="/website-design.html#qa-prices">pricing page</a>. {tax}</p>
+            <p class="bw-why"><strong>Why businesses choose BunkWise:</strong> one person is accountable for your project from the first message to launch day. You get a page-by-page plan and a fixed price before any work starts, you review a private preview before anything goes live, and every package and price is published, so there is nothing to negotiate. BunkWise has taken on {PROJECTS}. <a href="/website-design.html#contact">Get a free quote</a>.</p>
 <!-- /bunkwise -->'''
 
 
@@ -129,7 +132,7 @@ def hub_list(posts):
     for p in posts:
         if 'hub' in p:
             groups.setdefault(p['hub']['group'], []).append(p)
-    order = ['Countries', 'US states', 'Cities', 'SEO costs', 'Hiring guides']
+    order = GROUP_ORDER
     out = []
     for g in sorted(groups, key=lambda g: order.index(g) if g in order else 99):
         items = '\n'.join(
@@ -261,7 +264,7 @@ def update_blog_index(posts):
     hub = next(q for q in posts if q.get('type') == 'hub')
     guides = [q for q in posts if 'hub' in q]
     cards = '\n'.join(
-        f'                <li><a href="{q["path"]}">{html.escape(q["hub"]["label"])}</a></li>' for q in sorted(guides, key=lambda q: (q['hub']['group'] != 'Countries', q['hub'].get('order', 50))))
+        f'                <li><a href="{q["path"]}">{html.escape(q["hub"]["label"])}</a></li>' for q in sorted(guides, key=lambda q: (GROUP_ORDER.index(q['hub']['group']) if q['hub']['group'] in GROUP_ORDER else 99, q['hub'].get('order', 50))))
     block = f'''
         <section class="guide-hub" aria-labelledby="cost-guides">
             <h2 id="cost-guides"><a href="{hub['path']}">Website costs by country</a></h2>

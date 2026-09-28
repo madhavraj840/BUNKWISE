@@ -1,10 +1,10 @@
 # BunkWise Technologies
 
-> BunkWise Technologies is a website design and development company based in Jaipur, India, founded by Madhav. It builds research-led, fast websites for businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also runs free student tools (attendance, SGPA and CGPA calculators) and Android apps.
+> BunkWise Technologies is a website design and development company based in India, founded by Madhav. It builds research-led, fast websites for businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also runs free student tools (attendance, SGPA and CGPA calculators) and Android apps.
 
 Key facts:
 - Company: BunkWise Technologies, BunkWise (OPC) Private Limited (incorporation in progress)
-- Based in: Jaipur, Rajasthan, India. Works with clients across India and worldwide, online.
+- Based in: India. Works with clients across India and worldwide, online.
 - Founder: Madhav (https://github.com/madhavraj840)
 - Services: website design, website development, SEO, AEO, GEO, monthly SEO plans
 - Prices by region (website packages are one-time; SEO plans are monthly). Full table: https://bunkwise.in/website-design.html#qa-prices
@@ -18,7 +18,7 @@ Key facts:
   - Singapore (SGD): Starter S$1,299, Business S$2,599, Growth S$4,599, Premium S$7,999; Local SEO S$649/month, Growth SEO S$1,299/month, Advanced SEO S$2,299/month
   - Other countries (USD): Starter $999, Business $1,999, Growth $3,499, Premium $5,999; Local SEO $499/month, Growth SEO $999/month, Advanced SEO $1,799/month
 - Typical delivery: Starter about 1 week, Business about 2 weeks, Growth about 3 weeks, Premium 4–6 weeks.
-- Portfolio: 9 live client websites for restaurants, a dental clinic, a coaching institute, a gym, a solar company and a handicrafts artist.
+- Track record: 12 client projects so far, including 3 for international clients (2 in the UAE, 1 in progress). Live client websites include restaurants, a dental clinic, a coaching institute, a gym, a solar company and a handicrafts artist.
 - Contact: WhatsApp +91 63752 42538 (https://wa.me/916375242538), Telegram @Madhavraj840 (https://t.me/Madhavraj840)
 
 ## Website design
@@ -46,6 +46,16 @@ Key facts:
 - [How Much Does a Website Cost in Dubai and the UAE in 2026?](https://bunkwise.in/blog/website-cost/uae.html)
 - [How Much Does a Website Cost in the UK in 2026?](https://bunkwise.in/blog/website-cost/uk.html)
 - [How Much Does a Website Cost in the USA in 2026?](https://bunkwise.in/blog/website-cost/usa.html)
+- [How Much Does a Website Cost in California in 2026?](https://bunkwise.in/blog/website-cost/usa/california.html)
+- [How Much Does a Website Cost in Florida in 2026?](https://bunkwise.in/blog/website-cost/usa/florida.html)
+- [How Much Does a Website Cost in Georgia in 2026?](https://bunkwise.in/blog/website-cost/usa/georgia.html)
+- [How Much Does a Website Cost in Illinois in 2026?](https://bunkwise.in/blog/website-cost/usa/illinois.html)
+- [How Much Does a Website Cost in New Jersey in 2026?](https://bunkwise.in/blog/website-cost/usa/new-jersey.html)
+- [How Much Does a Website Cost in New York in 2026?](https://bunkwise.in/blog/website-cost/usa/new-york.html)
+- [How Much Does a Website Cost in North Carolina in 2026?](https://bunkwise.in/blog/website-cost/usa/north-carolina.html)
+- [How Much Does a Website Cost in Ohio in 2026?](https://bunkwise.in/blog/website-cost/usa/ohio.html)
+- [How Much Does a Website Cost in Pennsylvania in 2026?](https://bunkwise.in/blog/website-cost/usa/pennsylvania.html)
+- [How Much Does a Website Cost in Texas in 2026?](https://bunkwise.in/blog/website-cost/usa/texas.html)
 
 ## Student tools
 
