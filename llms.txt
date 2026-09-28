@@ -1,6 +1,6 @@
 # BunkWise Technologies
 
-> BunkWise Technologies is a website design and development company based in Jaipur, India, founded by Madhav. It builds research-led, fast websites for small businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also runs free student tools (attendance, SGPA and CGPA calculators) and Android apps.
+> BunkWise Technologies is a website design and development company based in Jaipur, India, founded by Madhav. It builds research-led, fast websites for businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also runs free student tools (attendance, SGPA and CGPA calculators) and Android apps.
 
 Key facts:
 - Company: BunkWise Technologies, BunkWise (OPC) Private Limited (incorporation in progress)
@@ -15,7 +15,7 @@ Key facts:
 
 ## Website design
 
-- [Website design for small businesses](https://bunkwise.in/website-design.html): portfolio, packages and prices by country, 2026 website cost comparison, answers about SEO/AEO/GEO, process, FAQ and enquiry form
+- [Website design for businesses](https://bunkwise.in/website-design.html): portfolio, packages and prices by country, 2026 website cost comparison, answers about SEO/AEO/GEO, process, FAQ and enquiry form
 
 ## Guides (blog)
 

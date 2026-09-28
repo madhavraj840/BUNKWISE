@@ -12,7 +12,7 @@
 }
 .site-head .head-cta:hover { background: var(--accent-h); color: #fff; }
 
-section[id], .work-card, .qa { scroll-margin-top: 16px; }
+section[id], #seo-plans, .work-card, .qa { scroll-margin-top: 16px; }
 
 .photo { margin: 0; }
 .photo img { display: block; }
