@@ -1,0 +1,11 @@
+Photos from Unsplash (https://unsplash.com/license): free for commercial use.
+hero.webp: https://unsplash.com/photos/kk4J92iaSBk by Vitaly Gariev
+research.webp: https://unsplash.com/photos/4KiHe8MnNAE by Vitaly Gariev
+food.webp: https://unsplash.com/photos/2oGwk-qFAhE by Vitaly Gariev
+health.webp: https://unsplash.com/photos/FVh_yqLR9eA by Humberto Chávez
+fitness.webp: https://unsplash.com/photos/V-gUIqzSXig by Vitaly Gariev
+education.webp: https://unsplash.com/photos/CL9OLZqPdus by Vitaly Gariev
+retail.webp: https://unsplash.com/photos/PqZNF90tfyU by Vitaly Gariev
+services.webp: https://unsplash.com/photos/kjK9z5vayYg by Vitaly Gariev
+industrial.webp: https://unsplash.com/photos/2VI4kyU7cQ0 by Marc Zeman
+creative.webp: https://unsplash.com/photos/lz_zy3NEyDI by Mina Rad

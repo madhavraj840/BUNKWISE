@@ -118,7 +118,7 @@ Note: The Autonomous SGPA feature (Gemini API call) will not work on localhost b
 
 ## Creator
 
-**Madhav Raj** — [github.com/madhavraj840](https://github.com/madhavraj840)
+**Madhav** — [github.com/madhavraj840](https://github.com/madhavraj840)
 
 Built to save every college student the five minutes of painful mental math before bunking a class.
 

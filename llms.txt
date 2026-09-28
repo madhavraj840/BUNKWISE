@@ -1,0 +1,41 @@
+# BunkWise Technologies
+
+> BunkWise Technologies is a website design and development company based in Jaipur, India, founded by Madhav. It builds research-led, fast websites for small businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also runs free student tools (attendance, SGPA and CGPA calculators) and Android apps.
+
+Key facts:
+- Company: BunkWise Technologies, BunkWise (OPC) Private Limited (incorporation in progress)
+- Based in: Jaipur, Rajasthan, India. Works with clients across India and worldwide, online.
+- Founder: Madhav (https://github.com/madhavraj840)
+- Services: website design, website development, SEO, AEO, GEO, monthly SEO plans
+- Website prices in India (one-time, exclusive of GST): Starter ₹9,999, Business ₹19,999, Growth ₹34,999, Premium ₹59,999. Monthly SEO: ₹7,999, ₹14,999, ₹24,999.
+- International prices (one-time): from $999 (US and other countries), £799 (UK), €899 (Europe), AED 3,499 (UAE), A$1,499 (Australia), C$1,299 (Canada), S$1,299 (Singapore). Monthly SEO from $499.
+- Typical delivery: Starter about 1 week, Business about 2 weeks, Growth about 3 weeks, Premium 4–6 weeks.
+- Portfolio: 9 live client websites for restaurants, a dental clinic, a coaching institute, a gym, a solar company and a handicrafts artist.
+- Contact: WhatsApp +91 63752 42538 (https://wa.me/916375242538), Telegram @Madhavraj840 (https://t.me/Madhavraj840)
+
+## Website design
+
+- [Website design for small businesses](https://bunkwise.in/website-design.html): portfolio, packages and prices by country, 2026 website cost comparison, answers about SEO/AEO/GEO, process, FAQ and enquiry form
+
+## Guides (blog)
+
+- [Blog](https://bunkwise.in/blog/): guides for small business owners
+- [How much does a small business website cost in 2026?](https://bunkwise.in/blog/small-business-website-cost-2026.html)
+- [Do I need a website for my small business?](https://bunkwise.in/blog/do-i-need-a-website-for-my-business.html)
+- [What should a small business website include?](https://bunkwise.in/blog/what-should-a-small-business-website-include.html)
+- [Website builder vs freelancer vs agency](https://bunkwise.in/blog/website-builder-vs-freelancer-vs-agency.html)
+- [How to get your business recommended by ChatGPT and Google AI](https://bunkwise.in/blog/get-your-business-recommended-by-chatgpt.html)
+
+## Student tools
+
+- [75% attendance calculator](https://bunkwise.in/attendance.html): how many classes you can bunk or must attend
+- [RTU SGPA calculator](https://bunkwise.in/sgpa.html): SGPA from an RTU or SKIT result PDF
+- [RTU CGPA calculator](https://bunkwise.in/rtu-cgpa-calculator.html): CGPA, equivalent percentage (10 × CGPA) and division
+- [SGPA calculator for any university](https://bunkwise.in/universal_sgpa.html)
+- [Class Wise attendance calculator](https://bunkwise.in/cw.html): future attendance
+
+## Company
+
+- [Home](https://bunkwise.in/): BunkWise Technologies, sectors and products
+- [About](https://bunkwise.in/about.html)
+- [Contact](https://bunkwise.in/contact.html)
