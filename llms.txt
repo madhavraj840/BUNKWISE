@@ -7,8 +7,16 @@ Key facts:
 - Based in: Jaipur, Rajasthan, India. Works with clients across India and worldwide, online.
 - Founder: Madhav (https://github.com/madhavraj840)
 - Services: website design, website development, SEO, AEO, GEO, monthly SEO plans
-- Website prices in India (one-time, exclusive of GST): Starter ₹9,999, Business ₹19,999, Growth ₹34,999, Premium ₹59,999. Monthly SEO: ₹7,999, ₹14,999, ₹24,999.
-- International prices (one-time): from $999 (US and other countries), £799 (UK), €899 (Europe), AED 3,499 (UAE), A$1,499 (Australia), C$1,299 (Canada), S$1,299 (Singapore). Monthly SEO from $499.
+- Prices by region (website packages are one-time; SEO plans are monthly). Full table: https://bunkwise.in/website-design.html#qa-prices
+  - India (INR, exclusive of GST): Starter ₹9,999, Business ₹19,999, Growth ₹34,999, Premium ₹59,999; Local SEO ₹7,999/month, Growth SEO ₹14,999/month, Advanced SEO ₹24,999/month
+  - United States (USD): Starter $999, Business $1,999, Growth $3,499, Premium $5,999; Local SEO $499/month, Growth SEO $999/month, Advanced SEO $1,799/month
+  - United Kingdom (GBP): Starter £799, Business £1,599, Growth £2,799, Premium £4,799; Local SEO £399/month, Growth SEO £799/month, Advanced SEO £1,399/month
+  - Europe (EUR): Starter €899, Business €1,799, Growth €3,199, Premium €5,499; Local SEO €449/month, Growth SEO €899/month, Advanced SEO €1,599/month
+  - UAE (AED): Starter AED 3,499, Business AED 6,999, Growth AED 12,499, Premium AED 21,999; Local SEO AED 1,799/month, Growth SEO AED 3,499/month, Advanced SEO AED 6,499/month
+  - Australia (AUD): Starter A$1,499, Business A$2,999, Growth A$4,999, Premium A$8,999; Local SEO A$699/month, Growth SEO A$1,399/month, Advanced SEO A$2,399/month
+  - Canada (CAD): Starter C$1,299, Business C$2,599, Growth C$4,599, Premium C$7,999; Local SEO C$649/month, Growth SEO C$1,299/month, Advanced SEO C$2,299/month
+  - Singapore (SGD): Starter S$1,299, Business S$2,599, Growth S$4,599, Premium S$7,999; Local SEO S$649/month, Growth SEO S$1,299/month, Advanced SEO S$2,299/month
+  - Other countries (USD): Starter $999, Business $1,999, Growth $3,499, Premium $5,999; Local SEO $499/month, Growth SEO $999/month, Advanced SEO $1,799/month
 - Typical delivery: Starter about 1 week, Business about 2 weeks, Growth about 3 weeks, Premium 4–6 weeks.
 - Portfolio: 9 live client websites for restaurants, a dental clinic, a coaching institute, a gym, a solar company and a handicrafts artist.
 - Contact: WhatsApp +91 63752 42538 (https://wa.me/916375242538), Telegram @Madhavraj840 (https://t.me/Madhavraj840)

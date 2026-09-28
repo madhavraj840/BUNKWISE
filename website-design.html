@@ -73,15 +73,125 @@
                 "parentOrganization": { "@id": "https://bunkwise.in/#organization" },
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
-                    "name": "Website design packages and monthly SEO plans (India prices)",
+                    "name": "Website design packages and monthly SEO plans by region",
                     "itemListElement": [
-                        { "@type": "Offer", "name": "Starter website", "price": "9999", "priceCurrency": "INR", "description": "3–4 page responsive website with basic SEO, Google Analytics and Search Console. One-time price, exclusive of GST." },
-                        { "@type": "Offer", "name": "Business website", "price": "19999", "priceCurrency": "INR", "description": "5–7 page custom website with keyword research, on-page and technical SEO, schema markup and lead tracking. One-time price, exclusive of GST." },
-                        { "@type": "Offer", "name": "Growth website", "price": "34999", "priceCurrency": "INR", "description": "Up to 10 optimised pages built for Google and AI-powered search: local SEO, advanced schema, AEO/GEO and keyword-focused copy. One-time price, exclusive of GST." },
-                        { "@type": "Offer", "name": "Premium website", "price": "59999", "priceCurrency": "INR", "description": "15+ page premium website with blog, detailed SEO, citation and backlink strategy, and reporting. One-time price, exclusive of GST." },
-                        { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "7999", "priceCurrency": "INR", "unitText": "MONTH" }, "description": "Google Business Profile optimisation, local keyword monitoring, technical fixes and a monthly report. Exclusive of GST." },
-                        { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "14999", "priceCurrency": "INR", "unitText": "MONTH" }, "description": "2–4 SEO articles a month, new landing pages, competitor monitoring and backlink work. Exclusive of GST." },
-                        { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "24999", "priceCurrency": "INR", "unitText": "MONTH" }, "description": "4–8 content pieces a month, link-building, digital PR and conversion-rate optimisation. Exclusive of GST." }
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in India (INR, exclusive of GST)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "9999", "priceCurrency": "INR", "description": "3–4 page responsive website with basic SEO, Google Analytics and Search Console. One-time price, exclusive of GST.", "eligibleRegion": "IN" },
+                                { "@type": "Offer", "name": "Business website", "price": "19999", "priceCurrency": "INR", "description": "5–7 page custom website with keyword research, on-page and technical SEO, schema markup and lead tracking. One-time price, exclusive of GST.", "eligibleRegion": "IN" },
+                                { "@type": "Offer", "name": "Growth website", "price": "34999", "priceCurrency": "INR", "description": "Up to 10 optimised pages built for Google and AI-powered search: local SEO, advanced schema, AEO/GEO and keyword-focused copy. One-time price, exclusive of GST.", "eligibleRegion": "IN" },
+                                { "@type": "Offer", "name": "Premium website", "price": "59999", "priceCurrency": "INR", "description": "15+ page premium website with blog, detailed SEO, citation and backlink strategy, and reporting. One-time price, exclusive of GST.", "eligibleRegion": "IN" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "7999", "priceCurrency": "INR", "unitText": "MONTH" }, "description": "Google Business Profile optimisation, local keyword monitoring, technical fixes and a monthly report. Exclusive of GST.", "eligibleRegion": "IN" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "14999", "priceCurrency": "INR", "unitText": "MONTH" }, "description": "2–4 SEO articles a month, new landing pages, competitor monitoring and backlink work. Exclusive of GST.", "eligibleRegion": "IN" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "24999", "priceCurrency": "INR", "unitText": "MONTH" }, "description": "4–8 content pieces a month, link-building, digital PR and conversion-rate optimisation. Exclusive of GST.", "eligibleRegion": "IN" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in the United States (USD)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "999", "priceCurrency": "USD", "eligibleRegion": "US" },
+                                { "@type": "Offer", "name": "Business website", "price": "1999", "priceCurrency": "USD", "eligibleRegion": "US" },
+                                { "@type": "Offer", "name": "Growth website", "price": "3499", "priceCurrency": "USD", "eligibleRegion": "US" },
+                                { "@type": "Offer", "name": "Premium website", "price": "5999", "priceCurrency": "USD", "eligibleRegion": "US" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "499", "priceCurrency": "USD", "unitText": "MONTH" }, "eligibleRegion": "US" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "999", "priceCurrency": "USD", "unitText": "MONTH" }, "eligibleRegion": "US" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1799", "priceCurrency": "USD", "unitText": "MONTH" }, "eligibleRegion": "US" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in the United Kingdom (GBP)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "799", "priceCurrency": "GBP", "eligibleRegion": "GB" },
+                                { "@type": "Offer", "name": "Business website", "price": "1599", "priceCurrency": "GBP", "eligibleRegion": "GB" },
+                                { "@type": "Offer", "name": "Growth website", "price": "2799", "priceCurrency": "GBP", "eligibleRegion": "GB" },
+                                { "@type": "Offer", "name": "Premium website", "price": "4799", "priceCurrency": "GBP", "eligibleRegion": "GB" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "GBP", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "399", "priceCurrency": "GBP", "unitText": "MONTH" }, "eligibleRegion": "GB" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "GBP", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "799", "priceCurrency": "GBP", "unitText": "MONTH" }, "eligibleRegion": "GB" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "GBP", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1399", "priceCurrency": "GBP", "unitText": "MONTH" }, "eligibleRegion": "GB" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in Europe (EUR)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "899", "priceCurrency": "EUR", "eligibleRegion": "Europe" },
+                                { "@type": "Offer", "name": "Business website", "price": "1799", "priceCurrency": "EUR", "eligibleRegion": "Europe" },
+                                { "@type": "Offer", "name": "Growth website", "price": "3199", "priceCurrency": "EUR", "eligibleRegion": "Europe" },
+                                { "@type": "Offer", "name": "Premium website", "price": "5499", "priceCurrency": "EUR", "eligibleRegion": "Europe" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "449", "priceCurrency": "EUR", "unitText": "MONTH" }, "eligibleRegion": "Europe" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "899", "priceCurrency": "EUR", "unitText": "MONTH" }, "eligibleRegion": "Europe" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1599", "priceCurrency": "EUR", "unitText": "MONTH" }, "eligibleRegion": "Europe" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in the UAE (AED)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "3499", "priceCurrency": "AED", "eligibleRegion": "AE" },
+                                { "@type": "Offer", "name": "Business website", "price": "6999", "priceCurrency": "AED", "eligibleRegion": "AE" },
+                                { "@type": "Offer", "name": "Growth website", "price": "12499", "priceCurrency": "AED", "eligibleRegion": "AE" },
+                                { "@type": "Offer", "name": "Premium website", "price": "21999", "priceCurrency": "AED", "eligibleRegion": "AE" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "AED", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1799", "priceCurrency": "AED", "unitText": "MONTH" }, "eligibleRegion": "AE" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "AED", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "3499", "priceCurrency": "AED", "unitText": "MONTH" }, "eligibleRegion": "AE" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "AED", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "6499", "priceCurrency": "AED", "unitText": "MONTH" }, "eligibleRegion": "AE" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in Australia (AUD)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "1499", "priceCurrency": "AUD", "eligibleRegion": "AU" },
+                                { "@type": "Offer", "name": "Business website", "price": "2999", "priceCurrency": "AUD", "eligibleRegion": "AU" },
+                                { "@type": "Offer", "name": "Growth website", "price": "4999", "priceCurrency": "AUD", "eligibleRegion": "AU" },
+                                { "@type": "Offer", "name": "Premium website", "price": "8999", "priceCurrency": "AUD", "eligibleRegion": "AU" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "AUD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "699", "priceCurrency": "AUD", "unitText": "MONTH" }, "eligibleRegion": "AU" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "AUD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1399", "priceCurrency": "AUD", "unitText": "MONTH" }, "eligibleRegion": "AU" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "AUD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "2399", "priceCurrency": "AUD", "unitText": "MONTH" }, "eligibleRegion": "AU" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in Canada (CAD)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "1299", "priceCurrency": "CAD", "eligibleRegion": "CA" },
+                                { "@type": "Offer", "name": "Business website", "price": "2599", "priceCurrency": "CAD", "eligibleRegion": "CA" },
+                                { "@type": "Offer", "name": "Growth website", "price": "4599", "priceCurrency": "CAD", "eligibleRegion": "CA" },
+                                { "@type": "Offer", "name": "Premium website", "price": "7999", "priceCurrency": "CAD", "eligibleRegion": "CA" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "CAD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "649", "priceCurrency": "CAD", "unitText": "MONTH" }, "eligibleRegion": "CA" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "CAD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1299", "priceCurrency": "CAD", "unitText": "MONTH" }, "eligibleRegion": "CA" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "CAD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "2299", "priceCurrency": "CAD", "unitText": "MONTH" }, "eligibleRegion": "CA" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices in Singapore (SGD)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "1299", "priceCurrency": "SGD", "eligibleRegion": "SG" },
+                                { "@type": "Offer", "name": "Business website", "price": "2599", "priceCurrency": "SGD", "eligibleRegion": "SG" },
+                                { "@type": "Offer", "name": "Growth website", "price": "4599", "priceCurrency": "SGD", "eligibleRegion": "SG" },
+                                { "@type": "Offer", "name": "Premium website", "price": "7999", "priceCurrency": "SGD", "eligibleRegion": "SG" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "SGD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "649", "priceCurrency": "SGD", "unitText": "MONTH" }, "eligibleRegion": "SG" },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "SGD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1299", "priceCurrency": "SGD", "unitText": "MONTH" }, "eligibleRegion": "SG" },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "SGD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "2299", "priceCurrency": "SGD", "unitText": "MONTH" }, "eligibleRegion": "SG" }
+                            ]
+                        },
+                        {
+                            "@type": "OfferCatalog",
+                            "name": "Prices for other countries (USD)",
+                            "itemListElement": [
+                                { "@type": "Offer", "name": "Starter website", "price": "999", "priceCurrency": "USD" },
+                                { "@type": "Offer", "name": "Business website", "price": "1999", "priceCurrency": "USD" },
+                                { "@type": "Offer", "name": "Growth website", "price": "3499", "priceCurrency": "USD" },
+                                { "@type": "Offer", "name": "Premium website", "price": "5999", "priceCurrency": "USD" },
+                                { "@type": "Offer", "name": "Local SEO (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "499", "priceCurrency": "USD", "unitText": "MONTH" } },
+                                { "@type": "Offer", "name": "Growth SEO (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "999", "priceCurrency": "USD", "unitText": "MONTH" } },
+                                { "@type": "Offer", "name": "Advanced SEO (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1799", "priceCurrency": "USD", "unitText": "MONTH" } }
+                            ]
+                        }
                     ]
                 }
             },
@@ -513,7 +623,7 @@
                 </select>
             </label>
         </div>
-        <p class="anchor"><span id="price-anchor">For comparison, agency website packages in India typically run from ₹14,999 to ₹49,999.</span> <a href="#qa-cost">See how website prices compare →</a></p>
+        <p class="anchor"><span id="price-anchor">For comparison, agency website packages in India typically run from ₹14,999 to ₹49,999.</span> <a href="#qa-cost">See how website prices compare →</a> · <a href="#qa-prices">See every price by country →</a></p>
 
         <div class="price-grid">
             <article class="price">
@@ -660,6 +770,50 @@
             </div>
             <p class="sources">Sources: <a href="https://www.levitate.ai/blog-posts/average-website-design-cost-for-small-businesses-in-2026" target="_blank" rel="noopener nofollow">Levitate (US, 2026)</a>, <a href="https://whito.co.uk/research/website-design-costs-uk/" target="_blank" rel="noopener nofollow">Whito (UK, 2026)</a>, <a href="https://paramark.com.au/articles/website-design-cost-australia/" target="_blank" rel="noopener nofollow">Paramark (Australia)</a>, <a href="https://lucidly.ae/blog/web-design/website-design-cost-dubai" target="_blank" rel="noopener nofollow">Lucidly (Dubai, 2026)</a>, <a href="https://webolive.in/jaipur-website-designer/" target="_blank" rel="noopener nofollow">Webolive</a> and <a href="https://appwrk.com/website-designing-company-in-jaipur" target="_blank" rel="noopener nofollow">APPWRK</a> (India). Updated September 2026.</p>
             <p class="more"><a href="/blog/small-business-website-cost-2026.html">Read the full guide: how much a business website costs in 2026 →</a></p>
+        </div>
+
+        <div class="qa qa-wide" id="qa-prices">
+            <h3 class="qa-q">How much does BunkWise charge in my country?</h3>
+            <p class="qa-a">BunkWise publishes a fixed price for every package in 9 regions. Website packages are a one-time price and SEO plans are billed monthly. Prices in India are exclusive of GST; other regions are shown in local currency.</p>
+            <div class="cost-table-wrap">
+                <table class="cost-table price-table">
+                    <caption>BunkWise website packages by country (one-time price)</caption>
+                    <thead>
+                        <tr><th scope="col">Region</th><th scope="col">Starter</th><th scope="col">Business</th><th scope="col">Growth</th><th scope="col">Premium</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">India (INR, + GST)</th><td>₹9,999</td><td>₹19,999</td><td>₹34,999</td><td>₹59,999</td></tr>
+                        <tr><th scope="row">United States (USD)</th><td>$999</td><td>$1,999</td><td>$3,499</td><td>$5,999</td></tr>
+                        <tr><th scope="row">United Kingdom (GBP)</th><td>£799</td><td>£1,599</td><td>£2,799</td><td>£4,799</td></tr>
+                        <tr><th scope="row">Europe (EUR)</th><td>€899</td><td>€1,799</td><td>€3,199</td><td>€5,499</td></tr>
+                        <tr><th scope="row">UAE (AED)</th><td>AED 3,499</td><td>AED 6,999</td><td>AED 12,499</td><td>AED 21,999</td></tr>
+                        <tr><th scope="row">Australia (AUD)</th><td>A$1,499</td><td>A$2,999</td><td>A$4,999</td><td>A$8,999</td></tr>
+                        <tr><th scope="row">Canada (CAD)</th><td>C$1,299</td><td>C$2,599</td><td>C$4,599</td><td>C$7,999</td></tr>
+                        <tr><th scope="row">Singapore (SGD)</th><td>S$1,299</td><td>S$2,599</td><td>S$4,599</td><td>S$7,999</td></tr>
+                        <tr><th scope="row">Other countries (USD)</th><td>$999</td><td>$1,999</td><td>$3,499</td><td>$5,999</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cost-table-wrap">
+                <table class="cost-table price-table">
+                    <caption>BunkWise monthly SEO plans by country (per month)</caption>
+                    <thead>
+                        <tr><th scope="col">Region</th><th scope="col">Local SEO</th><th scope="col">Growth SEO</th><th scope="col">Advanced SEO</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">India (INR, + GST)</th><td>₹7,999</td><td>₹14,999</td><td>₹24,999</td></tr>
+                        <tr><th scope="row">United States (USD)</th><td>$499</td><td>$999</td><td>$1,799</td></tr>
+                        <tr><th scope="row">United Kingdom (GBP)</th><td>£399</td><td>£799</td><td>£1,399</td></tr>
+                        <tr><th scope="row">Europe (EUR)</th><td>€449</td><td>€899</td><td>€1,599</td></tr>
+                        <tr><th scope="row">UAE (AED)</th><td>AED 1,799</td><td>AED 3,499</td><td>AED 6,499</td></tr>
+                        <tr><th scope="row">Australia (AUD)</th><td>A$699</td><td>A$1,399</td><td>A$2,399</td></tr>
+                        <tr><th scope="row">Canada (CAD)</th><td>C$649</td><td>C$1,299</td><td>C$2,299</td></tr>
+                        <tr><th scope="row">Singapore (SGD)</th><td>S$649</td><td>S$1,299</td><td>S$2,299</td></tr>
+                        <tr><th scope="row">Other countries (USD)</th><td>$499</td><td>$999</td><td>$1,799</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="sources">Updated September 2026. The region selector in the pricing section shows the same prices.</p>
         </div>
 
         <div class="qa-grid">
@@ -954,6 +1108,7 @@
     // freelancer-to-small-agency rates (sources in the cost table on this page;
     // research Sept 2026), keeping the same 1 : 2 : 3.5 : 6 package ladder. Edit here to change.
     // Order: starter, business, growth, premium, seoLocal, seoGrowth, seoAdv
+    // Prices also appear in the #qa-prices tables, the JSON-LD offers and llms.txt; update all four.
     var US_ANCHOR = 'For comparison, US agencies typically charge $5,000–$15,000 for a business website.';
     var REGIONS = {
         IN:   { name: 'India',          cur: '₹',    gst: true, p: [9999, 19999, 34999, 59999, 7999, 14999, 24999],
