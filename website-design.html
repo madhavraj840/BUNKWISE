@@ -242,12 +242,18 @@
     }
     </script>
 
-    <script src="/analytics.js" data-clarity></script>
+    <script src="/analytics.js" data-clarity defer></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="assets/web/hero.webp" fetchpriority="high">
+    <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/plex-mono-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/plex-mono-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/plex-mono-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/plex-mono-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/plex-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/plex-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+    </style>
+    <link rel="preload" as="image" href="assets/web/hero.webp" fetchpriority="high" media="(min-width: 981px)">
     <link rel="stylesheet" href="home.css?v=8">
     <link rel="stylesheet" href="web-design.css?v=6">
 </head>
@@ -255,7 +261,7 @@
 
 <header class="site-head">
     <div class="wrap">
-        <a href="/" class="brand"><img src="assets/bunkwise-logo.png" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
+        <a href="/" class="brand"><img src="assets/bunkwise-logo.webp" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
         <nav aria-label="Page sections">
             <a href="#work">Work</a>
             <a href="#pricing">Pricing</a>
@@ -289,11 +295,11 @@
                 <img class="hero-photo" src="assets/web/hero.webp" alt="Business owner on a call at her laptop in her studio" width="720" height="576" fetchpriority="high">
                 <div class="hero-stack" aria-hidden="true">
                     <div class="stack-cards">
-                        <img class="stack-card" data-pos="0" src="assets/work/teamwork-classes.webp" alt="Teamwork Classes website by BunkWise" width="960" height="600">
-                        <img class="stack-card" data-pos="1" src="assets/work/cayo.webp" alt="CAYO Kitchen &amp; Bar website by BunkWise" width="960" height="600">
-                        <img class="stack-card" data-pos="2" src="assets/work/advanced-dental-solutions.webp" alt="Advanced Dental Solutions website by BunkWise" width="960" height="600">
-                        <img class="stack-card" data-pos="3" src="assets/work/leo-fitness.webp" alt="Leo Fitness website by BunkWise" width="960" height="600">
-                        <img class="stack-card" data-pos="3" src="assets/work/visible-energy-solutions.webp" alt="Visible Energy Solutions website by BunkWise" width="960" height="600">
+                        <img loading="lazy" class="stack-card" data-pos="0" src="assets/work/teamwork-classes.webp" srcset="assets/work/teamwork-classes-480.webp 480w, assets/work/teamwork-classes.webp 960w" sizes="(max-width: 980px) 50vw, 240px" alt="Teamwork Classes website by BunkWise" width="960" height="600">
+                        <img loading="lazy" class="stack-card" data-pos="1" src="assets/work/cayo.webp" srcset="assets/work/cayo-480.webp 480w, assets/work/cayo.webp 960w" sizes="(max-width: 980px) 50vw, 240px" alt="CAYO Kitchen &amp; Bar website by BunkWise" width="960" height="600">
+                        <img loading="lazy" class="stack-card" data-pos="2" src="assets/work/advanced-dental-solutions.webp" srcset="assets/work/advanced-dental-solutions-480.webp 480w, assets/work/advanced-dental-solutions.webp 960w" sizes="(max-width: 980px) 50vw, 240px" alt="Advanced Dental Solutions website by BunkWise" width="960" height="600">
+                        <img loading="lazy" class="stack-card" data-pos="3" src="assets/work/leo-fitness.webp" srcset="assets/work/leo-fitness-480.webp 480w, assets/work/leo-fitness.webp 960w" sizes="(max-width: 980px) 50vw, 240px" alt="Leo Fitness website by BunkWise" width="960" height="600">
+                        <img loading="lazy" class="stack-card" data-pos="3" src="assets/work/visible-energy-solutions.webp" srcset="assets/work/visible-energy-solutions-480.webp 480w, assets/work/visible-energy-solutions.webp 960w" sizes="(max-width: 980px) 50vw, 240px" alt="Visible Energy Solutions website by BunkWise" width="960" height="600">
                     </div>
                     <span class="stack-label"><strong>12</strong> client projects</span>
                 </div>
@@ -331,7 +337,7 @@
 
         <div class="work-grid">
             <article class="work-card" id="work-cayo">
-                <img src="assets/work/cayo.webp" alt="CAYO Kitchen &amp; Bar restaurant website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
+                <img src="assets/work/cayo.webp" srcset="assets/work/cayo-480.webp 480w, assets/work/cayo.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="CAYO Kitchen &amp; Bar restaurant website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/cayo.png" alt="CAYO Kitchen &amp; Bar logo" width="22" height="22">CAYO Kitchen &amp; Bar</h3>
                     <p>Rooftop kitchen &amp; cocktail bar</p>
@@ -340,7 +346,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-dental">
-                <img src="assets/work/advanced-dental-solutions.webp" alt="Advanced Dental Solutions dental clinic website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
+                <img src="assets/work/advanced-dental-solutions.webp" srcset="assets/work/advanced-dental-solutions-480.webp 480w, assets/work/advanced-dental-solutions.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Advanced Dental Solutions dental clinic website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/advanced-dental-solutions.svg" alt="Advanced Dental Solutions logo" width="22" height="22">Advanced Dental Solutions</h3>
                     <p>Dental clinic &amp; maxillofacial trauma centre</p>
@@ -349,7 +355,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-teamwork">
-                <img src="assets/work/teamwork-classes.webp" alt="Teamwork Classes coaching institute website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
+                <img src="assets/work/teamwork-classes.webp" srcset="assets/work/teamwork-classes-480.webp 480w, assets/work/teamwork-classes.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Teamwork Classes coaching institute website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/teamwork-classes.svg" alt="Teamwork Classes logo" width="22" height="22">Teamwork Classes</h3>
                     <p>Commerce &amp; PCM coaching for Class 11–12</p>
@@ -358,7 +364,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-leo">
-                <img src="assets/work/leo-fitness.webp" alt="Leo Fitness gym website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
+                <img src="assets/work/leo-fitness.webp" srcset="assets/work/leo-fitness-480.webp 480w, assets/work/leo-fitness.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Leo Fitness gym website homepage designed by BunkWise Technologies" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/leo-fitness.svg" alt="Leo Fitness logo" width="22" height="22">Leo Fitness</h3>
                     <p>Gym, classes &amp; steam bath</p>
@@ -367,7 +373,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-solar">
-                <img src="assets/work/visible-energy-solutions.webp" alt="Visible Energy Solutions website homepage, a solar power company" width="960" height="600" loading="lazy">
+                <img src="assets/work/visible-energy-solutions.webp" srcset="assets/work/visible-energy-solutions-480.webp 480w, assets/work/visible-energy-solutions.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Visible Energy Solutions website homepage, a solar power company" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/visible-energy-solutions.svg" alt="Visible Energy Solutions logo" width="22" height="22">Visible Energy Solutions</h3>
                     <p>Solar power plants, panels &amp; street lights</p>
@@ -376,7 +382,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-handicrafts">
-                <img src="assets/work/handicrafts.webp" alt="Handicrafts website homepage, a handmade resin art studio" width="960" height="600" loading="lazy">
+                <img src="assets/work/handicrafts.webp" srcset="assets/work/handicrafts-480.webp 480w, assets/work/handicrafts.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Handicrafts website homepage, a handmade resin art studio" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/handicrafts.svg" alt="Handicrafts logo" width="22" height="22">Handicrafts</h3>
                     <p>Handmade resin art, name plates &amp; custom hampers</p>
@@ -385,7 +391,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-vaishali">
-                <img src="assets/work/vaishali-veg-inn.webp" alt="Vaishali Veg Inn website homepage, a pure veg family restaurant" width="960" height="600" loading="lazy">
+                <img src="assets/work/vaishali-veg-inn.webp" srcset="assets/work/vaishali-veg-inn-480.webp 480w, assets/work/vaishali-veg-inn.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Vaishali Veg Inn website homepage, a pure veg family restaurant" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/vaishali-veg-inn.png" alt="Vaishali Veg Inn logo" width="22" height="22">Vaishali Veg Inn</h3>
                     <p>Pure veg family restaurant</p>
@@ -394,7 +400,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-masala">
-                <img src="assets/work/masala-trails.webp" alt="Masala Trails website homepage, a rooftop restro lounge" width="960" height="600" loading="lazy">
+                <img src="assets/work/masala-trails.webp" srcset="assets/work/masala-trails-480.webp 480w, assets/work/masala-trails.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Masala Trails website homepage, a rooftop restro lounge" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/masala-trails.png" alt="Masala Trails logo" width="22" height="22">Masala Trails</h3>
                     <p>Rooftop restro lounge</p>
@@ -403,7 +409,7 @@
                 </div>
             </article>
             <article class="work-card" id="work-maple">
-                <img src="assets/work/maple-and-thyme.webp" alt="Maple &amp; Thyme website homepage, a pure-veg cafe" width="960" height="600" loading="lazy">
+                <img src="assets/work/maple-and-thyme.webp" srcset="assets/work/maple-and-thyme-480.webp 480w, assets/work/maple-and-thyme.webp 960w" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 340px" alt="Maple &amp; Thyme website homepage, a pure-veg cafe" width="960" height="600" loading="lazy">
                 <div>
                     <h3><img src="assets/work/icons/maple-and-thyme.png" alt="Maple &amp; Thyme logo" width="22" height="22">Maple &amp; Thyme</h3>
                     <p>Pure-veg all-day cafe</p>
@@ -1032,7 +1038,7 @@
     <div class="wrap">
         <div class="foot-grid">
             <div class="foot-brand">
-                <a href="/" class="brand"><img src="/assets/bunkwise-logo.png" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
+                <a href="/" class="brand"><img src="/assets/bunkwise-logo.webp" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
                 <p>Research-led websites for businesses worldwide, plus free tools for students.</p>
             </div>
             <nav class="foot-col" aria-label="Company">

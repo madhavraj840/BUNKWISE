@@ -19,6 +19,25 @@
     var mustAsk = /^(Europe\/|Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe)|Arctic\/Longyearbyen)/.test(tz);
     var granted = choice ? choice === 'granted' : !mustAsk;
 
+    // The heavy third-party scripts (gtag.js ~150 KB, clarity.js) are fetched only after the visitor
+    // first scrolls, taps or types, or 3.5 s after load, so they never compete with the page itself.
+    // Calls made before that are queued and sent once the scripts arrive.
+    // ponytail: a visitor who leaves within ~3 s without touching the page is not counted.
+    var booted = false, clarityWanted = false;
+    function addScript(src) { var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s); }
+    function boot() {
+        if (booted || local) return;
+        booted = true;
+        addScript('https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT');
+        if (clarityWanted) addScript('https://www.clarity.ms/tag/yrab4bqyte');
+    }
+    if (!local) {
+        ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
+            addEventListener(ev, boot, { once: true, passive: true });
+        });
+        addEventListener('load', function () { setTimeout(boot, 3500); });
+    }
+
     // ── Google Analytics (Consent Mode v2: without consent GA sends cookieless pings only) ──
     if (!local) {
         window.dataLayer = window.dataLayer || [];
@@ -27,10 +46,6 @@
             analytics_storage: granted ? 'granted' : 'denied',
             ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
         });
-        var ga = document.createElement('script');
-        ga.async = true;
-        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT';
-        document.head.appendChild(ga);
         gtag('js', new Date());
         gtag('config', 'G-WSBK8SX5LT', { transport_type: 'beacon' });
     }
@@ -39,7 +54,9 @@
     function clarity() {
         if (local || !withClarity) return;
         if (!window.clarity) {
-            (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "yrab4bqyte");
+            window.clarity = function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+            clarityWanted = true;
+            if (booted) addScript('https://www.clarity.ms/tag/yrab4bqyte');
         }
         window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: granted ? 'granted' : 'denied' });
     }
