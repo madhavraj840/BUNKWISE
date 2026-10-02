@@ -36,20 +36,7 @@
     }
     </script>
 
-    <script>
-        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-            var _gaScript = document.createElement('script');
-            _gaScript.async = true;
-            _gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
-            document.head.appendChild(_gaScript);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WSBK8SX5LT', { 'transport_type': 'beacon' });
-            // Microsoft Clarity: session recordings and heatmaps (business pages only, not the calculators)
-            (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "yrab4bqyte");
-        }
-    </script>
+    <script src="/analytics.js" data-clarity></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +76,7 @@
                 <li><strong>Billing records.</strong> We keep invoices and payment records for accounting and tax purposes. Payments go through your bank, UPI app or payment provider; we never see or store your full card details or banking passwords.</li>
                 <li><strong>Analytics.</strong> We use Google Analytics 4 to understand how visitors use our pages: which pages are viewed, roughly where visitors are (country or city level), the device and browser used, and actions such as viewing our prices, choosing a package or opening a chat. This helps us improve the pages. Google Analytics uses cookies; you can block them in your browser or use <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's opt-out add-on</a>.</li>
                 <li><strong>Session recordings and heatmaps.</strong> On our business pages (not on our student calculators) we use Microsoft Clarity to see how visitors move through a page: where they click or tap, how far they scroll and where they get stuck. Clarity records these interactions as anonymised session replays and heatmaps. It masks what you type into forms, so your name and message are not captured, and it does not identify you personally. Clarity uses cookies; you can block them in your browser. Microsoft’s <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">privacy statement</a> applies to this data.</li>
+                <li><strong>Your cookie choice.</strong> Visitors in the European Union, the wider EEA, the United Kingdom and Switzerland are asked before any analytics or Clarity cookies are set; until you accept, Google Analytics only receives anonymous, cookieless signals and Clarity does not load. Anyone can change their choice at any time with the <a href="#cookie-settings" data-cookie-settings>Cookie settings</a> link in the footer. Your choice is stored in your browser.</li>
                 <li><strong>Your price region.</strong> The pricing section guesses your region from your browser's time zone and remembers your choice in your browser's local storage. This stays on your device and is never sent to us.</li>
             </ul>
             <h2>Who we share it with</h2>
@@ -171,7 +159,7 @@
         </div>
         <div class="foot-bottom">
             <span>© 2026 BunkWise (OPC) Private Limited (incorporation in progress). All rights reserved.</span>
-            <div class="foot-legal"><nav aria-label="Website services legal"><span>Website services</span><a href="/web-design-privacy.html">Privacy Policy</a><a href="/web-design-terms.html">Terms of Service</a></nav><nav aria-label="Student tools legal"><span>Student tools</span><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a></nav></div>
+            <div class="foot-legal"><nav aria-label="Website services legal"><span>Website services</span><a href="/web-design-privacy.html">Privacy Policy</a><a href="/web-design-terms.html">Terms of Service</a></nav><nav aria-label="Student tools legal"><span>Student tools</span><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a></nav><nav aria-label="Cookies"><span>Cookies</span><a href="#cookie-settings" data-cookie-settings>Cookie settings</a></nav></div>
         </div>
     </div>
 </footer>

@@ -57,20 +57,7 @@
         ]
     }
     </script>
-    <script>
-        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-            var _gaScript = document.createElement('script');
-            _gaScript.async = true;
-            _gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT";
-            document.head.appendChild(_gaScript);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WSBK8SX5LT', { 'transport_type': 'beacon' });
-            // Microsoft Clarity: session recordings and heatmaps (business pages only, not the calculators)
-            (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "yrab4bqyte");
-        }
-    </script>
+    <script src="/analytics.js" data-clarity></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -243,7 +230,7 @@
         </div>
         <div class="foot-bottom">
             <span>© 2026 BunkWise (OPC) Private Limited (incorporation in progress). All rights reserved.</span>
-            <div class="foot-legal"><nav aria-label="Website services legal"><span>Website services</span><a href="/web-design-privacy.html">Privacy Policy</a><a href="/web-design-terms.html">Terms of Service</a></nav><nav aria-label="Student tools legal"><span>Student tools</span><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a></nav></div>
+            <div class="foot-legal"><nav aria-label="Website services legal"><span>Website services</span><a href="/web-design-privacy.html">Privacy Policy</a><a href="/web-design-terms.html">Terms of Service</a></nav><nav aria-label="Student tools legal"><span>Student tools</span><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a></nav><nav aria-label="Cookies"><span>Cookies</span><a href="#cookie-settings" data-cookie-settings>Cookie settings</a></nav></div>
         </div>
     </div>
 </footer>
