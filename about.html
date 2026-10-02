@@ -3,26 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About BunkWise — Free RTU Attendance &amp; SGPA Calculator</title>
+    <title>About BunkWise Technologies | Websites, Apps & Student Tools</title>
+    <meta name="description" content="BunkWise Technologies is an India-based company: website design for businesses, Android apps and free tools used by 9,000+ students a month.">
+    <link rel="canonical" href="https://bunkwise.in/about.html" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/bunkwise-app.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png" />
-    <meta name="description" content="About BunkWise — a free attendance calculator and SGPA analyser built for RTU students at SKIT, Poornima, VGU, Arya, JECRC and all RTU-affiliated colleges.">
-    <link rel="canonical" href="https://bunkwise.in/about.html" />
+    <link rel="apple-touch-icon" href="/assets/bunkwise-app.png" />
+    <meta name="theme-color" content="#16181d" />
     <meta property="og:type"        content="website" />
+    <meta property="og:site_name"   content="BunkWise" />
     <meta property="og:url"         content="https://bunkwise.in/about.html" />
-    <meta property="og:title"       content="About BunkWise — Free RTU Tools" />
-    <meta property="og:description" content="About BunkWise — a free attendance calculator and SGPA analyser built for RTU students." />
-    <meta property="og:image"       content="https://bunkwise.in/assets/bunkwise-logo.png" />
-    <link rel="manifest" href="manifest.json" />
-
-
-    <script>
-        (function () {
-            const saved = localStorage.getItem('bw-theme');
-            const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            document.documentElement.dataset.theme = (saved === 'dark' || saved === 'light') ? saved : preferred;
-        })();
+    <meta property="og:title"       content="About BunkWise Technologies" />
+    <meta property="og:description" content="An India-based company building websites for businesses, Android apps and free tools for students." />
+    <meta property="og:image"       content="https://bunkwise.in/assets/work/og-website-design.jpg" />
+    <meta name="twitter:card"       content="summary_large_image" />
+    <meta name="twitter:title"      content="About BunkWise Technologies" />
+    <meta name="twitter:description" content="An India-based company building websites for businesses, Android apps and free tools for students." />
+    <meta name="twitter:image"      content="https://bunkwise.in/assets/work/og-website-design.jpg" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "AboutPage",
+                "@id": "https://bunkwise.in/about.html#webpage",
+                "url": "https://bunkwise.in/about.html",
+                "name": "About BunkWise Technologies",
+                "description": "BunkWise Technologies is an India-based company: website design for businesses, Android apps and free tools used by 9,000+ students a month.",
+                "inLanguage": "en",
+                "isPartOf": { "@id": "https://bunkwise.in/#website" },
+                "about": { "@id": "https://bunkwise.in/#organization" },
+                "mainEntity": { "@id": "https://bunkwise.in/#organization" },
+                "dateModified": "2026-10-02"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://bunkwise.in/#organization",
+                "name": "BunkWise Technologies",
+                "alternateName": "BunkWise",
+                "url": "https://bunkwise.in/",
+                "logo": "https://bunkwise.in/assets/bunkwise-app.png",
+                "email": "support@bunkwise.in",
+                "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+                "founder": {
+                    "@type": "Person",
+                    "name": "Madhav",
+                    "jobTitle": "Founder & Developer",
+                    "url": "https://github.com/madhavraj840",
+                    "sameAs": ["https://github.com/madhavraj840", "https://t.me/Madhavraj840"]
+                },
+                "contactPoint": [
+                    { "@type": "ContactPoint", "contactType": "customer support", "email": "support@bunkwise.in", "areaServed": "Worldwide" },
+                    { "@type": "ContactPoint", "contactType": "sales", "telephone": "+91-6375242538", "url": "https://wa.me/916375242538", "areaServed": "Worldwide" }
+                ],
+                "sameAs": ["https://play.google.com/store/apps/dev?id=5045673712463792199", "https://github.com/madhavraj840"]
+            }
+        ]
+    }
     </script>
+
     <script>
         if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
             var _gaScript = document.createElement('script');
@@ -38,97 +78,234 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/home.css?v=8">
+    <link rel="stylesheet" href="/web-design.css?v=6">
 </head>
 <body>
 
-<header class="site-header" role="banner">
-    <a href="/" class="site-header-logo"><img src="assets/bunkwise-logo.png" alt="BunkWise" width="74" height="30"><span>Technologies</span></a>
-    <nav class="site-header-nav" aria-label="Main navigation">
-        <a href="attendance.html">Attendance</a>
-        <a href="sgpa.html">SGPA Calculator</a>
-        <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
-        <a href="cw.html">Class Wise</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-    <div class="site-header-right">
-        <button class="site-header-theme" id="header-theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+<header class="site-head">
+    <div class="wrap">
+        <a href="/" class="brand"><img src="/assets/bunkwise-logo.png" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
+        <nav aria-label="Main navigation">
+            <a href="/website-design.html">Website Design</a>
+            <a href="#what">What we do</a>
+            <a href="#founder">Founder</a>
+            <a href="#contact" class="head-cta">Contact us</a>
+        </nav>
     </div>
 </header>
 
-<button id="theme-toggle" aria-label="Switch theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
+<main>
 
-<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
-</button>
-
-<div class="menu-backdrop" id="menu-backdrop"></div>
-<nav class="side-menu" id="side-menu">
-    <div class="side-menu-label">Menu</div>
-    <a href="/">Home</a>
-    <a href="attendance.html">Attendance Calculator</a>
-    <a href="sgpa.html">SGPA Calculator</a>
-    <a href="rtu-cgpa-calculator.html">CGPA Calculator</a>
-    <a href="universal_sgpa.html">SGPA (Any University)</a>
-    <a href="cw.html">CW Calculator</a>
-    <div class="menu-div"></div>
-    <a href="about.html">About Us</a>
-    <div class="menu-div"></div>
-    <a href="terms.html">Terms &amp; Conditions</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <div class="menu-div"></div>
-    <a href="creators.html">Creator Description</a>
-    <div class="menu-div"></div>
-    <a href="contact.html">Contact</a>
-</nav>
-
-<main id="main-content">
-<div id="page-about" class="page page-top-start">
-    <div class="static-page">
-        <h1 class="static-page-title">About BunkWise</h1>
-        <p class="static-intro">BunkWise is a free, privacy-first academic toolkit built specifically for students at <strong>Rajasthan Technical University (RTU)</strong> and all RTU-affiliated colleges — SKIT Jaipur, Poornima University, VGU, Arya College of Engineering, JECRC University, and hundreds more.</p>
-
-        <div class="static-section">
-            <h2>What is BunkWise?</h2>
-            <p>BunkWise provides three core tools that every RTU student needs every semester:</p>
-            <ul>
-                <li><strong>Attendance Calculator</strong> — Paste your ERP attendance report and instantly see your aggregate percentage, subject-wise breakdown, and exactly how many classes you can skip or must attend per subject to maintain the 75% threshold.</li>
-                <li><strong>SGPA Calculator</strong> — Upload your RTU result PDF and get your Semester Grade Point Average computed automatically using the official RTU credit-weighted formula. Also supports SKIT autonomous results through an AI-powered pipeline.</li>
-                <li><strong>Class Wise Calculator</strong> — See how your aggregate attendance will change if you attend or skip a specific number of future classes — before you make the decision.</li>
-            </ul>
+<section class="hero">
+    <div class="wrap">
+        <div class="hero-grid">
+            <div>
+                <p class="eyebrow mono">About BunkWise Technologies</p>
+                <h1>We build things people come back to</h1>
+                <p class="lead">BunkWise Technologies is an India-based company founded by Madhav. It started with free calculators that thousands of students now open every month, grew into Android apps, and today designs websites for businesses in India and abroad. The habit behind all of it is the same: build it properly, watch how people use it, and keep making it better.</p>
+                <div class="btn-row">
+                    <a href="/website-design.html" class="btn btn-solid">See our website work</a>
+                    <a href="#contact" class="btn btn-line">Get in touch</a>
+                </div>
+            </div>
+            <div class="about-shots" aria-label="Client websites built by BunkWise">
+                <img src="/assets/work/cayo.webp" alt="CAYO Kitchen &amp; Bar website built by BunkWise" width="960" height="600">
+                <img src="/assets/work/advanced-dental-solutions.webp" alt="Advanced Dental Solutions website built by BunkWise" width="960" height="600">
+                <img src="/assets/work/teamwork-classes.webp" alt="Teamwork Classes website built by BunkWise" width="960" height="600" loading="lazy">
+                <img src="/assets/work/leo-fitness.webp" alt="Leo Fitness website built by BunkWise" width="960" height="600" loading="lazy">
+            </div>
         </div>
-
-        <div class="static-section">
-            <h2>Privacy &amp; Data</h2>
-            <p>Every tool on BunkWise runs entirely in your browser. Your attendance data and RTU result PDFs are never uploaded to any server, never stored, and never shared. When you close the tab, everything is gone.</p>
-            <p>The only exception is the SKIT autonomous SGPA feature, which sends the text extracted from your result PDF to Google's Gemini AI API for analysis. This is processed in transit and not stored by BunkWise.</p>
-        </div>
-
-        <div class="static-section">
-            <h2>Who built BunkWise?</h2>
-            <p>BunkWise was designed and built by a single developer — a student at SKIT Jaipur who needed these tools and built them properly. See the <a href="creators.html" class="accent-link">Creator Description</a> page for more.</p>
-        </div>
-
-        <div class="static-section">
-            <h2>Contact &amp; Feedback</h2>
-            <p>Found a bug, need a credit map correction, or want to suggest a feature? Reach out on the <a href="contact.html" class="accent-link">Contact page</a>.</p>
+        <div class="facts">
+            <div><strong>12</strong><span>client website projects, 3 for international clients</span></div>
+            <div><strong>9,000+</strong><span>monthly visitors to our free student tools</span></div>
+            <div><strong>3</strong><span>Android apps on Google Play</span></div>
         </div>
     </div>
-</div>
+</section>
+
+<section id="what">
+    <div class="wrap">
+        <p class="eyebrow mono">What we do</p>
+        <h2>Three kinds of work, one standard</h2>
+        <p class="section-intro">Each of these is designed, built and looked after in-house, so what we learn in one makes the others better.</p>
+        <div class="products">
+            <article class="product">
+                <img class="product-logo" src="/assets/work/icons/cayo.png" alt="CAYO Kitchen &amp; Bar logo, a BunkWise client" width="56" height="56">
+                <h3>Website design for businesses</h3>
+                <p class="status mono"><span class="dot"></span>12 client projects</p>
+                <p>Research-led websites that rank on Google and that AI assistants such as ChatGPT can understand, for restaurants, clinics, coaching institutes, gyms, manufacturers and makers.</p>
+                <div class="links">
+                    <a href="/website-design.html#work">See client work</a>
+                    <a href="/website-design.html#pricing">View prices</a>
+                </div>
+            </article>
+            <article class="product">
+                <img class="product-logo" src="/assets/qr-scanner.png" alt="QR Scanner app icon" width="56" height="56">
+                <h3>Android apps</h3>
+                <p class="status mono"><span class="dot"></span>Live on Google Play</p>
+                <p>Small, focused apps with no clutter: a QR and barcode scanner, a night-time screen filter and a duplicate file finder.</p>
+                <div class="links">
+                    <a href="https://play.google.com/store/apps/dev?id=5045673712463792199" target="_blank" rel="noopener">All apps on Google Play</a>
+                </div>
+            </article>
+            <article class="product">
+                <img class="product-logo" src="/assets/bunkwise-app.png" alt="BunkWise Calculator app icon" width="56" height="56">
+                <h3>Free student tools</h3>
+                <p class="status mono"><span class="dot"></span>9,000+ visitors a month</p>
+                <p>Attendance, SGPA and CGPA calculators that run in the browser, built first for RTU students, plus an SGPA calculator for any university.</p>
+                <div class="links">
+                    <a href="/attendance.html">Attendance calculator</a>
+                    <a href="/sgpa.html">SGPA calculator</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="compare principles">
+    <div class="wrap">
+        <p class="eyebrow mono">How we work</p>
+        <h2>The habits that came from building our own products</h2>
+        <ol class="principle-list">
+            <li>
+                <span class="n mono">01</span>
+                <div>
+                    <h3>Start with the real problem</h3>
+                    <p>Our first product began with a question students kept asking: can I skip this class? We built the answer, not a feature list. Client websites start the same way, with how your customers search and what makes them call.</p>
+                </div>
+            </li>
+            <li>
+                <span class="n mono">02</span>
+                <div>
+                    <h3>Ship, then measure</h3>
+                    <p>Launch day is when the learning starts. Every website we hand over has Analytics and Search Console set up, so the next decision comes from numbers rather than guesses.</p>
+                </div>
+            </li>
+            <li>
+                <span class="n mono">03</span>
+                <div>
+                    <h3>One person accountable</h3>
+                    <p>You talk to the person who builds your project, from the first message to launch. Nothing gets lost between a salesperson, a designer and a developer.</p>
+                </div>
+            </li>
+            <li>
+                <span class="n mono">04</span>
+                <div>
+                    <h3>Prices in public</h3>
+                    <p>Our website packages and monthly plans are published for nine regions. You know what things cost before you ask us.</p>
+                </div>
+            </li>
+            <li>
+                <span class="n mono">05</span>
+                <div>
+                    <h3>Proof you can check</h3>
+                    <p>Every client site we list is live. Open them on your phone, see how fast they load, and judge the work before you spend anything.</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section id="founder" class="founder">
+    <div class="wrap split">
+        <div>
+            <p class="eyebrow mono">Founder</p>
+            <h2>Madhav</h2>
+            <p class="role">Founder &amp; Developer</p>
+        </div>
+        <div>
+            <p>I'm a final-year engineering student in India. I started BunkWise to save students five minutes of mental maths before deciding whether to skip a lecture. I built the calculation engine, the subject-wise breakdown and the interface myself, and thousands of students now use it every month.</p>
+            <p>Building it taught me what our clients get today: start with the real problem, make something fast and clear, put it in front of people and keep improving it. That's how we design websites for businesses, and it's how BunkWise plans to grow into the <a href="/#sectors">sectors on our roadmap</a>.</p>
+            <ul class="meta">
+                <li><span>Company</span><span>BunkWise (OPC) Private Limited (incorporation in progress)</span></li>
+                <li><span>Based in</span><span>India</span></li>
+                <li><span>Works with</span><span>Businesses in India and worldwide</span></li>
+                <li><span>GitHub</span><span><a href="https://github.com/madhavraj840" target="_blank" rel="noopener">github.com/madhavraj840</a></span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="wrap">
+        <p class="eyebrow mono">Contact</p>
+        <h2>Let's talk</h2>
+        <p>Need a website, want to partner with us, or have feedback on our tools? Send a message. You'll hear back from the person who builds things here.</p>
+        <div class="btn-row contact-btns">
+            <a href="https://wa.me/916375242538" class="btn" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</a>
+            <a href="https://t.me/Madhavraj840" class="btn" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
+            <a href="mailto:support@bunkwise.in" class="btn btn-ghost">support@bunkwise.in</a>
+        </div>
+    </div>
+</section>
+
 </main>
 
-<footer class="site-footer">
-    <span class="site-footer-copy">&copy; 2026 BunkWise Technologies &middot; India</span>
-    <nav class="site-footer-links" aria-label="Footer navigation">
-        <a href="about.html">About</a>
-        <a href="terms.html">Terms</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="creators.html">Creator</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+<!-- SITE FOOTER (same block on index.html, website-design.html and blog pages) -->
+<footer class="site-foot">
+    <div class="wrap">
+        <div class="foot-grid">
+            <div class="foot-brand">
+                <a href="/" class="brand"><img src="/assets/bunkwise-logo.png" alt="BunkWise" width="79" height="32"><span>Technologies</span></a>
+                <p>Research-led websites for businesses worldwide, plus free tools for students.</p>
+            </div>
+            <nav class="foot-col" aria-label="Company">
+                <p class="foot-title">Company</p>
+                <a href="/about.html">About Us</a>
+                <a href="/website-design.html#work">Client Work</a>
+                <a href="/blog/">Blog</a>
+                <a href="/about.html#founder">Founder</a>
+                <a href="/about.html#contact">Contact</a>
+            </nav>
+            <nav class="foot-col" aria-label="Services">
+                <p class="foot-title">Services</p>
+                <a href="/website-design.html">Website Design</a>
+                <a href="/website-design.html#seo-plans">SEO &amp; AI Search</a>
+                <a href="https://play.google.com/store/apps/dev?id=5045673712463792199" target="_blank" rel="noopener">Android Apps</a>
+                <a href="/attendance.html">Student Tools</a>
+            </nav>
+            <nav class="foot-col" aria-label="Website Design">
+                <p class="foot-title">Website Design</p>
+                <a href="/website-design.html#process">How It Works</a>
+                <a href="/website-design.html#faq">FAQ</a>
+                <a href="/website-design.html#contact">Get a Quote</a>
+            </nav>
+            <div class="foot-col foot-contact">
+                <p class="foot-title">Contact</p>
+                <a href="mailto:support@bunkwise.in"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>support@bunkwise.in</a>
+                <a href="https://wa.me/916375242538" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>+91 63752 42538</a>
+                <div class="foot-social">
+                    <a href="https://wa.me/916375242538" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+                    <a href="https://t.me/Madhavraj840" target="_blank" rel="noopener" aria-label="Telegram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                    <a href="https://github.com/madhavraj840" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                    <a href="https://play.google.com/store/apps/dev?id=5045673712463792199" target="_blank" rel="noopener" aria-label="Google Play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <span>© 2026 BunkWise (OPC) Private Limited (incorporation in progress). All rights reserved.</span>
+            <div class="foot-legal"><nav aria-label="Website services legal"><span>Website services</span><a href="/web-design-privacy.html">Privacy Policy</a><a href="/web-design-terms.html">Terms of Service</a></nav><nav aria-label="Student tools legal"><span>Student tools</span><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a></nav></div>
+        </div>
+    </div>
 </footer>
 
-<script src="app.js?v=2.0" defer></script>
+<nav class="chat-bar" aria-label="Chat with us">
+    <a class="chat-wa" href="https://wa.me/916375242538" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>WhatsApp</span></a>
+    <a class="chat-tg" href="https://t.me/Madhavraj840" target="_blank" rel="noopener" aria-label="Telegram"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><span>Telegram</span></a>
+</nav>
+<script>
+// Touch screens: the first tap opens the label, the next one opens the chat
+document.querySelectorAll('.chat-bar a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+        if (matchMedia('(hover: hover)').matches || a.classList.contains('open')) return;
+        e.preventDefault();
+        a.classList.add('open');
+        setTimeout(function () { a.classList.remove('open'); }, 4000);
+    });
+});
+</script>
+
 </body>
 </html>

@@ -159,6 +159,9 @@ a.tag-active:hover { background: #155c35; border-color: #155c35; }
 .foot-bottom nav { display: flex; gap: 24px; }
 .foot-bottom a { color: var(--ink-2); text-decoration: none; }
 .foot-bottom a:hover { color: var(--ink); }
+.foot-legal { display: flex; flex-direction: column; gap: 6px; }
+.foot-legal nav { flex-wrap: wrap; gap: 6px 18px; }
+.foot-legal span { color: var(--ink-3); min-width: 112px; }
 .foot-credits { margin-top: 12px; font-size: 12px; color: var(--ink-3); }
 @media (max-width: 860px) {
     .foot-grid { grid-template-columns: 1fr 1fr; }
@@ -179,4 +182,5 @@ a.tag-active:hover { background: #155c35; border-color: #155c35; }
     .facts { grid-template-columns: 1fr; margin-top: 48px; }
     .facts div, .facts div + div { padding: 18px 0; border-left: 0; border-bottom: 1px solid var(--line); }
     .btn { width: 100%; justify-content: center; }
+    .foot-legal span { flex-basis: 100%; }
 }

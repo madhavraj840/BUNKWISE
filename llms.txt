@@ -18,12 +18,21 @@ Key facts:
   - Singapore (SGD): Starter S$1,299, Business S$2,599, Growth S$4,599, Premium S$7,999; Local SEO S$649/month, Growth SEO S$1,299/month, Advanced SEO S$2,299/month
   - Other countries (USD): Starter $999, Business $1,999, Growth $3,499, Premium $5,999; Local SEO $499/month, Growth SEO $999/month, Advanced SEO $1,799/month
 - Typical delivery: Starter about 1 week, Business about 2 weeks, Growth about 3 weeks, Premium 4–6 weeks.
+- What each package includes (each tier adds to the one before):
+  - Starter: 3–4 pages, mobile-first design, WhatsApp and call buttons, enquiry form, Google Map, basic on-page SEO, Google Analytics and Search Console
+  - Business: 5–7 custom-designed pages, keyword research, LocalBusiness schema, Google Business Profile link-up, speed optimisation, enquiry tracking
+  - Growth: up to 10 pages including service and location landing pages, competitor research, keyword-focused copywriting, AEO (20–30 question-led answers), GEO for AI search
+  - Premium: 15+ pages, premium design, blog with 3–5 launch articles, full keyword map, technical SEO audit, business directory listings, leads and rankings dashboard
+  - Monthly SEO: Local (Google Business Profile management, rank tracking, fixes, monthly report); Growth (2–4 articles and a landing page a month, backlinks, AEO/GEO upgrades); Advanced (4–8 pieces a month, digital PR, conversion-rate optimisation)
+- Payment for website projects: 40% to start, 40% on preview approval, 20% before launch
 - Track record: 12 client projects so far, including 3 for international clients (2 in the UAE, 1 in progress). Live client websites include restaurants, a dental clinic, a coaching institute, a gym, a solar company and a handicrafts artist.
 - Contact: WhatsApp +91 63752 42538 (https://wa.me/916375242538), Telegram @Madhavraj840 (https://t.me/Madhavraj840)
 
 ## Website design
 
 - [Website design for businesses](https://bunkwise.in/website-design.html): portfolio, packages and prices by country, 2026 website cost comparison, answers about SEO/AEO/GEO, process, FAQ and enquiry form
+- [Website services privacy policy](https://bunkwise.in/web-design-privacy.html)
+- [Website services terms of service](https://bunkwise.in/web-design-terms.html)
 
 ## Guides (blog)
 
@@ -68,5 +77,5 @@ Key facts:
 ## Company
 
 - [Home](https://bunkwise.in/): BunkWise Technologies, sectors and products
-- [About](https://bunkwise.in/about.html)
+- [About](https://bunkwise.in/about.html): who BunkWise Technologies is, what it builds, founder and contact
 - [Contact](https://bunkwise.in/contact.html)

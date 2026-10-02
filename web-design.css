@@ -130,6 +130,9 @@ section[id], #seo-plans, .work-card, .qa { scroll-margin-top: 16px; }
 .anchor { font-size: 15px; color: var(--ink-2); margin-bottom: 40px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
 .anchor a { color: var(--ink); font-weight: 500; text-underline-offset: 3px; white-space: nowrap; }
 .price-grid, .seo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.price-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.price-grid .price { padding: 24px 22px; }
+.price-grid .amount { font-size: 32px; }
 .price {
     position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
     padding: 28px; display: flex; flex-direction: column;
@@ -147,16 +150,6 @@ section[id], #seo-plans, .work-card, .qa { scroll-margin-top: 16px; }
 .price li.plus { padding-left: 0; color: var(--ink); font-weight: 500; }
 .price li.plus::before { content: none; }
 .price .btn { justify-content: center; }
-
-.starter {
-    margin-top: 20px; padding: 24px 28px; background: var(--surface);
-    border: 1px dashed #cfcfc7; border-radius: 8px;
-    display: grid; grid-template-columns: 1fr auto; gap: 12px 32px; align-items: center;
-}
-.starter h3 { font-size: 18px; font-weight: 600; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
-.starter .starter-price { font-size: 22px; }
-.starter .amount-note { margin: 0; }
-.starter p { font-size: 15px; color: var(--ink-2); margin-top: 6px; max-width: 72ch; }
 
 .seo-heading { margin-top: 72px; }
 .fine { font-size: 14px; color: var(--ink-3); margin-top: 28px; max-width: 76ch; }
@@ -230,15 +223,50 @@ section[id], #seo-plans, .work-card, .qa { scroll-margin-top: 16px; }
 .contact-alt { margin-top: 20px; font-size: 15px; }
 .contact-alt a { color: #fff; text-underline-offset: 3px; }
 
-/* Floating WhatsApp button (phones and tablets) */
-.wa-float {
+/* WhatsApp + Telegram: round logo buttons that open into a labelled pill on hover, focus or tap */
+.chat-bar {
     position: fixed; right: 16px; bottom: 16px; z-index: 50;
-    display: none; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px;
-    background: #1d7a46; color: #fff; text-decoration: none; font-weight: 500;
-    border-radius: 999px; box-shadow: 0 6px 18px rgba(22, 24, 29, 0.22);
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
 }
+.chat-bar a {
+    display: inline-flex; align-items: center; height: 52px; padding: 0 15px;
+    color: #fff; text-decoration: none; font-weight: 500; border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(22, 24, 29, 0.25);
+}
+.chat-bar svg { flex-shrink: 0; }
+.chat-bar span { max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; transition: max-width .25s, opacity .2s, margin .25s; }
+.chat-bar a:hover span, .chat-bar a:focus-visible span, .chat-bar a.open span { max-width: 110px; opacity: 1; margin-left: 8px; }
+.chat-wa { background: #1d7a46; }
+.chat-tg { background: #1a7fb8; }
+body:has(.chat-bar) .site-foot { padding-bottom: 150px; }
+
+/* Legal pages (web-design-privacy.html, web-design-terms.html) */
+.legal { background: var(--surface); }
+.legal-body { max-width: 72ch; }
+.legal-body .updated { font-size: 14px; color: var(--ink-3); margin-bottom: 32px; }
+.legal-body h2 { font-size: 22px; margin: 40px 0 10px; }
+.legal-body p, .legal-body li { color: var(--ink-2); }
+.legal-body p + p { margin-top: 12px; }
+.legal-body ul { padding-left: 20px; margin-top: 10px; }
+.legal-body li + li { margin-top: 6px; }
+.legal-body a { color: var(--ink); text-underline-offset: 3px; }
+.legal-body strong { color: var(--ink); font-weight: 500; }
+
+/* About page (about.html) */
+.about-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.about-shots img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 10px 24px rgba(22, 24, 29, 0.10); }
+.about-shots img:nth-child(even) { transform: translateY(22px); }
+.principle-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 48px; border-top: 1px solid #3a3d43; }
+.principle-list li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 22px 0; border-bottom: 1px solid #2c2e33; }
+.principle-list .n { font-size: 13px; color: var(--gold); padding-top: 3px; }
+.principle-list h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.principle-list p { font-size: 15px; color: #b9bdc4; }
+.founder .meta a, .founder p a { color: var(--ink); text-underline-offset: 3px; }
+.contact-btns .btn { gap: 10px; }
+.legal-body h1 { font-size: clamp(32px, 4vw, 44px); max-width: none; margin-bottom: 8px; }
 
 @media (max-width: 980px) {
+    .price-grid { grid-template-columns: 1fr 1fr; }
     .hero-grid, .why-grid, .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .hero-stack { left: 12px; width: 50%; }
     .why-media { position: static; }
@@ -248,20 +276,17 @@ section[id], #seo-plans, .work-card, .qa { scroll-margin-top: 16px; }
 @media (max-width: 860px) {
     .work-grid { grid-template-columns: 1fr 1fr; }
     .price-grid, .seo-grid, .qa-grid { grid-template-columns: 1fr; }
-    .price-featured { order: -1; }
-    .pain-list { grid-template-columns: 1fr; }
+    .pain-list, .principle-list { grid-template-columns: 1fr; }
     .compare-row { grid-template-columns: 1fr 1fr; gap: 6px 16px; }
     .compare-row [role="rowheader"] { grid-column: 1 / -1; }
     .compare-head span:first-child { display: none; }
-    .wa-float { display: inline-flex; }
-    .site-foot { padding-bottom: 88px; }
 }
 @media (max-width: 560px) {
     .work-grid, .ind-grid, .steps, .wa-form { grid-template-columns: 1fr; }
     .hero-stack { display: none; }
+    .about-shots img:nth-child(even) { transform: none; }
     .hero-media { padding-bottom: 0; }
-    .starter { grid-template-columns: 1fr; padding: 22px 20px; }
-    .price { padding: 24px 20px; }
+    .price, .price-grid .price { padding: 24px 20px; }
     .qa { padding: 20px; }
     .seo-heading { margin-top: 56px; }
     .region { width: 100%; }

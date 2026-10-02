@@ -17,15 +17,15 @@ POSTS = os.path.join(ROOT, '_build', 'posts')
 SITE = 'https://bunkwise.in'
 KEYS = ['starter', 'business', 'growth', 'premium', 'seoLocal', 'seoGrowth', 'seoAdv']
 PACKAGES = [  # key, name, delivery, what's included (mirrors website-design.html #pricing)
-    ('starter', 'Starter', 'about 1 week', '3–4 pages, mobile-first design, contact form, WhatsApp button, Google Maps, basic SEO, Google Analytics and Search Console'),
-    ('business', 'Business', 'about 2 weeks', '5–7 custom-designed pages, keyword research, on-page and technical SEO, LocalBusiness schema, Google Business Profile integration'),
-    ('growth', 'Growth', 'about 3 weeks', 'Up to 10 pages, competitor analysis, local SEO structure, AEO and GEO for AI search, keyword-focused copywriting, 20–30 FAQs'),
-    ('premium', 'Premium', '4–6 weeks', '15+ pages, blog with 3–5 starter articles, 30–50 FAQs, technical SEO audit, citation and backlink strategy, monthly report'),
+    ('starter', 'Starter', 'about 1 week', '3–4 pages, mobile-first design, WhatsApp and call buttons, enquiry form, Google Map, basic on-page SEO, Google Analytics and Search Console'),
+    ('business', 'Business', 'about 2 weeks', '5–7 custom-designed pages, keyword research, LocalBusiness schema, Google Business Profile link-up, speed optimisation, enquiry tracking'),
+    ('growth', 'Growth', 'about 3 weeks', 'Up to 10 pages including service and location landing pages, competitor research, keyword-focused copywriting, AEO with 20–30 FAQs, GEO for AI search'),
+    ('premium', 'Premium', '4–6 weeks', '15+ pages, premium design, blog with 3–5 launch articles, full keyword map, technical SEO audit, business directory listings, leads and rankings dashboard'),
 ]
 SEO_PLANS = [
-    ('seoLocal', 'Local SEO', 'Google Business Profile optimisation, local keyword monitoring, technical fixes, 1–2 content updates, monthly report'),
-    ('seoGrowth', 'Growth SEO', '2–4 SEO articles a month, new landing pages, competitor monitoring, backlink and citation work'),
-    ('seoAdv', 'Advanced SEO', '4–8 content pieces a month, multiple landing pages, link-building, digital PR, conversion-rate optimisation'),
+    ('seoLocal', 'Local SEO', 'Google Business Profile management, local rank tracking, technical fixes, 1–2 content updates, monthly report'),
+    ('seoGrowth', 'Growth SEO', '2–4 SEO articles and a new landing page a month, quality backlinks, AEO/GEO upgrades, competitor tracking'),
+    ('seoAdv', 'Advanced SEO', '4–8 content pieces a month, digital PR and outreach, conversion-rate optimisation, quarterly strategy call'),
 ]
 GROUP_ORDER = ['Countries', 'US states', 'Cities', 'SEO costs', 'Hiring guides']
 PROJECTS = '12 client projects so far, including 3 for international clients (2 in the UAE, 1 in progress)'  # keep in sync with website-design.html
