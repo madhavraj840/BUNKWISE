@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7f7f4;--surface:#fff;--ink:#16181d;--ink-2:#4a4f59;--ink-3:#767b85;--line:#e2e2dc;--chip:#efefea;color-scheme:light dark}
-@media (prefers-color-scheme:dark){:root{--bg:#121315;--surface:#1a1b1e;--ink:#ecebe6;--ink-2:#b3b5ba;--ink-3:#8a8d94;--line:#2c2e33;--chip:#26282c}}
+:root{--bg:#f7f7f4;--surface:#fff;--ink:#16181d;--ink-2:#4a4f59;--ink-3:#767b85;--line:#e2e2dc;--chip:#efefea;--notice:#eef3ff;--notice-line:#2f6bd8;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#121315;--surface:#1a1b1e;--ink:#ecebe6;--ink-2:#b3b5ba;--ink-3:#8a8d94;--line:#2c2e33;--chip:#26282c;--notice:#161d2b;--notice-line:#7aa7ff}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.65 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--ink);text-underline-offset:3px}
@@ -40,6 +40,9 @@ b,strong{color:var(--ink);font-weight:500}
 .p-title{font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .p-desc{font-size:15px;color:var(--ink-2)}
 .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:400;padding:1px 8px;border-radius:3px;background:var(--chip);color:var(--ink-3)}
+.notice{border:1px solid var(--line);border-left:4px solid var(--notice-line);background:var(--notice);border-radius:6px;padding:20px 22px;margin-bottom:24px}
+.notice-label{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--notice-line);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.notice p:last-child{margin-bottom:0}
 .stamp{border-top:1px solid var(--ink);padding-top:20px;margin:48px 0 32px}
 .stamp-label{font-size:13px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
 .stamp p{color:var(--ink);font-size:17px}
@@ -53,36 +56,78 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
   <header class="hero">
     <span class="eyebrow">Night mode</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 14, 2026</p>
+    <p class="updated">Last updated: October 6, 2026</p>
     <p class="lede">
       This Privacy Policy describes how Night mode ("the App", "we", "us", "our") handles
       information when you use it. The App is built offline-first: it collects no personal
-      data, has no account, no ads, and no analytics.
+      data, has no account, no ads, and no analytics. It optionally uses Android's
+      AccessibilityService API, explained first, in Section 1.
     </p>
   </header>
+
+  <section id="accessibility">
+    <h2><span class="num">1</span>Accessibility Service - what it sees, and why</h2>
+    <div class="notice">
+      <div class="notice-label">Accessibility API disclosure</div>
+      <p>
+        Night mode uses Android's <b>AccessibilityService API</b>. It is <b>optional</b> and stays
+        off until you turn it on. Before Android's Accessibility settings open, the App shows a
+        screen explaining exactly what the service does, with <b>Agree</b> and <b>No thanks</b>
+        buttons - nothing happens unless you tap Agree and then switch the service on yourself.
+      </p>
+      <p>
+        The service does not read text on your screen, does not control or interact with other
+        apps, and does not collect, store or share any personal or sensitive data. Nothing it sees
+        ever leaves your phone.
+      </p>
+    </div>
+    <div class="card">
+      <div class="permission">
+        <div class="p-title">Better dimming</div>
+        <div class="p-desc">Lets the dimming layer also cover the status bar, notification shade, keyboard and lock screen, which an ordinary overlay cannot reach.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Emergency off <span class="tag">optional</span></div>
+        <div class="p-desc">Watches only for the Volume Up + Volume Down button combination, so you can turn dimming off from anywhere. No other key presses are recorded, and the App never sees what you type.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Per-app profiles <span class="tag">Pro, optional</span></div>
+        <div class="p-desc">Reads which app is currently in the foreground (its package name), purely to apply the dim level you've chosen for that app. It is used only in memory - never logged, stored as history, or transmitted.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Auto-Dim <span class="tag">Pro, optional</span></div>
+        <div class="p-desc">While dimming and Auto-Dim are on, captures screenshots through Android's Accessibility screenshot API, shrinks each one to a tiny low-resolution grid, and measures its average brightness on-device to adjust the dim level. Each screenshot is processed in memory and discarded immediately - never saved as an image, never written to disk, never transmitted anywhere.</div>
+      </div>
+    </div>
+    <p style="margin-top:14px">
+      Emergency off, Per-app profiles and Auto-Dim each have their own switch, so turning one on
+      doesn't turn on the others. You can turn the service off at any time in Android
+      Settings &gt; Accessibility.
+    </p>
+  </section>
 
   <nav class="toc" aria-label="Table of contents">
     <span class="toc-label">On this page</span>
     <ol>
+      <li><a href="#accessibility">Accessibility Service</a></li>
       <li><a href="#offline-first">Offline-first approach</a></li>
       <li><a href="#collect">Information we collect</a></li>
       <li><a href="#local-storage">Settings stored on your device</a></li>
-      <li><a href="#accessibility">Accessibility Service</a></li>
       <li><a href="#permissions">Permissions used</a></li>
-      <li><a href="#internet">No internet access</a></li>
+      <li><a href="#internet">Internet use</a></li>
       <li><a href="#sharing">Data sharing</a></li>
       <li><a href="#security">Data security</a></li>
       <li><a href="#retention">Retention &amp; deletion</a></li>
       <li><a href="#children">Children's privacy</a></li>
       <li><a href="#links">Third-party links</a></li>
-      <li><a href="#oss">Open source software</a></li>
+      <li><a href="#oss">Third-party software</a></li>
       <li><a href="#changes">Changes to this policy</a></li>
       <li><a href="#contact">Contact us</a></li>
     </ol>
   </nav>
 
   <section id="offline-first">
-    <h2><span class="num">1</span>Offline-first approach</h2>
+    <h2><span class="num">2</span>Offline-first approach</h2>
     <p>
       Night mode is designed to run entirely on your device. Turning the dimming overlay on or
       off, choosing a dim level, scheduling bedtime hours, setting per-app profiles, saving
@@ -93,7 +138,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
   </section>
 
   <section id="collect">
-    <h2><span class="num">2</span>Information we collect</h2>
+    <h2><span class="num">3</span>Information we collect</h2>
     <p>We do not collect personal information from users. Specifically, we do not collect:</p>
     <div class="not-collected">
       <span>Name</span><span>Email address</span><span>Phone number</span>
@@ -109,7 +154,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
   </section>
 
   <section id="local-storage">
-    <h2><span class="num">3</span>Settings stored on your device</h2>
+    <h2><span class="num">4</span>Settings stored on your device</h2>
     <p>The App stores your preferences locally, using Android's standard app-storage mechanism, so they persist between sessions:</p>
     <ul>
       <li>Dimming on/off state and dim level</li>
@@ -121,29 +166,6 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
       <li>Local usage statistics (total time dimmed, session count) shown back to you in the App</li>
     </ul>
     <p>This information never leaves your device. It is not transmitted to us or to any third party.</p>
-  </section>
-
-  <section id="accessibility">
-    <h2><span class="num">4</span>Accessibility Service - what it sees, and why</h2>
-    <div class="card">
-      <div class="permission">
-        <div class="p-title">Emergency off</div>
-        <div class="p-desc">Watches for the Volume Up + Volume Down button combination, so you can turn dimming off from anywhere, even outside the App. It does not read anything else about what you're doing.</div>
-      </div>
-      <div class="permission">
-        <div class="p-title">Per-app profiles</div>
-        <div class="p-desc">Reads which app is currently in the foreground, purely to apply the dim level you've chosen for that app. The current app's identity is used only in memory to pick a level - it is never logged, stored as history, or transmitted.</div>
-      </div>
-      <div class="permission">
-        <div class="p-title">Auto-Dim <span class="tag">Pro, optional</span></div>
-        <div class="p-desc">Periodically captures a screenshot through Android's Accessibility screenshot API, shrinks it to a tiny low-resolution grid, and measures its average brightness on-device to nudge the dim level automatically. The screenshot is processed entirely in memory and discarded immediately after - never saved as an image, never written to disk, never transmitted anywhere. Auto-Dim only runs while you've explicitly turned it on.</div>
-      </div>
-    </div>
-    <p style="margin-top:14px">
-      All three share one Accessibility service, but each has its own on/off switch, so turning
-      one on doesn't turn on the others - and none of them function unless you've separately
-      granted Accessibility permission in Android's system settings.
-    </p>
   </section>
 
   <section id="permissions">
@@ -159,11 +181,11 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
       </div>
       <div class="permission">
         <div class="p-title">Accessibility <span class="tag">optional</span></div>
-        <div class="p-desc">Powers the three features described in Section 4, and nothing else.</div>
+        <div class="p-desc">Powers the features described in Section 1, and nothing else.</div>
       </div>
       <div class="permission">
-        <div class="p-title">Ignore battery optimization <span class="tag">optional</span></div>
-        <div class="p-desc">Some phone manufacturers aggressively stop background apps to save power; this helps keep dimming running reliably. Asked for, never required.</div>
+        <div class="p-title">Battery settings shortcut <span class="tag">optional</span></div>
+        <div class="p-desc">Some phone manufacturers aggressively stop background apps. The App can open Android's battery optimization settings so you can exempt it yourself; it does not request the special "ignore battery optimizations" permission.</div>
       </div>
       <div class="permission">
         <div class="p-title">Run at startup</div>
@@ -177,23 +199,36 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
         <div class="p-title">Foreground service</div>
         <div class="p-desc">Android requires an ongoing, visible service (with a notification) for an app like this to keep the overlay active reliably - that's what this provides.</div>
       </div>
+      <div class="permission">
+        <div class="p-title">Google Play Billing</div>
+        <div class="p-desc">Lets you buy Night mode Pro through Google Play and lets the App check whether you own it.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Internet and network state</div>
+        <div class="p-desc">Added by Google's Play Billing and in-app review libraries so they can talk to Google Play. The App itself has no servers and sends nothing to us.</div>
+      </div>
     </div>
   </section>
 
   <section id="internet">
-    <h2><span class="num">6</span>No internet access</h2>
+    <h2><span class="num">6</span>Internet use</h2>
     <p>
-      The App does not request Android's Internet permission at all. It has no technical ability
-      to send data anywhere - over Wi-Fi, mobile data, or otherwise.
+      All of the App's own features work fully offline. The App has no servers of its own and never
+      sends your settings, usage or screen content anywhere. The only network traffic comes from
+      Google Play's own libraries: when you buy Night mode Pro, when the App checks with Google
+      Play whether you own Pro, and when Google Play shows its in-app rating prompt. That traffic
+      goes to Google, not to us, and is covered by
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
     </p>
   </section>
 
   <section id="sharing">
     <h2><span class="num">7</span>Data sharing and third parties</h2>
     <p>
-      Because we do not collect personal information, and the App has no internet access, we do
-      not - and cannot - sell, rent, share, trade, or disclose personal information to third
-      parties. The App contains no advertising and no analytics software of any kind.
+      We do not collect personal information, so we do not - and cannot - sell, rent, share, trade,
+      or disclose it to third parties. The App contains no advertising and no analytics software.
+      Purchases are processed entirely by Google Play; we never see your payment details, and
+      Google handles that information under its own privacy policy.
     </p>
   </section>
 
@@ -210,7 +245,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
     <h2><span class="num">9</span>Data retention and deletion</h2>
     <p>We do not retain personal information because we do not collect it. Data stored locally by the App remains entirely under your control. You can delete it by:</p>
     <ul>
-      <li>Using <b>"Reset everything"</b> in the App's Diagnostics screen</li>
+      <li>Using <b>"Reset everything"</b> on the App's "Is everything working?" screen (Settings)</li>
       <li>Clearing the App's storage through Android Settings</li>
       <li>Uninstalling the App - since there's no account and no server, uninstalling removes everything the App stored, with nothing left behind anywhere</li>
     </ul>
@@ -226,15 +261,20 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
 
   <section id="links">
     <h2><span class="num">11</span>Third-party links</h2>
-    <p>The App does not currently link out to any external websites or services from within its own screens. If that changes in a future version, this section will be updated to reflect it.</p>
+    <p>
+      The App can open a few external pages in other apps: its how-to video on YouTube, its Google
+      Play store page, Google Play's subscription and promo-code pages, and Android's own system
+      settings. Those services have their own privacy policies, which we don't control.
+    </p>
   </section>
 
   <section id="oss">
-    <h2><span class="num">12</span>Open source software</h2>
+    <h2><span class="num">12</span>Third-party and open source software</h2>
     <p>
-      The App is built using standard Android and Jetpack Compose framework libraries, each
-      under its own open-source license (for example, the Apache License 2.0). No proprietary
-      third-party SDKs are used.
+      The App is built with Android and Jetpack Compose libraries and Lottie (animations), each
+      under its open-source license (Apache License 2.0). It also uses Google's Play Billing
+      Library (for purchases) and Play In-App Review Library (for the rating prompt), provided by
+      Google under its own terms. The App contains no advertising or analytics SDKs.
     </p>
   </section>
 
@@ -255,12 +295,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
 
   <div class="stamp">
     <div class="stamp-label">In short</div>
-    <p>Night mode works fully offline, collects nothing, has no account to leak, and uninstalling it removes everything. Every permission above only does exactly what's described here.</p>
+    <p>Night mode collects nothing, has no account to leak, and uninstalling it removes everything. The optional Accessibility service only does what Section 1 describes, and nothing it sees leaves your phone.</p>
   </div>
 
   <footer>
     <span>Night mode</span>
-    <span>Privacy Policy &middot; Last updated September 14, 2026</span>
+    <span>Privacy Policy &middot; Last updated October 6, 2026</span>
   </footer>
 
 </div>
