@@ -184,3 +184,15 @@ a.tag-active:hover { background: #155c35; border-color: #155c35; }
     .btn { width: 100%; justify-content: center; }
     .foot-legal span { flex-basis: 100%; }
 }
+
+/* Technology row links and new-tab icons */
+.sector-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.sector-links a {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px;
+    font-size: 14px; font-weight: 500; text-decoration: none; color: var(--ink);
+    background: var(--surface); border: 1px solid #cfcfc7; border-radius: 4px;
+}
+.sector-links a:hover { border-color: var(--ink); }
+a.tag-active { display: inline-flex; align-items: center; gap: 5px; }
+.sectors p a svg { display: inline; vertical-align: -1px; margin-left: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

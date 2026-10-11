@@ -4,9 +4,13 @@
 // Visitors in Europe/UK are asked first (cookie banner); everyone else is tracked unless they opt out
 // via a "Cookie settings" link (any element with data-cookie-settings).
 // GA and Clarity are off on localhost; there, website-design.html logs its events to the console instead.
+// Other BunkWise sites load this file from bunkwise.in with their own GA id and privacy link:
+//   <script src="https://bunkwise.in/analytics.js" data-ga="G-XXXX" data-privacy="https://..." defer></script>
 (function () {
     var me = document.currentScript;
     var withClarity = !!(me && me.hasAttribute('data-clarity'));
+    var GA = (me && me.getAttribute('data-ga')) || 'G-WSBK8SX5LT';
+    var PRIVACY = (me && me.getAttribute('data-privacy')) || (withClarity ? '/web-design-privacy.html' : '/privacy.html');
     var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
     var KEY = 'bw-consent';
 
@@ -28,7 +32,7 @@
     function boot() {
         if (booted || local) return;
         booted = true;
-        addScript('https://www.googletagmanager.com/gtag/js?id=G-WSBK8SX5LT');
+        addScript('https://www.googletagmanager.com/gtag/js?id=' + GA);
         if (clarityWanted) addScript('https://www.clarity.ms/tag/yrab4bqyte');
     }
     if (!local) {
@@ -47,7 +51,7 @@
             ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
         });
         gtag('js', new Date());
-        gtag('config', 'G-WSBK8SX5LT', { transport_type: 'beacon' });
+        gtag('config', GA, { transport_type: 'beacon' });
     }
 
     // ── Microsoft Clarity: session recordings and heatmaps, loaded only after consent ──
@@ -94,7 +98,7 @@
             banner.innerHTML =
                 '<p>We use cookies from Google Analytics' + (withClarity ? ' and Microsoft Clarity' : '') +
                 ' to see how people use this site, so we can make it better. They are never used for ads. ' +
-                '<a href="' + (withClarity ? '/web-design-privacy.html' : '/privacy.html') + '">Privacy policy</a></p>' +
+                '<a href="' + PRIVACY + '">Privacy policy</a></p>' +
                 '<div><button type="button" data-v="denied">Reject</button><button type="button" data-v="granted">Accept</button></div>';
             banner.addEventListener('click', function (e) {
                 var v = e.target.getAttribute && e.target.getAttribute('data-v');

@@ -1,6 +1,6 @@
 # BunkWise Technologies
 
-> BunkWise Technologies is a website design and development company based in India, founded by Madhav. It builds research-led, fast websites for businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also runs free student tools (attendance, SGPA and CGPA calculators) and Android apps.
+> BunkWise Technologies is a website design and development company based in India, founded by Madhav. It builds research-led, fast websites for businesses, optimised for Google search (SEO) and AI answer engines (AEO and GEO), for clients in India and worldwide. BunkWise also makes its own software: Night mode, a free screen dimmer for Windows (open source) and Android (https://nightmode.bunkwise.in/), free student tools (attendance, SGPA and CGPA calculators used by 13,000+ people a month) and Android apps, and runs HYPERLOCAL by BunkWise, a local delivery service (https://hyperlocal.bunkwise.in/).
 
 Key facts:
 - Company: BunkWise Technologies, BunkWise (OPC) Private Limited (incorporation in progress)
@@ -27,6 +27,12 @@ Key facts:
 - Payment for website projects: 40% to start, 40% on preview approval, 20% before launch
 - Track record: 12 client projects so far, including 3 for international clients (2 in the UAE, 1 in progress). Live client websites include restaurants, a dental clinic, a coaching institute, a gym, a solar company and a handicrafts artist.
 - Contact: WhatsApp +91 63752 42538 (https://wa.me/916375242538), Telegram @Madhavraj840 (https://t.me/Madhavraj840)
+
+## Technology and products
+
+- [Technology at BunkWise](https://bunkwise.in/technology.html): overview of BunkWise technology, with website design and Night mode side by side
+- [Night mode](https://nightmode.bunkwise.in/): free screen dimmer that goes below the lowest brightness. Windows 10/11 app (open source, MIT, https://github.com/madhavraj840/bunkwise-night) and Android app (https://play.google.com/store/apps/details?id=com.bunkwise.nightmode). No account, no ads, works offline. Details: https://nightmode.bunkwise.in/llms.txt
+- [HYPERLOCAL by BunkWise](https://hyperlocal.bunkwise.in/): hyperlocal delivery of fresh produce and daily essentials for residential communities
 
 ## Website design
 
