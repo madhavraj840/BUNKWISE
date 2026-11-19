@@ -56,11 +56,13 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
   <header class="hero">
     <span class="eyebrow">Night mode</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: October 6, 2026</p>
+    <p class="updated">Last updated: November 19, 2026</p>
     <p class="lede">
       This Privacy Policy describes how Night mode ("the App", "we", "us", "our") handles
-      information when you use it. The App is built offline-first: it collects no personal
-      data, has no account, no ads, and no analytics. It optionally uses Android's
+      information when you use it. The App's features work offline and it has no account. We
+      don't run servers of our own, but the App includes Google AdMob (optional rewarded ads),
+      Google Firebase Analytics and Crashlytics, and Microsoft Clarity, which collect some device
+      and usage data as described in Sections 3, 6 and 7. It optionally uses Android's
       AccessibilityService API, explained first, in Section 1.
     </p>
   </header>
@@ -114,7 +116,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
       <li><a href="#collect">Information we collect</a></li>
       <li><a href="#local-storage">Settings stored on your device</a></li>
       <li><a href="#permissions">Permissions used</a></li>
-      <li><a href="#internet">Internet use</a></li>
+      <li><a href="#internet">Ads, analytics and internet use</a></li>
       <li><a href="#sharing">Data sharing</a></li>
       <li><a href="#security">Data security</a></li>
       <li><a href="#retention">Retention &amp; deletion</a></li>
@@ -133,24 +135,34 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
       off, choosing a dim level, scheduling bedtime hours, setting per-app profiles, saving
       presets, and every other feature are all processed locally. We do not operate any servers
       that collect, store, process, sell, rent, or share your settings, your usage, or anything
-      about how you use the App.
+      about how you use the App. The third-party services in Section 6 run on their providers'
+      own servers.
     </p>
   </section>
 
   <section id="collect">
     <h2><span class="num">3</span>Information we collect</h2>
-    <p>We do not collect personal information from users. Specifically, we do not collect:</p>
+    <p>The App never asks for, and we never collect:</p>
     <div class="not-collected">
       <span>Name</span><span>Email address</span><span>Phone number</span>
-      <span>Physical address</span><span>Location</span><span>IP address</span>
-      <span>Device identifiers</span><span>Advertising identifiers</span>
-      <span>Payment information</span><span>Usage analytics</span>
-      <span>Browsing history</span><span>Screen content</span>
+      <span>Physical address</span><span>Precise location</span>
+      <span>Payment information</span><span>Contacts</span>
+      <span>Browsing history</span><span>Content of other apps</span>
     </div>
     <p>
-      The App has no account system and no sign-in of any kind - there is nothing tied to you
-      for us to collect even if we wanted to.
+      The App has no account system and no sign-in of any kind. The third-party services built
+      into the App do collect some data automatically, through their own SDKs:
     </p>
+    <ul>
+      <li><b>Device and app identifiers</b> - the Android advertising ID (AdMob), and app-instance
+        or installation IDs (Firebase, Clarity)</li>
+      <li><b>Device information</b> - phone model, Android version, language, and approximate
+        region derived from your IP address</li>
+      <li><b>App usage</b> - which of the App's screens are opened and how they are used (taps,
+        scrolls), and ads shown and watched</li>
+      <li><b>Diagnostics</b> - crash reports and performance data</li>
+    </ul>
+    <p>Section 6 says which service collects what, and why.</p>
   </section>
 
   <section id="local-storage">
@@ -204,58 +216,84 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
         <div class="p-desc">Lets you buy Night mode Pro through Google Play and lets the App check whether you own it.</div>
       </div>
       <div class="permission">
+        <div class="p-title">Advertising ID</div>
+        <div class="p-desc">Added by Google's AdMob SDK so it can serve and measure ads. You can reset or delete it any time in Android Settings &gt; Privacy &gt; Ads.</div>
+      </div>
+      <div class="permission">
         <div class="p-title">Internet and network state</div>
-        <div class="p-desc">Added by Google's Play Billing and in-app review libraries so they can talk to Google Play. The App itself has no servers and sends nothing to us.</div>
+        <div class="p-desc">Used by Google Play Billing, the in-app review prompt, AdMob, Firebase and Microsoft Clarity (Section 6). The App's own features don't need it.</div>
       </div>
     </div>
   </section>
 
   <section id="internet">
-    <h2><span class="num">6</span>Internet use</h2>
+    <h2><span class="num">6</span>Ads, analytics and internet use</h2>
     <p>
-      All of the App's own features work fully offline. The App has no servers of its own and never
-      sends your settings, usage or screen content anywhere. The only network traffic comes from
-      Google Play's own libraries: when you buy Night mode Pro, when the App checks with Google
-      Play whether you own Pro, and when Google Play shows its in-app rating prompt. That traffic
-      goes to Google, not to us, and is covered by
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+      Dimming and every other feature of the App work fully offline. The App never sends your
+      settings, your dim levels or anything another app shows on screen to us or anyone else.
+      Network traffic comes only from these services:
     </p>
+    <div class="card">
+      <div class="permission">
+        <div class="p-title">Google AdMob <span class="tag">ads</span></div>
+        <div class="p-desc">Shows a rewarded video ad only when you choose "Watch an ad" to unlock a Pro feature for a while. AdMob may use the advertising ID, device information, IP address and ad interactions to serve, personalise and measure ads and to prevent fraud. In the EEA, the UK and Switzerland the App asks for your consent first through Google's consent form, and elsewhere offers the privacy choices local law requires. You can turn off personalised ads in Android Settings &gt; Privacy &gt; Ads. <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses data from apps that use its services</a>.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Google Firebase Analytics &amp; Crashlytics <span class="tag">analytics, diagnostics</span></div>
+        <div class="p-desc">Tells us which features are used and how often, and sends a report with technical details (device model, Android version, the code that failed) when the App crashes, so we can fix problems. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy</a>.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Microsoft Clarity <span class="tag">analytics</span></div>
+        <div class="p-desc">Records how the App's own screens are used - screens opened, taps and scrolls, as session replays of the App's interface - to show us where people get stuck. It only sees the App's own screens, never other apps. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</div>
+      </div>
+      <div class="permission">
+        <div class="p-title">Google Play <span class="tag">purchases, rating</span></div>
+        <div class="p-desc">When you buy Night mode Pro, when the App checks whether you own it, and when Google Play shows its rating prompt. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</div>
+      </div>
+    </div>
   </section>
 
   <section id="sharing">
     <h2><span class="num">7</span>Data sharing and third parties</h2>
     <p>
-      We do not collect personal information, so we do not - and cannot - sell, rent, share, trade,
-      or disclose it to third parties. The App contains no advertising and no analytics software.
-      Purchases are processed entirely by Google Play; we never see your payment details, and
-      Google handles that information under its own privacy policy.
+      We do not sell your personal information. The data described in Section 6 is collected by
+      and shared with Google (AdMob, Firebase, Google Play) and Microsoft (Clarity), who process
+      it under their own privacy policies, linked above. Purchases are processed entirely by
+      Google Play; we never see your payment details. All of this traffic is encrypted in
+      transit.
     </p>
   </section>
 
   <section id="security">
     <h2><span class="num">8</span>Data security</h2>
     <p>
-      Since nothing is transmitted to or stored on any server we operate, there is no remote data
-      of yours to secure. Information stored by the App remains on your device; keeping your
+      We operate no servers, so there is no database of ours holding your data. Data collected by
+      the third-party services in Section 6 is stored and secured by those providers. Information stored by the App remains on your device; keeping your
       device itself secure (screen lock, OS updates, and so on) is what protects it.
     </p>
   </section>
 
   <section id="retention">
     <h2><span class="num">9</span>Data retention and deletion</h2>
-    <p>We do not retain personal information because we do not collect it. Data stored locally by the App remains entirely under your control. You can delete it by:</p>
+    <p>Data stored locally by the App remains entirely under your control. You can delete it by:</p>
     <ul>
       <li>Using <b>"Reset everything"</b> on the App's "Is everything working?" screen (Settings)</li>
       <li>Clearing the App's storage through Android Settings</li>
-      <li>Uninstalling the App - since there's no account and no server, uninstalling removes everything the App stored, with nothing left behind anywhere</li>
+      <li>Uninstalling the App, which removes everything the App stored on your phone</li>
     </ul>
+    <p>
+      Data held by Google and Microsoft is kept for the periods set in their own policies. You
+      can reset your advertising ID in Android Settings, or write to us at the address in
+      Section 14 and we'll ask those services to delete data linked to your installation.
+    </p>
   </section>
 
   <section id="children">
     <h2><span class="num">10</span>Children's privacy</h2>
     <p>
-      The App is not directed at children under 13. Because the App does not collect personal
-      information from anyone, this applies equally to users of any age.
+      The App is not directed at children under 13, and we do not knowingly collect information
+      from them. If you believe a child has used the App, contact us and we'll help remove any
+      related data.
     </p>
   </section>
 
@@ -274,7 +312,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
       The App is built with Android and Jetpack Compose libraries and Lottie (animations), each
       under its open-source license (Apache License 2.0). It also uses Google's Play Billing
       Library (for purchases) and Play In-App Review Library (for the rating prompt), provided by
-      Google under its own terms. The App contains no advertising or analytics SDKs.
+      Google under its own terms, plus Google Mobile Ads (AdMob) with Google's User Messaging
+      Platform (consent), Firebase Analytics and Crashlytics, and Microsoft Clarity - see Section 6.
     </p>
   </section>
 
@@ -295,12 +334,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
 
   <div class="stamp">
     <div class="stamp-label">In short</div>
-    <p>Night mode collects nothing, has no account to leak, and uninstalling it removes everything. The optional Accessibility service only does what Section 1 describes, and nothing it sees leaves your phone.</p>
+    <p>Night mode has no account and no servers of its own. Ads you choose to watch (AdMob) and analytics (Firebase, Clarity) collect device and usage data through Google and Microsoft. The optional Accessibility service only does what Section 1 describes, and nothing it sees leaves your phone.</p>
   </div>
 
   <footer>
     <span>Night mode</span>
-    <span>Privacy Policy &middot; Last updated October 6, 2026</span>
+    <span>Privacy Policy &middot; Last updated November 19, 2026</span>
   </footer>
 
 </div>
